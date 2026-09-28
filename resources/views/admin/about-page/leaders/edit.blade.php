@@ -1,0 +1,207 @@
+@extends('admin.layouts.app')
+
+@section('content')
+    <div class="content">
+        <h2 class="content-heading">Leaderships</h2>
+        <nav class="breadcrumb bg-white push">
+            <a class="breadcrumb-item" href="{{ route('admin.home') }}">Dashboard</a>
+            <a class="breadcrumb-item" href="{{ route('admin.about-group-leaders.index') }}">Leaderships</a>
+            <span class="breadcrumb-item active">{{$leader->title}}</span>
+        </nav>
+        <div class="block">
+            <div class="block-content">
+                @if (session('error'))
+                <div class="alert alert-danger alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p class="mb-0">{{ session('error') }}</p>
+                </div>
+                @endif
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p class="mb-0">{{ session('success') }}</p>
+                </div>
+                @endif
+                <form class="js-validation-vehicle-features" action="{{ route('admin.about-group-leaders.update',$leader->id) }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-md-6 @error('name') is-invalid @enderror">
+                            <div class="form-material">
+                                <input required type="text" class="form-control" value="{{ @old('name',$leader->name) }}" id="name" name="name" rows="2"
+                                    placeholder="Please provide name">
+                                <label for="name">Name <span class="text-danger">*</span></label>
+                            </div>
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6 @error('email') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="text" class="form-control" value="{{ @old('email',$leader->email) }}" id="email" name="email" rows="2"
+                                    placeholder="Please provide email">
+                                <label for="email">Email</label>
+                            </div>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6 @error('position') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="text" class="form-control" value="{{ @old('position',$leader->position) }}" id="position" name="position" rows="2"
+                                    placeholder="Please provide position">
+                                <label for="position">Position</label>
+                            </div>
+                            @error('position')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6 @error('mobile') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="text" class="form-control" value="{{ @old('mobile',$leader->mobile) }}" id="mobile" name="mobile" rows="2"
+                                    placeholder="Please provide mobile">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            @error('mobile')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        {{-- <div class="col-md-6 @error('dob') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="date" class="form-control" value="{{ @old('dob',@$leader->dob) }}" id="dob" name="dob">
+                                <label for="dob">DOB</label>
+                            </div>
+                            @error('dob')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div> --}}
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 @error('details') is-invalid @enderror">
+                            <div class="form-material">
+                                <textarea class="form-control summernote" id="details" name="details" rows="2"
+                                    placeholder="Please provide details for the vehicle">{{ @old('details',$leader->details) }}</textarea>
+                                <label for="details">Details</label>
+                            </div>
+                            @error('details')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 @error('image') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="file" id="image" name="image" multiple>
+                                <label for="image"> Image </label>
+                                @if($leader->image)
+                                    <img height="100px" src="{{asset('storage/'.$leader->image)}}">
+                                @endif
+                            </div>
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 @error('order') is-invalid @enderror">
+                            <div class="form-material">
+                                <input type="number" min="1" class="form-control" id="order" name="order"
+                                    placeholder="Please provide order"
+                                    value="{{ @old('order',$leader->order) }}" required>
+                                <label for="order">Order<span class="text-danger">*</span></label>
+                            </div>
+                            @error('order')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 @error('status') is-invalid @enderror p-0">
+                            <label class="col-12">Status</label>
+                            <div class="col-12">
+                                <div class="mb-5 custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" type="radio" name="status" id="status1" value="1"
+                                        @if (@old('status', $leader->status)) checked @endif>
+                                    <label class="custom-control-label" for="status1">Yes</label>
+                                </div>
+                                <div class="mb-5 custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" type="radio" name="status" id="status2" value="0"
+                                        @if (!@old('status', $leader->status)) checked @endif>
+                                    <label class="custom-control-label" for="status2">No</label>
+                                </div>
+                                @error('status')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        <div class="row items-push-2x text-center text-sm-right">
+                            <div class="col-sm-12 col-xl-12 mb-20">
+                                <button type="submit" class="btn btn-primary min-width-125">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('js_after')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#vehicle_type').select2({
+                placeholder: 'Please select a vehicle type',
+                width: '100%',
+                allowClear: true
+            });
+
+        });
+        $('.js-validation-vehicles').validate({
+            ignore: "",
+            errorClass: 'invalid-feedback animated fadeInDown',
+            errorElement: 'div',
+            errorPlacement: (error, e) => {
+                $(e).parents('.form-group > div').append(error);
+            },
+            highlight: e => {
+                $(e).closest('.form-group > div').removeClass('is-invalid').addClass('is-invalid');
+            },
+            success: e => {
+                $(e).closest('.form-group > div').removeClass('is-invalid');
+                $(e).remove();
+            }
+        });
+
+    function update_data(id){
+        if(confirm('Are you sure to delete this vehicle feature image?')){
+            var url = "{{ route('admin.vehicles.features_image.destroy', ':id') }}";
+            url = url.replace(':id', id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                id: "id",
+            },
+            success: function(response) {
+                if(response.status == "success"){
+                        swal("success!", "Image deleted successfully!", "success")
+                      }
+                      else{
+                        sweetAlert("Oops...", "Something went wrong!", "error");
+                      }
+                      location.reload()
+            }
+        });
+        }
+      
+    }
+    </script>
+@endsection

@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateVehicleGalleriesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('vehicle_galleries', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->primary('id');
+            $table->string('title');          
+            $table->string('image');
+            $table->string('description')->nullable();
+            $table->string('vehicle_id');           
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('vehicle_galleries');
+    }
+}

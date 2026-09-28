@@ -1,0 +1,249 @@
+.cardetailpage {
+    .fifthSec-desc {
+        padding: 120px 150px 120px 150px;
+    }
+
+    #fifthSec img {
+        position: absolute;
+        left: 15%;
+        top: 10%;
+    }
+
+    .carBooking {
+        background: #000;
+        border-radius: 10px;
+        max-width: 100%;
+        padding: 0;
+        max-width: 900px !important;
+
+        .form-group {
+            margin-bottom: 40px;
+        }
+
+        .call__form {
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                color: #cdcdcd;
+                font-size: 18px;
+                padding-left: 20px;
+                border: none;
+                border-radius: 2px;
+                border-radius: 0px;
+            }
+
+            input#address-proof {
+                padding: 8px;
+            }
+
+            input[type='file'] {
+                color: #fff;
+            }
+
+            label.checkbox-inline {
+                display: flex;
+                margin-bottom: 0.5rem;
+                align-items: start;
+                font-size: 16px;
+                line-height: 22px;
+
+                .colorbox {
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #ccc;
+                    position: relative;
+                    top: 4px;
+                }
+            }
+
+            .nice-select {
+                float: none;
+                width: 100%;
+                height: 48px;
+                line-height: 45px;
+                border-radius: 50px;
+                line-height: 36px;
+
+                span {
+                    font-size: 15px;
+                    color: #5C5C5C;
+                }
+
+                .list {
+                    width: 100%;
+                    margin-top: 0;
+                    border-radius: 0;
+                    max-height: 250px;
+                    overflow-y: scroll;
+                }
+
+                &:after {
+                    height: 10px;
+                    width: 10px;
+                    border-bottom: 2px solid #f00;
+                    border-right: 2px solid #f00;
+                    margin-top: 0;
+                    right: 22px;
+                    top: 35%;
+                }
+            }
+
+            input[type=checkbox],
+            input[type=radio] {
+                width: 18px !important;
+                height: 18px !important;
+                margin-right: 5px;
+                margin-bottom: 0;
+                position: relative;
+                top: 0;
+            }
+            button.site-btn {
+                height: 65px;
+                background: #fff;
+                border: 0;
+                border-left: 10px solid #f00;
+                min-width: 200px;
+                padding: 0;
+                line-height: 65px;
+                cursor: pointer;
+                transition: .5s;
+                color: #000;
+                &:hover {
+                    background: #054fa1;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.float-left {
+    float: left !important;
+}
+
+.w-33 {
+    width: 33.33333%;
+    float: left;
+}
+
+span#color-name-change {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+$colors: (red: #DB2828,
+    orange: #F2711C,
+    yellow: #FBBD08,
+    olive: #B5CC18,
+    green: #21BA45,
+    teal: #00B5AD,
+    blue: #2185D0,
+    violet: #6435C9,
+    purple: #A333C8,
+    pink: #E03997);
+
+.carBooking {
+
+    .all-colors {
+        div {
+            display: inline-block;
+        }
+        input[type="radio"] {
+            display: none;
+            border: 2px solid #000;
+    
+            &:checked+label {
+                span {
+                    transform: scale(1.25);
+                    border: 2px solid #fff;
+                }
+            }
+        }
+    
+        label {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+            margin-bottom: 0;
+            cursor: pointer;
+    
+            &:hover {
+                span {
+                    transform: scale(1.25);
+                }
+            }
+    
+            span {
+                display: block;
+                width: 100%;
+                height: 100%;
+                transition: transform .2s ease-in-out;
+                border-radius: 50px;
+                box-shadow: 0px 0px 31px -6px #fff;
+            }
+        }
+        span#color-name-change {
+            span {
+                width: 100%;
+                display: block;
+                color: #cdcdcd;
+                line-height: 35px;
+                margin-top: 2px;
+                border-bottom: 1px solid #555;
+                font-size: 18px;
+                text-align: center;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@media (min-width: 1900px) {}
+
+@media (min-width: 1200px) {}
+
+@media screen and (min-width: 992px) and (max-width: 1368px) {}
+
+@media screen and (min-width: 991px) {}
+
+@media (max-width: 991px) {
+    section.insurance.cardetailpage.section.py-0 {
+        padding-top: 100px !important;
+    }
+    .cardetailpage {
+        .fifthSec-desc {
+            padding: 10px 15px 10px 15px;
+        }
+    
+        .carBooking {
+    
+            .form-group {
+                margin-bottom: 40px;
+            }
+    
+            .call__form {
+    
+                input#address-proof {
+                    padding: 8px;
+                }
+    
+                label.checkbox-inline {
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+    
+    .w-33 {
+        width: 50%;
+    }
+
+}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 500px) {}

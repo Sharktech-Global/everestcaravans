@@ -1,0 +1,69 @@
+#career-accordion {
+    .card {
+        border: 0;
+        margin-bottom: 10px;
+        .card-header {
+            padding: 0;
+            background-color: #d2d2d2;
+            button {
+                text-decoration: none;
+                text-transform: uppercase;
+                width: 100%;
+                text-align: left;
+                height: 65px;
+                line-height: 65px;
+                background: transparent;
+                color: #000;
+                font-weight: 600;
+                color: #4e4e4e;
+                padding: 0 15px;
+                i {
+                    position: absolute;
+                    top: 25px;
+                    right: 15px;
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                &.opened {
+                    i {
+                        transform: rotate(180deg);
+                    }
+                }
+            } 
+        }
+        .card-body { 
+            font-size: 18px;
+            line-height: 28px;
+            ul {
+                margin-top: 20px;
+                padding-left: 20px;
+            }
+            .btn {
+                height: 60px;
+                line-height: 60px;
+                min-width: 200px;
+                padding: 0;
+                background: #014fa2;
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: 600;
+                border: 0;
+                border-radius: 0;
+                &:hover {
+                    background: #000;
+                }
+            }
+        }
+    }
+}
+
+.hero__form.carBooking {
+    max-width: 1000px;
+    border: 1px solid #282828;
+    .field-wrap.text-right {
+        margin: 0;
+    }
+    input[type="file"] {
+            padding: 8px 10px;
+    }
+}

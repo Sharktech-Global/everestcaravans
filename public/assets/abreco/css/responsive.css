@@ -1,0 +1,2708 @@
+@media(max-width: 1920px){
+    .abreco-sticky.sticky .abreco-logo-box a img{
+        max-width: 110px;
+    }
+    .abreco-sticky.sticky{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+@media (max-width: 1300px){
+    .container-service{
+        margin-left: 0;
+    }
+    .testi-head{
+        right: 20px;
+    }
+}
+
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        /* max-width: 1300px; */
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 1441px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 85%;
+    }
+    .header-fluid{
+        padding: 0 40px;
+    }
+}
+
+@media(max-width: 1440px){
+    .container-service{
+        max-width: 66px;
+        margin-left: 70px;
+    }
+    .abreco-header-main-menu ul > li{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .abreco-header-main-menu ul > li > a{
+        font-size: 16px;
+        padding: 20px 10px;
+    }
+    .abreco-logo-box a img{
+        max-width: 120px;
+    }
+    .header-logobg{
+        width: 355.301px;
+    }
+    .header-logobg2{
+        left: -37%;
+        top: -480%;
+        width: 658.63px;
+        height: 860.119px;
+    }
+    .header-logobg23{
+        left: -42%;
+    }
+    .header .caption h1{
+        font-size: 40px;
+        line-height: 52px;
+        max-width: 460px;
+    }
+    .banner-inner{
+        padding-left: 100px;
+    }
+    .header .caption .butn-light a{
+        font-size: 18px;
+        padding: 12px 40px;
+        letter-spacing: 1px;
+    }
+    .booking-wrapper{
+        padding: 25px 30px;
+    }
+    .header .caption p{
+        font-size: 16px;
+        font-weight: 200;
+    }
+    .booking-wrapper .form-control{
+        width: 250px;
+    }
+    .booking-wrapper .form-control-submit{
+        width: 130px;
+    }
+    .booking-wrapper .form-control-submit input{
+        font-size: 16px;
+    }
+    .slider-fade .owl-dots{
+        left: 35%;
+        bottom: 50px;
+        left: 500px;
+    }
+    .abreco-sticky.sticky{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .abreco-sticky.sticky .abreco-logo-box a img{
+        max-width: 120px;
+    }
+    .solid-text h2{
+        font-size: 38px;
+    }
+    .solid-text p{
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .solid-vehicles .left-img img{
+        max-width: 245px;
+    }
+    .solid-vehicles .left-img2 img{
+        max-width: 225px;
+    }
+    .intro-slide[data-position="1"], .intro-slide2[data-position="1"]{
+        transform: rotateY(0deg) translate(-77px,-117px);
+        width: 62%;
+    }
+    .intro-slide[data-position="2"], .intro-slide2[data-position="2"]{
+        transform: rotateY(0deg) translate(18px,-62px);
+        width: 55%;
+    }
+    .intro-slide[data-position="3"], .intro-slide2[data-position="3"]{
+        transform: rotateY(0deg) translate(105px,-7px);
+        width: 48%;
+    }
+    .slider-next, .slider-next2, .slider-next3{
+        width: 60px;
+        height: 60px;
+        left: 32px;
+        top: 84%;
+    }
+    .slider-next img, .slider-next2 img, .slider-next3 img, .slider-prev img{
+        max-width: 22px;
+    }
+    .intro-slide, .intro-slide2, .intro-slide3{
+        transform: rotateY(0deg) translate(-147px,-117px);
+        width: 62%;
+    }
+    .intro-slide3[data-position="1"]{
+        left: -45px;
+        top: 252px;
+        width: 48%;
+    }
+    .intro-slide3[data-position="2"]{
+        width: 55%;
+        top: 141px;
+        left: 85px;
+    }
+    .intro-slide3[data-position="3"]{
+        transform: rotateY(0deg) translate(-246px,17px);
+        width: 62%;
+        left: 186px;
+        top: 5px;
+    }
+    .slider-next3{
+        top: 480px;
+        left: 50px;
+    }
+    .slider-next2{
+        left: 32px;
+        top: 93%;
+    }
+    .slide-counter{
+        left: 27%;
+        bottom: 7%;
+        font-size: 18px;
+        left: 396px;
+        bottom: 46px
+    }
+    .testi-head p{
+        font-size: 16px;
+    }
+    .adr-box h3{
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+    .adr-box p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .show-cont-head h1{
+        font-size: 40px;
+    }
+    /* .fin-box-3::before,
+    .fin-box-3::after,
+    .fin-box-13::before,
+    .fin-box-13::after{
+        display: none;
+    } */
+}
+
+@media(max-width: 1420px){
+    .abreco-header-main-menu ul > li > a{
+        padding: 20px 5px;
+        font-size: 15px;
+    }
+    .abreco-header-main-menu ul > li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .abreco-header-area .abreco-header-main-menu ul li .pages-mega-menu{
+        left: -232px;
+    }
+}
+
+@media(max-width: 1366px){
+    .header-logobg2{
+        left: -38%;
+    }
+    .abreco-header-main-menu ul > li:hover .sub-menu li a{
+        font-size: 15px !important;
+    }
+    .solid-text {
+        padding-left: 80px;
+    }
+    .solid-text2{
+        padding-right: 30px;
+    }
+}
+
+@media(max-width: 1199px){
+    /* .header-logobg {
+        width: 350.301px;
+    } */
+    /* .header-logobg2 {
+        top: -437%;
+        width: 591.63px;
+    } */
+    .header .caption h1{
+        font-size: 40px;
+        line-height: 45px;
+    }
+    .slider-fade .owl-dots .owl-dot.active{
+        width: 50px;
+    }
+    .slider-fade .owl-dots{
+        left: 32%;
+    }
+    .slide-counter{
+        bottom: 10%;
+    }
+}
+
+@media(min-width: 1420px) and (max-width: 1800px){
+    .abreco-header-main-menu ul > li > a {
+        font-size: 16px;
+        padding: 20px 0px;
+    }
+    .abreco-header-main-menu ul > li > a i{
+        padding-left: 2px;
+    }
+}
+
+@media(min-width: 992px) and (max-width: 1262px){
+    .abreco-header-main-menu ul > li > a {
+        font-size: 12px;
+        padding: 20px 0px;
+    }
+}
+
+@media(max-width: 991px){
+    .fin-box-3::before,
+    .fin-box-3::after,
+    .fin-box-13::before,
+    .fin-box-13::after{
+        display: none;
+    } 
+    .left-contact-img{
+        top: 250px;
+        left: 15%;
+    }
+    .header-logobg2{
+        display: none;
+    }
+    .header-logobg{
+        display: none;
+    }
+    .abreco-header-area{
+        position: absolute;
+        /* background: linear-gradient(180deg, rgba(30, 40, 95, 0.60) -35%, rgba(30, 40, 95, 0.60) 103.75%);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+        /* backdrop-filter: blur(2px); */
+    }
+    .abreco-logo-box a img {
+        max-width: 100px;
+    }
+    .abreco-header-area{
+        padding-bottom: 10px;
+    }
+    .toggle-btn{
+        right: 30px;
+        /* background: rgba(30, 40, 95, 0.63);
+        backdrop-filter: blur(20px); */
+        padding: 5px 10px 2px;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+    .abreco-sticky.sticky .toggle-btn{
+        right: -120px;
+        top: 0;
+        transform: translateY(-170%);
+    }
+    .toggle-btn i{
+        color: #000;
+        font-size: 30px;
+    }
+    .abreco-sticky.sticky .toggle-btn i{
+        color: #000;
+    }
+    .offcanvas-brand img{
+        max-width: 100px;
+    }
+    .canvas_close a{
+        background-image: linear-gradient(#469EFF, #126ACB);
+        border: inherit;
+    }
+    .booking-wrapper{
+        display: block;
+    }
+}
+
+@media(max-width: 767px){
+    .card-accord2 .card-header button{
+        border-bottom: none;
+    }
+    .scroll-baner{
+        bottom: 25px;
+    }
+    .left-contact-img2{
+        top: 240px;
+    }
+    .fin-box-3::before,
+    .fin-box-3::after,
+    .fin-box-13::before,
+    .fin-box-13::after{
+        display: inherit;
+    }
+    .fin-box-4::before,
+    .fin-box-2::before,
+    .fin-box-4::after,
+    .fin-box-2::after,
+    .fin-box-14::before,
+    .fin-box-12::before,
+    .fin-box-14::after,
+    .fin-box-12::after{
+        display: none;
+    }
+    .fin-box-7,
+    .fin-box-17{
+        position: relative;
+    }
+    .fin-box-7::before,
+    .fin-box-7::after,
+    .fin-box-17::before,
+    .fin-box-17::after{
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #3063E4 46.78%, rgba(255, 255, 255, 0.00) 100%);
+    }
+}
+
+
+.abreco-header-main-menu ul > li .big-device-none {
+    display: none;
+}
+
+/* Normal desktop :1200px. */
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .shop-small-left-slider-active {
+        max-width: 309px;
+        transform: rotate(0);
+        position: inherit;
+        top: inherit;
+        left: inherit;
+        margin-left: 130px;
+    }
+
+}
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .abreco-header-main-menu ul li .mega-menu-main-wrap {
+        width: 930px;
+        left: -161px;
+    }
+    .abreco-header-main-menu ul li .pages-mega-menu {
+        width: 933px !important;
+        padding: 15px 0px !important;
+        left: -237px;
+        padding-left: 9px !important;
+    }
+    .pages-mega-menu.mega-menu-mainn-wrap ul {
+        margin: 0 21px;
+    }
+
+    .abreco-header-main-menu ul li .pages-mega-menu.blog-mega-menu  {
+        width: 672px !important;
+        padding: 15px 0px !important;
+        left: -237px;
+        padding-left: 9px !important;
+        padding-left: 20px !important;
+    }
+    .blog-wrap-ul {
+        width: 24% !important;
+    }
+    .mega-menu-recent-ports {
+        width: 306px;
+        margin-left: -40px;
+    }
+    .mega-r-post {
+        margin-left: -40px;
+    }
+    .blog-comment {
+        margin-left: 0;
+    }
+    .shop-small-left-slider-active {
+        max-width: 310px;
+        transform: rotate(0);
+        position: inherit;
+        top: inherit;
+        left: 80px;
+        display: block;
+    }
+
+   
+
+
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+    .abreco-header-main-menu ul > li .big-device-none {
+        display: block;
+    } 
+    .shop-small-left-slider-active {
+        max-width: 310px;
+        transform: rotate(0deg);
+        position: inherit;
+        top: inherit;
+        left: 190px;
+    }
+
+   
+
+}
+
+
+
+
+@media (max-width: 400px) {
+    .shop-small-left-slider-active {
+        left: 30px;
+    }
+}
+
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+   
+
+    .shop-small-left-slider-active {
+        max-width: 310px;
+        transform: rotate(0deg);
+        position: inherit;
+        top: inherit;
+        left: 4px;
+    }
+    .animated_btn.animated_btn-ios {
+        padding: 1px 40px;
+    }
+    .animated_btn.animated_btn-ios {
+        margin-bottom: 20px;
+    }
+    .abreco-hero-content ul li {
+        margin-bottom: 0;
+    }
+ 
+}
+
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.shop-small-left-slider-active {
+	max-width: 310px;
+	transform: rotate(0deg);
+	position: inherit;
+	top: inherit;
+	left: 50px;
+}
+
+}
+
+@media(min-width: 991px){
+    .abreco-sticky.sticky .offset-lg-2 {
+        margin-left: 4.666667%;
+    }
+}
+
+
+/* Responsivess........ */
+/* @media(min-width:1601px) and (max-width:1919px){
+    .abreco-logo-box a img{
+        max-width: 150px;
+    }
+    .header-logobg{
+        top: -404%;
+        left: -14%;
+    }
+    .header-logobg2{
+        left: -40%;
+    }
+} */
+
+@media(min-width:992px) and (max-width:1780px){
+    .founder-area .left-img{
+        top: 78px;
+        left: -10px;
+    }
+    .founder-area .left-img img {
+        max-width: 190px;
+    }
+    .founder-text .head{
+        padding-bottom: 10px;
+    }
+    .founder-text .head h2{
+        font-size: 35px;
+    }
+    .founder-text .para{
+        padding-top: 20px;
+        padding-bottom: 20px
+    }
+    .founder-text .para p{
+        font-size: 15px;
+        margin-bottom: 20px;
+        line-height: 26px;
+    }
+    .founder-text .para span{
+        font-size: 16px;
+    }
+    .founder-text .para span b{
+        font-size: 18px;
+    }
+    .founder-img .img{
+        margin-left: 140px;
+    }
+}
+
+/* @media(min-width: 1441px) and (max-width:1601px){
+    .abreco-logo-box a img{
+        max-width: 150px;
+    }
+    .header-logobg{
+        top: -400%;
+        left: -16%;
+    }
+    .header-logobg2{
+        left: -50%;
+    }
+} */
+
+@media(max-width: 1440px){
+    .scroll-baner {
+        position: absolute;
+        bottom: 70px;
+        padding-left: 95px;
+    }
+    .qt-icon img{
+        max-width: 80px;
+    }  
+    .qt-icon{
+        position: absolute;
+        top: -50px;
+    }
+    .contact-head ul li{
+        font-size: 16px;
+        line-height: 35px;
+    }
+    .contact-form input[type=text], .contact-form input[type=tel], .contact-form textarea, .contact-form select, .contact-form input[type=email]{
+        height: 70px;
+        font-size: 18px;
+    }
+    .contact-head p{
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .contact-head h2{
+        font-size: 30px;
+    }
+    .contact-head h5{
+        font-size: 25px;
+    }
+    .contact-head{
+        min-height: auto;
+    }
+    .bread-inner h1{
+        font-size: 50px;
+        max-width: 600px;
+        line-height: 55px;
+    }
+    .abreco-inner-banner,
+    .bread-inner{
+        height: 520px;
+    }
+    .baner-bg-head2{
+        top: 155px;
+    }
+    .mision-box h2{
+        font-size: 35px;
+        line-height: 35px;
+        margin-bottom: 10px;
+    }
+    .mision-box p,
+    .mision-box ul li{
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .mision-box .icon{
+        margin-bottom: 40px;
+    }
+    .mision-box .icon img{
+        max-width: 40px;
+    }
+    .mision-box{
+        min-height: 450px;
+    }
+    .abt-titlte2 p{
+        font-size: 16px;
+        line-height: 28px;
+    }
+    .team-slider .item .name span{
+        font-size: 15px;
+        max-width: 200px;
+        line-height: 20px;
+    }
+    .team-slider .item .name h3{
+        font-size: 20px;
+    }
+    .team-slider::after{
+        right: -120px;
+    }
+    .global-inner h2{
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+    .global-inner p{
+        font-size: 16px;
+    }
+    .global-inner .bo-glo h4{
+        font-size: 18px;
+    }
+    .global-inner {
+        padding: 55px 0;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul{
+        max-width: 85%;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul li a{
+        font-size: 18px;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul li a img{
+        width: 30px;
+    }
+    .inner-text{
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .inner-s-text h3{
+        font-size: 40px;
+        margin-bottom: 8px;
+    }
+    .inner-s-text p{
+        font-size: 18px;
+        line-height: 28px;
+        color: #000000b0;
+    }
+    .primary-btn-services {
+        margin-top: 35px;
+    }
+    .primary-btn-services {
+        margin-top: 35px;
+    }
+    .v-f-box h3{
+        font-size: 22px;
+    }
+    .v-f-box p{
+        font-size: 16px;
+    }
+    .v-f-box{
+        min-height: 170px;
+    }
+    .inner-s-text2 h3{
+        font-size: 35px;
+    margin-bottom: 25px;
+    line-height: 42px;
+    }
+    .side-lists li .post-text h6, .side-lists li .post-text h6 a{
+        font-size: 15px;
+    }
+    .accordion-prime>.card>.card-header h2 button{
+        font-size: 24px;
+    }
+    .accordion-prime .card .card-body{
+        font-size: 24px;
+        line-height: 38px;
+    }
+    .fea-inner .inner-details .inner-btn a{
+        font-size: 13px;
+    }
+    .primary-btn-main-desktop{
+        margin-top: 50px;
+    }
+    .primary-btn-main-desktop .new-btn-style{
+        font-size: 16px;
+        height: 55px;
+    }
+    .solid-vehicles .left-img{
+        top: 52px;
+    }
+    .solid-vehicles.solid-vehicles-two  .left-img{
+        top: 72px;
+    }
+    .solid-vehicles .left-img2{
+        top: 66px;
+    }
+    .solid-vehicles .left-img30{
+        top: 68px;
+    }
+    .assist-inner.first h2{
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .assist-inner.first h2 span{
+        font-size: 18px;
+    }
+    .assist-inner.second p{
+        font-size: 15px;
+        line-height: 26px;
+        max-width: 275px;
+        margin-left: 30px;
+    }
+    .assist-inner.third p span {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 400;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul{
+        max-width: 95% !important;
+    }
+    .join-text h2{
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    .open-head p{
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .open-head h2{
+        font-size: 32px;
+    }
+    .career-box p{
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .career-box h3{
+        font-size: 22px;
+    }
+    .department-area span{
+        font-size: 18px;
+    }
+
+    .primary-btn-main2 .new-btn-style20{
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+    .service-item .img img{
+        min-height: 275px;   
+    }
+    .ft-addr .addr p, .ft-addr-last span, .ft-addr-last a .ft-addr3 span, .ft-addr3 a{
+        font-size: 17px;
+    }
+    header .caption h1 span{
+        max-width: 550px;
+    }
+    .abt-titlte p{
+        font-size: 18px;
+    }
+    .assist-inner .icon-third .icon{
+        width: 45px;
+        height: 45px
+    }
+    .assist-inner .icon-third .icon svg{
+        max-width: 28px;
+    }
+    .cont-bx .icon-box img{
+        max-width: 250px;
+    }
+    .cont-bx h3{
+        font-size: 28px;
+        margin-bottom: 18px;
+    }
+    .cont-bx p{
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .cont-bx{
+        padding: 150px 20px 50px;
+        min-height: 382px;
+    }
+}
+
+@media(min-width: 1200px) and (max-width: 1439px){
+    .cont-bx p {
+        font-size: 13px;
+        line-height: 28px;
+    }
+}
+
+@media(max-width: 1023px){
+    .drop-1023{
+        display: block !important;
+    }
+    .mobile-dropdown2 {
+        display: block;
+        background-position-x: 98.5%;
+    }
+    .vehicle-data .container .details-tab-wrapper .item.active::before{
+        display: none;
+    }
+    .d-none-1023{
+        display: none !important;
+    }
+    .d-block-1023{
+        display: block !important;
+    }
+}
+
+@media(min-width:992px) and (max-width: 1320px){
+    .founder-text .head h2 {
+        font-size: 22px;
+    max-width: 410px;
+    margin-left: auto;
+    line-height: 32px;
+    }
+    .founder-text .para p{
+        font-size: 13px;
+        line-height: 24px;
+    }
+    .founder-text .para{
+        padding-top: 0;
+        padding-left: 55px;
+    }
+    .founder-img .img{
+        margin-left: 100px;
+    }
+    .founder-area .left-img{
+        left: -26px;
+        top: 80px;
+    }
+    .founder-img {
+        flex: 0 0 40%;
+    }
+    .founder-text {
+        flex: 0 0 60%;
+    }
+    .founder-area .left-img img {
+        max-width: 170px;
+    }
+}
+
+@media(min-width:992px) and (max-width: 1366px){
+    .header .caption h1 {
+        font-size: 42px;
+        line-height: 62px;
+        max-width: 470px;
+    }
+    .ft-addr3 a.sep-style-num{
+        font-size: 14px;
+    }
+    .ft-addr-last span, .ft-addr3 span{
+        font-size: 13px;
+    }
+}
+
+
+
+@media (min-width: 1200px) and (max-width: 1300px){
+    .header-logobg {
+      width: 310.301px;
+    }
+    .header-logobg2 {
+      left: -44%;
+    }
+    .header .caption h1 {
+      font-size: 38px;
+      line-height: 44px;
+      max-width: 410px;
+    }
+  }
+
+@media(max-width:991px){
+    .ft-addr3 a.sep-style-num{
+        display: block;
+    }
+    .join-img{
+        display: none;
+    }
+    .service-bread-btn a{
+        font-size: 18px;
+        padding: 14px 44px;
+    }
+    .bread-inner h1 {
+        font-size: 35px;
+        max-width: 420px;
+        line-height: 40px;
+    }
+    .inner-services {
+        padding: 60px 0;
+    }
+    .inner-s-img{
+        margin-top: 40px;
+    }
+    .inner-services2 .inner-s-text {
+        padding-left: 0;
+    }
+    .assist-inner{
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .assist-inner.second p{
+        margin: inherit;
+    }
+    .assist-inner.third{
+        justify-content: flex-start;
+    }
+    .assist-inner.third{
+        border-bottom: none;
+    }
+    .assistance-box{
+        padding: 30px 60px;
+    }
+    .bread-inner{
+        padding-left: 0;
+    }
+    .baner-bg-head2{
+        top: 125px;
+        left: 110px;
+    }
+    .baner-bg-head2 img{
+        max-width: 250px;
+    }
+    .header-logobg{
+        display: block;
+        width: 274.301px;
+        top: -321%;
+        left: -15%;
+    }
+    .abreco-inner-banner, .bread-inner{
+        /* height: 400px; */
+        height: 400px;
+    }
+    .abreco-features-tabs-btn{
+        display: none;
+    }
+    .block-991{
+        display: block !important;
+    }
+    .none-991{
+        display: none !important;
+    }
+    .drop-991{
+        display: block !important;
+    }
+    .drop-button{
+        color: #9D166C;
+        border: 2px solid #E8E8E8;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 10px 30px;
+        background: transparent;
+        width: 100%;
+        text-align: left;
+        position: relative;
+    }
+    .drop-button:focus{
+        background: #9D166C;
+        color: #fff;
+    }
+    .drop-button::after{
+        position: absolute;
+        right: 30px;
+        top: 50%;
+    }
+    .drop-991 .dropdown-menu.show{
+        width: 100%;
+    }
+    .abreco-service-area,
+    .counter-area{
+        background-color: #4C5899;
+    }
+    .abt-titlte p,
+    .count .counter-item, .count span,
+    .conter-box .title h4{
+        color: #fff;
+    }
+    .abt-titlte{
+        border-left: none;
+        padding-left: 0;
+        padding-top: 20px;
+        border-top: 2px solid #EDEDED;
+    }
+    .abt-logo{
+        padding: 20px 0;
+        position: relative;
+    }
+    .abt-logo::before{
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 2px;
+        background-color: #EDEDED;
+        left: 60%;
+        top: 0;
+    }
+    .abt-logo .title h2,
+    .abt-logo .title p{
+        color: #fff;
+    }
+    .conter-box{
+        border-bottom: 2px solid #EDEDED;
+    }
+    .conter-box2{
+        border-right: none;
+    }
+    .conter-box3,
+    .conter-box-last{
+        border-bottom: none;
+    }
+    .p-0-991{
+        padding: 0 !important;
+    }
+    .accordion>.card>.card-header{
+        background-color: transparent;
+        border: none;
+    }
+    .accordion>.card>.card-header h2 button{
+        color: #000 !important;
+        font-size: 18px !important;
+        font-weight: 600;
+        font-style: italic;
+        padding: 0;
+    }
+    .accordion>.card>.card-header h2 button:focus{
+        box-shadow: none;
+        text-decoration: inherit;
+    }
+    .accordion>.card{
+        border: none;
+        border-top: 0px solid #EDEDED;
+    }
+    .solid-vehicles-one{
+        background-color: #4C5899;
+        padding-top: 80px;
+    }
+    .solid-text{
+        margin-top: 80px;
+        padding-left: 0;
+    }
+    .solid-vehicles-one .solid-text h2,
+    .solid-vehicles-one .solid-text p,
+    .solid-vehicles-one .expl-btn a{
+        color: #fff;
+    }
+    .order-2-991{
+        order: 2;
+    }
+    .order-1-991{
+        order: 1;
+    }
+    .testi-head {
+        position: relative;
+        right: inherit;
+    }
+    .testi-head h1{
+        text-align: center;
+        padding: 20px;
+        border-bottom: 2px solid #D9D9D9;
+    }
+    .testi-head p{
+        text-align: center;
+        font-size: 20px;
+        padding: 20px 0;
+    }
+    .item-testi{
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .item-testi .left-side{
+        border-right: none;
+    }
+    .item-testi .img{
+        margin-top: inherit;
+        padding-bottom: 30px;
+    }
+    .item-testi .img::before{
+        height: 100%;
+    }
+    .item-testi .left-side .name{
+        padding-top: inherit;
+        border-top: 2px solid #D9D9D9;
+        padding: 30px 0;
+    }
+    .item-testi .right-side{
+        padding-bottom: 20px;
+        border-top: 2px solid #D9D9D9;
+    }
+    .item-testi .left-side{
+        flex: 0 0 50%;
+    }
+    .item-testi p{
+        padding: 20px 0;
+    }
+    .abreco-blog-item .content > a{
+        float: right;
+        position: relative;
+    }
+    .expert-areas{
+        flex-direction: column;
+    }
+    .expert-btn{
+        align-items: center;
+    }
+    .expert-inner h1{
+        margin-bottom: 40px;
+    }
+    .loc-box{
+        border-bottom: 2px solid #EDEDED;
+    }
+    .loc-box-new,
+    .loc-box-new2,
+    .loc-box-new3,
+    .loc-box-new4{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.21) !important;
+    }
+    .loc-box2{
+        border-right: none;
+    }
+    .loc-box3,
+    .loc-box-last{
+        border-bottom: none;
+    }
+    .contact-areas{
+        flex-direction: column;
+    }
+    .contact-head {
+        margin-bottom: 30px;
+    }
+    .contact-head p{
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 50px;
+    }
+    .ft-addr{
+        border-bottom: 1px solid #183B93;
+    }
+    .ft-addr2{
+        border-right: none;
+    }
+    .ft-addr3,
+    .ft-addr-last{
+        border-bottom: none;
+    }
+    .footer-copyright{
+        display: flex !important;
+        flex-direction: column;
+    }
+    .copyright-text .social ul{
+        margin-bottom: 20px;
+    }
+    #slider, .slider-wrap, #intro-slider, #slider2, #intro-slider2{
+        top: 32px;
+        right: 40px;
+    }
+    #slider3, #intro-slider3{
+        top: -3px;
+        right: -138px;
+    }
+    .intro-slide[data-position="2"], .intro-slide2[data-position="2"]{
+        transform: rotateY(0deg) translate(-30px,-79px);
+    }
+    .intro-slide[data-position="3"], .intro-slide2[data-position="3"]{
+        transform: rotateY(0deg) translate(75px,-8px);
+    }
+    .intro-slide3[data-position="2"]{
+        transform: rotateY(0deg) translate(-160px,-78px);
+    }
+    .intro-slide3[data-position="3"]{
+        transform: rotateY(0deg) translate(-195px,-8px);
+    }
+    .slider-next, .slider-next2{
+        right: 350px;
+        top: 510px;
+    }
+    .slider-next3{
+        right: 200px;
+        top: 530px;
+    }
+    .solid-vehicles{
+        height: 1350px;
+    }
+    .solid-text{
+        position: absolute;
+        top: 600px;
+    }
+    .solid-text23{
+        top: 620px;
+    }
+    .ft-addr{
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .right-border.addr-flex::before{
+        display: none;
+    }
+    .d-flex-991{
+        display: flex !important;
+    }
+    .footer-navigation2 h4{
+        margin-top: 70px;
+    }
+    /* .abreco-hero-area .bg-img-1{
+        background-image: url(../images/banner/banner-bg-991.png) !important;
+    }
+    .abreco-hero-area .bg-img-2{
+        background-image: url(../images/banner/banner-bg-991.png) !important;
+    } */
+    .mobile-dropdown{
+        display: block;
+        background-position-x: 98%;
+    }
+    #web-banner{
+        display: none;
+    }
+    #mobile-banner{
+        display: block !important;
+    }
+    .abt-logo-new2 .title h2{
+        color: #000;
+    }
+    .abt-logo-new2{
+        position: inherit;
+    }
+    .abt-logo-new2::before{
+        display: none;
+    }
+    .abreco-team .abt-titlte p{
+        color: #000;
+    }
+    .founder-inner{
+        flex-direction: inherit;
+    }
+    .founder-text {
+        flex: 100%;
+        padding-right: 30px;
+        position: relative;
+        padding-left: 30px;
+        padding-top: 50px;
+    }
+    .founder-area .left-img img {
+        max-width: 150px;
+    }
+    .founder-text::before{
+        display: none;
+    }
+    .founder-img {
+        flex: 0 0 30%;
+        top: -196px;
+        position: relative;
+        left: 91px;
+    }
+    .founder-img .img{
+        margin-left: 0;
+    }
+    .abreco-group-about{
+        background-color: #fff;
+    }
+    .abreco-group-about .title h2{
+        color: #000;
+    }
+    .abreco-group-about .abt-titlte p{
+        color: #000;
+    }
+    .abreco-group-about .abt-logo::before{
+        display: none;
+    }
+    .d-block-991{
+        display: block !important;
+    }
+    .d-inline-block-991{
+        display: inline-block !important;
+    }
+    .counter-about-area .conter-box{
+        border-bottom: 1px solid #ededed47;
+    }
+    .counter-about-area .conter-box3{
+        border-bottom: none;
+    }
+    .counter-about-area .conter-box4{
+        border-bottom: none;
+    }
+    .assist-inner{
+        border-bottom: none;
+    }
+    .assist-inner::before{
+        top: inherit;
+        bottom: 0;
+        right: inherit;
+        left: inherit;
+        width: 100%;
+        height: 2px;
+    }
+    .counter-area .conter-box2,
+    .counter-area .conter-box4{
+        border-right: none;
+    }
+    .counter-area .conter-box3,
+    .counter-area .conter-box4{
+        border-bottom: none;
+    } 
+    .loc-box{
+        min-height: 120px;
+    }
+    .loc-box-2{
+        border-right: none;
+    }
+    .loc-box-3,
+    .loc-box-4{
+        border-bottom: none;
+    }
+}
+
+@media(max-width: 767px){
+    #slider3, #intro-slider3 {
+        top: -4px;
+        right: -112px;
+    }
+    .intro-slide3[data-position="2"]{
+        top: 93px;
+    }
+    .intro-slide3[data-position="1"]{
+        top: 207px;
+    }
+    .tab-head-size{
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+    .accordion>.card>.card-header h2 button.accordion-btn{
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding-bottom: 15px;
+    }
+    .card-accord .card-body p span {
+        flex: 0 0 40%;
+    }
+    .card-accord .card-body p{
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .abt-video2 a {
+        width: 30px;
+        height: 30px;
+    }
+    .abt-video2 a svg{
+        width: 12px;
+    }
+    .card-name{
+        bottom: 4px;
+        padding: 6px 10px;
+    }
+    .card-name h3{
+        font-size: 14px;
+    }
+    .booking-cols .data .col{
+        flex: 100%;
+    }
+    .ft-addr .addr p, .ft-addr-last span, .ft-addr-last a{
+        font-size: 14px;
+    }
+    .bread-inner h1{
+        font-size: 40px;
+    }
+    .header-logobg{
+        width: 225.301px;
+        top: -336%;
+    }
+    .abt-logo2:before{
+        position: inherit;
+    }
+    .global-points{
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    .global-points .bo-glo{
+        margin-bottom: 30px;
+    }
+    .solid-text {
+        position: absolute;
+        top: 420px;
+        width: 100%;
+    }
+    .intro-slide{
+        left: 40%;
+    }
+    .solid-vehicles .left-img{
+        left: -52px;
+    }
+    .slider-next, .slider-next2 {
+        right: 210px;
+        top: 320px;
+    }
+    .intro-slide[data-position="2"], .intro-slide2[data-position="2"] {
+        transform: rotateY(0deg) translate(-16px,-49px);
+    }
+    .solid-vehicles .left-img2{
+        left: auto;
+        top: 68px;
+    }
+    .intro-slide3[data-position="2"] {
+        transform: rotateY(0deg) translate(-160px,-49px);
+    }
+    .solid-text23{
+        padding-right: 0;
+    }
+    .slider-next3 {
+        right: 135px;
+        top: 333px;
+    }
+    .expert-areas{
+        padding: 120px 60px 140px;
+    }
+    .footer-navigation {
+        text-align: left;
+    }
+    .abreco-sticky.sticky .toggle-btn {
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .offcanvas_menu {
+        display: block !important;
+    }
+    .founder-inner{
+        flex-direction: column;
+        border-bottom: 1px solid #ededed;
+    }
+    .founder-img{
+        top: 0;
+        left: -157px;
+    }
+    .founder-img .img img{
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 575px){
+    .v-f-box h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+    .mision-box {
+        min-height: inherit;
+    }
+    .mision-box h2{
+        font-size: 28px;
+    }
+    .mision-box p, .mision-box ul li {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .global-inner h2{
+        font-size: 30px;
+    }
+    .feature-mobile-btn a{
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+    .abt-logo::before{
+        left: 82%;
+    }
+    .abt-logo .title h2{
+        font-size: 40px;
+    }
+    .p-0-575{
+        padding: 0;
+    }
+    .p-15-575{
+        padding-right: 15px;
+        padding-left: 15px !important;
+    }
+    .abt-bg img{
+        height: 200px;
+    }
+    .abt-video a{
+        height: 60px;
+        width: 60px;
+    }
+    .abt-video a svg{
+        width: 20px;
+    }
+    .count .counter-item, .count span{
+        font-size: 28px;
+        font-weight: 500;
+    }
+    .conter-box .title h4{
+        font-weight: 600;
+        font-size: 15px;
+    }
+    .conter-box{
+        padding: 25px 20px;
+    }
+    .abreco-section-title h3{
+        font-size: 25px !important;
+    }
+    .abreco-section-title p{
+        font-size: 16px;
+    }
+    .expl-btn .icons img {
+        max-width: 11px;
+    }
+    .expl-btn a{
+        font-size: 15px;
+    }
+    .accordion .card .card-body{
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 300;
+    }
+    .truck-slider .owl-nav{
+        bottom: -24px;
+    }
+    .truck-slider .owl-nav button{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .truck-slider .owl-nav button img{
+        max-width: 17px;
+    }
+    .solid-vehicles .left-img{
+        left: -90px;
+    }
+    .solid-vehicles .left-img img{
+        max-width: 160px;
+    }
+    .d-none-575{
+        display: none;
+    }
+    .solid-vehicles .left-img .second-img{
+        margin-right: -105px;
+        display: block;
+        max-width: 110px
+    }
+    .solid-text h2{
+        font-size: 26px;
+        margin-bottom: 8px;
+        line-height: 32px;
+    }
+    .block-575{
+        display: block !important;
+    }
+    .solid-vehicles .left-img2{
+        left: auto;
+        right: 30px;
+    }
+    .solid-vehicles .left-img2 .first-img{
+        margin-right: -70px;
+        max-width: 115px;
+    }
+    .solid-vehicles .left-img2 .second-img{
+        margin-right: -70px;
+        max-width: 80px;
+    }
+    .testi-head h1{
+        font-size: 25px;
+        padding: 0;
+    }
+    .testimonials-section{
+        padding: 70px 0;
+    }
+    .testi-head p{
+        font-size: 16px;
+        text-align: left;
+        line-height: 24px;
+    }
+    .item-testi .right-side{
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .item-testi p{
+        font-size: 16px;
+        line-height: 28px;
+    }
+    .abreco-blog-area{
+        padding: 50px 0;
+    }
+    .abreco-blog-item .content .title a{
+        font-size: 18px;
+        line-height: 26px;
+        max-width: 320px;
+    }
+    .expert-areas{
+        padding: 55px 20px 55px 20px;
+    }
+    .contact-areas{
+        padding: 60px 30px 55px;
+    }
+    .contact-head h2{
+        font-size: 22px;
+    }
+    .contact-head ul{
+        padding-left: 18px;
+    }
+    .contact-head ul li{
+        font-size: 13px;
+    }
+    .contact-head h5{
+        font-size: 16px;
+        line-height: 1;
+    }
+    .contact-head h5 svg{
+        display: none;
+    }
+    .ft-addr {
+        /* border-right: 1px solid #183B93; */
+        padding: 20px 15px;
+        min-height: 125px;
+    }
+    .footer-navigation {
+        text-align: left;
+    }
+    .ft-addr2,
+    .ft-addr-last{
+        border-right: none;
+    }
+    #slider, .slider-wrap, #intro-slider, #slider2, #intro-slider2{
+        right: 30px;
+    }
+    .intro-slide[data-position="2"], .intro-slide2[data-position="2"] {
+        transform: rotateY(0deg) translate(-60px,-75px);
+        width: 70%;
+    }
+    .intro-slide[data-position="3"], .intro-slide2[data-position="3"] {
+        transform: rotateY(0deg) translate(-5px,-38px);
+        width: 60%;
+    }
+    .slider-next, .slider-next2, .slider-next3, .slider-prev{
+        width: 50px;
+        height: 50px;
+        transform: skewX(-17deg);
+    }
+    .slider-next img, .slider-next2 img, .slider-next3 img, .slider-prev img{
+        max-width: 23px;
+    }
+    .slider-next, .slider-next2 {
+        right: 140px;
+        top: 190px;
+    }
+    .solid-text{
+        top: 265px;
+        padding-right: 10px;
+    }
+    .solid-vehicles-one,
+    .solid-vehicles{
+        height: 940px;
+    }
+    .solid-vehicles-two{
+        height: 1000px;
+    }
+    .intro-slide3[data-position="2"] {
+        transform: rotateY(0deg) translate(-142px,-76px);
+        width: 70%;
+    }
+    .intro-slide3[data-position="3"] {
+        transform: rotateY(0deg) translate(-155px,-38px);
+        width: 60%;
+    }
+    #slider3, #intro-slider3 {
+        right: -36px;
+        top: 24px;
+    }
+    .solid-text23{
+        top: 285px;
+    }
+    .slider-next3{
+        top: 210px;
+    }
+    #slider2 .slider-wrap{
+        right: -34px;
+    }
+    .slider-next2{
+        right: 162px;
+    }
+    .ft-addr{
+        min-height: 172px;
+    }
+    .ft-addr .logo img{
+        max-width: 125px;
+    }
+    .first-logo-footer .logo img{
+        max-width: 150px;
+    }
+    .intro-slide, .intro-slide2, .intro-slide3{
+        width: 82%;
+    }
+    .inline-block-575{
+        display: inline-block !important;
+    }
+    /* .solid-text{
+        position: relative;
+    } */
+    .solid-text p{
+        max-width: inherit;
+    }
+    .intro-slide{
+        left: 58%;
+    }
+    #intro-slider2{
+        right: -45px;
+    }
+    .float-icons{
+        right: 0;
+        display: none;
+    }
+    .float-icons a{
+        width: 40px;
+        height: 40px;
+    }
+    .float-icons a svg{
+        width: 20px;
+    }
+    .float-icons .telphone,
+    .float-icons .whatsapp{
+        margin-bottom: 6px;
+    }
+    .toggle-btn{
+        top: 65%;
+        transform: translateY(-112%);  
+        font-size: 22px;  
+        margin-top: -6px;
+    }
+    .offcanvas_menu {
+        display: block !important;
+    }
+    .abreco-logo-box a img {
+        max-width: 90px;
+    }
+    .header .caption h1 {
+        font-size: 30px;
+        line-height: 30px;
+        margin-top: -75px;
+    }
+    .header .caption .butn-light a {
+        font-size: 16px;
+        padding: 12px 30px;
+        letter-spacing: 1px;
+    }
+    .truck-name h3{
+        font-size: 18px;
+    }
+    .scroll-baner a{
+        display: none;
+    }
+    .abreco-hero-area,
+    .slider-fade .owl-item{
+        height: 90vh;
+        overflow: initial;
+    }
+    .truck-name{
+        display: none;
+    }
+    .slider-fade .owl-dots {
+        left: 50%;
+        transform: translate(-50%,-50%);
+        bottom: 0;
+    }
+    .abreco-sticky.sticky .abreco-logo-box a img {
+        max-width: 80px;
+    }
+    .intro-slide[data-position="1"], .intro-slide2[data-position="1"]{
+        transform: rotateY(0deg) translate(-80px,-117px);
+        width: 55%;
+    }
+    .intro-slide[data-position="2"], .intro-slide2[data-position="2"] {
+        transform: rotateY(0deg) translate(-19px,-63px);
+        width: 45%;
+    }
+    .intro-slide[data-position="3"], .intro-slide2[data-position="3"] {
+        transform: rotateY(0deg) translate(32px,-35px);
+        width: 40%;
+    }
+    .slider-next, .slider-next2 {
+        right: inherit;
+        top: 190px;
+        left: 111px;
+    }
+    .d-none-575 {
+        display: none !important;
+    }
+    .solid-vehicles .left-img2{
+        right: 0;
+    }
+    .solid-vehicles .left-img2 img {
+        max-width: 115px;
+    }
+    .intro-slide, .intro-slide2, .intro-slide3 {
+        width: 60%;
+        transform: rotateY(0deg) translate(-100px,-119px);
+    }
+    .intro-slide3[data-position="1"]{
+        left: 92px;
+        top: 120px;
+        width: 38%;
+    }
+    .intro-slide3[data-position="2"] {
+        transform: rotateY(0deg) translate(-115px,-91px);
+        width: 44%;
+        top: 59px;
+        left: 145px;
+    }
+    .intro-slide3[data-position="3"] {
+        transform: rotateY(0deg) translate(-130px,-64px);
+        width: 49%;
+        left: 197px;
+    }
+    .slider-next3 {
+        top: 210px;
+        left: 112px;
+    }
+    .abreco-features-area{
+        padding-top: 210px;
+        z-index: inherit;
+        padding-bottom: 30px;
+    }
+    /* .owl-carousel .owl-item img{
+        display: none;
+    } */
+    .header .caption .butn-light a{
+        display: none;
+    }
+    .slider-fade .owl-dots{
+        display: none;
+    }
+    .slide-counter{
+        display: none;
+    }
+    .booking-wrapper{
+        /* bottom: -145px; */
+        /* bottom: -38px; */
+        bottom: -170px;
+        right: 5%;
+        left: 5%;
+        border-radius: 10px;
+        z-index: 9;
+        border: 2px solid rgba(255, 236, 236, 0.19);
+    }
+    .booking-wrapper .form-control {
+        /* width: 280px; */
+        width: 100%;
+    }
+    .booking-wrapper .form-control-submit{
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .drop-button::after{
+        color: #1E285F;
+    }
+    .mobile-dropdown{
+        background-position-x: 97%;
+    }
+    .header-logobg{
+        display: block;
+        width: 284.301px;
+        left: -38%;
+        top: -390%;
+    }
+    .services-areas{
+        padding-top: 100px;
+    }
+    .item-testi .left-side .name h2{
+        font-size: 22px;
+    }
+    .item-testi .left-side .name span{
+        font-size: 16px;
+    }
+    .item-testi .left-side .name{
+        padding: 18px 0 10px 0px;
+    }
+    .abreco-sticky.sticky .toggle-btn {
+        top: 65%;
+        transform: translateY(-112%);
+        font-size: 22px;
+        right: 30px;
+    }
+    .founder-img{
+        left: -12px;
+    }
+    .founder-text .head h2{
+        font-size: 37px;
+        line-height: 42px;
+    }
+    .founder-text .para {
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+    .founder-text .para p{
+        font-size: 15px;
+    }
+    .founder-text .para span b{
+        font-size: 22px;
+    }
+    .founder-text .para span{
+        font-size: 17px;
+    }
+    .show-cont-head h1{
+        font-size: 31px;
+        margin-bottom: 35px;
+    }
+    .show-contact{
+        padding: 70px 0;
+    }
+    .assistance-area{
+        padding: 20px 0 80px;
+        overflow: hidden;
+    }
+    .assistance-box {
+        padding: 30px 40px;
+    }
+    .assist-inner.first h2{
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .assist-inner.first h2 span{
+        font-size: 20px;
+    }
+    .assist-inner.second p{
+        font-size: 16px;
+        line-height: 28px;
+    }
+    .contact-section{
+        padding: 80px 0px 110px;
+    }
+    .contact-form input[type=text], .contact-form input[type=tel], .contact-form textarea, .contact-form select, .contact-form input[type=email]{
+        height: 60px;
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    .footer-navigation .title{
+        font-size: 16px;
+    }
+    .date-section ul li{
+        margin: 0 10px 5px;
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .news-blokquote blockquote q{
+        font-size: 21px;
+        line-height: 34px;
+    }
+    .accordion-prime .card{
+        margin-bottom: 10px;
+    }
+    .custom-file-upload-button2 label.col{
+        height: 60px;
+    font-size: 16px;
+    padding: 0 20px;
+    line-height: 60px;
+    }
+    .custom-file-upload-button2 span{
+        margin-left: 0;
+        font-size: 12px;
+    }
+    .contact-form textarea{
+        height: 80px;
+        padding-top: 12px;
+    }
+    .solid-vehicles .left-img30 {
+        top: 56px;
+    }
+    .adr-box{
+        padding: 50px 35px 25px;
+        margin-bottom: 0;
+    }
+    .left-contact-img{
+        top: 17%;
+        left: 15px;
+    }
+    .show-contact {
+        padding: 70px 0 100px !important;
+        overflow: hidden;
+    }
+    .adr-box::before{
+        right: inherit;
+    top: 100%;
+    width: 190px;
+    height: 4px;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    }
+    .assistance-area .col-12,
+    .assistance-area .container{
+        padding: 0;
+    }
+    .footer-navigation ul li a{
+        color: #1E285F;
+        font-size: 16px;
+    }
+    .loc-box{
+        padding: 40px 10px;
+    }
+    .loc-box .icon img{
+        max-width: 70px !important;
+    }
+    .loc-box h4{
+        font-size: 18px;
+    }
+    .loc-box4{
+        border-right: none;
+    }
+    .loc-box3,
+    .loc-box4{
+        border-bottom: none !important;
+    }
+    .contact-section{
+        padding-bottom: 70px;
+    }
+    .career-box{
+        padding: 35px 15px 22px;
+    }
+    .thank-box h1{
+        font-size: 25px;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+    .thank-box p{
+        font-size: 17px;
+        line-height: 28px;
+    }
+    .thank-box{
+        padding: 50px 25px;
+    }
+    .left-contact-img2 {
+        top: 155px;
+    }
+    .left-contact-img2 svg,
+    .right-contact-img2 svg{
+        max-width: 150px;
+    }
+    .right-top-img{
+        top: 155px;
+    }
+    .right-top-img svg{
+        max-width: 150px;
+    }
+    .left-bottom-img svg{
+        max-width: 150px;
+    }
+    .mob-top2{
+        top: 188px;
+    }
+    .fin-box{
+        min-height: auto;
+    }
+    .fin-box-6::before,
+    .fin-box-6::after,
+    .fin-box-8::before,
+    .fin-box-8::after,
+    .fin-box-16::before,
+    .fin-box-16::after,
+    .fin-box-18::before,
+    .fin-box-18::after{
+        display: none;
+    }
+    .fin-box-1::before, .fin-box-2::before, .fin-box-3::before, .fin-box-4::before, .fin-box-5::before, .fin-box-6::before, .fin-box-7::before, .fin-box-8::before, .fin-box-9::before, .fin-box-10::before, .fin-box-11::before, .fin-box-12::before, .fin-box-13::before, .fin-box-14::before, .fin-box-15::before, .fin-box-16::before, .fin-box-17::before, .fin-box-18::before, .fin-box-19::before{
+        right: -12px;
+        height: 90px;
+    }
+    .fin-box-1::after, .fin-box-2::after, .fin-box-3::after, .fin-box-4::after, .fin-box-5::after, .fin-box-6::after, .fin-box-7::after, .fin-box-8::after, .fin-box-9::after, .fin-box-10::after, .fin-box-11::after, .fin-box-12::after, .fin-box-13::after, .fin-box-14::after, .fin-box-15::after, .fin-box-16::after, .fin-box-17::after, .fin-box-18::after, .fin-box-19::after{
+        right: -12px;
+        height: 90px;
+    }
+    .fin-box-9{
+        margin-bottom: 0;
+    }
+    .mob-top{
+        top: 188px;
+    }
+    .banner-inner {
+        padding-left: 0;
+    }
+    .toggle-btn i {
+        color: #000;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 3px;
+    }
+    .d-block-575{
+        display: block !important;
+    }
+    .inner-s-text h3{
+        font-size: 30px;
+    }
+    .bread-inner h1{
+        font-size: 32px;
+        font-weight: 700;
+        margin-top: 300px;
+    }
+    .baner-bg-head2{
+        top: 320px;
+        left: 55px;
+    }
+    .abreco-group-about{
+        padding-top: 62px;
+    }
+    .abreco-group-about .title h2{
+        font-size: 24px;
+    }
+    .counter-about-area .conter-box{
+        border-right: none;
+    }
+    .counter-about-area .conter-box3{
+        border-bottom: 1px solid #ededed47;
+    }
+    .counter-about-area{
+        padding: 55px 20px;
+    }
+    .mision-box{
+        padding: 45px 25px 30px;
+    }
+    .mision-area{
+        padding-bottom: 10px;
+    }
+    .founder-text .head{
+        text-align: inherit;
+        position: relative;
+    }
+    .founder-text{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .founder-text .head h2 {
+        font-size: 24px;
+        line-height: 36px;
+        position: relative;
+        max-width: 340px;
+    }
+    .founder-text .head::before{
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 2px;
+        background-color: #EDEDED;
+        left: 82%;
+        top: 0;
+        display: none;
+    }
+    .abt-logo .title h2 {
+        font-size: 28px;
+    }
+    .founder-area{
+        padding-bottom: 20px;
+    }
+    .global-area{
+        /* background-position: 6%; */
+        position: relative;
+    }
+    .glob-img{
+        display: block !important;
+        overflow: hidden;
+    }
+    .glob-img img{  
+        position: absolute;
+        bottom: -330px;
+        max-width: 280px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .abreco-blog-item{
+        margin-bottom: 40px;
+    }
+    .abreco-blog-item .content p{
+        font-size: 16px;
+        margin-bottom: 7px;
+    }
+    .row-padding-mob{
+        padding: 0 15px;
+    }
+    .loc-box h4{
+        font-size: 16px;
+        margin-left: 4px;
+    }
+    .loc-box-2{
+        border-right: none;
+    }
+    .loc-box-1 .icon img,
+    .loc-box-2 .icon img{
+        /* max-width: 50px; */
+    }
+    .loc-box-3 .icon img,
+    .loc-box-4 .icon img{
+        /* max-width: 32px; */
+    }
+    .loc-box-3,
+    .loc-box-4{
+        border-bottom: none !important;
+    }
+    .contact-bg-banner{
+        background-position: 77%;
+    }
+    .footer-btns-copy ul li p{
+        font-size: 16px;
+    }
+    .footer-copyright {
+        padding: 30px 0;
+    }
+    .contact-form .form-group {
+    margin-bottom: 22px;
+    }
+    .contact-form input[type=text], .contact-form input[type=tel], .contact-form textarea, .contact-form select, .contact-form input[type=email]{
+        height: 60px;
+    }
+    .floatingButtonWrap{
+        bottom: 255px;
+        display: none;
+    }
+    .abt-titlte p{
+        font-size: 17px;
+    }
+    .mobile-dropdown{
+        text-align: center;
+        padding-right: 15%;
+        font-size: 16px;
+    }
+    .accordion>.card>.card-header{
+        padding-left: 0;
+    }
+    .accordion .card .card-body{
+        padding-left: 0;
+    }
+    .qt-icon {
+        position: absolute;
+        top: 15px;
+    }
+    .qt-icon img{
+        max-width: 50px;
+    }
+    .item-testi .left-side,
+    .item-testi .right-side{
+        flex: 0 0 100%;
+    }
+    .vehicle-data .container .breadcrumb-wrapper{
+        margin-bottom: 35px;
+    }
+    .vehicle-data .container .breadcrumb-wrapper ul li{
+        font-size: 16px !important;
+        line-height: 25px !important;
+    }
+    .ser-features {
+        padding: 25px 0 40px;
+    }
+    .accordion>.card>.card-header{
+        position: relative;
+        /* border-bottom: 1px solid #ddd; */
+    }
+    .card-accord .card-header button{
+        position: initial;
+        max-width: 250px;
+        line-height: 24px;
+        font-size: 16px;
+    }
+    .vehicle-data .container .breadcrumb-wrapper ul li{
+        padding-left: 0;
+        padding-right: 5px;
+    }
+    .breadcrumb-item+.breadcrumb-item::before{
+        content: "|";
+    }
+    .abreco-inner-banner, .bread-inner{
+        height: 520px;
+        background-position: -720px;
+    }
+    .abreco-inner-banner.contact-bg-banner{
+        background-position: -1007px;
+    }
+    .footer-btns-copy ul li a,
+    .footer-btns-copy ul li p{
+        font-size: 11px;
+    }
+    .footer-btns-copy ul li p{
+        font-size: 11px;
+    }
+    .footer-btns-copy ul li{
+        margin: 0 !important;
+    }
+    .abreco-footer-area{
+        padding-bottom: 30px;
+    }
+    #mobile-banner .overlay{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: #000;
+        opacity: .3;
+    }
+    .offcanvas_main_menu li a{
+        font-size: 16px;
+    }
+    .float-icon-bottom{
+        /* display: block; */
+        display: none;
+        position: fixed;
+        bottom: 6px;
+        width: 100%;
+        z-index: 9999;
+        padding: 0 5px;
+    }
+    .float-icon-bottom ul{
+        display: flex;
+        padding: 10px 0px;
+        justify-content: space-between;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background: rgb(30 40 95);
+        padding: 0;
+    }
+    .float-icon-bottom ul li.tel{
+        /* background: #2981E2; */
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-right: 1px solid #dddd;
+    }
+    .float-icon-bottom ul li.tel:hover{
+        background: #2981E2;
+    }
+    .float-icon-bottom ul li.whats{
+        /* background: #2AD750; */
+        border-right: 1px solid #dddd;
+    }
+    .float-icon-bottom ul li.whats:hover{
+        background: #2AD750;
+    }
+    .float-icon-bottom ul li.env{
+        /* background: #D34537; */
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .float-icon-bottom ul li.env:hover{
+        background: #D34537;
+    }
+    .float-icon-bottom ul li{
+        text-align: center;
+        flex: 0 0 33.33%;
+    }
+    .float-icon-bottom ul li a{
+        color: #000;
+        background: #d7c4d2;
+        height: 55px;
+        width: 50px;
+        padding: 6px;
+        border-radius: 50%;
+        line-height: 40px;
+    }
+    
+    .float-icon-bottom ul li a.telphone {
+        background: #469EFF;
+        background: transparent;
+    }
+    .float-icon-bottom ul li a.whatsapp{
+        background: #2CCB12;
+        background: transparent;
+    }
+    .float-icon-bottom ul li a.envelope{
+        background: #D34537;
+        background: transparent;
+    }
+    .float-icon-bottom ul li a svg path{
+        fill: #fff;
+    }
+    .float-icon-bottom ul li a svg{
+        width: 25px;
+    }
+    .back-to-top{
+        bottom: 140px;
+    }
+    .copy-right-sec{
+        padding-bottom: 50px;
+    }
+    .floatingButton{
+        display: none;
+    } 
+    .home-galery{
+        margin-bottom: 18px;
+    }
+    .service-btn01 a{
+        justify-content: flex-start;
+        padding: 12px 20px 12px 20px;
+        font-size: 16px;
+        height: auto;
+    }
+    .gallery-home {
+        padding-top: 0;
+    }
+    .abreco-features-tabs-btn .nav{
+        border: none;
+        white-space: nowrap;
+        overflow-x: auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .abreco-features-tabs-btn .nav a{
+        border: 1px solid #ddd;
+        width: 100%;
+        display: inline-block;
+        overflow: initial;
+        margin-right: 10px;
+    }
+    .abreco-features-tabs-btn .nav a.active{
+        background: #9D166C;
+    }
+    .aftb .nav a.first-nav-link::before{
+        display: none;
+    }
+    .abreco-features-tabs-btn .nav a.active::before{
+        display: none;
+    }
+    .aftb .nav a.nav-link-2::before{
+        display: none;
+    }
+    .header .caption .butn-light a{
+        display: inline-block;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 8px 20px;
+    }
+    /* view  */
+    .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs {
+        display: block !important;
+        position: relative !important;
+        overflow-x: auto !important;
+    }
+    .img-none-575{
+        display: none;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul li a{
+        padding: 12px 20px !important;
+    }
+    .inner-text{
+        font-size: 17px !important;
+    }
+    .table-responsive-stack td{
+        font-size: 18px;
+        font-weight: 800;
+    }
+    .table-responsive-stack td span{
+        font-size: 14px;
+        font-weight: 400 !important;
+    }
+    .table-responsive-stack tr{
+        border-bottom: none;
+    }
+    .abreco-features-tabs-btn {
+        margin-bottom: 20px;
+    }
+    .feature-mobile-btn{
+        margin-top: 0;
+    }
+    .feature-mobile-btn .primary-btn-main {
+        margin-top: 37px;
+    }
+    .feature-mobile-btn a{
+        padding: 15px 40px 15px 15px;
+        font-size: 16px;
+        height: auto;
+    }
+    .new-btn-style svg{
+        margin-right: 10px;
+    }
+    .service-btn01{
+        justify-content: flex-start;
+    }
+    .expl-btn a{
+        font-size: 16px;
+        height: auto;
+        padding: 7px 26px;
+    }
+    .abreco-inner-banner.abreco-inner-banner-2{
+        background-position: inherit;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabbed-content{
+        background: inherit !important;
+        box-shadow: none !important;
+        padding: 30px 0px 30px !important;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabbed-content .item{
+        padding: 0 15px;
+        overflow: hidden;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs-new-class{
+        position: sticky !important;
+        padding: 30px 0 30px;
+        background: #1E285F;
+        /* box-shadow: 0px 5px 15px rgb(0 0 0 / 30%); */
+        border-bottom: 1px solid #dddddd2e;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs-new-class.fixed{
+        position: sticky !important;
+        width: 100%;
+        z-index: 999;
+        /* padding-top: 80px;  */
+        padding-top: 35px;
+    }
+    .vehicle-data{
+        background: #1E285F !important;
+    }
+    .vehicle-data .container{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .ft-new-addr{
+        align-items: flex-start !important;
+    }
+    .ft-new-addr .phone-icon{
+        margin-bottom: 10px;
+        padding: 6px;
+    }
+    .ft-new-addr .phone-icon svg{
+        width: 28px;
+    }
+    .enq-popup{
+        z-index: 9999;
+    }
+    .modal-vehicle-form input[type=text], .modal-vehicle-form input[type=tel], .modal-vehicle-form textarea, .modal-vehicle-form select, .modal-vehicle-form input[type=email] {
+        height: 50px !important;
+    }
+    .modal-vehicle-form .modal-header .modal-title{
+        font-size: 22px;
+    }
+    /* .ken-burn{
+        animation-name: kenBurns;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    @keyframes kenBurns {
+        0% {
+          transform: scale3d(1.2,1.2,1.2) translate3d(0,0,0);
+        }
+        25% {
+          transform: scale3d(1.5, 1.5, 1.5);
+        }
+        50% {
+          transform: translate3d(-25%, 0, 0) scale3d(1.5, 1.5, 1.5);
+        }
+        75%{
+          transform: translate3d(50%, 0, 0) scale3d(1.5, 1.5, 1.5);
+        }
+        100%{
+          transform: scale3d(1.2,1.2,1.2) translate3d(0,0,0);
+        }
+    } */
+    .order-575-1{
+        order: 1;
+    }
+    .order-575-2{
+        order: 2;
+    }
+    .order-575-3{
+        order: 3;
+    }
+    .order-575-4{
+        order: 4;
+    }
+    .gallery-home2{
+        padding-top: 50px;
+    }
+    .faq-part{
+        padding-top: 20px !important;
+    }
+    .gall-box-padding{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .accordion-home-services .card{
+        border-bottom: 1px solid #d8d1d1 !important;
+    }
+    .accordion-home-services .card .card-body{
+        padding-top: 0 !important;
+    }
+    .ft-new-addr .ph-text{
+        text-align: left;
+    }
+    .abreco-inner-banner.privacy-bg-banner{
+        background-position: -1007px;
+    }
+    .content-inner{
+        padding-top: 30px;
+    }
+    .ft-pages-styles h2 {
+        margin-top: 25px;
+        font-size: 25px;
+        margin-bottom: 10px !important;
+    }
+    .service-bread-btn{
+        margin-top: 7px;
+    }
+    .bread-inner h1{
+        margin-top: 342px;
+    }
+    .abreco-inner-banner, .bread-inner{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toll-free-btn a{
+        padding-left: 0;
+    }
+    .toll-free-btn a h4{
+        font-size: 19px;
+    }
+    .toll-free-btn-banner a{
+        font-size: 22px;
+        padding: 5px 20px;
+    }
+    .toll-free-btn-banner a .toll-number{
+        font-size: 20px;
+    }
+    .toll-free-btn-banner a .toll-head{
+        font-size: 13px;
+    }
+    .toll-free-btn-banner a .icon svg {
+        width: 30px;
+        height: 30px;
+        min-height: 45px;
+    }
+    .toll-free-btn-banner-sidemenu{
+        margin-top: 20px;
+    }
+    .toll-free-btn-banner-sidemenu a{
+        padding: 8px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toll-free-btn-banner-sidemenu a .toll-head{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .toll-free-btn-banner-sidemenu a .toll-number{
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .abreco-blog-item.mt-30{
+        height: auto;
+        margin-top: 0;
+        margin-bottom: 60px;
+    }
+    .blog-btn-home{
+        position: relative;
+        float: right;
+    }
+    .news-blokquote{
+        padding-top: 30px;
+    }
+    .blog-paragraph{
+        padding-top: 0px;
+    }
+    .news-blokquote blockquote q{
+        text-align: left;
+    }
+    .mt-575-20{
+        margin-top: 20px;
+    }
+    .ft-addr-last span, .ft-addr3 span{
+        font-size: 13px;
+    }
+    .ft-addr .addr p, .ft-addr-last span, .ft-addr-last a .ft-addr3 span, .ft-addr3 a{
+        font-size: 13px;
+    }
+}
+
+
