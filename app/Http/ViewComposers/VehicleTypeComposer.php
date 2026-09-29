@@ -34,16 +34,15 @@ class VehicleTypeComposer
     public function compose(View $view)
     {
         if (!isset($view->getData()['vehicle_types_data'])) {
-            $view->with('vehicle_types_data', end($this->vehicle_types_data));
+            $view->with('vehicle_types_data', $this->vehicle_types_data);
         }
+
         if (!isset($view->getData()['web_services'])) {
-            $view->with('web_services', end($this->web_services));
-        
-        } 
-         if (!isset($view->getData()['locations_footer'])) {
-            $view->with('locations_footer', end($this->locations_footer));
+            $view->with('web_services', $this->web_services);
         }
-        
-        
+
+        if (!isset($view->getData()['locations_footer'])) {
+            $view->with('locations_footer', $this->locations_footer);
+        }
     }
 }

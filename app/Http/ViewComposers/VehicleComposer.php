@@ -27,7 +27,7 @@ class VehicleComposer
     public function compose(View $view)
     {
         if (!isset($view->getData()['vehicles'])) {
-            $view->with('vehicles', end($this->vehicles));
+            $view->with('vehicles', $this->vehicles);
         }
     }
 }
