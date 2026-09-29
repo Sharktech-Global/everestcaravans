@@ -65,7 +65,7 @@
                         </ul>
                     </li>
                     <li> <a href="#">New Cars</a>
-                        <ul class="dropdown"> @foreach ($vehicle_types as $type) @if ($type->name !=='Nexa')
+                        <ul class="dropdown"> @foreach ($vehicle_types_data as $type) @if ($type->name !=='Nexa')
                             <li><a href="">{{$type->name}}</a>
                                 <ul class="dropdown"> @foreach ($type->vehicles()->whereStatus(1)->get() as $vehicle) @if ($type->has_sales_page)
                                     <li><a href="{{url($type->sales_page)}}">{{$vehicle->name}}</a> </li>@else
@@ -185,7 +185,7 @@
                                                     </li>
                                                     <li class=""><a href="#">new cars</a>
                                                         <div class="megamenu-panel">
-                                                            <div class="megamenu-lists"> @foreach ($vehicle_types as $type) @if ($type->name !=='Nexa')
+                                                            <div class="megamenu-lists"> @foreach ($vehicle_types_data as $type) @if ($type->name !=='Nexa')
                                                                 <ul class="megamenu-list list-col-5">
                                                                     <p class="px-3 primaryColor w-100 loat-left text-uppercase font-weight-bold">{{$type->name}}</p>@foreach ($type->vehicles()->whereStatus(1)->get() as $vehicle) @if ($type->has_sales_page)
                                                                     <li> <a href="{{url($type->sales_page)}}">{{$vehicle->name}}</a> </li>@else
@@ -725,4 +725,5 @@
             elmnt.scrollIntoView();
         });
     </script> @yield('js_after')
-    <x:notify-messages/> @notifyJs</body>
+    <x-notify::notify />
+@notifyJs</body>

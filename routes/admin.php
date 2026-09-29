@@ -4,45 +4,51 @@
 // Login and Logout
 
 use Illuminate\Support\Facades\Route;
+use Bitfumes\Multiauth\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use Bitfumes\Multiauth\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
+use Bitfumes\Multiauth\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\Admin\PermissionController;
 
-
-Route::GET('/', 'LoginController@showLoginForm')->name('admin.login');
-Route::GET('/login', 'LoginController@showLoginForm');
-Route::POST('/', 'LoginController@login');
-Route::POST('/logout', 'LoginController@logout')->name('admin.logout');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('admin.login');
+Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 // Password Resets
-Route::POST('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-Route::GET('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-Route::POST('/password/reset', 'ResetPasswordController@reset');
-Route::GET('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('admin.password.reset');
-Route::GET('/password/change', 'AdminController@showChangePasswordForm')->name('admin.password.change');
-Route::POST('/password/change', 'AdminController@changePassword');
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
+Route::post('/password/reset', [ResetPasswordController::class, 'reset']);
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
+Route::get('/password/change', [AdminController::class, 'showChangePasswordForm'])->name('admin.password.change');
+Route::post('/password/change', [AdminController::class, 'changePassword']);
 
 // Register Admins
-Route::get('/register', 'RegisterController@showRegistrationForm')->name('admin.register');
-Route::post('/register', 'RegisterController@register');
-Route::get('/{admin}/edit', 'RegisterController@edit')->name('admin.edit');
-Route::delete('/{admin}', 'RegisterController@destroy')->name('admin.delete');
-Route::patch('/{admin}', 'RegisterController@update')->name('admin.update');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('admin.register');
+Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/{admin}/edit', [RegisterController::class, 'edit'])->name('admin.edit');
+Route::delete('/{admin}', [RegisterController::class, 'destroy'])->name('admin.delete');
+Route::patch('/{admin}', [RegisterController::class, 'update'])->name('admin.update');
 
 // Admin Lists
-Route::get('/show', 'AdminController@show')->name('admin.show');
-Route::get('/me', 'AdminController@me')->name('admin.me');
+Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
+Route::get('/me', [AdminController::class, 'me'])->name('admin.me');
 
 
 
 
 // Admin Roles
-Route::post('/{admin}/role/{role}', 'AdminRoleController@attach')->name('admin.attach.roles');
-Route::delete('/{admin}/role/{role}', 'AdminRoleController@detach');
+Route::post('/{admin}/role/{role}', [AdminRoleController::class, 'attach'])->name('admin.attach.roles');
+Route::delete('/{admin}/role/{role}', [AdminRoleController::class, 'detach']);
 
 
 
 // active status
-Route::post('activation/{admin}', 'ActivationController@activate')->name('admin.activation');
-Route::delete('activation/{admin}', 'ActivationController@deactivate');
-Route::resource('permission', 'PermissionController');
+// Route::post('activation/{admin}', 'ActivationController@activate')->name('admin.activation');
+// Route::delete('activation/{admin}', 'ActivationController@deactivate');
+Route::resource('permission', PermissionController::class);
 
 Route::fallback(function () {
     return abort(404);
