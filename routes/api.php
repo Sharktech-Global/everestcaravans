@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\VehicleComparisonController;
 use App\Http\Controllers\Api\VehicleController;
 use App\Http\Controllers\Api\SeoApiController;
 use App\Http\Controllers\Api\ServiceController;
+use App\Http\Controllers\Api\TestimonialController;
+use App\Http\Controllers\Api\PolicyController as ApiPolicyController;
 
 /*
 |--------------------------------------------------------------------------

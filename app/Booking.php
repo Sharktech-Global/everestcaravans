@@ -3,12 +3,12 @@
 namespace App;
 
 use Nicolaslopezj\Searchable\SearchableTrait;
-use Tzsk\Payu\Fragment\Payable;
+use Tzsk\Payu\Models\HasTransactions;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    use Payable;
+    use HasTransactions;
     use SearchableTrait;
     use Uuids;
     /**

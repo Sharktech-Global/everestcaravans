@@ -8,7 +8,7 @@ class AboutLeader extends Model
 {
     use Uuids;
     use Sluggable;
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

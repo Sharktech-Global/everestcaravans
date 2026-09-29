@@ -16,7 +16,7 @@ class ServiceProduct extends Model
      */
     public $incrementing = false;
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

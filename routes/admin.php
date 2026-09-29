@@ -551,7 +551,7 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
 
     //Buy Used Car Page
     Route::get('buy-used-car-page', 'Admin\BuyUsedCarPageController@index')->name('admin.buy-used-car-page.index');
-    Route::post('buy-used-car-page', 'AdminPage\BuyUsedCarPageController@store')->name('admin.buy-used-car-page.store');
+    Route::post('buy-used-car-page', 'Admin\BuyUsedCarPageController@store')->name('admin.buy-used-car-page.store');
 
     //Location Map Page
     Route::get('location-map-page', 'Admin\LocationMapPageController@index')->name('admin.location-map-page.index');

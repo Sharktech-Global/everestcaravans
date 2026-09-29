@@ -22,7 +22,7 @@ class Vehicle extends Model
         'name',
         'slug',
     ];
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
