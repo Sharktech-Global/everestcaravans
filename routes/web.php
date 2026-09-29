@@ -65,9 +65,6 @@ Route::post('/book-test-drive/store', 'BookingTestController@store')->name('book
 // Route::post('/booking/{slug}/checkout', 'CheckoutController@store');
 // Route::get('/booking/{slug}/success', ['middleware' => 'success', 'as' => 'checkout.success', 'uses' => 'CheckoutController@success']);
 
-// Route::get('/booking/transaction/payumoney', 'PayuController@payment')->name('payu.payment');
-// Route::get('/booking/payumoney/status', 'PayuController@status')->name('payu.status');
-
 // Route::get('/booking/transaction/federal', 'FederalPaymentController@payment')->name('federal.payment');
 // Route::post('/booking/federal/status', 'FederalPaymentController@status')->name('federal.status');
 

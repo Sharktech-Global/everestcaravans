@@ -113,11 +113,6 @@
                                 </td>
                                 <td class="text-right">
                                     @switch($data->payment)
-                                    @case('payumoney')
-                                    {!! ($data->payments()->where('status', 'Completed')->count())? '<span
-                                        class="badge badge-success">Completed</span>':'<span
-                                        class="badge badge-danger">Failed</span>' !!}
-                                    @break
 
                                     @case('cod')
                                     {!! ($data->cod)? '<span class="badge badge-success">Completed</span>':'<span

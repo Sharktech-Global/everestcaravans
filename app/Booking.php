@@ -3,12 +3,10 @@
 namespace App;
 
 use Nicolaslopezj\Searchable\SearchableTrait;
-use Tzsk\Payu\Models\HasTransactions;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    use HasTransactions;
     use SearchableTrait;
     use Uuids;
     /**
@@ -32,10 +30,10 @@ class Booking extends Model
         return $this->belongsTo('App\Vehicle');
     }
 
-    public function payments()
-    {   
-        return $this->belongsTo(Payment::class, 'id', 'mihpayid');
-    }
+    // public function payments()
+    // {   
+    //     return $this->belongsTo(Payment::class, 'id', 'mihpayid');
+    // }
 
     public function country()
     {
