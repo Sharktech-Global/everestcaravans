@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     Route::GET('/home', 'Admin\HomeController@index')->name('admin.home');
     //Profile
     Route::get('/profile', 'Admin\ProfileController@show')->name('admin.profile');
-    Route::post('/profile', 'Admin\ProfileController@store')->name('admin.profile');
+    Route::post('/profile', 'Admin\ProfileController@store')->name('admin.profile.store');
 
     // Roles
     Route::get('/roles', 'Admin\RoleController@index')->name('admin.roles.index');
