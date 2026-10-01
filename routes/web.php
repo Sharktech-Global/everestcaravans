@@ -89,7 +89,6 @@ Route::post('/enquiry/store', 'EnquiryController@store')->name('enquiry.store');
 // Route::post('/insure-my-car', 'InsuranceController@store')->name('insure-my-car.store');
 
 Route::get('/exchange', 'ExchangeController@show')->name('exchange.show');
-Route::post('/exchange', 'ExchangeController@store')->name('exchange.store');
 Route::get('/financial-services', 'HomeController@finance')->name('finance.show');
 
 // Route::get('/brochures', 'BrochureController@show')->name('brochures.show');

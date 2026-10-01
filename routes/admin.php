@@ -8,7 +8,7 @@ use Bitfumes\Multiauth\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Bitfumes\Multiauth\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\RegisterController;
+use Bitfumes\Multiauth\Http\Controllers\RegisterController;
 use Bitfumes\Multiauth\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\Admin\PermissionController;
 
@@ -22,8 +22,6 @@ Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkE
 Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
 Route::post('/password/reset', [ResetPasswordController::class, 'reset']);
 Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
-Route::get('/password/change', [AdminController::class, 'showChangePasswordForm'])->name('admin.password.change');
-Route::post('/password/change', [AdminController::class, 'changePassword']);
 
 // Register Admins
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('admin.register');
@@ -34,7 +32,6 @@ Route::patch('/{admin}', [RegisterController::class, 'update'])->name('admin.upd
 
 // Admin Lists
 Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
-Route::get('/me', [AdminController::class, 'me'])->name('admin.me');
 
 
 
@@ -48,7 +45,7 @@ Route::delete('/{admin}/role/{role}', [AdminRoleController::class, 'detach']);
 // active status
 // Route::post('activation/{admin}', 'ActivationController@activate')->name('admin.activation');
 // Route::delete('activation/{admin}', 'ActivationController@deactivate');
-Route::resource('permission', PermissionController::class);
+Route::resource('permission', PermissionController::class)->only(['index', 'store', 'destroy']);
 
 Route::fallback(function () {
     return abort(404);
@@ -72,7 +69,6 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     Route::get('permissions', 'Admin\PermissionController@index')->name('admin.permissions.index');
     Route::post('permissions/store', 'Admin\PermissionController@store')->name('admin.permissions.store');
     Route::delete('permissions/destroy/{id}', 'Admin\PermissionController@destroy')->name('admin.permissions.destroy');
-    Route::post('permissions/update/{id}', 'Admin\PermissionController@update')->name('admin.permissions.update');
 
     //Settings
     Route::get('/settings', 'Admin\SettingsController@index')->name('admin.settings.index');
@@ -101,7 +97,7 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     Route::post('/contact/{id}/update', 'Admin\ContactController@update')->name('admin.contact.update');
 
     //Home Section
-    Route::resource('sections', 'Admin\SectionController', ['as' => 'admin']);
+    Route::resource('sections', 'Admin\SectionController', ['as' => 'admin'])->except(['show']);
 
     //Features
     Route::resource('features', 'Admin\FeatureController', ['as' => 'admin'])->except([
@@ -140,22 +136,22 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     ]);
 
     //Location Content
-    Route::resource('location_content', 'Admin\LocationContentController', ['as' => 'admin']);
+    Route::resource('location_content', 'Admin\LocationContentController', ['as' => 'admin'])->only(['index', 'store']);
 
     //Location Content
-    Route::resource('marketing', 'Admin\MarketingController', ['as' => 'admin']);
+    Route::resource('marketing', 'Admin\MarketingController', ['as' => 'admin'])->except(['show']);
 
     //Brochure
-    Route::resource('brochures', 'Admin\BrochureController', ['as' => 'admin']);
+    Route::resource('brochures', 'Admin\BrochureController', ['as' => 'admin'])->only(['index', 'store']);
 
     //Offers
-    Route::resource('offers', 'Admin\OfferController', ['as' => 'admin']);
+    Route::resource('offers', 'Admin\OfferController', ['as' => 'admin'])->only(['index', 'store']);
 
     //Offer details
     Route::resource('offer_details', 'Admin\OfferDetailsController', ['as' => 'admin']);
 
     //Service Product Content
-    Route::resource('service_product_content', 'Admin\ServiceProductContentController', ['as' => 'admin']);
+    Route::resource('service_product_content', 'Admin\ServiceProductContentController', ['as' => 'admin'])->only(['index', 'store']);
 
 
 
@@ -171,7 +167,7 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
 
 
     //Book Service Online page
-    Route::resource('book-a-service', 'Admin\BookServiceOnlineController', ['as' => 'admin']);
+    Route::resource('book-a-service', 'Admin\BookServiceOnlineController', ['as' => 'admin'])->only(['index', 'store']);
 
     //Location Types
     Route::resource('service_types', 'Admin\ServiceTypeController', ['as' => 'admin'])->except([
@@ -295,7 +291,6 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
 
     // edition section images
     Route::get('vehicles/{edition_id}/editions/{section_id}/images', 'Admin\EditionSectionImagesController@index')->name('admin.vehicles.editions.sections.images.index');
-    Route::get('vehicles/{section_id}/editions/images/create', 'Admin\EditionSectionImagesController@create')->name('admin.vehicles.editions.sections.images.create');
     Route::post('vehicles/{section_id}/editions/images/store', 'Admin\EditionSectionImagesController@store')->name('admin.vehicles.editions.sections.images.store');
     Route::get('/vehicles/{section_id}/editions/{vehicle_images}/images/edit', 'Admin\EditionSectionImagesController@edit')->name('admin.vehicles.editions.sections.images.edit');
     Route::put('/vehicles/{section_id}/editions/images/{vehicle_images}', 'Admin\EditionSectionImagesController@update')->name('admin.vehicles.editions.sections.images.update');
@@ -524,12 +519,10 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
 
     //Application
     Route::resource('vehicle-application', 'Admin\VehicleApplicationController', ['as' => 'admin'])->except([
-        'create'
+        'create', 'show'
     ]);
     //Document upload
-    Route::resource('documents', 'Admin\DocumentController', ['as' => 'admin'])->except([
-        'create'
-    ]);
+    Route::resource('documents', 'Admin\DocumentController', ['as' => 'admin'])->only(['index', 'store', 'destroy']);
 
     //Buy New Car
     Route::get('buy-new-car', 'Admin\BuyNewCarController@index')->name('admin.buy-new-car.index');

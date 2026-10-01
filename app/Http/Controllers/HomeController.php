@@ -129,7 +129,7 @@ class HomeController extends Controller
     {
         $Vtype =  VehicleType::whereStatus(1)->where('slug',$type)->first();
         $vehicle_application_name="";
-        $application_list=
+        $application_list = collect();
         $vehicle_list = Vehicle::orderBy('order','ASC')->where('status',1);
         if ($type && $Vtype) {
             $vehicle_type = $type;
