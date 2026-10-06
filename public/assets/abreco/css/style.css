@@ -6442,7 +6442,7 @@ line-height: 30px;
     02. Abreco About Page CSS 
 =====================================*/
 .abreco-inner-banner{
-  height: 685px;
+  height: 400px;
   width: 100%;
   background-position: center;
   background-size: cover;
@@ -6539,10 +6539,11 @@ line-height: 30px;
 }
 
 .bread-inner{
-  height: 685px;
-  display: flex;
-  align-items: center;
-  padding-left: 150px;
+    height: 400px;
+    display: flex;
+    align-items: end;
+    padding-left: 150px;
+    padding-bottom: 100px;
 }
 
 .bread-inner h1{
@@ -8058,6 +8059,52 @@ min-height: 492px;
 .table-responsive-stack .table-responsive-stack-thead {
    font-weight: bold;
 }
+
+.popgallery {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.popgallery .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.popgallery .card {
+    border: 0px solid rgba(0, 0, 0, .125);
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+}
+
+.popgallery .card-image {
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+}
+
+.popgallery .card-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popgallery .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.popgallery p {
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
 
 @media screen and (max-width: 768px) {
    .table-responsive-stack tr {

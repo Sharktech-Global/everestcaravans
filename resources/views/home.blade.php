@@ -145,11 +145,11 @@
     <!--====== abreco FEATURES PART START ======-->
     <section class="abreco-features-area pt-130 pb-100" id="Features">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
+            <div class="row align-items-start">
+                <div class="col-lg-3">
                     <div class="abreco-features-tabs-btn aftb">
 
-                        <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             @foreach ($vehicle_types_data as $type)
                                 <a class="nav-link type-cliker  @if ($loop->first) first-nav-link active @else nav-link-{{ $loop->iteration }} @endif"
                                     id="v-pills-{{ $type->slug }}-tab " clicker="{{ $type->slug }}" data-toggle="pill"
@@ -177,7 +177,7 @@
                                                         <option value="v-pills-{{ $type->slug }}">{{ $type->name }}</option>
                                                         @endforeach
                                                 </select>  -->
-                        <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             @foreach ($vehicle_types_data as $type)
                                 <a class="nav-link type-cliker  @if ($loop->first) first-nav-link active @else nav-link-{{ $loop->iteration }} @endif"
                                     id="v-pills-{{ $type->slug }}-tab " clicker="{{ $type->slug }}"
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="tab-content" id="v-pills-tabContent">
                         @foreach ($vehicle_types_data as $type)
                             <!-- 1st Tab -->
@@ -215,7 +215,7 @@
                                     @endphp
                                     {{-- Display vehicles for the current type --}}
                                     @foreach ($vehicles_under_type as $vehicle_data)
-                                        <div class="col-lg-3 mb-3 box">
+                                        <div class="col-lg-4 mb-3 box">
                                             <div class="fea-inner">
                                                 <div class="img">
                                                    <a href="{{ route('vehicles.show', @$vehicle_data->slug) }}">

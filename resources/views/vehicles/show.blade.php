@@ -59,23 +59,57 @@
                     <!-- desktop /Mobile  view -->
                     <nav class="tabs tabs-new-class">
                         <ul class="text-center">
-                            <li><a href="#overview" id="overview-link" class="active"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" />Overview</a></li>
-                            <li><a href="#features" id="features-link"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-features.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" />features</a></li>
-                            <li><a href="#specifications" id="specifications-link"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" />specifications</a></li>
-                            <li><a href="#gallery" id="gallery-link"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" />gallery</a></li>
+                            <li>
+                                <a href="#overview" id="overview-link" class="active">
+                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
+                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                        Overview</a></li>
+                            <li>
+                                <a href="#specifications" id="specifications-link">
+                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
+                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                        specifications</a></li>
+                            <li>
+                                <a href="#external-gallery" id="external-gallery-link">
+                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
+                                    alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                    External Gallery</a></li>
+                            <li>
+                                <a href="#internal-gallery" id="internal-gallery-link">
+                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
+                                    alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                    Internal Gallery</a></li>
+                            <li>
+                                <a href="#floor-plans" id="floor-plans-link">
+                                    <!-- <img 
+                                    src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
+                                    alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                    Floor Plans</a></li>
                             @if ($vehicle->is_booking == '1')
-                                <li><a href="#booking" id="booking-link"><img
-                                            src="{{ asset('assets/abreco/images/vehicle-img/icon-booking.webp') }}"
-                                            alt="" width="38" height="45" class="img-none-1065 img-none-575" />booking</a></li>
+                                <li>
+                                    <a href="#booking" id="booking-link">
+                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-booking.webp') }}"
+                                            alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                            booking</a></li>
                             @endif
+                            <!-- <li>
+                                <a href="#gallery" id="gallery-link">
+                                    <img 
+                                    src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
+                                    alt="" width="38" 
+                                    height="45" 
+                                    class="img-none-1065 img-none-575" />gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#features" id="features-link">
+                                    <img 
+                                    src="{{ asset('assets/abreco/images/vehicle-img/icon-features.webp') }}" 
+                                    alt="" width="38" 
+                                    height="45" 
+                                    class="img-none-1065 img-none-575" />features
+                                </a>
+                            </li> -->
 
                         </ul>
                     </nav>
@@ -86,20 +120,32 @@
                             <li><a href="#overview-" class="active"><img
                                         src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
                                         alt="" width="38" height="45" class="img-none-575" />Overview</a></li>
-                            <li><a href="#features-"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-features.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-575" />features</a></li>
                             <li><a href="#specifications-"><img
                                         src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
                                         alt="" width="38" height="45" class="img-none-575" />specifications</a></li>
-                            <li><a href="#gallery-"><img
-                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-575" />gallery</a></li>
+                            <li>
+                                <a href="#external-gallery-">
+                                    <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
+                                    alt="" width="38" height="45" class="img-none-575" />External Gallery</a></li>
+                            <li>
+                                <a href="#internal-gallery-">
+                                    <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
+                                    alt="" width="38" height="45" class="img-none-575" />Internal Gallery</a></li>
+                            <li>
+                                <a href="#floor-plans-">
+                                    <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
+                                        alt="" width="38" height="45" class="img-none-575" />Floor Plans</a></li>
                             @if ($vehicle->is_booking == '1')
                                 <li><a href="#booking-"><img
                                             src="{{ asset('assets/abreco/images/vehicle-img/icon-booking.webp') }}"
                                             alt="" width="38" height="45" class="img-none-575" />booking</a></li>
                             @endif
+                            <!-- <li><a href="#gallery-"><img
+                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}"
+                                        alt="" width="38" height="45" class="img-none-575" />gallery</a></li>
+                            <li><a href="#features-"><img
+                                        src="{{ asset('assets/abreco/images/vehicle-img/icon-features.webp') }}"
+                                        alt="" width="38" height="45" class="img-none-575" />features</a></li> -->
 
                         </ul>
                     </nav>
@@ -118,25 +164,25 @@
                     </div> -->
 
 
-                        @if ($sections)
-                            <section id="overview" class="item active">
-                                <div class="item-content">
-                                    <div class="data">
-                                        <h4 class="text-capitalize">{{ @$sections->title }}</h4>
-                                        <p class="mb-5 inner-text">{{ @$sections->description }}</p>
-                                       @if(@$vehicle->brochure)
-                                        <div class="ab-button-wrapper"><a  href="{{ @$vehicle->brochure }}"
-                                                class="ab-button" target="_blank">Download Brochure</a></div>
-                                        @endif
-                                    </div>
-                                    <div class="image">
-                                        <img src="{{ asset('storage/' . @$vehicle->image) }}" alt="" width=""
-                                            height="" />
-                                    </div>
+                    @if ($sections)
+                        <section id="overview" class="item active">
+                            <div class="item-content">
+                                <div class="data">
+                                    <h4 class="text-capitalize">{{ @$sections->title }}</h4>
+                                    <p class="mb-5 inner-text">{{ @$sections->description }}</p>
+                                    @if(@$vehicle->brochure)
+                                    <div class="ab-button-wrapper"><a  href="{{ @$vehicle->brochure }}"
+                                            class="ab-button" target="_blank">Download Brochure</a></div>
+                                    @endif
                                 </div>
-                            </section>
-                        @endif
-                    <section id="features" class="item accordions">
+                                <div class="image">
+                                    <img src="{{ asset('storage/' . @$vehicle->image) }}" alt="" width=""
+                                        height="" />
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+                    <!-- <section id="features" class="item accordions">
                         <div class="item-content">
                             <div class="data">
                                 <h4 class="text-capitalize">{{ @$vehicle->name }} Features</h4>
@@ -177,7 +223,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> -->
                     <section id="specifications" class="item accordions">
                         <div class="item-content">
                             <div class="data">
@@ -282,7 +328,7 @@
                             </div>
                         </div>
                     </section>
-                    <section id="gallery" class="item">
+                    <!-- <section id="gallery" class="item">
                         <div class="item-content">
                             <div class="data w-100" style="padding-right: 0;">
                                 <h4 class="text-capitalize">{{ @$vehicle->name }} Image Gallery</h4>
@@ -305,7 +351,96 @@
                                 </main>
                             </div>
                         </div>
+                    </section> -->
+                    
+                    <section id="external-gallery" class="item accordions popgallery">
+                        <div class="item-content">
+                            <div class="data">
+                                <h4 class="text-capitalize">External Gallery</h4>
+                                @if($vehicle->sections()->count())
+                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                                        @if($section->order == 2)
+                                            <div class="gallery-grid">
+                                                <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
+                                                <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
+                                                @foreach ($section->images()->orderBy('order')->get() as $image)
+                                                <div class="card">
+                                                    <div class="card-image">
+                                                        <a href="{{ asset('storage/'.$image->image) }}"
+                                                            data-fancybox="external-gallery" data-caption="{{ @$image->title }}">
+                                                            <img src="{{ asset('storage/'.$image->image) }}"
+                                                                alt="{{ @$image->title }}">
+                                                        </a>
+                                                    </div>
+                                                    <!-- <p>{{ @$image->title }}</p> -->
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
                     </section>
+                    <section id="internal-gallery" class="item accordions popgallery">
+                        <div class="item-content">
+                            <div class="data">
+                                <h4 class="text-capitalize">Internal Gallery</h4>
+                                @if($vehicle->sections()->count())
+                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                                        @if($section->order == 3)
+                                            <div class="gallery-grid">
+                                                <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
+                                                <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
+                                                @foreach ($section->images()->orderBy('order')->get() as $image)
+                                                <div class="card">
+                                                    <div class="card-image">
+                                                        <a href="{{ asset('storage/'.$image->image) }}"
+                                                            data-fancybox="internal-gallery" data-caption="{{ @$image->title }}">
+                                                            <img src="{{ asset('storage/'.$image->image) }}"
+                                                                alt="{{ @$image->title }}">
+                                                        </a>
+                                                    </div>
+                                                    <!-- <p>{{ @$image->title }}</p> -->
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </section>
+                    <section id="floor-plans" class="item accordions popgallery">
+                        <div class="item-content">
+                            <div class="data">
+                                <h4 class="text-capitalize">floor-plans</h4>
+                                @if($vehicle->sections()->count())
+                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                                        @if($section->order == 4)
+                                            <div class="gallery-grid">
+                                                <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
+                                                <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
+                                                @foreach ($section->images()->orderBy('order')->get() as $image)
+                                                <div class="card">
+                                                    <div class="card-image">
+                                                        <a href="{{ asset('storage/'.$image->image) }}"
+                                                            data-fancybox="floor-plans" data-caption="{{ @$image->title }}">
+                                                            <img src="{{ asset('storage/'.$image->image) }}"
+                                                                alt="{{ @$image->title }}">
+                                                        </a>
+                                                    </div>
+                                                    <p>{{ @$image->title }}</p>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </section>
+
                     <section id="booking" class="item booking web">
                         <!-- @if ($errors->any())
                             <div class="alert alert-danger">
@@ -321,8 +456,7 @@
                                 <h4 class="text-capitalize">Book Your {{@$vehicle->name}} Now</h4>
                                 <p class="mb-0">{!!@$vehicle->description!!}
                                 </p>
-                                <p class="mb-0">(Please note that our booking form is currently undergoing development. No live payment transactions could be performed currently.
-)
+                                <p class="mb-0">(Please note that our booking form is currently undergoing development. No live payment transactions could be performed currently.)
                                 </p>
                             </div>
                             <div class="data bg-color-3">

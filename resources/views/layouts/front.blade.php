@@ -136,8 +136,8 @@
     <!--====== PART START ======-->
 
     <header class="abreco-header-area abreco-sticky">
-        <div class="header-logobg"></div>
-        <div class="header-logobg2"></div>
+        <!-- <div class="header-logobg"></div>
+        <div class="header-logobg2"></div> -->
         <div class="container-fluid header-fluid">
             <div class="header-nav-box">
                 <div class="row align-items-center">

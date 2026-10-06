@@ -40,12 +40,12 @@ class VehicleTypeController extends Controller
         $type->seo_description = $validated['seo_description'];
         $type->seo_keywords = $validated['seo_keywords'];
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($type->image);
             $path = $request->file('image')->storeAs(
                 'upload/blogs/image',
                 $type->name . '_' . $request->image->getClientOriginalName(),
                 'public'
             );
+
             $type->image = $path;
         }
         $res = $type->save();
@@ -91,12 +91,17 @@ class VehicleTypeController extends Controller
         $vehicleType->seo_description = $validated['seo_description'];
         $vehicleType->seo_keywords = $validated['seo_keywords'];
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($vehicleType->image);
+
+            if (!empty($vehicleType->image)) {
+                Storage::disk('public')->delete($vehicleType->image);
+            }
+
             $path = $request->file('image')->storeAs(
                 'upload/blogs/image',
-                $vehicleType->title . '_' . $request->image->getClientOriginalName(),
+                $vehicleType->name . '_' . $request->image->getClientOriginalName(),
                 'public'
             );
+
             $vehicleType->image = $path;
         }
         $res = $vehicleType->save();

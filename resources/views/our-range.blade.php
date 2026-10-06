@@ -3,15 +3,12 @@
 @endsection
 @section('content')
     <!--====== About Breadcrumb Part ======-->
-    <section class="abreco-inner-banner ken-burn"  style="background-image: url('{{ asset('storage/' . @$group->banner_image) }}');">
+    <section class="abreco-inner-banner ken-burn">
         <div class="about-overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="bread-inner">
-                        <div class="baner-bg-head2">
-                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
-                        </div>
                         <h1>Our Range</h1>
                     </div>
                 </div>
@@ -19,7 +16,7 @@
         </div>
     </section>
 
-    <section class="abreco-features-area pt-130 pb-100" id="Features">
+    <section class="abreco-features-area pt-90 pb-90" id="Features">
         <div class="container">
             <div class="row align-items-start">
                 <div class="col-lg-3">

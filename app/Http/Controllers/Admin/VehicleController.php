@@ -168,7 +168,10 @@ class VehicleController extends Controller
         $vehicle->order = $validated['order'];
         $vehicle->booking_amount = $validated['booking_amount'];
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($vehicle->image);
+
+            if (!empty($vehicle->image)) {
+                Storage::disk('public')->delete($vehicle->image);
+            }
             $path = $request->file('image')->storeAs(
                 'upload/vehicle/image',
                 $vehicle->slug . '_' . $request->image->getClientOriginalName(),
@@ -177,7 +180,10 @@ class VehicleController extends Controller
             $vehicle->image = $path;
         }
         if ($request->hasFile('thumb')) {
-            Storage::disk('public')->delete($vehicle->thumb);
+
+            if (!empty($vehicle->thumb)) {
+                Storage::disk('public')->delete($vehicle->thumb);
+            }
             $path = $request->file('thumb')->storeAs(
                 'upload/vehicle/thumb',
                 $vehicle->slug . '_' . $request->thumb->getClientOriginalName(),
@@ -205,7 +211,10 @@ class VehicleController extends Controller
             $vehicle->brochure = $request->brochure;
         }
         if ($request->hasFile('banner_image')) {
-            Storage::disk('public')->delete($vehicle->banner_image);
+
+            if (!empty($vehicle->banner_image)) {
+                Storage::disk('public')->delete($vehicle->banner_image);
+            }
             $path = $request->file('banner_image')->storeAs(
                 'upload/vehicle/banner_image',
                 $vehicle->slug . '_' . $request->banner_image->getClientOriginalName(),
@@ -227,10 +236,19 @@ class VehicleController extends Controller
         $user = auth()->guard('admin')->user();
         $res = $vehicle->delete();
         if ($res) {
-            Storage::disk('public')->delete($vehicle->logo);
-            Storage::disk('public')->delete($vehicle->image);
-            Storage::disk('public')->delete($vehicle->thumb);
-            Storage::disk('public')->delete($vehicle->brochure);
+            foreach ([
+                $vehicle->logo,
+                $vehicle->image,
+                $vehicle->thumb,
+                $vehicle->brochure,
+                $vehicle->banner_image,
+                $vehicle->mobile_banner,
+                $vehicle->online_image,
+            ] as $file) {
+                if (!empty($file)) {
+                    Storage::disk('public')->delete($file);
+                }
+            }
             activity('admin')->performedOn($vehicle)->causedBy($user)->withProperties(['data' => $request])->log('Deleted vehicle #' . $vehicle->name . '.');
             return redirect()->back()->with('success', 'Successfully deleted the vehicle.');
         } else {
