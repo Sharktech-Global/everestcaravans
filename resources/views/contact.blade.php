@@ -11,6 +11,7 @@
                             <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
                         </div>
                         <h1>CONTACT US</h1>
+                        <p>Get in touch with us today and make your dream a reality!</p>
                     </div>
                 </div>
             </div>
