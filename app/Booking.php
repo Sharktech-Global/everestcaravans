@@ -30,10 +30,10 @@ class Booking extends Model
         return $this->belongsTo('App\Vehicle');
     }
 
-    // public function payments()
-    // {   
-    //     return $this->belongsTo(Payment::class, 'id', 'mihpayid');
-    // }
+    public function payments()
+    {   
+         return $this->hasOne(Payment::class, 'id', 'mihpayid');
+    }
 
     public function country()
     {

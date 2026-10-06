@@ -113,7 +113,7 @@ class CareerDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Career_' . date('YmdHis');
     }
