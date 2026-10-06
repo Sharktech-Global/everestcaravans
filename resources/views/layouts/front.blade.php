@@ -161,6 +161,10 @@
                                     <a href="{{ route('about') }}"
                                         @if ($routename == 'about') class="active" @endif>About Us</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('our-range') }}"
+                                        @if ($routename == 'our-range') class="active" @endif>Our Range</a>
+                                </li>
                                 @foreach ($vehicle_types_data as $types)
                                     <li> 
                                         <a href="#">{{ $types->name }} <i class="fal fa-angle-down"></i> </a>
@@ -211,7 +215,7 @@
                                         </div>
                                     </li>
                                 @endforeach
-                                <li>
+                                <!-- <li>
                                     <a href="{{ route('services.index') }}"
                                         @if ($routename == 'services.index') class="active" @endif>Services <i
                                             class="fal fa-angle-down"></i></a>
@@ -228,7 +232,7 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="{{ route('contact') }}"
                                         @if ($routename == 'contact') class="active" @endif>Contact Us </a>

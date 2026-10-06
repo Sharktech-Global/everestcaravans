@@ -2279,17 +2279,18 @@ p {
 }
 
 .abreco-features-tabs-btn .nav{
-  border: 1px solid #E8E8E8;
+  /* border: 1px solid #E8E8E8; */
+  gap: 5px
 }
 
 .abreco-features-tabs-btn .nav a {
     border-radius: 0;
     font-size: 15px;
     font-weight: 700;
-    color: #9D166C;
+    color: #000;
     flex: 0 0 33.33%;
     position: relative;
-    /* border: 1px solid #E8E8E8; */
+    border: 1px solid #E8E8E8;
     text-align: center;
     padding: 1rem;
     font-family: 'DM Sans', sans-serif;
@@ -2298,11 +2299,9 @@ p {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    border-radius: 10px;
+    background: #e8e8e8;
 }
-
-/* .abreco-features-tabs-btn .nav a  span{
-  transform: skew(20deg);
-} */
 
 .abreco-features-tabs-btn .nav a i {
   height: 35px;
@@ -2320,7 +2319,7 @@ p {
   background: transparent;
   position: relative;
   z-index: 2;
-  /* border: 1px solid #b21862cc; */
+  border: 1px solid #283895;
 }
 
 .abreco-features-tabs-btn .nav a.active::before{
@@ -2330,25 +2329,25 @@ p {
     width: 100%;
     height: 100%;
     top: 0;
-    left: -35px;
+    left: 0px;
     z-index: -1;
-    background: #b42168;
+    background: #283895;
     transform-origin: bottom left;
-    -ms-transform: skew(-30deg, 0deg);
-    -webkit-transform: skew(-30deg, 0deg);
-    transform: skew(-30deg, 0deg);
+    -ms-transform: skew(0deg, 0deg);
+    -webkit-transform: skew(0deg, 0deg);
+    transform: skew(0deg, 0deg);
     transition: background 0.3s ease;
 }
 
 .aftb .nav a.first-nav-link::before{
   position: absolute;
   content: "";
-  border-right: 1px solid #E8E8E8;
+  border-right: 0px solid #E8E8E8;
   height: 100%;
   width: 100%;
-  right: 3%;
+  right: 0%;
   top: 0;
-  transform: skewX(-25deg);
+  transform: skewX(0deg);
 }
 /* 
 .aftb .nav a.second-nav-link::before{
@@ -2385,27 +2384,12 @@ p {
 .aftb .nav a.nav-link-2::before{
   position: absolute;
   content: "";
-  border-right: 1px solid #E8E8E8;
+  border-right: 0px solid #E8E8E8;
   height: 100%;
   width: 100%;
-  right: 3%;
+  right: 0%;
   top: 0;
-  transform: skewX(-25deg);
-}
-
-
-.abreco-features-tabs-btn .nav a.nav-link-2.active{
-  overflow: inherit;
-}
-
-
-.abreco-features-tabs-btn .nav a.nav-link-3{
-  overflow: inherit;
-}
-
-.abreco-features-tabs-btn .nav a.nav-link-3.active{
-  background: #b42168;
-  transition: background 0.3s ease;
+  transform: skewX(0deg);
 }
 
 /* .abreco-features-tabs-btn .nav a.nav-link-3.active::after{
