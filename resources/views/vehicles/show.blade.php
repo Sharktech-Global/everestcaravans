@@ -187,7 +187,7 @@
                                 <h4 class="text-capitalize">Specifications</h4>
                                 @if($vehicle->sections()->count())
                                     @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 5)
+                                        @if($section->order == 2)
                                             <!-- <div class="gallery-grid">
                                                 <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                             </div> -->
@@ -204,7 +204,7 @@
                                 <h4 class="text-capitalize">External Gallery</h4>
                                 @if($vehicle->sections()->count())
                                     @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 2)
+                                        @if($section->order == 3)
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -233,7 +233,7 @@
                                 <h4 class="text-capitalize">Internal Gallery</h4>
                                 @if($vehicle->sections()->count())
                                     @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 3)
+                                        @if($section->order == 4)
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -262,7 +262,7 @@
                                 <h4 class="text-capitalize">floor-plans</h4>
                                 @if($vehicle->sections()->count())
                                     @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 4)
+                                        @if($section->order == 5)
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
