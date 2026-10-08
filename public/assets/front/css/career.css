@@ -2,12 +2,10 @@
   border: 0;
   margin-bottom: 10px;
 }
-
 #career-accordion .card .card-header {
   padding: 0;
   background-color: #d2d2d2;
 }
-
 #career-accordion .card .card-header button {
   text-decoration: none;
   text-transform: uppercase;
@@ -21,30 +19,23 @@
   color: #4e4e4e;
   padding: 0 15px;
 }
-
 #career-accordion .card .card-header button i {
   position: absolute;
   top: 25px;
   right: 15px;
-  -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-
 #career-accordion .card .card-header button.opened i {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
-
 #career-accordion .card .card-body {
   font-size: 18px;
   line-height: 28px;
 }
-
 #career-accordion .card .card-body ul {
   margin-top: 20px;
   padding-left: 20px;
 }
-
 #career-accordion .card .card-body .btn {
   height: 60px;
   line-height: 60px;
@@ -57,7 +48,6 @@
   border: 0;
   border-radius: 0;
 }
-
 #career-accordion .card .card-body .btn:hover {
   background: #000;
 }
@@ -66,12 +56,9 @@
   max-width: 1000px;
   border: 1px solid #282828;
 }
-
 .hero__form.carBooking .field-wrap.text-right {
   margin: 0;
 }
-
-.hero__form.carBooking input[type="file"] {
+.hero__form.carBooking input[type=file] {
   padding: 8px 10px;
-}
-/*# sourceMappingURL=career.css.map */
+}/*# sourceMappingURL=career.css.map */

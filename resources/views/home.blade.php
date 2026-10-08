@@ -1,78 +1,56 @@
 @extends('layouts.front')
 
+@section('css_after')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    {{-- ?v=mtime so an edit is never served from the browser cache --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/home2.css') }}?v={{ filemtime(public_path('assets/css/home2.css')) }}">
+@endsection
+
 @section('content')
     {{-- @dd($settings); --}}
     <!--====== Banner Part START ======-->
-    <section id="web-banner" class="abreco-hero-area header slider-fade">
-        <div class="owl-carousel owl-theme">
-            @if ($sliders->count())
-                @foreach ($sliders as $data)
-                    <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                    <div class="item bg-img bg-img-{{ $loop->iteration }}"
-                        style="background-image: url({{ asset('storage/' . $data->image) }});">
-                        <div class="caption">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="banner-inner">
-                                            <div class="baner-bg-head">
-                                                <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}"
-                                                    alt="">
-                                            </div>
-                                            <h1 class="">{{ @$data->title }}<br><span>{{ @$data->sub_title }}</span>
-                                            </h1>
 
-                                            <div class="butn-light mt-30 mb-30">
-                                                {{-- <a href="{{ route('vehicles.show', $data->vehicle->slug) }}">Enquire Now</a> --}}
-                                                {{-- <a href="{{ route('vehicles.show', ['slug' => $data->vehicle->slug, 'id' => 'your_identifier']) }}">Enquire Now</a> --}}
-                                                <a href="{{ route('vehicles.show', $data->vehicle->slug) }}#your_identifier">Enquire Now</a>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($data->vehicle)
-                                    <div class="truck-name">
-                                        <h3>{{ @$data->vehicle->name }}</h3>
-                                        <p>{!! @$data->description !!}</p>
-                                    </div>
-                                @endif
-                                <div class="scroll-baner">
-                                    <a href="#Features">Scroll</a>
-                                </div>
-                            </div>
+<section id="web-banner" class="vb-hero" aria-roledescription="carousel" aria-label="Featured vehicles">
+    <div class="vb-slider owl-carousel">
+        @foreach ($sliders as $data)
+            @php
+                $title = preg_replace('/\[(.+?)\]/', '<span>$1</span>', e($data->title));
+                $tag   = $loop->first ? 'h1' : 'h2';
+            @endphp
+
+            <div class="vb-slide" style="background-image: url('{{ asset('storage/' . $data->image) }}');">
+                <div class="vb-overlay">
+                    <div class="vb-wrap">
+
+                        <div class="vb-main">
+                            @if ($data->vehicle)
+                                <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
+                            @endif
+
+                            <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
+
+                            @if ($data->vehicle)
+                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Enquire Now</a>
+                            @endif
                         </div>
+
+                        @if ($data->description)
+                            <div class="vb-desc">
+                                {!! strip_tags($data->description, '<p><br><strong><em><b><i>') !!}
+                            </div>
+                        @endif
+
                     </div>
-                @endforeach
-            @endif
+                </div>
+            </div>
+        @endforeach
+    </div>
 
-        </div>
-        <!-- Counter Number -->
-        <div class="slide-counter">01/{{ $sliders->count() }}</div>
-        <!-- Booking Search -->
-        <div class="booking-wrapper">
-            <form action="{{ route('vehicle_search') }}" method="POST">
-                @csrf
-                <div class="form-control">
-                    <select name="type" id="vehicle_type" required>
-                        <option value="">Select Type</option>
-                        @foreach ($vehicle_types_data as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-control d-none" id="vehicleApp">
-                    <select name="vehicleApplications" id="vehicleApplications">
-                        <option value="">Select Application</option>
+</section>
 
-                    </select>
-                </div>
-                <div class="form-control form-control-submit">
-                    <input type="submit" value="Search" name="submit">
-                </div>
-            </form>
-        </div>
-    </section>
 
     <!--====== Mobile Banner START ======-->
     <section id="mobile-banner" class="abreco-hero-area header slider-fade d-none">
@@ -142,702 +120,610 @@
         </div>
     </section>
 
-    <!--====== abreco FEATURES PART START ======-->
-    <section class="abreco-features-area pt-130 pb-100" id="Features">
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col-lg-3">
-                    <div class="abreco-features-tabs-btn aftb">
 
-                        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            @foreach ($vehicle_types_data as $type)
-                                <a class="nav-link type-cliker  @if ($loop->first) first-nav-link active @else nav-link-{{ $loop->iteration }} @endif"
-                                    id="v-pills-{{ $type->slug }}-tab " clicker="{{ $type->slug }}" data-toggle="pill"
-                                    href="#v-pills-{{ $type->slug }}" role="tab"
-                                    aria-controls="v-pills-{{ $type->slug }}" aria-selected="true">
-                                    <span>{{ $type->name }}</span>
-                                </a>
-                            @endforeach
 
-                        </div>
+    <!--====== abreco about Us ======-->
+{{--
+    Everest Caravans — "Who are we?" section + awards strip
+    CSS: public/css/about.css   JS: public/js/about.js (optional reveal)
+    Background texture: public/assets/images/about/topo.svg
+    Font (in <head>):
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+--}}
+@php
+    // One place to edit the feature list. Icon = SVG path(s), 24×24 grid.
+    $evFeatures = [
+        // Off-road tyre: hub, rim, and a ring of tread blocks
+        ['label' => 'Engineered for Off-Road', 'icon' => '<circle cx="12" cy="12" r="9.25"/><circle cx="12" cy="12" r="6.25"/><circle cx="12" cy="12" r="2.75"/><path d="M18.25 12h3M12 18.25v3M5.75 12H2.75M12 5.75V2.75"/><path d="m16.42 16.42 2.12 2.12M7.58 16.42l-2.12 2.12M7.58 7.58 5.46 5.46M16.42 7.58l2.12-2.12"/>'],
+        // Brilliant-cut diamond, with a glow off the crown
+        ['label' => 'Lux Interior Decor',      'icon' => '<path d="M8 6.5h8l3 4.5-7 9.5-7-9.5z"/><path d="M5 11h14"/><path d="M8 6.5 12 20.5M16 6.5 12 20.5"/><path d="M12 2v2.5M4.5 4l1.6 1.6M19.5 4l-1.6 1.6"/>'],
+        // Dial gauge: measured, not eyeballed
+        ['label' => 'Strict Quality Control',  'icon' => '<path d="M3.5 17.5a8.5 8.5 0 1 1 17 0"/><path d="M3.5 17.5h17"/><path d="M12 9v2M6.5 11.2l1.4 1.4M17.5 11.2l-1.4 1.4"/><path d="m12 17.5 4.2-4.2"/><circle cx="12" cy="17.5" r="1.4"/>'],
+        // Scales: measured against the standard
+        ['label' => 'Built to Regulations',    'icon' => '<path d="M12 4.5v16M7.5 20.5h9M4 8h16"/><circle cx="12" cy="6.2" r="1.6"/><path d="M4 8 1.5 13.5h5z"/><path d="M20 8l-2.5 5.5h5z"/>'],
+        // Top-grade stock: boards under a star
+        ['label' => 'Premium Materials',       'icon' => '<path d="M12 2.2l1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4z"/><rect x="2.5" y="11.5" width="19" height="4" rx="1.5"/><rect x="2.5" y="17.5" width="19" height="4" rx="1.5"/>'],
+        // Ruler: built to your dimensions
+        ['label' => 'Custom Built to Order',   'icon' => '<rect x="2" y="7.5" width="20" height="9" rx="2.5"/><path d="M6 7.5v3.2M10 7.5v4.6M14 7.5v3.2M18 7.5v4.6"/>'],
+    ];
 
-                    </div>
+@endphp
 
-                    <!-- Mobile view header vehicle Menus -->
-                    <div class="abreco-features-tabs-btn aftb dropdown dropdown-border drop-991 d-none mb-40">
-                                                <!-- <button class="btn dropdown-toggle drop-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                      Choose Your Vehicles
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                      <a class="dropdown-item" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Truck & Trailers</a>
-                                                      <a class="dropdown-item" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Passenger Vehicles</a>
-                                                </div> -->
-                                                <!-- <select class="mobile-dropdown" id="mobile-select">
-                                                        @foreach ($vehicle_types_data as $type)
-                                                        <option value="v-pills-{{ $type->slug }}">{{ $type->name }}</option>
-                                                        @endforeach
-                                                </select>  -->
-                        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            @foreach ($vehicle_types_data as $type)
-                                <a class="nav-link type-cliker  @if ($loop->first) first-nav-link active @else nav-link-{{ $loop->iteration }} @endif"
-                                    id="v-pills-{{ $type->slug }}-tab " clicker="{{ $type->slug }}"
-                                    data-toggle="pill" href="#v-pills-{{ $type->slug }}" role="tab"
-                                    aria-controls="v-pills-{{ $type->slug }}" aria-selected="true">
-                                    <span>{{ $type->name }}</span>
-                                </a>
-                            @endforeach
 
-                            <!-- <div class="columns">
-                                    <a href="#" class="trcuk"><span>truck</span></a>
-                                    <a href="#" class="vans"><span>vans</span></a>
-                                    <a href="#" class="tipper"><span>tipper</span></a>
-                                </div> -->
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        @foreach ($vehicle_types_data as $type)
-                            <!-- 1st Tab -->
-                            <div class="tab-pane fade @if ($loop->first) show active @else fade @endif "
-                                id="v-pills-{{ $type->slug }}" role="tabpanel"
-                                aria-labelledby="v-pills-{{ $type->slug }}-tab">
-                                <div class="row" id="content">
-                                    {{-- Filter vehicles for the current type --}}
-                                    @php
-                                        $vehicles_under_type = App\Vehicle::where('vehicle_type_id', $type->id)
-                                            ->select('slug', 'tagline', 'name', 'image')
-                                            ->where('status', 1)
-                                            ->orderBy('order','ASC')
-                                            ->take(8)
-                                            ->get();
-                                    @endphp
-                                    {{-- Display vehicles for the current type --}}
-                                    @foreach ($vehicles_under_type as $vehicle_data)
-                                        <div class="col-lg-4 mb-3 box">
-                                            <div class="fea-inner">
-                                                <div class="img">
-                                                   <a href="{{ route('vehicles.show', @$vehicle_data->slug) }}">
-                                                   <img src="{{ asset('storage/' . @$vehicle_data->image) }}"
-                                                        alt="abreco">
-                                                   </a>
-                                                </div>
-                                                <div class="inner-details">
-                                                    <h3><a href="{{ route('vehicles.show', @$vehicle_data->slug) }}">{{ @$vehicle_data->name }}</a></h3>
-                                                    <p>{!! \Illuminate\Support\Str::limit(@$vehicle_data->tagline, $limit = 80, $end = '...') !!}</p>
-                                                    {{-- <p>{!! @$vehicle_data->tagline !!}</p> --}}
-                                                    <div class="inner-btn flex-wrap mt-3">
-                                                        <a href="{{ route('vehicles.show', @$vehicle_data->slug) }}"
-                                                            class="first-btn">View More</a>
-                                                        <!-- <a href="{{ route('enquiry.index', @$vehicle_data->slug) }}"
-                                                            class="sec-btn">Enquire Now</a> -->
-                                                            <a href="#" class="sec-btn openPop" data-toggle="modal" data-target="#form-Popup" >Enquire Now</a>
-                                                            <input type='hidden' class='vehicle-id' value="{{$vehicle_data->slug}}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="feature-mobile-btn mt-60 mb-40">
-                                <!-- <button id="load-more">Load More</button> -->
-                                <div class="primary-btn-main">
-                                    @php
-                                        $type_first = @$vehicle_types_data[0];
-                                    @endphp
-                                    <a href="{{ route('vehicle_type', @$type_first->slug) }}" class=" new-btn-style"
-                                        id="viewMore">
-                                        <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21"
-                                            height="14" viewBox="0 0 21 14" fill="none">
-                                            <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <img src="{{ asset('assets/abreco/images/shapes/right-white.png') }}"
-                                            class="d-none white" alt="">
-                                        View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+<section class="ev-about" id="about" aria-labelledby="evAboutTitle" data-ev-reveal>
+    <div class="ev-about__inner">
+
+        {{-- Photo + years badge --}}
+        <div class="ev-about__media">
+            <div class="ev-about__frame">
+                <img src="{{ asset('assets/abreco/images/about1.jpg') }}"
+                     alt="Caravan parked on a desert road below a red rock bluff at sunset"
+                     width="520" height="578" loading="lazy" decoding="async">
+                <div class="ev-about__badge">
+                    <strong>15+</strong>
+                    <span>Years</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!--====== abreco About PART START ======-->
-    {{-- section order 1 --}}
-    <section class="abreco-service-area">
-        @if ($about_section)
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="abt-logo d-flex">
-                            <div class="logo">
-                                <span>
-                                    <img src="{{ asset('assets/abreco/images/shapes/1.png') }}" class="none-991"
-                                        alt="">
-                                    <img src="{{ asset('assets/abreco/images/shapes/1-white.png') }}"
-                                        class="d-none block-991" alt="">
-                                </span>
-                            </div>
-                            <div class="title">
-                                <h2>{{ @$about_section->title }}</h2>
-                                {{-- <p> {!! \Illuminate\Support\Str::limit( @$about_section->sub_title , $limit = 80, $end = '...') !!}</p> --}}
-                                <p>{{ @$about_section->sub_title }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 p-0-575">
-                        <div class="abt-titlte p-15-575">
-                            <p>{{ @$about_section->description }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center border-top-bottom">
-                    <div class="col-lg-10">
-                        <div class="abt-bg">
-                            <img src="{{ asset('storage/' . @$group->content_image_one) }}" alt="">
-                            <div class="abt-video">
-                                <a href="{{ @$group->link }}" data-fancybox="images">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="48"
-                                        viewBox="0 0 36 48" fill="none">
-                                        <path
-                                            d="M2 42.0457V5.95431C2 2.66657 5.74609 0.782778 8.3853 2.74334L32.6775 20.789C34.8305 22.3884 34.8305 25.6116 32.6775 27.211L8.3853 45.2566C5.74609 47.2172 2 45.3334 2 42.0457Z"
-                                            fill="white" stroke="white" stroke-width="3" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        {{-- Copy --}}
+        <div class="ev-about__content">
+            <p class="ev-about__eyebrow">
+                Who Are We?
+                <svg viewBox="0 0 26 16" aria-hidden="true"><path d="M2 12V4.5A2.5 2.5 0 0 1 4.5 2H16a5 5 0 0 1 5 5v5z"/><path d="M1 12h23"/><circle cx="8" cy="13" r="2"/><path d="M5 5.5h5v3H5zM13 5.5h3"/></svg>
+            </p>
+
+            <h2 class="ev-about__title" id="evAboutTitle">Premium Custom&#8209;Built Caravans</h2>
+
+            <p class="ev-about__lead">
+                Everest Caravans is a family-owned business with over 15 years in the caravan industry.
+                Every van is built from the highest quality materials and passes a strict quality-control
+                stage before it is delivered to you.
+            </p>
+
+            <ul class="ev-about__features">
+                @foreach ($evFeatures as $f)
+                    <li>
+                        <span class="ev-about__chip"><svg viewBox="0 0 24 24" aria-hidden="true">{!! $f['icon'] !!}</svg></span>
+                        <span>{{ $f['label'] }}</span>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div class="ev-about__actions">
+                <a class="ev-about__btn" href="{{ url('/caravans') }}">View Our Vans</a>
+                <a class="ev-about__link" href="{{ url('/contact') }}">Contact Us</a>
             </div>
-        @endif
-    </section>
+        </div>
 
-    <!--====== abreco Counter PART START ======-->
-    @if ($counters->count() > 0)
-        <section class="counter-area pb-80">
-            <div class="container">
-                <div class="row bottom-line">
-                    @foreach ($counters as $key => $data)
-                        <div class="col-lg-3 col-md-6 col-6 p-0-991">
-                            @php
-                                $key = $key + 1;
-                            @endphp
-                            <div class="conter-box conter-box{{ $key }}">
-                                <div class="count d-flex mt-2">
+        {{-- Decoration (right column) --}}
+        <div class="ev-about__deco" aria-hidden="true">
+            <span class="ev-about__vertical">Off-Road</span>
+            <svg class="ev-about__topview" viewBox="0 0 120 320" fill="none"
+                 stroke-linejoin="round" stroke-linecap="round">
+                <!-- A-frame: members + cross brace -->
+                <path d="M60 13 27 62M60 13 93 62M38 46h44" stroke="#0E1330" stroke-width="4.5"/>
+                <!-- Off-road coupling -->
+                <rect x="53" y="2" width="14" height="13" rx="4" fill="#0E1330"/>
+                <circle cx="60" cy="7" r="2.6" fill="#E4E7F8" opacity=".55"/>
+                <!-- Twin gas bottles -->
+                <circle cx="46" cy="34" r="6.5" fill="#1D2A72"/>
+                <circle cx="74" cy="34" r="6.5" fill="#1D2A72"/>
+                <circle cx="46" cy="34" r="2.6" fill="#E4E7F8" opacity=".4"/>
+                <circle cx="74" cy="34" r="2.6" fill="#E4E7F8" opacity=".4"/>
+                <!-- Jerry cans -->
+                <rect x="21" y="48" width="12" height="16" rx="3" fill="#1D2A72"/>
+                <rect x="87" y="48" width="12" height="16" rx="3" fill="#1D2A72"/>
+                <!-- Mesh stone guard -->
+                <rect x="36" y="50" width="48" height="14" rx="4" fill="#0E1330"/>
+                <g stroke="#3446B0" stroke-width="1" opacity=".6">
+                    <path d="M44 52v10M52 52v10M60 52v10M68 52v10M76 52v10"/>
+                </g>
 
-                                    @if ($data->counter < 10)
-                                        <span class="zero">0</span>
-                                    @endif
+                <!-- Tandem off-road axles -->
+                <g fill="#0E1330">
+                    <rect x="2"   y="170" width="16" height="40" rx="5"/>
+                    <rect x="2"   y="216" width="16" height="40" rx="5"/>
+                    <rect x="102" y="170" width="16" height="40" rx="5"/>
+                    <rect x="102" y="216" width="16" height="40" rx="5"/>
+                </g>
+                <g stroke="#3446B0" stroke-width="1.5" opacity=".55">
+                    <path d="M4 180h12M4 190h12M4 200h12M4 226h12M4 236h12M4 246h12"/>
+                    <path d="M104 180h12M104 190h12M104 200h12M104 226h12M104 236h12M104 246h12"/>
+                </g>
+                <!-- Mudguards -->
+                <g stroke="#3446B0" stroke-width="1.5" opacity=".55">
+                    <rect x="4" y="165" width="12" height="96" rx="6"/>
+                    <rect x="104" y="165" width="12" height="96" rx="6"/>
+                </g>
 
-                                    <div class="counter-item">
+                <!-- Awning box (kerb side) and entry door -->
+                <rect x="8" y="92" width="6" height="72" rx="3" fill="#0E1330" opacity=".65"/>
+                <rect x="104" y="100" width="6" height="32" rx="3" fill="#E4E7F8" opacity=".5"/>
 
-                                        {{ @$data->counter }}</div>
-                                    <span>{{ $data->plus }}</span>
-                                </div>
-                                <div class="title">
-                                    <h4>{{ $data->title }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                <!-- Body + roof deck -->
+                <rect x="13" y="68" width="94" height="234" rx="18" fill="#283895"/>
+                <rect x="19" y="74" width="82" height="222" rx="13" fill="#3446B0"/>
+                <!-- Roof rails -->
+                <g fill="#283895" opacity=".8">
+                    <rect x="21" y="80" width="3" height="208" rx="1.5"/>
+                    <rect x="96" y="80" width="3" height="208" rx="1.5"/>
+                </g>
+
+                <!-- Solar array -->
+                <g fill="#E4E7F8">
+                    <rect x="29" y="86"  width="62" height="46" rx="3"/>
+                    <rect x="29" y="138" width="62" height="46" rx="3"/>
+                </g>
+                <g stroke="#9AA6E6" stroke-width="1">
+                    <path d="M50 86v46M70 86v46M29 101h62M29 117h62"/>
+                    <path d="M50 138v46M70 138v46M29 153h62M29 169h62"/>
+                </g>
+
+                <!-- Satellite dome -->
+                <circle cx="60" cy="198" r="9" fill="#0E1330"/>
+                <circle cx="60" cy="198" r="4.5" fill="#E4E7F8" opacity=".3"/>
+                <!-- Air-conditioner -->
+                <rect x="37" y="216" width="46" height="32" rx="8" fill="#0E1330"/>
+                <rect x="44" y="222" width="32" height="20" rx="4" fill="#E4E7F8" opacity=".28"/>
+                <g stroke="#0E1330" stroke-width="1" opacity=".5">
+                    <path d="M48 228h24M48 232h24M48 236h24"/>
+                </g>
+                <!-- Roof hatch -->
+                <rect x="46" y="258" width="28" height="22" rx="6" fill="#1D2A72"/>
+                <rect x="50" y="262" width="20" height="14" rx="3" fill="#E4E7F8" opacity=".3"/>
+                <!-- Vent -->
+                <circle cx="60" cy="290" r="6" fill="#1D2A72"/>
+
+                <!-- Rear bar: spare wheel between two jerry holders -->
+                <rect x="24" y="299" width="72" height="12" rx="5" fill="#0E1330"/>
+                <rect x="48" y="302" width="24" height="16" rx="5" fill="#1D2A72"/>
+                <g fill="#1D2A72" opacity=".8">
+                    <rect x="28" y="303" width="12" height="10" rx="3"/>
+                    <rect x="80" y="303" width="12" height="10" rx="3"/>
+                </g>
+            </svg>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+    <!--====== abreco feature ======-->
+{{--
+    Everest Caravans — Awards "Journey" (black & gold)
+    CSS:    public/assets/css/home2.css
+    Images: public/assets/images/awards/awardsection.jpg
+    Fonts (in <head>):
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+--}}
+@php
+    // Add one line per award. 'rank' => null shows a trophy.
+    $evAwards = [
+        ['rank' => 1,    'van' => 'Nitro Extreme',      'title' => 'Best Off-Road Van in Australia',  'year' => 2022],
+        ['rank' => null, 'van' => null,                 'title' => 'Custom Manufacturer of the Year', 'year' => 2022],
+        ['rank' => 3,    'van' => 'Kombat Performance', 'title' => 'Best Off-Road Van in Australia',  'year' => 2021],
+        ['rank' => 2,    'van' => 'Camo',               'title' => 'Best Off-Road Van in Australia',  'year' => 2020],
+        ['rank' => 5,    'van' => 'Kombat E1',          'title' => 'Best Off-Road Van in Australia',  'year' => 2019],
+    ];
+
+    // Newest first; ranked awards before trophies in the same year
+    $evRows  = collect($evAwards)->sortBy([['year', 'desc'], [fn ($a) => $a['rank'] === null ? 1 : 0, 'asc']])->values();
+    $evYears = $evRows->max('year') - $evRows->min('year') + 1;
+
+    // Background photo (sits under a dark-blue gradient). Dark, wide shots work best.
+    $evJourneyBg = asset('assets/images/awards/awardsection.jpg');
+@endphp
+
+<section class="ev-journey" aria-labelledby="evJourneyTitle" style="--ej-photo: url('{{ $evJourneyBg }}');">
+
+    {{-- Shared gold gradient + laurel artwork, used by every icon below --}}
+    <svg class="ev-journey__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="evJGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0"   stop-color="#F8E3A3"/>
+                <stop offset=".45" stop-color="#D9AE55"/>
+                <stop offset=".65" stop-color="#B8862F"/>
+                <stop offset="1"   stop-color="#F1D58C"/>
+            </linearGradient>
+            <symbol id="evJLaurel" viewBox="0 0 120 120"><path d="M47 102 A42 42 0 0 1 24 36" fill="none" stroke="url(#evJGold)" stroke-width="1.6" stroke-linecap="round"/><path d="M73 102 A42 42 0 0 0 96 36" fill="none" stroke="url(#evJGold)" stroke-width="1.6" stroke-linecap="round"/><g fill="url(#evJGold)"><ellipse cx="42.0" cy="104.5" rx="3.2" ry="7.5" transform="rotate(-286.0 42.0 104.5)"/><ellipse cx="46.5" cy="93.4" rx="3.2" ry="7.5" transform="rotate(-210.0 46.5 93.4)"/><ellipse cx="29.1" cy="96.8" rx="3.2" ry="7.5" transform="rotate(-268.0 29.1 96.8)"/><ellipse cx="36.9" cy="87.6" rx="3.2" ry="7.5" transform="rotate(-192.0 36.9 87.6)"/><ellipse cx="19.3" cy="85.4" rx="3.2" ry="7.5" transform="rotate(-250.0 19.3 85.4)"/><ellipse cx="29.5" cy="79.1" rx="3.2" ry="7.5" transform="rotate(-174.0 29.5 79.1)"/><ellipse cx="13.4" cy="71.6" rx="3.2" ry="7.5" transform="rotate(-232.0 13.4 71.6)"/><ellipse cx="25.1" cy="68.7" rx="3.2" ry="7.5" transform="rotate(-156.0 25.1 68.7)"/><ellipse cx="12.1" cy="56.7" rx="3.2" ry="7.5" transform="rotate(-214.0 12.1 56.7)"/><ellipse cx="24.1" cy="57.5" rx="3.2" ry="7.5" transform="rotate(-138.0 24.1 57.5)"/><ellipse cx="15.5" cy="42.0" rx="3.2" ry="7.5" transform="rotate(-196.0 15.5 42.0)"/><ellipse cx="26.6" cy="46.5" rx="3.2" ry="7.5" transform="rotate(-120.0 26.6 46.5)"/><ellipse cx="23.2" cy="29.1" rx="3.2" ry="7.5" transform="rotate(-178.0 23.2 29.1)"/><ellipse cx="32.4" cy="36.9" rx="3.2" ry="7.5" transform="rotate(-102.0 32.4 36.9)"/><ellipse cx="78.0" cy="104.5" rx="3.2" ry="7.5" transform="rotate(106.0 78.0 104.5)"/><ellipse cx="73.5" cy="93.4" rx="3.2" ry="7.5" transform="rotate(30.0 73.5 93.4)"/><ellipse cx="90.9" cy="96.8" rx="3.2" ry="7.5" transform="rotate(88.0 90.9 96.8)"/><ellipse cx="83.1" cy="87.6" rx="3.2" ry="7.5" transform="rotate(12.0 83.1 87.6)"/><ellipse cx="100.7" cy="85.4" rx="3.2" ry="7.5" transform="rotate(70.0 100.7 85.4)"/><ellipse cx="90.5" cy="79.1" rx="3.2" ry="7.5" transform="rotate(-6.0 90.5 79.1)"/><ellipse cx="106.6" cy="71.6" rx="3.2" ry="7.5" transform="rotate(52.0 106.6 71.6)"/><ellipse cx="94.9" cy="68.7" rx="3.2" ry="7.5" transform="rotate(-24.0 94.9 68.7)"/><ellipse cx="107.9" cy="56.7" rx="3.2" ry="7.5" transform="rotate(34.0 107.9 56.7)"/><ellipse cx="95.9" cy="57.5" rx="3.2" ry="7.5" transform="rotate(-42.0 95.9 57.5)"/><ellipse cx="104.5" cy="42.0" rx="3.2" ry="7.5" transform="rotate(16.0 104.5 42.0)"/><ellipse cx="93.4" cy="46.5" rx="3.2" ry="7.5" transform="rotate(-60.0 93.4 46.5)"/><ellipse cx="96.8" cy="29.1" rx="3.2" ry="7.5" transform="rotate(-2.0 96.8 29.1)"/><ellipse cx="87.6" cy="36.9" rx="3.2" ry="7.5" transform="rotate(-78.0 87.6 36.9)"/></g></symbol>
+            <symbol id="evJBranch" viewBox="12 24 44 86"><path d="M47 102 A42 42 0 0 1 24 36" fill="none" stroke="url(#evJGold)" stroke-width="1.6" stroke-linecap="round"/><g fill="url(#evJGold)"><ellipse cx="42.0" cy="104.5" rx="3.2" ry="7.5" transform="rotate(-286.0 42.0 104.5)"/><ellipse cx="46.5" cy="93.4" rx="3.2" ry="7.5" transform="rotate(-210.0 46.5 93.4)"/><ellipse cx="29.1" cy="96.8" rx="3.2" ry="7.5" transform="rotate(-268.0 29.1 96.8)"/><ellipse cx="36.9" cy="87.6" rx="3.2" ry="7.5" transform="rotate(-192.0 36.9 87.6)"/><ellipse cx="19.3" cy="85.4" rx="3.2" ry="7.5" transform="rotate(-250.0 19.3 85.4)"/><ellipse cx="29.5" cy="79.1" rx="3.2" ry="7.5" transform="rotate(-174.0 29.5 79.1)"/><ellipse cx="13.4" cy="71.6" rx="3.2" ry="7.5" transform="rotate(-232.0 13.4 71.6)"/><ellipse cx="25.1" cy="68.7" rx="3.2" ry="7.5" transform="rotate(-156.0 25.1 68.7)"/><ellipse cx="12.1" cy="56.7" rx="3.2" ry="7.5" transform="rotate(-214.0 12.1 56.7)"/><ellipse cx="24.1" cy="57.5" rx="3.2" ry="7.5" transform="rotate(-138.0 24.1 57.5)"/><ellipse cx="15.5" cy="42.0" rx="3.2" ry="7.5" transform="rotate(-196.0 15.5 42.0)"/><ellipse cx="26.6" cy="46.5" rx="3.2" ry="7.5" transform="rotate(-120.0 26.6 46.5)"/><ellipse cx="23.2" cy="29.1" rx="3.2" ry="7.5" transform="rotate(-178.0 23.2 29.1)"/><ellipse cx="32.4" cy="36.9" rx="3.2" ry="7.5" transform="rotate(-102.0 32.4 36.9)"/></g></symbol>
+            <symbol id="evJStar" viewBox="0 0 24 24"><path fill="url(#evJGold)" d="m12 1.5 3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/></symbol>
+        </defs>
+    </svg>
+
+    <div class="ev-journey__inner">
+
+        {{-- Heading: stars above, laurels either side --}}
+        <header class="ev-journey__head">
+            <div class="ev-journey__stars" aria-hidden="true">
+                <svg><use href="#evJStar"/></svg>
+                <svg><use href="#evJStar"/></svg>
+                <svg><use href="#evJStar"/></svg>
             </div>
-        </section>
-    @endif
 
-    <!--====== Services PART START ======-->
-    @if ($services->count() > 0)
-        <section class="services-areas section pt-30 pb-70">
-            <div class="container">
-                <div class="row mb-60 align-items-center">
-                    <div class="col-lg-9">
-                        <div class="abreco-section-title">
-                            <h3 class="abreco-title">“Top Gear” Services</h3>
-                            <p>Providing world class services that can enhance the customer’s experience efficiently.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <div class="primary-btn-main mt-0 service-btn01">
-                                <a href="{{ route('services.index') }}" class=" new-btn-style">
-                                    <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14"
-                                        viewBox="0 0 21 14" fill="none">
-                                        <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}" class="d-none white"
-                                        alt="">
-                                    Explore Services</a>
-                            </div>
-                            <!-- <a href="{{ route('services.index') }}">
-                                        <div class="icons">
-                                            <img src="{{ asset('assets/abreco/images/shapes/2.png') }}" alt="">
-                                            <img src="{{ asset('assets/abreco/images/shapes/3.png') }}" alt="">
-                                        </div>
-                                        Explore More
-                                    </a> -->
-                        </div>
-                    </div>
-                </div>
+            <div class="ev-journey__titlebar">
+                <svg class="ev-journey__branch" aria-hidden="true"><use href="#evJBranch"/></svg>
+                <h2 class="ev-journey__title" id="evJourneyTitle">
+                    <span class="ev-journey__title-top">Everest&rsquo;s Journey for the Past {{ $evYears }} Years</span>
+                    <span class="ev-journey__title-main">Top 5 Vans in Australia</span>
+                </h2>
+                <svg class="ev-journey__branch ev-journey__branch--right" aria-hidden="true"><use href="#evJBranch"/></svg>
             </div>
-            <div class="container container-service none-991">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="service-slider owl-carousel">
-                            @foreach ($services as $service)
-                                <div class="service-item">
-                                    <a  @if ($service->title == 'Financial Services') href="{{ route('finance.show') }}" @else href="{{ route('services.show', $service->slug) }}" @endif>
-                                        <div class="img">
-                                            <div class="overlay">
-                                                <span>Learn More</span>
-                                            </div>
-                                            <img src="{{ asset('storage/' . $service->image) }}" alt="">
-                                        </div>
-                                        <div class="text">
-                                            <h3>{{ @$service->title }}</h3>
-                                            <span> {!! \Illuminate\Support\Str::limit($service->content, $limit = 80, $end = '...') !!}</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Mobile Services -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="accordion accordion-home-services d-none block-991 mt-30" id="accordionExample">
-                            @foreach ($services as $key => $service)
-                                <div class="card">
-                                    <div class="card-header" id="heading{{ $key }}">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left" type="button"
-                                                data-toggle="collapse" data-target="#collapse{{ $key }}"
-                                                aria-expanded="true" aria-controls="collapse{{ $key }}">
-                                                {{ @$service->title }}
-                                            </button>
-                                        </h2>
-                                    </div>
+        </header>
 
-                                    <div id="collapse{{ $key }}"
-                                        class="collapse @if ($key == 0) show @endif"
-                                        aria-labelledby="heading{{ $key }}" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            {{ @$service->content }}
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <!--====== Truck PART 01 START (SCV) ======-->
-    @if ($products->count() > 0)
-        @foreach ($products as $key => $product)
-            <section
-                class="solid-vehicles @if ($key % 2 == 0) solid-vehicles-one @else solid-vehicles-two @endif section pb-180 pt-50">
-                @if ($key % 2 == 0)
-                    <div class="left-img d-flex">
-                        <img src="{{ asset('assets/abreco/images/trucks/left-img.png') }}" alt="">
-                    </div>
-                @else
-                    <div class="left-img left-img2 d-flex sadfs">
-                        <img src="{{ asset('assets/abreco/images/shapes/trek-rightside.webp') }}" alt="">
-                    </div>
-                @endif
-                <div class="container">
-                    <div class="row">
-                        @if ($key % 2 == 0)
-                            <div class="col-lg-5">
-                                <div class="slider-sec">
-                                    <div @if ($key == 0) id="slider" @else id="slider2" @endif>
-                                        <div class="slider-wrap">
-                                            <div
-                                                @if ($key == 0) id="intro-slider"  @else id="intro-slider2" @endif>
-                                                <div @if ($key == 0) class="intro-slide" @else class="intro-slide2" @endif
-                                                    data-class="1" data-position="1">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box-22">
-                                                        <img src="{{ asset('storage/' . $product->image) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div @if ($key == 0) class="intro-slide" @else class="intro-slide2" @endif
-                                                    data-class="2" data-position="2">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box-22">
-                                                        <img src="{{ asset('storage/' . $product->image_secondary) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div @if ($key == 0) class="intro-slide" @else class="intro-slide2" @endif
-                                                    data-class="3" data-position="3">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box-22">
-                                                        <img src="{{ asset('storage/' . $product->image_third) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span
-                                                @if ($key == 0) class="slider-next" @else class="slider-next2" @endif>
-                                                <img src="{{ asset('assets/abreco/images/shapes/left.svg') }}">
-                                            </span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="solid-text">
-                                    <h2>{{ @$product->name }}</h2>
-                                    <p><span>{!! @$product->description !!}</span></p>
-                                    <div class="primary-btn-main primary-btn-main-desktop">
-                                        <a href="{{ $product->button_link }}" class=" new-btn-style">
-                                            <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21"
-                                                height="14" viewBox="0 0 21 14" fill="none">
-                                                <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                            <!-- <img src="{{ asset('storage/' . $product->image) }}"
-                                                        class="d-none white" alt=""> -->
-                                            <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}"
-                                                class="d-none white" alt="">
-                                            Explore Products</a>
-                                    </div>
-                                </div>
-                            </div>
+        {{-- Award rows --}}
+        <ol class="ev-journey__list">
+            @foreach ($evRows as $a)
+                <li class="ev-journey__row">
+                    <span class="ev-journey__medal" aria-hidden="true">
+                        <svg class="ev-journey__wreath"><use href="#evJLaurel"/></svg>
+                        <span class="ev-journey__mini-stars">
+                            <svg><use href="#evJStar"/></svg><svg><use href="#evJStar"/></svg><svg><use href="#evJStar"/></svg>
+                        </span>
+                        @if ($a['rank'])
+                            <span class="ev-journey__num">{{ $a['rank'] }}</span>
                         @else
-                            <div class="col-lg-7 order-2-991">
-                                <div class="solid-text solid-text2 solid-text23">
-                                    <h2>{{ @$product->name }}</h2>
-                                    <p><span>{!! @$product->description !!}</span></p>
-                                    <div class="primary-btn-main primary-btn-main-desktop mt-40">
-                                        <a href="{{ $product->button_link }}" class=" new-btn-style">
-                                            <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21"
-                                                height="14" viewBox="0 0 21 14" fill="none">
-                                                <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                            <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}"
-                                                class="d-none white" alt="">
-                                            Explore Products</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 order-1-991">
-                                <div class="slider-sec">
-
-                                    <div id="slider3" class="slider3-secondline-slider">
-                                        <div class="slider-wrap slider-wrap2">
-                                            <div id="intro-slider3">
-                                                <div class="intro-slide3" data-class="1" data-position="1">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box2 poster-box-222 bigguns-iframe">
-                                                        <img src="{{ asset('storage/' . $product->image) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="intro-slide3" data-class="2" data-position="2">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box2 poster-box-222 bigguns-iframe">
-                                                        <img src="{{ asset('storage/' . $product->image_secondary) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="intro-slide3" data-class="3" data-position="3">
-                                                    <div class="slide-overlay"></div>
-                                                    <div class="poster-box poster-box2 poster-box-222 bigguns-iframe">
-                                                        <img src="{{ asset('storage/' . $product->image_third) }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="slider-next3">
-                                                <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}"
-                                                    alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <svg class="ev-journey__cup" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6"/></svg>
                         @endif
-                    </div>
-                </div>
-            </section>
-            @php
-                $key = $key + 1;
-            @endphp
-        @endforeach
-    @endif
+                    </span>
 
-
-    <!--====== Testimonials PART START ======-->
-    @if ($testimonials)
-        <section class="testimonials-section section pt-100 pb-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="testi-head">
-                            <h1>Abreco In The Limelight</h1>
-                            <p>We assure our customers with world-class services and guarantee quality and standard in our
-                                products but its always better to hear from our customers on who we are and our capability.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 ">
-                        <div class="owl-carousel testi-slider">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="item-testi">
-                                    <div class="left-side">
-                                        <div class="img">
-                                            <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <h2>{{ @$testimonial->name }}</h2>
-                                            <span>{{ @$testimonial->designation }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="right-side">
-                                        <!-- <div class="quote-icon">
-                                                        <img src="{{ asset('assets/abreco/images/shapes/quote.svg') }}" alt="" style="max-width: 100px;">
-                                                    </div> -->
-                                        <div class="text">
-                                            <div class="qt-icon">
-                                                <img src="{{ asset('assets/abreco/images/shapes/quotes.png') }}"
-                                                    alt="">
-                                            </div>
-                                            <p>{!! @$testimonial->message !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <!--====== abreco BLOG PART START ======-->
-    <section class="abreco-blog-area pt-90 pb-95">
-        <div class="container">
-            @if ($blogs->count() > 0)
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="abreco-section-title">
-                            <h3 class="abreco-title">Drift Across Our Blogs</h3>
-                            <p>We have jot together our stories and knowledge to keep you updated. Give it a quick drift....
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="primary-btn-main expl-btn service-btn01">
-                            <a href="{{ route('blog.show') }}" class=" new-btn-style">
-                                <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14"
-                                    viewBox="0 0 21 14" fill="none">
-                                    <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <img src="{{ asset('assets/abreco/images/shapes/right-white.png') }}"
-                                    class="d-none white" alt="">
-                                Explore More</a>
-                        </div>
-                        <!-- <div class="expl-btn">
-                                    <a href="{{ route('blog.show') }}">
-                                        <div class="icons">
-                                            <img src="{{ asset('assets/abreco/images/shapes/2.png') }}" alt="">
-                                            <img src="{{ asset('assets/abreco/images/shapes/3.png') }}" alt="">
-                                        </div>
-                                        Explore More
-                                    </a>
-                                </div> -->
-                    </div>
-                </div>
-                <div class="row mt-575-20">
-                    @foreach ($blogs as $blog)
-                        <div class="col-lg-6 col-md-12">
-                            <div class="abreco-blog-item mt-30">
-                                <div class="thumb">
-                                    <a href="{{ route('blog.details', $blog->slug) }}">
-                                    <img src="{{ asset('storage/' . $blog->feature_image) }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h3 class="title"><a
-                                            href="{{ route('blog.details', $blog->slug) }}">{{ @$blog->title }}</a></h3>
-                                    <p>{!! \Illuminate\Support\Str::limit(@$blog->details, $limit = 150, $end = '...') !!}</p>
-                                    <a href="{{ route('blog.details', $blog->slug) }}" class="blog-btn-home"><span>Read More</span> <i
-                                            class="fal fa-chevron-right"></i><i class="fal fa-chevron-right"></i>
-                                        <i class="fal fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </section>
-
-    <!--====== abreco Gallery PART START ======-->
-    <section class="gallery-home pt-100 pb-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="abreco-section-title">
-                        <h3 class="abreco-title">Gallery</h3>
-                        <p>Let’s roll Across the snaps 
+                    @if ($a['van'])
+                        <p class="ev-journey__text ev-journey__name">
+                            <span class="ev-journey__van">{{ $a['van'] }}</span>
                         </p>
-                    </div>
-                </div>
+                    @endif
 
-                <div class="col-lg-3">
-                    <div class="primary-btn-main expl-btn service-btn01">
-                        <a href="{{ route('gallery.index') }}" class=" new-btn-style">
-                            <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14"
-                                viewBox="0 0 21 14" fill="none">
-                                <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <img src="{{ asset('assets/abreco/images/shapes/right-white.png') }}" class="d-none white"
-                                alt="">
-                            View More</a>
-                    </div>
-                </div>
-            </div>
-                @if ($galleries->count() > 0)
-                    <div class="row mt-30" id="content">
-                        @foreach ($galleries as $key => $gallery)
-                            <div class="col-md-3 col-6 box @if ($key >= 12) hidden @endif">
-                                <div class="card home-galery">
-                                    <div class="card-image">
-                                        <a href="{{ asset('storage/' . $gallery->images) }}" data-fancybox="gallery" class="plus">
-                                        <img src="{{ asset('storage/' . $gallery->images) }}">
-                                    </a>
-                                        <!-- <div class="overlay-box">
-                                            <div class="overlay-content">
-                                                <a href="{{ asset('storage/' . $gallery->images) }}" data-fancybox="gallery" class="plus">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+                    {{-- With no van name, the award text takes the empty name column too --}}
+                    <p class="ev-journey__text ev-journey__what @unless ($a['van']) ev-journey__what--wide @endunless">
+                        @if ($a['rank'])Rated Number {{ $a['rank'] }} {{ $a['title'] }}@else<span class="ev-journey__gold">{{ $a['title'] }}</span>@endif
+                    </p>
+
+                    <span class="ev-journey__year">{{ $a['year'] }}</span>
+                </li>
+            @endforeach
+        </ol>
+
+    </div>
+</section>
+
+
+
+    <!--====== [reer] ======-->
+
+{{-- Everest Caravans — "Lux Decor" (about-style section with video) --}}
+
+{{-- Styles live in assets/css/home2.css; fonts load once in the layout head --}}
+@php
+    $evDecorJs = 'js/decor.js';
+@endphp
+
+@php
+    // ---- Edit content here ----
+    $evDecor = [
+        'eyebrow' => 'Lux Decor',
+        'title'   => 'Customised inside and out, styled to feel like home.',
+        'text'    => 'Everest vans are customisable from the inside out. We love giving our owners the chance to style their interior with whatever makes them feel right at home.',
+        'button'  => ['label' => 'Visit Our Showroom', 'url' => url('/contact')],
+
+        // YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID  (null = no play button)
+        'video'   => null,
+
+        'cover'    => 'assets/images/decor/video-cover.jpg',       // landscape ~1400x780
+        // Portrait slider — add or remove entries, the slideshow adapts
+        'portraits' => [
+            'assets/abreco/images/vehicles/build-van-17.jpeg',
+            'assets/abreco/images/vehicles/build-van-18.jpeg',
+        ],
+    ];
+
+    $evDecorFeatures = [
+        ['label' => 'Interior styled your way',       'icon' => '<path d="M4 20V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="m10 8 3.5-3.5a1 1 0 0 1 1.4 0l2.6 2.6a1 1 0 0 1 0 1.4L10 16"/><path d="M8 22h12a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3"/><circle cx="7" cy="18" r=".6"/>'],
+        ['label' => 'One-of-a-kind layouts',          'icon' => '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18M10 10v11"/>'],
+        ['label' => 'Highest quality materials',      'icon' => '<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9.5 3 12 21l2.5-18"/>'],
+        ['label' => 'Quality checked before delivery','icon' => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>'],
+    ];
+
+    $evCover    = file_exists(public_path($evDecor['cover']))    ? asset($evDecor['cover'])    : null;
+    $evPortraits = collect($evDecor['portraits'])
+        ->filter(fn ($i) => file_exists(public_path($i)))
+        ->map(fn ($i) => asset($i))
+        ->values();
+@endphp
+
+<section class="ev-decor" aria-labelledby="evDecorTitle">
+    <div class="ev-decor__inner">
+
+        {{-- LEFT: heading, video, features --}}
+        <div class="ev-decor__main">
+            <p class="ev-decor__eyebrow">{{ $evDecor['eyebrow'] }}</p>
+            <h2 class="ev-decor__title" id="evDecorTitle">{{ $evDecor['title'] }}</h2>
+
+            <div class="ev-decor__media">
+                @if ($evCover)
+                    <img class="ev-decor__img" src="{{ $evCover }}" alt="Inside an Everest caravan"
+                         width="1400" height="780" loading="lazy" decoding="async">
                 @endif
-        </div>
-    </section>
 
-    <!--====== Experts PART START ======-->
-    <section class="expert-section pt-30 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="expert-areas d-flex">
-                        <div class="expert-inner">
-                            <h1>Talk to the Experts</h1>
-                            <p>We are always privileged to get you onboarded and give you the perfect ride of your desire.
-                                So if you are interested, hit the breaks and get in touch with our experts to
-                                know what’s in store for you.</p>
-                        </div>
-                        <div class="">
-                            <!-- <a href="{{ route('contact') }}">Get in Touch</a> -->
-                            <div class="primary-btn-main primary-btn-main-desktop primary-btn-main-40 mt-40">
-                                <a href="{{ route('contact') }}#contact-identifier" class=" new-btn-style">
-                                    <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14"
-                                        viewBox="0 0 21 14" fill="none">
-                                        <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}" class="d-none white"
-                                        alt="">
-                                    Get in Touch</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @if ($evDecor['video'])
+                    <button type="button" class="ev-decor__play" data-ev-video="{{ $evDecor['video'] }}"
+                            aria-label="Play video">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                    </button>
+                @endif
             </div>
+
+            <ul class="ev-decor__features">
+                @foreach ($evDecorFeatures as $f)
+                    <li class="ev-decor__feature">
+                        <span class="ev-decor__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="16" height="16">{!! $f['icon'] !!}</svg>
+                        </span>
+                        <span class="ev-decor__label">{{ $f['label'] }}</span>
+                    </li>
+                @endforeach
+            </ul>
         </div>
-    </section>
 
-    <!--====== Contact PART START ======-->
-    <section class="contact-section section">
-        <div class="container">
-            <div class="row">
+        {{-- RIGHT: text, button, tall photo --}}
+        <div class="ev-decor__side">
+            <p class="ev-decor__text">{{ $evDecor['text'] }}</p>
 
+            <a class="ev-decor__btn" href="{{ $evDecor['button']['url'] }}">
+                <span>{{ $evDecor['button']['label'] }}</span>
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+            </a>
 
-
-
-                <div class="col-lg-4 order-1-991">
-                    <div class="contact-head">
-                        <h2>Enquire now</h2>
-                        <h5>Time to gear up
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="28" height="21" viewBox="0 0 28 21"
-                                    fill="none">
-                                    <path d="M15.4389 0H17.609L12.606 21H10.3047L15.4389 0Z" fill="white" />
-                                    <path d="M25.7436 0H27.9137L22.9107 21H20.6094L25.7436 0Z" fill="white" />
-                                    <path d="M5.13422 0H7.30435L2.30132 21H0L5.13422 0Z" fill="white" />
-                                </svg> -->
-                        </h5>
-                        <p>Now let’s start this new venture together and experience the seamless services and rides of
-                            Abreco with all its premium quality. Commence this journey to find your smooth ride.</p>
-                    </div>
-                </div>
-
-                @include('forms.contactus_form')
-
-            </div>
-        </div>
-        <!-- Locations Areas -->
-        <div class="container">
-            <div class="row row-padding-mob">
-                @foreach ($locations_footer as $key => $locs)
-                    @php
-                        $key = $key + 1;
-                    @endphp
-                    <div class="col-lg-3 col-6 text-center p-0-991">
-                        <div class="loc-box loc-box-{{ $key }} loc-box-new">
-                            <div class="icon">
-                                <img src="{{ asset('storage/' . $locs->banner_image) }}" alt="">
-                            </div>
-                            <h4>{{ $locs->name }}</h4>
-                        </div>
-                    </div>
+            {{-- Crossfades through the images; one image = a plain photo --}}
+            <div class="ev-decor__portrait" data-ev-slides="{{ $evPortraits->count() }}">
+                @foreach ($evPortraits as $src)
+                    {{-- Only the first carries the alt text; the rest are decorative --}}
+                    <img src="{{ $src }}"
+                         alt="{{ $loop->first ? 'An Everest caravan under construction' : '' }}"
+                         width="800" height="1000" loading="lazy" decoding="async">
                 @endforeach
             </div>
         </div>
+
+    </div>
+
+    @if ($evDecor['video'])
+        {{-- Video popup (native <dialog>; the video only loads when opened) --}}
+        <dialog class="ev-decor__dialog" id="evDecorDialog" aria-label="Everest video">
+            <button type="button" class="ev-decor__close" aria-label="Close video">
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg>
+            </button>
+            <div class="ev-decor__frame">
+                <iframe title="Everest Caravans video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </dialog>
+
+        @if (file_exists(public_path($evDecorJs)))
+            <script src="{{ asset($evDecorJs) }}?v={{ filemtime(public_path($evDecorJs)) }}" defer></script>
+        @endif
+    @endif
+</section>
+
+
+    <!--====== Who are us ======-->
+
+
+
+{{-- Everest — "Who we are" with service tabs (tabs switch the quote + image) --}}
+
+{{-- Styles live in assets/css/home2.css; fonts load once in the layout head --}}
+@php
+    $wsJs = 'js/about-services.js';
+
+    // ================= EDIT CONTENT HERE =================
+    $wsAbout = [
+        'eyebrow' => 'Who We Are',
+        'title'   => 'Premium Custom Caravans, Built to the Highest Standard',
+        'text'    => 'Everest Caravans is a family owned business with over 15 years experience in the caravan industry. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations.',
+        'button'  => ['label' => 'About Everest', 'url' => url('/about')],
+        'bg'      => null,                                  // stats panel background; null = reuse the main photo
+        'photo'   => 'assets/images/about/who-we1.jpg',        // large photo, top left
+        'photo2'  => 'assets/images/about/who-we2.jpg',        // smaller photo, overlapping bottom right
+    ];
+
+    // One entry per tab. Clicking a tab swaps the quote text and image.
+    $wsServices = [
+        [
+            'label' => 'Off-Road',
+            'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
+            'title' => 'Engineered for off-road',
+            'text'  => 'Our vans are engineered for purpose. The Everest team hits the road often, so we know exactly what a van needs to handle the Gibb River, Oodnadatta and the Nullarbor.',
+            'image' => 'assets/images/services/off-road.png',
+        ],
+        [
+            'label' => 'Lux Decor',
+            'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
+            'title' => 'Customised from the inside out',
+            'text'  => 'Style your interior with whatever makes you feel right at home. Come into our showroom and select your one-of-a-kind interior.',
+            'image' => 'assets/images/services/lux-decor.png',
+        ],
+        [
+            'label' => 'Quality',
+            'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+            'title' => 'Strict quality control',
+            'text'  => 'Every caravan goes through our strict quality control process and must pass our QC stage before it is delivered to you.',
+            'image' => 'assets/images/services/quality.jpeg',
+        ],
+    ];
+    // =====================================================
+
+    $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) : null;
+    $wsPanelBg = $wsImg($wsAbout['bg']) ?? $wsImg($wsAbout['photo']);
+@endphp
+
+<section class="ws-about" aria-labelledby="wsAboutTitle">
+    <div class="ws-about__inner">
+
+        {{-- LEFT: dark stats panel + overlapping photo --}}
+        <div class="ws-about__media">
+            <div class="ws-about__photo ws-about__photo--main">
+                @if ($wsImg($wsAbout['photo']))
+                    <img src="{{ $wsImg($wsAbout['photo']) }}" alt="Everest Alpine Quattro off-road caravan" loading="lazy" decoding="async">
+                @endif
+            </div>
+
+            <div class="ws-about__photo ws-about__photo--sub">
+                @if ($wsImg($wsAbout['photo2']))
+                    <img src="{{ $wsImg($wsAbout['photo2']) }}" alt="Front of an Everest caravan with its stone guard and gas bottles" loading="lazy" decoding="async">
+                @endif
+            </div>
+        </div>
+
+        {{-- RIGHT: copy, button, service tabs --}}
+        <div class="ws-about__content">
+            <p class="ws-about__eyebrow">{{ $wsAbout['eyebrow'] }}</p>
+            <h2 class="ws-about__title" id="wsAboutTitle">{{ $wsAbout['title'] }}</h2>
+            <p class="ws-about__text">{{ $wsAbout['text'] }}</p>
+
+            <div class="ws-about__cta">
+                <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }}</a>
+            </div>
+
+            {{-- Service tabs + slider --}}
+            <div class="ws-tabs" data-ws-tabs data-autoplay="6000">
+                <div class="ws-tabs__list" role="tablist" aria-label="What makes an Everest">
+                    @foreach ($wsServices as $i => $svc)
+                        <button type="button" class="ws-tabs__tab {{ $i === 0 ? 'is-active' : '' }}"
+                                role="tab" id="wsTab{{ $i }}" aria-controls="wsPanel{{ $i }}"
+                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                tabindex="{{ $i === 0 ? '0' : '-1' }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">{!! $svc['icon'] !!}</svg>
+                            <span>{{ $svc['label'] }}</span>
+                        </button>
+                    @endforeach
+                </div>
+
+                <div class="ws-tabs__panels">
+                    @foreach ($wsServices as $i => $svc)
+                        <div class="ws-tabs__panel {{ $i === 0 ? 'is-active' : '' }}"
+                             role="tabpanel" id="wsPanel{{ $i }}" aria-labelledby="wsTab{{ $i }}"
+                             {{ $i === 0 ? '' : 'hidden' }}>
+                            <figure class="ws-quote">
+                                <svg class="ws-quote__mark" viewBox="0 0 32 24" width="32" height="24" aria-hidden="true">
+                                    <path d="M0 24V13.6C0 5.9 4.3 1.3 12.9 0l1.3 3.6C9.6 4.9 7.3 7.4 7 11h6.5v13zm17.8 0V13.6C17.8 5.9 22.1 1.3 30.7 0L32 3.6c-4.6 1.3-6.9 3.8-7.2 7.4h6.5v13z"/>
+                                </svg>
+                                <blockquote class="ws-quote__text">{{ $svc['text'] }}</blockquote>
+                                <figcaption class="ws-quote__by">
+                                    <strong>Everest Caravans</strong>
+                                    <span>Family owned</span>
+                                </figcaption>
+                            </figure>
+
+                            <div class="ws-tabs__img">
+                                @if ($wsImg($svc['image']))
+                                    <img src="{{ $wsImg($svc['image']) }}" alt="{{ $svc['title'] }}" loading="lazy" decoding="async">
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@if (file_exists(public_path($wsJs)))
+    <script src="{{ asset($wsJs) }}?v={{ filemtime(public_path($wsJs)) }}" defer></script>
+@endif
+
+{{-- Everest Caravans — "Our Partners" logo wall --}}
+
+{{-- Styles live in assets/css/home2.css; fonts load once in the layout head --}}
+@php
+    // ================= EDIT HERE =================
+    // Logos are already black & white. PNG/SVG with a transparent background works best.
+    // 'url' is optional — leave it null for a logo that isn't a link.
+    $epPartners = [
+        ['name' => 'Burst',                 'logo' => 'assets/images/partners/burst.png',            'url' => null],
+        ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.jpg',      'url' => null],
+        ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.jpg',     'url' => null],
+        ['name' => 'Road Runner Chassis',   'logo' => 'assets/images/partners/road-runner.jpg',      'url' => null],
+        ['name' => 'Swift Appliance Group', 'logo' => 'assets/images/partners/swift.jpg',            'url' => null],
+        ['name' => 'MPC Mags and Tyres',    'logo' => 'assets/images/partners/mpc.jpg',              'url' => null],
+        ['name' => 'Coast to Coast',        'logo' => 'assets/images/partners/coast-to-coast.jpg',   'url' => null],
+        ['name' => 'NCE',                   'logo' => 'assets/images/partners/nce.jpg',              'url' => null],
+        ['name' => 'Aussie Traveller',      'logo' => 'assets/images/partners/aussie-traveller.jpg', 'url' => null],
+        ['name' => 'Camec',                 'logo' => 'assets/images/partners/camec.jpg',            'url' => null],
+        ['name' => 'Thetford',              'logo' => 'assets/images/partners/thetford.jpg',         'url' => null],
+        ['name' => 'Adelaide Bank',         'logo' => 'assets/images/partners/adelaide-bank.webp',   'url' => null],
+    ];
+    // =============================================
+@endphp
+
+<section class="ev-partners" aria-labelledby="evPartnersTitle">
+    {{-- Background elements --}}
+    <span class="ev-partners__topo ev-partners__topo--a" aria-hidden="true"></span>
+    <span class="ev-partners__topo ev-partners__topo--b" aria-hidden="true"></span>
+    <span class="ev-partners__dots" aria-hidden="true"></span>
+
+    <div class="ev-partners__inner">
+
+        <header class="ev-partners__head">
+            <p class="ev-partners__eyebrow">Our Partners</p>
+            <h2 class="ev-partners__title" id="evPartnersTitle">Built with Australia&rsquo;s best caravan brands.</h2>
+            <p class="ev-partners__text">We work with trusted suppliers so every Everest van is fitted with parts that last on the road.</p>
+        </header>
+
+        <ul class="ev-partners__grid">
+            @foreach ($epPartners as $p)
+                @php
+                    $epLogo = file_exists(public_path($p['logo'])) ? asset($p['logo']) : null;
+                    $epTag  = $p['url'] ? 'a' : 'div';
+                @endphp
+                <li class="ev-partners__item">
+                    <{{ $epTag }} class="ev-partners__cell"
+                        @if ($p['url']) href="{{ $p['url'] }}" target="_blank" rel="noopener" aria-label="{{ $p['name'] }} (opens in a new tab)" @endif>
+                        @if ($epLogo)
+                            <img src="{{ $epLogo }}" alt="{{ $p['name'] }}" loading="lazy" decoding="async">
+                        @else
+                            {{-- No image yet: show the name so the grid never has an empty or broken cell --}}
+                            <span class="ev-partners__name">{{ $p['name'] }}</span>
+                        @endif
+                    </{{ $epTag }}>
+                </li>
+            @endforeach
+        </ul>
+
+    </div>
+</section>
+
+
+
+    <!--====== [reer] ======-->
+
+
+
+
+
+
     </section>
 
-    
+
 @endsection
 
 @section('js_after')
+    <script src="{{ asset('assets/js/hero-slider.js') }}"></script>
+    <script src="{{ asset('assets/js/about-reveal.js') }}"></script>
+    <script src="{{ asset('assets/js/reveal.js') }}"></script>
     <script>
         var rightImageUrl = "{{ asset('assets/abreco/images/shapes/right.svg') }}";
     </script>
     <!-- Frist truck slider -->
     <script>
         //  $('#form-Popup-veh').submit(function(event) {
-                 
+
         //         var response = grecaptcha.getResponse();
         //         alert(response);
         //             if (response.length === 0) {
@@ -1313,14 +1199,14 @@
                 var touchDown = false,
                 originalPosition = null,
                 $el = jQuery(this);
-        
+
                 function swipeInfo(event) {
                 var x = event.originalEvent.pageX,
                     y = event.originalEvent.pageY,
                     dx;
-        
+
                 dx = x > originalPosition.x ? "right" : "left";
-        
+
                 return {
                     direction: {
                     x: dx
@@ -1330,7 +1216,7 @@
                     }
                 };
                 }
-        
+
                 $el.on("touchstart mousedown", function (event) {
                 touchDown = true;
                 originalPosition = {
@@ -1338,13 +1224,13 @@
                     y: event.originalEvent.pageY
                 };
                 });
-        
+
                 $el.on("touchend mouseup", function () {
                 touchDown = false;
                 originalPosition = null;
                 flag = true;
                 });
-        
+
                 $el.on("touchmove mousemove", function (event) {
                 if (!touchDown) {
                     return;
@@ -1352,7 +1238,7 @@
                 var info = swipeInfo(event);
                 callback(info.direction, info.offset);
                 });
-        
+
                 return true;
             };
             // disabel image drag
@@ -1375,7 +1261,7 @@
                 },
                 options
             );
-        
+
             // dots
             if (settings.dots !== true) {
                 $("#dp-dots").hide();
@@ -1405,12 +1291,12 @@
                 $(".slider-next3").click();
                 }, settings.autoPlaySpeed);
             }
-        
+
             //slider direction
             if (settings.direction == "vertical") {
                 $(".slider-wrap").addClass("vertical");
             }
-        
+
             // stack_slider the collection based on the settings variable.
             return this.css({
                 color: settings.color,
@@ -1418,7 +1304,7 @@
             });
             };
         })(jQuery);
-        
+
         $("#slider3").stack_slider({
             autoPlaySpeed: 6000,
             autoPlay: false,
@@ -1464,11 +1350,11 @@
        $(document).ready(function() {
             // alert(1);
             // Listen for change event on the first select element
-            
-            $('#vehicle_type').on('change', function() { 
+
+            $('#vehicle_type').on('change', function() {
                 $('#vehicleApp').removeClass('d-none');
                 var selectedType = $(this).val();
-                
+
                 // alert(selectedType);
                 // Make an Ajax request to fetch vehicles based on the selected type
                 if(selectedType){
@@ -1495,7 +1381,7 @@
                         }
                     });
                 }
-                
+
             });
 
             $('#vehicle_type_mobile').on('change', function() {

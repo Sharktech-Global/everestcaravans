@@ -46,19 +46,11 @@
         padding: 20px 10px;
     }
     .abreco-logo-box a img{
-        max-width: 120px;
-    }
-    .header-logobg{
-        width: 355.301px;
-    }
-    .header-logobg2{
-        left: -37%;
-        top: -480%;
-        width: 658.63px;
-        height: 860.119px;
+        max-width: 250px;
+        margin-top: 20px;
     }
     .header-logobg23{
-        left: -42%;
+        left: 2%;
     }
     .header .caption h1{
         font-size: 40px;
@@ -207,9 +199,6 @@
 }
 
 @media(max-width: 1366px){
-    .header-logobg2{
-        left: -38%;
-    }
     .abreco-header-main-menu ul > li:hover .sub-menu li a{
         font-size: 15px !important;
     }
@@ -222,13 +211,6 @@
 }
 
 @media(max-width: 1199px){
-    /* .header-logobg {
-        width: 350.301px;
-    } */
-    /* .header-logobg2 {
-        top: -437%;
-        width: 591.63px;
-    } */
     .header .caption h1{
         font-size: 40px;
         line-height: 45px;
@@ -267,16 +249,10 @@
     .fin-box-13::before,
     .fin-box-13::after{
         display: none;
-    } 
+    }
     .left-contact-img{
         top: 250px;
         left: 15%;
-    }
-    .header-logobg2{
-        display: none;
-    }
-    .header-logobg{
-        display: none;
     }
     .abreco-header-area{
         position: absolute;
@@ -285,7 +261,9 @@
         /* backdrop-filter: blur(2px); */
     }
     .abreco-logo-box a img {
-        max-width: 100px;
+        max-width: 240px;
+        margin-top: 24px;
+        top: 34px;
     }
     .abreco-header-area{
         padding-bottom: 10px;
@@ -424,17 +402,17 @@
         display: block;
     }
 
-   
+
 
 
 }
 
- 
+
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
     .abreco-header-main-menu ul > li .big-device-none {
         display: block;
-    } 
+    }
     .shop-small-left-slider-active {
         max-width: 310px;
         transform: rotate(0deg);
@@ -443,7 +421,7 @@
         left: 190px;
     }
 
-   
+
 
 }
 
@@ -456,10 +434,10 @@
     }
 }
 
- 
+
 /* small mobile :320px. */
 @media (max-width: 767px) {
-   
+
 
     .shop-small-left-slider-active {
         max-width: 310px;
@@ -477,10 +455,10 @@
     .abreco-hero-content ul li {
         margin-bottom: 0;
     }
- 
+
 }
 
- 
+
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 .container {width:450px}
@@ -502,19 +480,6 @@
 
 
 /* Responsivess........ */
-/* @media(min-width:1601px) and (max-width:1919px){
-    .abreco-logo-box a img{
-        max-width: 150px;
-    }
-    .header-logobg{
-        top: -404%;
-        left: -14%;
-    }
-    .header-logobg2{
-        left: -40%;
-    }
-} */
-
 @media(min-width:992px) and (max-width:1780px){
     .founder-area .left-img{
         top: 78px;
@@ -549,18 +514,11 @@
     }
 }
 
-/* @media(min-width: 1441px) and (max-width:1601px){
+@media(min-width: 1441px) and (max-width:1601px){
     .abreco-logo-box a img{
-        max-width: 150px;
+        max-width: 250px;
     }
-    .header-logobg{
-        top: -400%;
-        left: -16%;
-    }
-    .header-logobg2{
-        left: -50%;
-    }
-} */
+}
 
 @media(max-width: 1440px){
     .scroll-baner {
@@ -570,7 +528,7 @@
     }
     .qt-icon img{
         max-width: 80px;
-    }  
+    }
     .qt-icon{
         position: absolute;
         top: -50px;
@@ -777,7 +735,7 @@
         font-size: 15px;
     }
     .service-item .img img{
-        min-height: 275px;   
+        min-height: 275px;
     }
     .ft-addr .addr p, .ft-addr-last span, .ft-addr-last a .ft-addr3 span, .ft-addr3 a{
         font-size: 17px;
@@ -888,12 +846,6 @@
 
 
 @media (min-width: 1200px) and (max-width: 1300px){
-    .header-logobg {
-      width: 310.301px;
-    }
-    .header-logobg2 {
-      left: -44%;
-    }
     .header .caption h1 {
       font-size: 38px;
       line-height: 44px;
@@ -951,12 +903,6 @@
     }
     .baner-bg-head2 img{
         max-width: 250px;
-    }
-    .header-logobg{
-        display: block;
-        width: 274.301px;
-        top: -321%;
-        left: -15%;
     }
     .abreco-inner-banner, .bread-inner{
         /* height: 400px; */
@@ -1050,7 +996,6 @@
         color: #000 !important;
         font-size: 18px !important;
         font-weight: 600;
-        font-style: italic;
         padding: 0;
     }
     .accordion>.card>.card-header h2 button:focus{
@@ -1331,7 +1276,7 @@
     .counter-area .conter-box3,
     .counter-area .conter-box4{
         border-bottom: none;
-    } 
+    }
     .loc-box{
         min-height: 120px;
     }
@@ -1394,10 +1339,6 @@
     }
     .bread-inner h1{
         font-size: 40px;
-    }
-    .header-logobg{
-        width: 225.301px;
-        top: -336%;
     }
     .abt-logo2:before{
         position: inherit;
@@ -1715,7 +1656,7 @@
         max-width: 125px;
     }
     .first-logo-footer .logo img{
-        max-width: 150px;
+        max-width: 250px;
     }
     .intro-slide, .intro-slide2, .intro-slide3{
         width: 82%;
@@ -1752,15 +1693,15 @@
     }
     .toggle-btn{
         top: 65%;
-        transform: translateY(-112%);  
-        font-size: 22px;  
+        transform: translateY(-112%);
+        font-size: 22px;
         margin-top: -6px;
     }
     .offcanvas_menu {
         display: block !important;
     }
     .abreco-logo-box a img {
-        max-width: 90px;
+        max-width: 170px;
     }
     .header .caption h1 {
         font-size: 30px;
@@ -1886,12 +1827,6 @@
     }
     .mobile-dropdown{
         background-position-x: 97%;
-    }
-    .header-logobg{
-        display: block;
-        width: 284.301px;
-        left: -38%;
-        top: -390%;
     }
     .services-areas{
         padding-top: 100px;
@@ -2188,7 +2123,7 @@
         display: block !important;
         overflow: hidden;
     }
-    .glob-img img{  
+    .glob-img img{
         position: absolute;
         bottom: -330px;
         max-width: 280px;
@@ -2387,7 +2322,7 @@
         border-radius: 50%;
         line-height: 40px;
     }
-    
+
     .float-icon-bottom ul li a.telphone {
         background: #469EFF;
         background: transparent;
@@ -2409,12 +2344,12 @@
     .back-to-top{
         bottom: 140px;
     }
-    .copy-right-sec{
-        padding-bottom: 50px;
+    .copy-right-sec1{
+        padding-bottom: 30px;
     }
     .floatingButton{
         display: none;
-    } 
+    }
     .home-galery{
         margin-bottom: 18px;
     }
@@ -2705,4 +2640,360 @@
     }
 }
 
+/* Header logo: one authoritative size for every screen above 1200px.
+   Last rule in the last stylesheet, so it settles the four overlapping
+   breakpoints in style.css and above in this file. */
+@media (min-width: 1200px) {
+    .abreco-logo-box a img {
+        max-width: 250px;
+    }
+}
 
+/* ==========================================================
+   HEADER LOGO PLATE — single definition, every screen.
+
+   Two oversized rectangles rotated ~48deg behind the logo. Only
+   their bottom-left corner reaches the viewport, and that corner
+   is the diagonal cutting across the hero.
+
+   top/left are in PIXELS on purpose. They used to be percentages
+   (-305% of header height, -9% of viewport width), which only hit
+   the intended placement at ~1911px wide with a 146px-tall header
+   and drifted on every other screen. These px values reproduce
+   that same placement at any width.
+
+   To resize, change --hl-scale. scale() runs about the centre, so
+   each scaled breakpoint re-pins top/left to keep the visible
+   corner on the same spot. Never set width alone: that changes the
+   rectangle's proportions and the diagonal's angle with it.
+   ========================================================== */
+.abreco-header-area { --hl-scale: 1; }
+
+.header-logobg,
+.header-logobg2 {
+    position: absolute;
+    flex-shrink: 0;
+    pointer-events: none;        /* decorative: never swallow hero clicks */
+}
+.header-logobg {
+    top: -386px;
+    left: -172px;
+    width: 720.301px;
+    height: 453.73px;
+    border-radius: 10px;
+    background: #FFF;
+    transform: rotate(-47.891deg) scale(var(--hl-scale));
+}
+.header-logobg2 {
+    top: -350px;
+    left: -611px;
+    z-index: -1;
+    width: 1155.63px;
+    height: 630.119px;
+    background: rgba(184, 218, 255, .32);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    transform: rotate(-48.291deg) scale(var(--hl-scale));
+}
+
+/* Hidden once the header goes sticky */
+.abreco-sticky.sticky .header-logobg,
+.abreco-sticky.sticky .header-logobg2 { display: none; }
+
+/* ---------- Mobile: plain header bar, no diagonal plate ----------
+   At phone width the rotated rectangle is wider than the screen, so it
+   covers the logo and the hero copy. A normal bar reads better, and the
+   Everest logo is dark ink, so it needs a light background behind it. */
+@media (max-width: 991px) {
+    .header-logobg,
+    .header-logobg2 { display: none; }
+
+    .abreco-header-area {
+        padding-top: 0;
+        background: #FFF;
+        box-shadow: 0 2px 14px rgba(14, 19, 48, .12);
+    }
+    .abreco-header-area .header-nav-box { padding: 10px 0; }
+    .abreco-logo-box a img { margin-top: 0; }
+
+    /* The bar is white now, so the button needs no plate of its own */
+    .toggle-btn { background-color: transparent; padding: 5px 0 2px; }
+}
+
+/* ==========================================================
+   EVEREST FOOTER — dark panel over a photo, brand-blue accents.
+   Prefixed .ev-ftr throughout so the abreco theme can't reach in.
+   ========================================================== */
+.ev-ftr {
+    --ef-accent: #4A5BC4;              /* brand blue, lifted so it reads on dark */
+    --ef-accent-soft: #8C9BF0;
+    --ef-ink: #0B0E22;                 /* base behind the photo */
+    --ef-white: #FFFFFF;
+    --ef-text: rgba(255, 255, 255, .64);
+    --ef-dim: rgba(255, 255, 255, .42);
+    --ef-rule: rgba(255, 255, 255, .10);
+    --ef-card: rgba(255, 255, 255, .035);
+    --ef-max: 1440px;
+    --ef-side: 60px;
+    --ef-photo: url("../images/awards/awardsection.jpg");
+
+    position: relative;
+    isolation: isolate;
+    padding: 72px 0 24px;
+    border-top: 1px solid var(--ef-rule);
+    background:
+        radial-gradient(ellipse 60% 70% at 18% 0%, rgba(40, 56, 149, .34), rgba(40, 56, 149, 0) 68%),
+        linear-gradient(180deg, rgba(11, 14, 34, .80) 0%, rgba(11, 14, 34, .88) 55%, rgba(11, 14, 34, .95) 100%),
+        var(--ef-photo) center / cover no-repeat,
+        var(--ef-ink);
+    color: var(--ef-text);
+    font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+}
+.ev-ftr *, .ev-ftr *::before, .ev-ftr *::after { box-sizing: border-box; }
+.ev-ftr :where(h4, p, ul, li, dl, dt, dd) { margin: 0; padding: 0; }
+.ev-ftr :where(ul) { list-style: none; }
+.ev-ftr img { max-width: 100%; border: 0; }
+.ev-ftr svg { display: block; flex: none; }
+.ev-ftr a { color: inherit; text-decoration: none; transition: color .2s ease; }
+.ev-ftr a:hover, .ev-ftr a:focus { color: var(--ef-white); }
+
+.ev-ftr__inner {
+    width: 100%;
+    max-width: var(--ef-max);
+    margin: 0 auto;
+    padding: 0 var(--ef-side);
+}
+
+/* ---------- Top strip: eyebrow, marks, call to action ---------- */
+.ev-ftr__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ef-dim);
+}
+.ev-ftr__eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: currentColor;
+}
+.ev-ftr__top-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 38px;
+    border-bottom: 1px solid var(--ef-rule);
+}
+.ev-ftr__marks { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.ev-ftr__logo img { width: 230px; height: auto; }
+.ev-ftr__divider { width: 1px; height: 54px; background: var(--ef-rule); }
+.ev-ftr__badge { width: 76px; height: auto; }
+
+.ev-ftr__cta { text-align: right; }
+.ev-ftr__cta-title {
+    margin-bottom: 14px;
+    font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ef-white);
+}
+.ev-ftr__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    background: var(--ef-accent);
+    color: var(--ef-white);
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color .25s ease, transform .25s ease;
+}
+.ev-ftr__btn svg {
+    width: 18px; height: 18px;
+    fill: none; stroke: currentColor;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.ev-ftr__btn:hover { background: #3A49A8; color: var(--ef-white); transform: translateY(-2px); }
+.ev-ftr__btn:focus-visible { outline: 2px solid var(--ef-accent-soft); outline-offset: 3px; }
+
+/* ---------- Main columns ---------- */
+.ev-ftr__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 2fr .9fr;
+    gap: 52px 0;              /* columns are spaced by their own padding below */
+    align-items: stretch;     /* so the rules run the full column height */
+    padding: 52px 0 56px;
+}
+/* A rule after every column but the last, with 36px either side of it */
+.ev-ftr__grid > * { padding-inline: 36px; }
+.ev-ftr__grid > *:first-child { padding-left: 0; }
+.ev-ftr__grid > *:last-child { padding-right: 0; }
+.ev-ftr__grid > *:not(:last-child) { border-right: 1px solid var(--ef-rule); }
+.ev-ftr__about {
+    max-width: 46ch;
+    margin-bottom: 34px;
+    line-height: 1.75;
+    color: white;
+}
+
+/* Label / value rows under the blurb */
+.ev-ftr__meta {
+    display: grid;
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 18px 20px;
+    align-items: baseline;
+}
+.ev-ftr__meta dt {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ef-dim);
+}
+.ev-ftr__meta dd { color: var(--ef-white); font-weight: 500; }
+.ev-ftr__status { display: flex; align-items: center; gap: 9px; color: #5FD08A !important; }
+.ev-ftr__status span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px rgba(95, 208, 138, .18);
+}
+
+/* Column headings, small caps in the accent tint */
+.ev-ftr__title {
+    margin-bottom: 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ef-accent-soft);
+}
+.ev-ftr__list { display: grid; gap: 13px; }
+.ev-ftr__list li { line-height: 1.5; overflow-wrap: break-word; }
+.ev-ftr__list a, .ev-ftr__list span { display: inline-block; transition: transform .2s ease, color .2s ease; }
+.ev-ftr__list a:hover { transform: translateX(3px); }
+/* Twelve models would make a very tall single column */
+.ev-ftr__col--range .ev-ftr__list {
+    display: block;
+    columns: 2;
+    column-gap: 30px;
+}
+.ev-ftr__col--range .ev-ftr__list li {
+    break-inside: avoid;      /* never split a name across the columns */
+    margin-bottom: 13px;
+}
+
+/* ---------- Contact strip ---------- */
+.ev-ftr__strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;    /* values, links and icons share one baseline */
+    gap: 24px 0;              /* spacing comes from the items, so dividers sit centred */
+    padding: 26px 0;
+    border-top: 1px solid var(--ef-rule);
+    border-bottom: 1px solid var(--ef-rule);
+}
+.ev-ftr__strip-item {
+    padding-right: 40px;
+    margin-right: 40px;       /* equal air either side of the rule */
+    border-right: 1px solid var(--ef-rule);
+}
+.ev-ftr__strip-item:last-of-type { padding-right: 0; margin-right: 0; border-right: 0; }
+.ev-ftr__label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ef-dim);
+}
+.ev-ftr__strip-value { font-size: 17px; font-weight: 600; color: var(--ef-white); }
+.ev-ftr__strip-links {
+    display: flex;
+    gap: 26px;
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 1.6;         /* matches the value line so the baseline holds */
+}
+.ev-ftr__social { display: flex; align-items: center; gap: 18px; margin-left: 40px; font-size: 17px; }
+.ev-ftr__social a { color: var(--ef-dim); }
+.ev-ftr__social a:hover { color: var(--ef-white); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1299.98px) {
+    .ev-ftr { --ef-side: 40px; }
+    .ev-ftr__grid { grid-template-columns: 1.15fr 1.3fr .85fr; gap: 44px 0; }
+    .ev-ftr__grid > * { padding-inline: 28px; }
+    .ev-ftr__logo img { width: 190px; }
+}
+@media (max-width: 1099.98px) {
+    .ev-ftr__grid { grid-template-columns: 1fr 1fr; gap: 44px 0; }
+    .ev-ftr__intro { grid-column: 1 / -1; padding-right: 0; border-right: 0; }
+    .ev-ftr__grid > * { padding-inline: 32px; }
+    .ev-ftr__grid > .ev-ftr__col--range { padding-left: 0; }
+}
+@media (max-width: 767.98px) {
+    .ev-ftr { --ef-side: 24px; padding: 56px 0 44px; }
+    .ev-ftr__top-row { flex-direction: column; align-items: flex-start; gap: 26px; }
+    .ev-ftr__cta { text-align: left; }
+    .ev-ftr__grid { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 44px; }
+    .ev-ftr__intro { grid-column: auto; }
+    /* Stacked: separate the blocks with a rule underneath instead */
+    .ev-ftr__grid > * { padding-inline: 0; border-right: 0; }
+    .ev-ftr__grid > *:not(:last-child) {
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--ef-rule);
+    }
+    .ev-ftr__strip { align-items: flex-start; }
+    .ev-ftr__strip-item { padding-right: 0; margin-right: 0; border-right: 0; }
+    .ev-ftr__strip-links { margin-left: 0; }
+    .ev-ftr__social { margin-left: 0; }
+}
+@media (max-width: 479.98px) {
+    .ev-ftr { --ef-side: 18px; }
+    .ev-ftr__marks { gap: 18px; }
+    .ev-ftr__logo img { width: 160px; }
+    .ev-ftr__badge { width: 62px; }
+    .ev-ftr__col--range .ev-ftr__list { columns: 1; }
+    .ev-ftr__strip-value { font-size: 16px; }
+    .ev-ftr__strip-links { flex-wrap: wrap; gap: 8px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ev-ftr__btn, .ev-ftr__list a { transition: none; }
+    .ev-ftr__btn:hover { transform: none; }
+    .ev-ftr__list a:hover { transform: none; }
+}
+.section.copy-right-sec1 {
+    background-color: #0b0e22;
+}
+
+/* ==========================================================
+   Copyright bar — same inner width as the footer above it.
+   It uses Bootstrap .container, which tops out well short of the
+   footer. These values mirror .ev-ftr --ef-max and --ef-side, so
+   the two line up at every breakpoint. Selector is two deep, so it
+   outranks .container without !important.
+   ========================================================== */
+.copy-right-sec1 > .container {
+    width: 100%;
+    max-width: 1440px;        /* --ef-max */
+    margin-inline: auto;
+    padding-inline: 60px;     /* --ef-side */
+}
+@media (max-width: 1299.98px) { .copy-right-sec1 > .container { padding-inline: 40px; } }
+@media (max-width: 767.98px)  { .copy-right-sec1 > .container { padding-inline: 24px; } }
+@media (max-width: 479.98px)  { .copy-right-sec1 > .container { padding-inline: 18px; } }
