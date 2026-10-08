@@ -2452,7 +2452,7 @@
     }
     .vehicle-data .container .details-tab-wrapper .tabbed-content{
         box-shadow: none !important;
-        padding: 30px 10px 30px !important;
+        padding: 10px 10px 30px !important;
     }
     .vehicle-data .container .details-tab-wrapper .tabbed-content .item{
         padding: 0 15px;
@@ -2460,7 +2460,7 @@
     }
     .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs-new-class{
         position: sticky !important;
-        padding: 30px 0 30px;
+        padding: 0px 0 15px;
         /* background: #1E285F; */
         /* box-shadow: 0px 5px 15px rgb(0 0 0 / 30%); */
         border-bottom: 1px solid #dddddd2e;
@@ -2476,8 +2476,12 @@
         /* background: #1E285F !important; */
     }
     .vehicle-data .container{
-        padding: 0 !important;
-        margin: 0 !important;
+        padding: 0 10px !important;
+        /* margin: 0 !important; */
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul {
+        gap: 8px;
+        max-width: 100% !important;
     }
     .ft-new-addr{
         align-items: flex-start !important;

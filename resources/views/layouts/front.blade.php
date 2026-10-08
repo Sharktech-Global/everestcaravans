@@ -12,8 +12,14 @@
     {{-- <meta name="google-site-verification" content="26ZAl---uyCbz7e15k5NfHqrSJEurompyhZxt64R4Og" /> --}}
     <meta name="google-site-verification" content="lX8Nbe0qBUZ62JjzaV8NU8L8l_u-YMT3nCmfjGK-wLY" />
     <link rel="icon" href="{{ asset('storage/' . @$settings->favicon) }}" type="image/x-icon" />
-    <link rel="stylesheet" href="{{ asset('assets/abreco/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/abreco/css/responsive.css') }}">
+    {{-- Space Grotesk is the display face used across the home page sections.
+         Loaded here, not per page, because the navbar uses it on every route. --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    {{-- ?v=mtime so an edit is never served from the browser cache --}}
+    <link rel="stylesheet" href="{{ asset('assets/abreco/css/style.css') }}?v={{ filemtime(public_path('assets/abreco/css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/abreco/css/responsive.css') }}?v={{ filemtime(public_path('assets/abreco/css/responsive.css')) }}">
 
     <link rel="stylesheet" href="{{ asset('assets/inttel/intlTelInput.css') }}" type="text/css">
     <style>
@@ -114,9 +120,14 @@
                     <div class="col-lg-2 col-md-4 col-sm-5 col-6 order-1 order-sm-1">
                         <div class="abreco-logo-box"> <!-- logo here -->
                             <a href="{{ route('home') }}">
-                                {{-- <img src="{{ asset('assets/abreco/images/banner/logo.png') }}" alt=""> --}}
-                                <img src="{{ asset('storage/' . @$settings->logo) }}" alt="">
-
+                                {{-- Two marks stacked in one grid cell, cross-faded on .sticky:
+                                     white over the hero, dark ink once the bar turns white. --}}
+                                <img class="ev-logo ev-logo--light"
+                                     src="{{ asset('storage/' . (@$settings->logo_secondary ?: @$settings->logo)) }}"
+                                     alt="{{ config('app.name') }}">
+                                <img class="ev-logo ev-logo--dark"
+                                     src="{{ asset('storage/' . @$settings->logo) }}"
+                                     alt="" aria-hidden="true">
                             </a>
                         </div>
                     </div>
@@ -135,7 +146,7 @@
                                     <a href="{{ route('our-range') }}"
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
                                 </li>
-                                <!-- @foreach ($vehicle_types_data as $types)
+                                @foreach ($vehicle_types_data as $types)
                                     <li>
                                         <a href="#">{{ $types->name }} <i class="fal fa-angle-down"></i> </a>
                                         @php
@@ -170,26 +181,21 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                            @php
-                                                $firstVehicle = $vehicles_web->first();
-                                            @endphp
-
-                                            @if ($firstVehicle)
+                                            <ul class="recent-post-main-wrap">
+                                                <!-- <li class="mega-r-post"> Recent Posts  </li> -->
                                                 <div class="mega-menu-recent-ports">
-                                                    <div class="mega-menu-ul-block">
+                                                    <ul class="mega-menu-ul-block">
                                                         <div class="mega-img">
-                                                            <img
-                                                                src="{{ asset('storage/' . $firstVehicle->thumb) }}"
-                                                                alt="{{ $firstVehicle->name }}"
-                                                                id="menu-image-{{ $types->id }}"
+                                                            <img src="{{ asset('storage/' . $Vehiclew->thumb) }}"
+                                                                alt="" id="menu-image-{{ $types->id }}"
                                                                 class="menu-image">
                                                         </div>
-                                                    </div>
+                                                    </ul>
                                                 </div>
-                                            @endif
+                                            </ul>
                                         </div>
                                     </li>
-                                @endforeach -->
+                                @endforeach
                                 <!-- <li>
                                     <a href="{{ route('services.index') }}"
                                         @if ($routename == 'services.index') class="active" @endif>Services <i
@@ -253,7 +259,8 @@
                 <div class="ev-ftr__top-row">
                     <div class="ev-ftr__marks">
                         <a class="ev-ftr__logo" href="{{ route('home') }}">
-                            <img src="{{ asset('storage/' . @$settings->logo) }}" alt="Everest Caravans">
+                            {{-- logo_secondary is the white mark, for the dark panel --}}
+                            <img src="{{ asset('storage/' . (@$settings->logo_secondary ?: @$settings->logo)) }}" alt="Everest Caravans">
                         </a>
                         <span class="ev-ftr__divider" aria-hidden="true"></span>
                         <img class="ev-ftr__badge" src="{{ asset('assets/abreco/images/certificate.png') }}"
