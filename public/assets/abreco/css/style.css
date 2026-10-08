@@ -8572,6 +8572,9 @@ min-height: 492px;
 }
 
 @media(max-width: 600px){
+  .popgallery .card {
+    border-radius: 8px;
+  }
   .popgallery .gallery-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;

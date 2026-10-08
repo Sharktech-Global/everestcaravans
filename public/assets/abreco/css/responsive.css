@@ -2637,6 +2637,15 @@
     .ft-addr .addr p, .ft-addr-last span, .ft-addr-last a .ft-addr3 span, .ft-addr3 a{
         font-size: 13px;
     }
+    .vehicle-data .container .details-tab-wrapper .tabs ul {
+        flex-wrap: nowrap;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul li {
+        width: max-content;
+        min-width: 0;
+        max-width: none;
+        flex: 0 0 auto !important;
+    }
 }
 
 /* Header logo: one authoritative size for every screen above 1200px.
