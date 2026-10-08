@@ -115,7 +115,7 @@
                         <div class="abreco-logo-box"> <!-- logo here -->
                             <a href="{{ route('home') }}">
                                 {{-- <img src="{{ asset('assets/abreco/images/banner/logo.png') }}" alt=""> --}}
-                                <img src="{{ asset('storage/' . @$settings->logo_secondary) }}" alt="">
+                                <img src="{{ asset('storage/' . @$settings->logo) }}" alt="">
 
                             </a>
                         </div>
@@ -170,18 +170,23 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                            <ul class="recent-post-main-wrap">
-                                                <!-- <li class="mega-r-post"> Recent Posts  </li> -->
-                                                <div class="mega-menu-recent-ports">
-                                                    <ul class="mega-menu-ul-block">
-                                                        <div class="mega-img">
-                                                            <img src="{{ asset('storage/' . $Vehiclew->thumb) }}"
-                                                                alt="" id="menu-image-{{ $types->id }}"
-                                                                class="menu-image">
-                                                        </div>
-                                                    </ul>
-                                                </div>
-                                            </ul>
+                                            @php
+    $firstVehicle = $vehicles_web->first();
+@endphp
+
+@if ($firstVehicle)
+    <div class="mega-menu-recent-ports">
+        <div class="mega-menu-ul-block">
+            <div class="mega-img">
+                <img
+                    src="{{ asset('storage/' . $firstVehicle->thumb) }}"
+                    alt="{{ $firstVehicle->name }}"
+                    id="menu-image-{{ $types->id }}"
+                    class="menu-image">
+            </div>
+        </div>
+    </div>
+@endif
                                         </div>
                                     </li>
                                 @endforeach
