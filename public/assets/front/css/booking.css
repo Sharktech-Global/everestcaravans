@@ -1,13 +1,11 @@
 .cardetailpage .fifthSec-desc {
   padding: 120px 150px 120px 150px;
 }
-
 .cardetailpage #fifthSec img {
   position: absolute;
   left: 15%;
   top: 10%;
 }
-
 .cardetailpage .carBooking {
   background: #000;
   border-radius: 10px;
@@ -15,11 +13,9 @@
   padding: 0;
   max-width: 900px !important;
 }
-
 .cardetailpage .carBooking .form-group {
   margin-bottom: 40px;
 }
-
 .cardetailpage .carBooking .call__form input,
 .cardetailpage .carBooking .call__form select,
 .cardetailpage .carBooking .call__form textarea {
@@ -31,27 +27,19 @@
   border-radius: 2px;
   border-radius: 0px;
 }
-
 .cardetailpage .carBooking .call__form input#address-proof {
   padding: 8px;
 }
-
-.cardetailpage .carBooking .call__form input[type='file'] {
+.cardetailpage .carBooking .call__form input[type=file] {
   color: #fff;
 }
-
 .cardetailpage .carBooking .call__form label.checkbox-inline {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-bottom: 0.5rem;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
+  align-items: start;
   font-size: 16px;
   line-height: 22px;
 }
-
 .cardetailpage .carBooking .call__form label.checkbox-inline .colorbox {
   width: 20px;
   height: 20px;
@@ -59,7 +47,6 @@
   position: relative;
   top: 4px;
 }
-
 .cardetailpage .carBooking .call__form .nice-select {
   float: none;
   width: 100%;
@@ -68,12 +55,10 @@
   border-radius: 50px;
   line-height: 36px;
 }
-
 .cardetailpage .carBooking .call__form .nice-select span {
   font-size: 15px;
   color: #5C5C5C;
 }
-
 .cardetailpage .carBooking .call__form .nice-select .list {
   width: 100%;
   margin-top: 0;
@@ -81,7 +66,6 @@
   max-height: 250px;
   overflow-y: scroll;
 }
-
 .cardetailpage .carBooking .call__form .nice-select:after {
   height: 10px;
   width: 10px;
@@ -91,7 +75,6 @@
   right: 22px;
   top: 35%;
 }
-
 .cardetailpage .carBooking .call__form input[type=checkbox],
 .cardetailpage .carBooking .call__form input[type=radio] {
   width: 18px !important;
@@ -101,7 +84,6 @@
   position: relative;
   top: 0;
 }
-
 .cardetailpage .carBooking .call__form button.site-btn {
   height: 65px;
   background: #fff;
@@ -111,11 +93,9 @@
   padding: 0;
   line-height: 65px;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  transition: 0.5s;
   color: #000;
 }
-
 .cardetailpage .carBooking .call__form button.site-btn:hover {
   background: #054fa1;
   color: #fff;
@@ -139,18 +119,14 @@ span#color-name-change {
 .carBooking .all-colors div {
   display: inline-block;
 }
-
-.carBooking .all-colors input[type="radio"] {
+.carBooking .all-colors input[type=radio] {
   display: none;
   border: 2px solid #000;
 }
-
-.carBooking .all-colors input[type="radio"]:checked + label span {
-  -webkit-transform: scale(1.25);
-          transform: scale(1.25);
+.carBooking .all-colors input[type=radio]:checked + label span {
+  transform: scale(1.25);
   border: 2px solid #fff;
 }
-
 .carBooking .all-colors label {
   display: inline-block;
   width: 35px;
@@ -159,25 +135,17 @@ span#color-name-change {
   margin-bottom: 0;
   cursor: pointer;
 }
-
 .carBooking .all-colors label:hover span {
-  -webkit-transform: scale(1.25);
-          transform: scale(1.25);
+  transform: scale(1.25);
 }
-
 .carBooking .all-colors label span {
   display: block;
   width: 100%;
   height: 100%;
-  -webkit-transition: -webkit-transform .2s ease-in-out;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   border-radius: 50px;
-  -webkit-box-shadow: 0px 0px 31px -6px #fff;
-          box-shadow: 0px 0px 31px -6px #fff;
+  box-shadow: 0px 0px 31px -6px #fff;
 }
-
 .carBooking .all-colors span#color-name-change span {
   width: 100%;
   display: block;
@@ -209,5 +177,4 @@ span#color-name-change {
   .w-33 {
     width: 50%;
   }
-}
-/*# sourceMappingURL=booking.css.map */
+}/*# sourceMappingURL=booking.css.map */
