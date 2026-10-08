@@ -135,7 +135,7 @@
                                     <a href="{{ route('our-range') }}"
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
                                 </li>
-                                @foreach ($vehicle_types_data as $types)
+                                <!-- @foreach ($vehicle_types_data as $types)
                                     <li>
                                         <a href="#">{{ $types->name }} <i class="fal fa-angle-down"></i> </a>
                                         @php
@@ -171,25 +171,25 @@
                                                 @endforeach
                                             </ul>
                                             @php
-    $firstVehicle = $vehicles_web->first();
-@endphp
+                                                $firstVehicle = $vehicles_web->first();
+                                            @endphp
 
-@if ($firstVehicle)
-    <div class="mega-menu-recent-ports">
-        <div class="mega-menu-ul-block">
-            <div class="mega-img">
-                <img
-                    src="{{ asset('storage/' . $firstVehicle->thumb) }}"
-                    alt="{{ $firstVehicle->name }}"
-                    id="menu-image-{{ $types->id }}"
-                    class="menu-image">
-            </div>
-        </div>
-    </div>
-@endif
+                                            @if ($firstVehicle)
+                                                <div class="mega-menu-recent-ports">
+                                                    <div class="mega-menu-ul-block">
+                                                        <div class="mega-img">
+                                                            <img
+                                                                src="{{ asset('storage/' . $firstVehicle->thumb) }}"
+                                                                alt="{{ $firstVehicle->name }}"
+                                                                id="menu-image-{{ $types->id }}"
+                                                                class="menu-image">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </li>
-                                @endforeach
+                                @endforeach -->
                                 <!-- <li>
                                     <a href="{{ route('services.index') }}"
                                         @if ($routename == 'services.index') class="active" @endif>Services <i
