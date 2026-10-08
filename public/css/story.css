@@ -1,0 +1,419 @@
+/* Everest Caravans — About page first section
+   Every rule is prefixed with .ev-story so theme styles can't leak in. */
+
+.ev-story {
+    --es-ink: #0E1330;
+    --es-brand: #283895;
+    --es-gold: #D9AE55;
+    --es-text: #555A6E;
+    --es-line: #E3E5EE;
+    --es-tint: #EEF0FB;
+    --es-font: "Lexend", "Segoe UI", Roboto, Arial, sans-serif;
+    /* Headline face, matching the home page sections. Loaded in the layout head. */
+    --es-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --es-max: 1240px;
+    --es-side: 40px;
+    --es-radius: 10px;
+
+    display: block;
+    margin: 0;
+    padding: 110px 0 120px;
+    background: #fff;
+    font-family: var(--es-font);
+    color: var(--es-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-story *, .ev-story *::before, .ev-story *::after { box-sizing: border-box; }
+.ev-story h2, .ev-story h3, .ev-story p, .ev-story ul, .ev-story li {
+    margin: 0; padding: 0;
+    font-family: var(--es-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-story ul { list-style: none; }
+.ev-story img { max-width: none; border: 0; }
+.ev-story svg { display: block; flex: none; }
+
+.ev-story .ev-story__inner {
+    width: 100%;
+    max-width: var(--es-max);
+    margin: 0 auto;
+    padding: 0 var(--es-side);
+}
+
+/* ================= TOP ================= */
+.ev-story .ev-story__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 72px;
+}
+
+/* ---------- Image slider ---------- */
+.ev-story .ev-story__slider {
+    position: relative;
+    aspect-ratio: 575 / 500;
+    overflow: hidden;
+    border-radius: var(--es-radius);
+    background: var(--es-ink);
+    box-shadow: 0 30px 60px -32px rgba(14, 19, 48, .5);
+}
+.ev-story .ev-story__slides { position: absolute; inset: 0; }
+.ev-story .ev-story__slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .8s ease, visibility 0s linear .8s;
+}
+.ev-story .ev-story__slide.is-active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .8s ease, visibility 0s;
+}
+.ev-story .ev-story__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    transition: transform 6s ease-out;
+}
+.ev-story .ev-story__slide.is-active img { transform: scale(1); }   /* slow settle while showing */
+
+/* Shade at the bottom so the caption and controls stay readable */
+.ev-story .ev-story__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(14, 19, 48, .78) 0%, rgba(14, 19, 48, 0) 42%);
+    pointer-events: none;
+}
+.ev-story .ev-story__slide figcaption {
+    position: absolute;
+    left: 28px;
+    right: 150px;
+    bottom: 64px;
+    z-index: 1;
+    font-family: var(--es-display);
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 600;
+    line-height: 1.25;
+    color: #fff;
+}
+
+/* Controls: dots bottom-left, arrows bottom-right */
+.ev-story .ev-story__controls {
+    position: absolute;
+    left: 28px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ev-story .ev-story__dots { display: flex; align-items: center; gap: 8px; }
+.ev-story .ev-story__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .45);
+    cursor: pointer;
+    transition: width .35s ease, background-color .35s ease;
+}
+.ev-story .ev-story__dot.is-active { width: 28px; background: var(--es-gold); }
+.ev-story .ev-story__dot:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.ev-story .ev-story__arrows { display: flex; gap: 8px; }
+.ev-story .ev-story__arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--es-radius);
+    background: #fff;
+    color: var(--es-ink);
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+}
+.ev-story .ev-story__arrow svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-story .ev-story__arrow:hover { background: var(--es-gold); }
+.ev-story .ev-story__arrow:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Story copy */
+.ev-story .ev-story__title {
+    font-family: var(--es-display);
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    color: var(--es-ink);
+}
+.ev-story .ev-story__title span { color: var(--es-brand); }
+
+/* Short gold rule with two small dots, like the blueprint */
+.ev-story .ev-story__rule {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 24px 0 34px;
+}
+.ev-story .ev-story__rule::before {
+    content: "";
+    width: 44px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--es-gold);
+}
+.ev-story .ev-story__rule i {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--es-gold);
+}
+
+.ev-story .ev-story__text {
+    max-width: 58ch;
+    margin-bottom: 15px;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--es-text);
+}
+
+.ev-story .ev-story__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 52px;
+    margin-top: 16px;
+    padding: 0 26px;
+    border-radius: var(--es-radius);
+    background: var(--es-brand);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color .2s ease;
+}
+.ev-story .ev-story__btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .2s ease;
+}
+.ev-story .ev-story__btn:hover,
+.ev-story .ev-story__btn:focus,
+.ev-story .ev-story__btn:visited { color: #fff; text-decoration: none; }
+.ev-story .ev-story__btn:hover { background: var(--es-ink); }
+.ev-story .ev-story__btn:hover svg { transform: translateX(3px); }
+.ev-story .ev-story__btn:focus-visible { outline: 2px solid var(--es-brand); outline-offset: 3px; }
+
+/* ================= BOTTOM: three columns with dividers ================= */
+.ev-story .ev-story__cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 96px;
+    border-top: 1px solid var(--es-line);
+    border-bottom: 1px solid var(--es-line);
+}
+.ev-story .ev-story__col {
+    position: relative;
+    padding: 44px 40px 48px;
+    transition: background-color .3s ease;
+}
+.ev-story .ev-story__col:first-child { padding-left: 0; }
+.ev-story .ev-story__col:last-child { padding-right: 0; }
+/* Vertical divider between columns */
+.ev-story .ev-story__col + .ev-story__col { border-left: 1px solid var(--es-line); }
+/* Gold accent line that grows along the top divider on hover */
+.ev-story .ev-story__col::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--es-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .45s cubic-bezier(.22, .7, .2, 1);
+}
+.ev-story .ev-story__col:hover::before { transform: scaleX(1); }
+
+/* Column head: bare icon on the left, big outlined numeral on the right,
+   joined by a hairline. The rounded tinted tile and the tiny gold caption
+   number are gone — the numeral carries the weight now, and the hairline
+   speaks the same gold language as the rule under the section title. */
+.ev-story .ev-story__col-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.ev-story .ev-story__icon {
+    display: grid;
+    place-items: center;
+    color: var(--es-brand);
+    transition: color .3s ease, transform .3s ease;
+}
+.ev-story .ev-story__icon svg {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-story .ev-story__col:hover .ev-story__icon {
+    color: var(--es-ink);
+    transform: translateY(-2px);
+}
+
+.ev-story .ev-story__num {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+    font-family: var(--es-display);
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.04em;
+    color: var(--es-line);          /* solid fallback; outlined just below */
+}
+/* Hairline running into the numeral; extends and turns gold on hover */
+.ev-story .ev-story__num::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--es-line);
+    transition: width .45s cubic-bezier(.22, .7, .2, 1), background-color .3s ease;
+}
+.ev-story .ev-story__col:hover .ev-story__num::before {
+    width: 64px;
+    background: var(--es-gold);
+}
+
+/* Outlined numeral. Guarded, because the transparent fill it relies on
+   would leave the number invisible anywhere text-stroke is unsupported. */
+@supports (-webkit-text-stroke: 1px #000) {
+    .ev-story .ev-story__num {
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--es-line);
+        transition: -webkit-text-stroke-color .3s ease;
+    }
+    .ev-story .ev-story__col:hover .ev-story__num {
+        -webkit-text-stroke-color: var(--es-gold);
+    }
+}
+
+.ev-story .ev-story__col h3 {
+    font-family: var(--es-display);
+    margin-bottom: 14px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    color: var(--es-ink);
+}
+.ev-story .ev-story__col p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--es-text);
+}
+
+/* Values: each item separated by a light line */
+.ev-story .ev-story__values { display: flex; flex-direction: column; }
+.ev-story .ev-story__values li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--es-line);
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--es-ink);
+}
+.ev-story .ev-story__values li:first-child { padding-top: 0; }
+.ev-story .ev-story__values li:last-child { padding-bottom: 0; border-bottom: 0; }
+/* Caravan icon bullets */
+.ev-story .ev-story__values svg {
+    margin-top: 2px;
+    fill: none;
+    stroke: var(--es-gold);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .3s ease;
+}
+.ev-story .ev-story__values li:hover svg { transform: translateX(3px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-story { padding: 90px 0 100px; --es-side: 28px; }
+    .ev-story .ev-story__top { grid-template-columns: 1fr; gap: 56px; }
+    .ev-story .ev-story__slider { max-width: 680px; width: 100%; }
+    .ev-story .ev-story__cols { grid-template-columns: 1fr 1fr; margin-top: 72px; }
+    .ev-story .ev-story__col { padding: 36px 28px 40px; }
+    .ev-story .ev-story__col:nth-child(2) { padding-right: 0; }
+    .ev-story .ev-story__col:last-child { grid-column: 1 / -1; padding-left: 0; border-left: 0; border-top: 1px solid var(--es-line); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-story .ev-story__col::before, .ev-story .ev-story__icon, .ev-story .ev-story__num::before,
+    .ev-story .ev-story__values svg,
+    .ev-story .ev-story__slide, .ev-story .ev-story__slide img, .ev-story .ev-story__dot { transition: none; }
+}
+@media (max-width: 575.98px) {
+    .ev-story { padding: 72px 0 80px; --es-side: 20px; }
+    .ev-story .ev-story__slider { aspect-ratio: 4 / 3.6; }
+    .ev-story .ev-story__slide figcaption { left: 18px; right: 18px; bottom: 70px; font-size: 17px; }
+    .ev-story .ev-story__controls { left: 18px; right: 14px; bottom: 14px; }
+    .ev-story .ev-story__arrow { width: 40px; height: 40px; }
+    .ev-story .ev-story__cols { grid-template-columns: 1fr; margin-top: 56px; }
+    .ev-story .ev-story__col,
+    .ev-story .ev-story__col:nth-child(2) { padding: 32px 0; }
+    .ev-story .ev-story__col + .ev-story__col { border-left: 0; border-top: 1px solid var(--es-line); }
+}
+
+/* ================= Third column: photo instead of text =================
+   Placed after the responsive blocks on purpose. The padding resets below
+   have the same specificity as the `:last-child` and the 575px `padding:
+   32px 0` rules above, so source order is what settles them. */
+.ev-story .ev-story__col--media {
+    padding: 0;
+    overflow: hidden;
+}
+.ev-story .ev-story__col--media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* On wide screens the column is a stretched grid item, so its height comes
+   from the two text columns beside it and height:100% has something to
+   resolve against. Once it drops onto a row of its own that height is gone,
+   so the ratio has to be stated or the image collapses to nothing. */
+@media (max-width: 991.98px) {
+    .ev-story .ev-story__col--media { aspect-ratio: 16 / 7; }
+}
+@media (max-width: 575.98px) {
+    .ev-story .ev-story__col--media { aspect-ratio: 4 / 3; }
+}

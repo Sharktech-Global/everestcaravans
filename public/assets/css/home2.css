@@ -11,7 +11,7 @@
     --vb-desc: rgba(255, 255, 255, .72);
 
     /* Type */
-    --vb-display: "Saira", "Rajdhani", Arial, sans-serif;
+    --vb-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     --vb-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
 
     /* Layout */
@@ -158,10 +158,48 @@
 }
 
 /* ---------- Mobile ---------- */
+/* ---------- Mobile: two rows, photo above, copy below ----------
+   The photo is a background on .vb-slide, so instead of letting it cover
+   the slide it is sized to the top band only and the overlay gradient goes
+   solid at the same stop. Content is pushed to the bottom row. */
 @media (max-width: 767.98px) {
-    .vb-hero { --vb-height: clamp(560px, 92vh, 760px); --vb-side: 20px; --vb-top-space: 110px; --vb-bottom-space: 64px; }
-    .vb-eyebrow { font-size: 12px; letter-spacing: .45em; }
-    .vb-desc { font-size: 15px; line-height: 1.8; }
+    .vb-hero {
+        --vb-height: clamp(620px, 98vh, 820px);
+        --vb-side: 20px;
+        --vb-photo-h: 46%;       /* height of the image row */
+    }
+    .vb-slide {
+        background-size: 100% var(--vb-photo-h);
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-color: var(--vb-bg);
+    }
+    .vb-overlay {
+        align-items: flex-end;
+        padding: 0 0 44px;
+        background: linear-gradient(180deg,
+            rgba(10, 10, 12, .18) 0%,     /* header no longer overlaps, so barely any shade */
+            rgba(10, 10, 12, .06) 18%,
+            rgba(10, 10, 12, 0) 32%,
+            var(--vb-bg) var(--vb-photo-h),   /* solid from the photo edge down */
+            var(--vb-bg) 100%);
+    }
+    .vb-eyebrow { font-size: 11px; letter-spacing: .3em; margin-bottom: 1rem; }
+    .vb-title { font-size: clamp(30px, 8.5vw, 44px); line-height: 1.12; }
+    .vb-desc { font-size: 14.5px; line-height: 1.75; }
+    .vb-btn { margin-top: 1.4rem; padding: 13px 20px; font-size: 15px; }
+}
+/* ---------- Small phones ---------- */
+@media (max-width: 479.98px) {
+    .vb-hero { --vb-height: clamp(560px, 92vh, 700px); --vb-side: 18px; --vb-photo-h: 42%; }
+    .vb-title { font-size: clamp(27px, 9vw, 36px); }
+    /* Three lines of copy is plenty under a headline this size */
+    .vb-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -506,7 +544,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     --ej-gold-light: #F1D58C;
     --ej-gold-grad: linear-gradient(180deg, #F8E3A3 0%, #E2B95E 45%, #B8862F 70%, #E9C977 100%);
     --ej-line: rgba(217, 174, 85, .2);
-    --ej-display: "Poppins", system-ui, sans-serif;
+    --ej-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     --ej-cond: "Poppins", system-ui, sans-serif;
     --ej-max: 1120px;
     --ej-medal: 64px;
@@ -801,7 +839,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 
     display: block;
     margin: 0;
-    padding: 120px 0;
+    padding: 80px 0;
     background: #fff;
     font-family: var(--ed-font);
     color: var(--ed-text);
@@ -1141,7 +1179,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     --ws-ink: #0E1330;
     --ws-text: #555A6E;
     --ws-rule: #C9CDE0;
-    --ws-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --ws-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     --ws-body: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     --ws-max: 1600px;
     --ws-side: 60px;
@@ -1149,7 +1187,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 
     display: block;
     margin: 0;
-    padding: 120px 0;
+    padding: 100px 0px 150px 0px;
     background: #fff;
     font-family: var(--ws-body);
     color: var(--ws-text);
@@ -1177,7 +1215,11 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .ws-about .ws-about__inner {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    align-items: center;
+    grid-template-areas:
+        "media head"
+        "media content";
+    grid-template-rows: auto 1fr;
+    align-items: start;
     gap: 33px;
     width: 100%;
     max-width: var(--ws-max);
@@ -1192,6 +1234,8 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
    bottom-right corner, and its white ring is drawn with box-shadow
    spread so the frame overlaps without changing the photo size. */
 .ws-about .ws-about__media {
+    grid-area: media;
+    align-self: center;       /* photos stay centred against the taller column */
     position: relative;
     aspect-ratio: 1 / 1;
     --ws-frame: 8px;            /* white border on the small photo */
@@ -1250,7 +1294,10 @@ top: 71%;
     z-index: 2;
     box-shadow: 0 0 0 var(--ws-frame) #fff, -16px 20px 40px -22px rgb(14 19 48 / 0%);}
 
-/* ---------- RIGHT: copy ---------- */
+/* ---------- RIGHT: heading, then copy ---------- */
+.ws-about .ws-about__head { grid-area: head; }
+.ws-about .ws-about__content { grid-area: content; }
+
 .ws-about .ws-about__eyebrow {
     margin: 0 0 14px;
     font-family: var(--ws-display);
@@ -1426,14 +1473,20 @@ top: 71%;
 /* Laptop */
 @media (max-width: 1299.98px) {
     .ws-about { --ws-side: 40px; }
-    .ws-about .ws-about__inner { gap: 48px; }
+    .ws-about .ws-about__inner { gap: 18px; }
     .ws-about .ws-tabs__tab { padding: 0 24px; font-size: 19px; }
     .ws-about .ws-tabs__panel { grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; }
 }
 /* Tablet: stack the two columns */
 @media (max-width: 1099.98px) {
     .ws-about { padding: 96px 0; }
-    .ws-about .ws-about__inner { grid-template-columns: 1fr; gap: 56px; }
+    .ws-about .ws-about__inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        /* Photos sit between the heading and the body copy */
+        grid-template-areas: "head" "media" "content";
+        gap: 36px;
+    }
     .ws-about .ws-about__media { width: 100%; max-width: 720px; margin: 0 auto; }
     .ws-about .ws-tabs__panel { grid-template-columns: minmax(0, 1fr) 260px; }
     /* Tabs fill the full width as three equal buttons */
@@ -1650,6 +1703,7 @@ top: 71%;
 .ev-partners .ev-partners__text {
     max-width: 52ch;
     margin: 0 auto;
+    color: white;;
     font-size: 16px;
     line-height: 1.7;
 }
@@ -1697,6 +1751,38 @@ top: 71%;
 .ev-partners .ev-partners__item:hover img { opacity: 1; filter: grayscale(0); transform: scale(1.06); }
 .ev-partners a.ev-partners__cell:focus-visible { outline: 2px solid var(--ep-brand); outline-offset: 4px; border-radius: 6px; }
 
+/* ---------- Dark theme ----------
+   Add .ev-partners--dark to the section to switch; remove it to go back.
+
+   The logos are colour JPEGs on white. On the light theme multiply drops
+   that white into the page; on dark it would crush them to near-black and
+   they would vanish. So here they are inverted to white marks on black and
+   screened instead, which drops the black away and leaves a clean
+   monochrome wall. */
+.ev-partners--dark {
+    --ep-ink: #FFFFFF;
+    --ep-text: rgba(255, 255, 255, .64);
+    --ep-brand: #8C9BF0;          /* lifted so the eyebrow reads on dark */
+    --ep-bg: #0B0E22;
+
+    background:
+        radial-gradient(ellipse 50% 60% at 50% 0%, rgba(74, 91, 196, .30), rgba(74, 91, 196, 0) 70%),
+        var(--ep-bg);
+}
+.ev-partners--dark .ev-partners__cell img {
+    filter: grayscale(1) invert(1);
+    mix-blend-mode: screen;
+    opacity: .62;
+}
+/* Un-inverting on hover would bring each logo's white background back with
+   it, so brightness changes instead of colour. */
+.ev-partners--dark .ev-partners__item:hover img {
+    opacity: 1;
+    filter: grayscale(1) invert(1);
+    transform: scale(1.06);
+}
+.ev-partners--dark .ev-partners__name { color: rgba(255, 255, 255, .7); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 991.98px) {
     .ev-partners { padding: 90px 0 100px; }
@@ -1719,7 +1805,584 @@ top: 71%;
 }
 
 /* ==========================================================
-   TITLES — Manrope. Everything else keeps Poppins.
+   Everest Caravans — Reviews + Factory Direct (white) + CTA band
+   Every rule is prefixed with .ev-tribe / .ev-ctaband so theme styles
+   can't leak in.
+   ========================================================== */
+
+.ev-tribe,
+.ev-ctaband {
+    --et-ink: #0E1330;
+    --et-brand: #283895;
+    --et-brand-dark: #1D2A72;
+    --et-gold: #D9AE55;
+    --et-text: #555A6E;
+    --et-line: #E3E5EE;
+    --et-tint: #EEF0FB;
+    --et-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+    --et-max: 1180px;
+    --et-ease: cubic-bezier(.22, .7, .2, 1);
+    --et-topo: url("../images/about/topo.svg");   /* relative to /assets/css/ */
+    --et-photo: url("../images/awards/awardsection.jpg");
+    --et-photo-2: url("../abreco/images/about-page/home-last-sec-but.png");
+
+    display: block;
+    margin: 0;
+    font-family: var(--et-font);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-tribe *, .ev-tribe *::before, .ev-tribe *::after,
+.ev-ctaband *, .ev-ctaband *::before, .ev-ctaband *::after { box-sizing: border-box; }
+.ev-tribe :where(h2, p, ul, li), .ev-ctaband :where(h3) {
+    margin: 0; padding: 0;
+    font-family: var(--et-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-tribe :where(ul) { list-style: none; }
+.ev-tribe a, .ev-ctaband a { text-decoration: none; }
+.ev-tribe a:hover, .ev-ctaband a:hover { text-decoration: none; }
+.ev-tribe img { max-width: 100%; border: 0; }
+.ev-tribe svg, .ev-ctaband svg { display: block; flex: none; }
+
+/* ================= WHITE SECTION ================= */
+.ev-tribe {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 110px 0 120px;
+    background:
+        radial-gradient(ellipse 55% 45% at 50% 0%, rgba(40, 56, 149, .07), rgba(40, 56, 149, 0) 70%),
+        #fff;
+    color: var(--et-text);
+}
+.ev-tribe .ev-tribe__topo {
+    position: absolute;
+    z-index: -1;
+    top: -200px;
+    right: -200px;
+    width: 540px;
+    height: 540px;
+    background: var(--et-topo) center / contain no-repeat;
+    opacity: .05;
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+            mask-image: radial-gradient(closest-side, #000 35%, transparent);
+    pointer-events: none;
+}
+.ev-tribe .ev-tribe__inner {
+    width: 100%;
+    max-width: var(--et-max);
+    margin: 0 auto;
+    padding: 0 32px;
+    text-align: center;
+}
+
+/* Shared headings */
+.ev-tribe .ev-tribe__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--et-brand);
+}
+.ev-tribe .ev-tribe__eyebrow::before,
+.ev-tribe .ev-tribe__eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--et-gold);
+}
+.ev-tribe .ev-tribe__title {
+    margin: 0 auto;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 500;
+    max-width:57vw;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+    color: var(--et-ink);
+    text-wrap: balance;
+}
+.ev-tribe .ev-tribe__head { margin-bottom: 48px; }
+
+/* ---------- Review cards ---------- */
+.ev-tribe .ev-tribe__reviews {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+/* Clean card: no shadow, no accent bar. The images already carry the stars,
+   the logo and their own button, so the box only needs a hairline and room
+   to breathe. All three files are the same size, so heights match without a
+   fixed aspect ratio. */
+.ev-tribe .ev-review {
+    position: relative;
+    display: block;
+    padding: 18px 20px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    transition: border-color .25s ease, transform .25s var(--et-ease);
+}
+.ev-tribe .ev-review__img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* Shown only while an image file is missing */
+.ev-tribe .ev-review__name {
+    display: block;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    color: var(--et-accent, var(--et-ink));
+}
+.ev-tribe .ev-review:hover {
+    border-color: var(--et-accent, var(--et-brand));
+    transform: translateY(-3px);
+}
+.ev-tribe .ev-review:focus-visible { outline: 2px solid var(--et-brand); outline-offset: 3px; }
+.ev-tribe .ev-tribe__divider {
+    width: 100%;
+    height: 1px;
+    margin: 46px 0;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--et-line) 20%, var(--et-line) 80%, transparent);
+}
+
+/* ---------- Factory direct ---------- */
+.ev-tribe .ev-factory__text {
+    margin: 22px auto 28px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.ev-tribe .ev-factory__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 64px;
+}
+.ev-tribe .ev-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border: 1px solid var(--et-line);
+    border-radius: 999px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--et-ink);
+    transition: border-color .25s ease, color .25s ease;
+}
+.ev-tribe .ev-chip svg {
+    fill: none;
+    stroke: var(--et-gold);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-tribe a.ev-chip:hover { border-color: var(--et-brand); color: var(--et-brand); }
+
+/* ---------- Factory features ----------
+   The row sits on the white section again; only the icon tiles are dark.
+   Each tile is a square rotated 45deg, with the icon counter-rotated inside
+   so it stays upright. The diamond needs more room than its own width, so
+   the feature has margin to clear its points. */
+.ev-tribe .ev-factory__features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+.ev-tribe .ev-factory__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    padding-top: 14px;
+}
+.ev-tribe .ev-factory__icon {
+    display: grid;
+    place-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    background: var(--et-ink);
+    transform: rotate(45deg);
+    transition: background-color .3s ease, transform .3s var(--et-ease);
+}
+/* Cancels the tile rotation so the artwork is not on its side */
+.ev-tribe .ev-factory__icon-in {
+    display: grid;
+    place-items: center;
+    transform: rotate(-45deg);
+}
+.ev-tribe .ev-factory__icon img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    /* The source files are dark line art, so flip them white on the tile */
+    filter: brightness(0) invert(1);
+}
+.ev-tribe .ev-factory__feature:hover .ev-factory__icon {
+    background: var(--et-brand);
+    transform: rotate(45deg) translateY(-3px);
+}
+.ev-tribe .ev-factory__label {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--et-ink);
+}
+/* ================= CTA BAND (two halves) ================= */
+.ev-ctaband {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #fff;
+}
+/* With only one half rendered it spans the full width instead of leaving a gap */
+.ev-ctaband:has(> .ev-ctaband__half:only-child) { grid-template-columns: 1fr; }
+.ev-ctaband .ev-ctaband__half {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 170px;
+    padding: 36px clamp(24px, 4vw, 56px);
+    overflow: hidden;
+    isolation: isolate;
+}
+/* Photo bleeds in from the left and is washed out across the half, so the
+   heading and button sit on near-solid colour. The brand half stays flat. */
+.ev-ctaband .ev-ctaband__half--dark {
+    background:
+        linear-gradient(90deg,
+            rgba(14, 19, 48, .62) 0%,
+            rgba(14, 19, 48, .88) 32%,
+            rgba(14, 19, 48, .97) 58%,
+            var(--et-ink) 100%),
+        var(--et-photo) left center / cover no-repeat,
+        var(--et-ink);
+}
+/* Mirrored: this photo bleeds in from the right, so the two washes meet
+   solid in the middle of the band where the halves join. */
+.ev-ctaband .ev-ctaband__half--brand {
+    background:
+        linear-gradient(270deg,
+            rgba(40, 56, 149, .62) 0%,
+            rgba(40, 56, 149, .88) 32%,
+            rgba(40, 56, 149, .97) 58%,
+            var(--et-brand) 100%),
+        var(--et-photo-2) right center / cover no-repeat,
+        var(--et-brand);
+}
+.ev-ctaband .ev-ctaband__icon svg {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-ctaband .ev-ctaband__body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.ev-ctaband h3 {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-size: clamp(19px, 1.7vw, 24px);
+    font-weight: 500;
+    line-height: 1.2;
+    color: #fff;
+}
+.ev-ctaband .ev-ctaband__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--et-ink);
+    transition: background-color .25s ease, color .25s ease, transform .25s var(--et-ease);
+}
+.ev-ctaband .ev-ctaband__btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-ctaband .ev-ctaband__btn:hover { background: var(--et-gold); color: var(--et-ink); transform: translateY(-1px); }
+.ev-ctaband .ev-ctaband__btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-tribe { padding: 90px 0 100px; }
+    .ev-tribe .ev-tribe__reviews { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; gap: 16px; }
+    .ev-tribe .ev-tribe__divider { margin: 72px 0; }
+    .ev-ctaband { grid-template-columns: 1fr; }
+}
+@media (max-width: 575.98px) {
+    .ev-tribe { padding: 72px 0 80px; }
+    .ev-tribe .ev-tribe__inner { padding: 0 20px; }
+    .ev-tribe .ev-factory__features { grid-template-columns: 1fr; gap: 42px; }
+    .ev-tribe .ev-chip { font-size: 13px; }
+    .ev-ctaband .ev-ctaband__half { justify-content: flex-start; min-height: 0; padding: 32px 20px; gap: 18px; }
+    .ev-ctaband .ev-ctaband__icon svg { width: 44px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-tribe *, .ev-ctaband * { transition: none !important; }
+}
+
+/* ==========================================================
+   Everest Caravans — "Talk to the experts" banner
+   Photo sits on the right and fades into the navy using a mask + gradient.
+   ========================================================== */
+
+.ev-experts {
+    --ex-ink: #0E1330;
+    --ex-navy: #0B1029;           /* banner base: deep navy */
+    --ex-radius: 10px;            /* one radius for every element in the section */
+    --ex-brand: #283895;
+    --ex-gold: #D9AE55;
+    --ex-gold-light: #F1D58C;
+    --ex-font: "Space Grotesk", "Segoe UI", Roboto, Arial, sans-serif;
+    --ex-max: 1440px;
+    --ex-side: 60px;
+    --ex-ease: cubic-bezier(.22, .7, .2, 1);
+
+    display: block;
+    margin: 0;
+    padding: 40px var(--ex-side);
+    background: #fff;
+    font-family: var(--ex-font);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-experts *, .ev-experts *::before, .ev-experts *::after { box-sizing: border-box; }
+.ev-experts :where(h2, p) {
+    margin: 0; padding: 0;
+    font-family: var(--ex-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-experts a, .ev-experts a:hover, .ev-experts a:focus { text-decoration: none; }
+.ev-experts img { max-width: none; border: 0; }
+.ev-experts svg { display: block; flex: none; }
+
+/* ---------- Banner box ---------- */
+.ev-experts .ev-experts__box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: var(--ex-max);
+    min-height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: var(--ex-radius);
+    background:
+        radial-gradient(ellipse 50% 80% at 0% 100%, rgba(40, 56, 149, .35), transparent 70%),
+        var(--ex-navy);
+    color: #fff;
+}
+
+/* Photo: from the middle to the right edge, faded in from the left */
+.ev-experts .ev-experts__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 66%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    /* Long, gradual fade: the photo builds up across its left half */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .12) 14%, rgba(0, 0, 0, .4) 30%, rgba(0, 0, 0, .75) 46%, #000 60%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .12) 14%, rgba(0, 0, 0, .4) 30%, rgba(0, 0, 0, .75) 46%, #000 60%);
+    transition: transform 1.4s var(--ex-ease);
+}
+.ev-experts .ev-experts__box:hover .ev-experts__img { transform: scale(1.03); }
+
+/* Colour blend: navy tint over the photo so it sits in the brand colour */
+.ev-experts .ev-experts__blend {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg,
+            var(--ex-navy) 0%,
+            var(--ex-navy) 34%,
+            rgba(11, 16, 41, .9) 44%,
+            rgba(11, 16, 41, .7) 54%,
+            rgba(11, 16, 41, .45) 66%,
+            rgba(11, 16, 41, .22) 80%,
+            rgba(11, 16, 41, .1) 100%),
+        linear-gradient(0deg, rgba(14, 19, 48, .35), rgba(14, 19, 48, 0) 40%);
+    pointer-events: none;
+}
+
+/* ---------- Content ---------- */
+.ev-experts .ev-experts__content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    padding: 64px clamp(28px, 7vw, 110px);
+}
+.ev-experts .ev-experts__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ex-gold-light);
+}
+.ev-experts .ev-experts__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--ex-gold);
+}
+.ev-experts .ev-experts__title {
+    margin: 0 0 18px;
+    font-size: clamp(32px, 3.4vw, 50px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    color: #fff;
+}
+.ev-experts .ev-experts__text {
+    max-width: 52ch;
+    margin: 0 0 34px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .82);
+}
+
+/* ---------- Buttons ---------- */
+.ev-experts .ev-experts__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+}
+.ev-experts .ev-experts__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 26px;
+    border-radius: var(--ex-radius);
+    background: var(--ex-gold);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ex-ink);
+    transition: background-color .2s ease;
+}
+.ev-experts .ev-experts__btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .2s ease;
+}
+.ev-experts .ev-experts__btn:hover,
+.ev-experts .ev-experts__btn:focus { color: var(--ex-ink); }
+.ev-experts .ev-experts__btn:hover { background: var(--ex-gold-light); }
+.ev-experts .ev-experts__btn:hover svg { transform: translateX(3px); }
+.ev-experts .ev-experts__btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.ev-experts .ev-experts__link {
+    position: relative;
+    padding: 6px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+}
+.ev-experts .ev-experts__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.5px;
+    background: rgba(255, 255, 255, .45);
+    transition: background-color .25s ease;
+}
+.ev-experts .ev-experts__link:hover,
+.ev-experts .ev-experts__link:focus { color: var(--ex-gold-light); }
+.ev-experts .ev-experts__link:hover::after { background: var(--ex-gold); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-experts { --ex-side: 32px; }
+    .ev-experts .ev-experts__img { width: 75%; }
+    .ev-experts .ev-experts__blend {
+        background: linear-gradient(90deg, var(--ex-navy) 0%, rgba(11, 16, 41, .9) 50%, rgba(11, 16, 41, .5) 100%);
+    }
+}
+/* Phone: photo moves to the top and fades down into the navy */
+@media (max-width: 639.98px) {
+    .ev-experts { --ex-side: 16px; padding-top: 24px; padding-bottom: 24px; }
+    .ev-experts .ev-experts__box {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+        padding-top: 200px;
+        border-radius: var(--ex-radius);
+    }
+    .ev-experts .ev-experts__img {
+        top: 0;
+        bottom: auto;
+        width: 100%;
+        height: 300px;
+        object-position: center;
+        -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+                mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+    }
+    .ev-experts .ev-experts__blend {
+        background: linear-gradient(180deg, rgba(11, 16, 41, .2) 0%, rgba(11, 16, 41, .6) 40%, var(--ex-navy) 72%);
+    }
+    .ev-experts .ev-experts__content { padding: 0 24px 36px; }
+    .ev-experts .ev-experts__btn { height: 50px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-experts * { transition: none !important; }
+    .ev-experts .ev-experts__box:hover .ev-experts__img { transform: none; }
+}
+
+/* ==========================================================
+   LIST TEXT — Space Grotesk, matching the headlines.
+
+   Covers the marker and bullet lists: the About and Lux Decor feature
+   rows, the Factory Direct labels and the footer link lists. Written two
+   classes deep and placed last so it outranks the per-section rules.
+   ========================================================== */
+.ev-about .ev-about__features li,
+.ev-decor .ev-decor__label,
+.ev-tribe .ev-factory__label,
+.ev-journey .ev-journey__row {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ==========================================================
+   TITLES — Space Grotesk. Body copy keeps Poppins.
 
    Two classes deep so these outrank the per-section rules above,
    and last in the file so equal-specificity ties fall this way.
@@ -1729,8 +2392,10 @@ top: 71%;
 .ev-journey .ev-journey__title,
 .ev-decor .ev-decor__title,
 .ws-about .ws-about__title,
-.ev-partners .ev-partners__title {
-    font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+.ev-partners .ev-partners__title,
+.ev-tribe .ev-tribe__title,
+.ev-experts .ev-experts__title {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
 }
 
 /* ==========================================================

@@ -3,7 +3,7 @@
 @section('css_after')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap">
     {{-- ?v=mtime so an edit is never served from the browser cache --}}
     <link rel="stylesheet" href="{{ asset('assets/css/home2.css') }}?v={{ filemtime(public_path('assets/css/home2.css')) }}">
 @endsection
@@ -160,9 +160,9 @@
         {{-- Photo + years badge --}}
         <div class="ev-about__media">
             <div class="ev-about__frame">
-                <img src="{{ asset('assets/abreco/images/about1.jpg') }}"
-                     alt="Caravan parked on a desert road below a red rock bluff at sunset"
-                     width="520" height="578" loading="lazy" decoding="async">
+                <img src="{{ asset('assets/abreco/images/newonce/home-top.jpg') }}"
+                     alt="An Everest Avalanche caravan and tow vehicle parked beside a Comet windmill"
+                     width="670" height="840" loading="lazy" decoding="async">
                 <div class="ev-about__badge">
                     <strong>15+</strong>
                     <span>Years</span>
@@ -299,7 +299,7 @@
 {{--
     Everest Caravans — Awards "Journey" (black & gold)
     CSS:    public/assets/css/home2.css
-    Images: public/assets/images/awards/awardsection.jpg
+    Images: public/assets/abreco/images/newonce/home-ban21.jpg
     Fonts (in <head>):
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
 --}}
@@ -318,7 +318,7 @@
     $evYears = $evRows->max('year') - $evRows->min('year') + 1;
 
     // Background photo (sits under a dark-blue gradient). Dark, wide shots work best.
-    $evJourneyBg = asset('assets/images/awards/awardsection.jpg');
+    $evJourneyBg = asset('assets/abreco/images/newonce/home-ban21.jpg');
 @endphp
 
 <section class="ev-journey" aria-labelledby="evJourneyTitle" style="--ej-photo: url('{{ $evJourneyBg }}');">
@@ -418,6 +418,7 @@
         'cover'    => 'assets/images/decor/video-cover.jpg',       // landscape ~1400x780
         // Portrait slider — add or remove entries, the slideshow adapts
         'portraits' => [
+            'assets/abreco/images/newonce/home21.jpg',
             'assets/abreco/images/vehicles/build-van-17.jpeg',
             'assets/abreco/images/vehicles/build-van-18.jpeg',
         ],
@@ -485,7 +486,7 @@
                 @foreach ($evPortraits as $src)
                     {{-- Only the first carries the alt text; the rest are decorative --}}
                     <img src="{{ $src }}"
-                         alt="{{ $loop->first ? 'An Everest caravan under construction' : '' }}"
+                         alt="{{ $loop->first ? 'An Everest caravan and tow vehicle parked at a painted silo' : '' }}"
                          width="800" height="1000" loading="lazy" decoding="async">
                 @endforeach
             </div>
@@ -508,6 +509,51 @@
             <script src="{{ asset($evDecorJs) }}?v={{ filemtime(public_path($evDecorJs)) }}" defer></script>
         @endif
     @endif
+</section>
+
+{{-- Everest Caravans — "Talk to the experts" call-to-action banner --}}
+
+{{-- Styles live in assets/css/home2.css; fonts load once in the layout head --}}
+@php
+    // ===================== EDIT HERE =====================
+    $ex = [
+        'eyebrow' => 'Custom builds',
+        'title'   => 'Talk to the experts',
+        'text'    => 'Planning your next off-road adventure? Our team builds these vans and tours in them, so we can help you choose the layout, features and finish that suit the way you travel.',
+        'primary'   => ['label' => 'Get in Touch',         'url' => url('/contact')],
+        'secondary' => ['label' => 'Book a factory visit', 'url' => url('/contact#visit')],   // null to hide
+        'image'   => 'assets/abreco/images/newonce/breakerimg1.jpg',   // landscape, subject on the right
+    ];
+    // =====================================================
+    $exImg = file_exists(public_path($ex['image'])) ? asset($ex['image']) : null;
+@endphp
+
+<section class="ev-experts" aria-labelledby="evExpertsTitle">
+    <div class="ev-experts__box">
+
+        {{-- Photo: right side, blended into the navy with a gradient --}}
+        @if ($exImg)
+            <img class="ev-experts__img" src="{{ $exImg }}" alt="" loading="lazy" decoding="async">
+        @endif
+        <span class="ev-experts__blend" aria-hidden="true"></span>
+
+        <div class="ev-experts__content">
+            <p class="ev-experts__eyebrow">{{ $ex['eyebrow'] }}</p>
+            <h2 class="ev-experts__title" id="evExpertsTitle">{{ $ex['title'] }}</h2>
+            <p class="ev-experts__text">{{ $ex['text'] }}</p>
+
+            <div class="ev-experts__actions">
+                <a class="ev-experts__btn" href="{{ $ex['primary']['url'] }}">
+                    {{ $ex['primary']['label'] }}
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                </a>
+                @if ($ex['secondary'])
+                    <a class="ev-experts__link" href="{{ $ex['secondary']['url'] }}">{{ $ex['secondary']['label'] }}</a>
+                @endif
+            </div>
+        </div>
+
+    </div>
 </section>
 
 
@@ -565,7 +611,14 @@
 <section class="ws-about" aria-labelledby="wsAboutTitle">
     <div class="ws-about__inner">
 
-        {{-- LEFT: dark stats panel + overlapping photo --}}
+        {{-- Heading lives outside the copy column so the photos can sit
+             between it and the body text when the grid stacks --}}
+        <div class="ws-about__head">
+            <p class="ws-about__eyebrow">{{ $wsAbout['eyebrow'] }}</p>
+            <h2 class="ws-about__title" id="wsAboutTitle">{{ $wsAbout['title'] }}</h2>
+        </div>
+
+        {{-- Photos --}}
         <div class="ws-about__media">
             <div class="ws-about__photo ws-about__photo--main">
                 @if ($wsImg($wsAbout['photo']))
@@ -580,10 +633,8 @@
             </div>
         </div>
 
-        {{-- RIGHT: copy, button, service tabs --}}
+        {{-- Copy, button, service tabs --}}
         <div class="ws-about__content">
-            <p class="ws-about__eyebrow">{{ $wsAbout['eyebrow'] }}</p>
-            <h2 class="ws-about__title" id="wsAboutTitle">{{ $wsAbout['title'] }}</h2>
             <p class="ws-about__text">{{ $wsAbout['text'] }}</p>
 
             <div class="ws-about__cta">
@@ -662,11 +713,8 @@
     // =============================================
 @endphp
 
-<section class="ev-partners" aria-labelledby="evPartnersTitle">
-    {{-- Background elements --}}
-    <span class="ev-partners__topo ev-partners__topo--a" aria-hidden="true"></span>
-    <span class="ev-partners__topo ev-partners__topo--b" aria-hidden="true"></span>
-    <span class="ev-partners__dots" aria-hidden="true"></span>
+{{-- Drop ev-partners--dark to return the section to the light theme --}}
+<section class="ev-partners ev-partners--dark" aria-labelledby="evPartnersTitle">
 
     <div class="ev-partners__inner">
 
@@ -696,6 +744,142 @@
             @endforeach
         </ul>
 
+    </div>
+</section>
+
+{{-- Everest Caravans — Reviews ("The Everest Tribe") + Factory Direct + CTA band --}}
+
+{{-- Styles live in assets/css/home2.css; fonts load once in the layout head --}}
+@php
+    // ===================== EDIT HERE =====================
+    // One image per card. Drop the files in public/assets/images/reviews/ —
+    // until then each card falls back to the platform name so it is never empty.
+    $etReviews = [
+        ['name' => 'Google',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '#', 'accent' => '#4285F4'],
+        ['name' => 'Facebook', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => '#', 'accent' => '#1877F2'],
+        ['name' => 'Go RV',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '#', 'accent' => '#13A9AE'],
+    ];
+
+    $etFactory = [
+        'address' => '51 Glenbarry Road, Campbellfield VIC 3061',
+        'travel'  => '20 minutes from Melbourne Airport',
+        'text'    => 'Come and visit our display and manufacturing facility. We look after you from start to finish: the sale, the build, delivery and handover, and after-care service. As the manufacturer and the dealer, you deal with us for the life of your caravan, with the same time, service and care you received when you placed your order.',
+    ];
+
+    // Icons are SVG files in public/assets/abreco/images/logo/
+    $etFeatures = [
+        ['label' => 'Australian Made',             'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
+        ['label' => 'Built to Last',               'icon' => 'assets/abreco/images/logo/caravan.svg'],
+        ['label' => '10 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.svg'],
+    ];
+
+    // Drop the PDF at public/assets/brochure/everest-range.pdf and the button
+    // becomes a direct download; until then it routes through the contact page.
+    $etBrochure    = 'assets/brochure/everest-range.pdf';
+    $etHasBrochure = file_exists(public_path($etBrochure));
+    $etCta = [
+        'brochure' => ['title' => 'View our full ' . date('Y') . ' range brochure', 'label' => 'Download Brochure',
+                       'url' => $etHasBrochure ? asset($etBrochure) : url('/contact')],
+        'visit'    => ['title' => 'Book a factory visit', 'label' => 'Book Now', 'url' => url('/contact')],
+    ];
+    // =====================================================
+
+    $etMap = 'https://maps.google.com/?q=' . urlencode($etFactory['address']);
+@endphp
+
+<section class="ev-tribe" aria-labelledby="evTribeTitle">
+    <span class="ev-tribe__topo" aria-hidden="true"></span>
+
+    <div class="ev-tribe__inner">
+
+        {{-- ================= REVIEWS ================= --}}
+        <header class="ev-tribe__head">
+            <p class="ev-tribe__eyebrow">The Everest Tribe</p>
+            <h2 class="ev-tribe__title" id="evTribeTitle">Join the friendly Everest community and share the adventure.</h2>
+        </header>
+
+        <ul class="ev-tribe__reviews">
+            @foreach ($etReviews as $r)
+                @php $etImg = file_exists(public_path($r['image'])) ? asset($r['image']) : null; @endphp
+                <li>
+                    <a class="ev-review" href="{{ $r['url'] }}" target="_blank" rel="noopener noreferrer"
+                       style="--et-accent: {{ $r['accent'] }};"
+                       aria-label="See all {{ $r['name'] }} reviews">
+                        @if ($etImg)
+                            <img class="ev-review__img" src="{{ $etImg }}" alt="See all our {{ $r['name'] }} reviews"
+                                 loading="lazy" decoding="async">
+                        @else
+                            <span class="ev-review__name">{{ $r['name'] }}</span>
+                        @endif
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+
+        <hr class="ev-tribe__divider">
+
+        {{-- ================= FACTORY DIRECT ================= --}}
+        <div class="ev-factory">
+            <p class="ev-tribe__eyebrow">Genuine Factory Direct</p>
+            <h2 class="ev-tribe__title">Proudly Australian made, owned &amp; operated.</h2>
+            <p class="ev-factory__text">{{ $etFactory['text'] }}</p>
+
+            <div class="ev-factory__chips">
+                <a class="ev-chip" href="{{ $etMap }}" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {{ $etFactory['address'] }}
+                </a>
+                <span class="ev-chip">
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                    {{ $etFactory['travel'] }}
+                </span>
+            </div>
+
+            <ul class="ev-factory__features">
+                @foreach ($etFeatures as $f)
+                    <li class="ev-factory__feature">
+                        {{-- Tile is rotated 45deg; the inner span counter-rotates
+                             so the icon itself stays upright --}}
+                        <span class="ev-factory__icon" aria-hidden="true">
+                            <span class="ev-factory__icon-in">
+                                <img src="{{ asset($f['icon']) }}" alt="" loading="lazy" decoding="async">
+                            </span>
+                        </span>
+                        <span class="ev-factory__label">{{ $f['label'] }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{{-- ================= CTA BAND ================= --}}
+<section class="ev-ctaband" aria-label="Brochure and factory visit">
+    <div class="ev-ctaband__half ev-ctaband__half--dark">
+        <span class="ev-ctaband__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="56" height="56"><path d="M12 6h16l10 10v26H12z"/><path d="M28 6v10h10"/><path d="M17 31h3.5a2.5 2.5 0 0 0 0-5H17v9M25 26v9h2a4.5 4.5 0 0 0 0-9zM34 26h-3v9M31 30h2.5"/></svg>
+            </span>
+            <div class="ev-ctaband__body">
+                <h3>{{ $etCta['brochure']['title'] }}</h3>
+                <a class="ev-ctaband__btn" href="{{ $etCta['brochure']['url'] }}" @if ($etHasBrochure) download @endif>
+                    {{ $etCta['brochure']['label'] }}
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3v10m-4-4 4 4 4-4M4 16h12"/></svg>
+                </a>
+            </div>
+    </div>
+
+    <div class="ev-ctaband__half ev-ctaband__half--brand">
+        <span class="ev-ctaband__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="56" height="56"><path d="M5 34V20a6 6 0 0 1 6-6h20a10 10 0 0 1 10 10v10z"/><path d="M3 34h40"/><circle cx="16" cy="36" r="4"/><path d="M10 20h9v7h-9zM26 20h7"/><path d="M38 4c-3 0-5 2.2-5 5 0 3.6 5 8 5 8s5-4.4 5-8c0-2.8-2-5-5-5z"/></svg>
+        </span>
+        <div class="ev-ctaband__body">
+            <h3>{{ $etCta['visit']['title'] }}</h3>
+            <a class="ev-ctaband__btn" href="{{ $etCta['visit']['url'] }}">
+                {{ $etCta['visit']['label'] }}
+                <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+            </a>
+        </div>
     </div>
 </section>
 

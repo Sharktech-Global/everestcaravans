@@ -1,0 +1,150 @@
+/* Everest Caravans — Inner page top banner (bold editorial version)
+   Every rule is prefixed with .ev-pagehero so theme styles can't leak in. */
+
+.ev-pagehero {
+    --ph-ink: #0B1029;
+    --ph-gold: #D9AE55;
+    --ph-gold-light: #F1D58C;
+    --ph-font: "Lexend", "Segoe UI", Roboto, Arial, sans-serif;
+    /* Headline face, matching the home page sections. Loaded in the layout head. */
+    --ph-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ph-top-space: 110px;          /* height of your navbar if it sits on top of this banner; use 0 if not */
+    --ph-height: clamp(480px, 66vh, 680px);
+    --ph-max: 1300px;
+    --ph-side: 40px;
+
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: var(--ph-height);
+    margin: 0;
+    padding: calc(var(--ph-top-space) + 40px) var(--ph-side) clamp(48px, 7vh, 80px);
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--ph-ink);
+    font-family: var(--ph-font);
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-pagehero *, .ev-pagehero *::before, .ev-pagehero *::after { box-sizing: border-box; }
+.ev-pagehero h1, .ev-pagehero p, .ev-pagehero ol, .ev-pagehero li {
+    margin: 0; padding: 0;
+    font-family: var(--ph-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-pagehero ol { list-style: none; }
+.ev-pagehero a, .ev-pagehero a:hover, .ev-pagehero a:focus { text-decoration: none; }
+.ev-pagehero img { max-width: none; border: 0; }
+
+/* ---------- Background ---------- */
+.ev-pagehero .ev-pagehero__img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: ev-ph-settle 1.8s cubic-bezier(.22, .7, .2, 1) both;   /* slow settle-in on load */
+}
+@keyframes ev-ph-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+/* Dark at the top (navbar) and heaviest bottom-left, where the title sits */
+.ev-pagehero .ev-pagehero__shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(180deg, rgba(11, 16, 41, .85) 0%, rgba(11, 16, 41, .2) 34%, rgba(11, 16, 41, .35) 60%, rgba(11, 16, 41, .92) 100%),
+        linear-gradient(90deg, rgba(11, 16, 41, .7) 0%, rgba(11, 16, 41, .15) 70%);
+}
+
+/* ---------- Content (bottom-left) ---------- */
+.ev-pagehero .ev-pagehero__inner {
+    width: 100%;
+    max-width: var(--ph-max);
+    margin: 0 auto;
+}
+
+/* Breadcrumb: small, above the title */
+.ev-pagehero .ev-pagehero__crumbs { margin-bottom: 22px; }
+.ev-pagehero .ev-pagehero__crumbs ol {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 0;
+}
+.ev-pagehero .ev-pagehero__crumbs li {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.ev-pagehero .ev-pagehero__crumbs a {
+    color: rgba(255, 255, 255, .7);
+    transition: color .2s ease;
+}
+.ev-pagehero .ev-pagehero__crumbs a:hover { color: var(--ph-gold-light); }
+.ev-pagehero .ev-pagehero__crumbs a:focus-visible { outline: 2px solid var(--ph-gold); outline-offset: 3px; border-radius: 3px; }
+.ev-pagehero .ev-pagehero__sep { margin: 0 12px; color: var(--ph-gold); }
+.ev-pagehero .ev-pagehero__crumbs [aria-current="page"] { color: var(--ph-gold-light); }
+
+/* Title row: huge title left, optional subtitle right, sharing one baseline */
+.ev-pagehero .ev-pagehero__row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 64px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, .22);
+}
+.ev-pagehero .ev-pagehero__title {
+    font-family: var(--ph-display);
+    font-size: clamp(56px, 9.5vw, 148px);
+    font-weight: 700;
+    line-height: .9;
+    letter-spacing: -.05em;
+    color: #fff;
+}
+.ev-pagehero .ev-pagehero__sub {
+    max-width: 34ch;
+    padding-bottom: .6em;
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .8);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-pagehero { --ph-top-space: 96px; --ph-side: 28px; --ph-height: clamp(420px, 56vh, 560px); }
+}
+@media (max-width: 575.98px) {
+    .ev-pagehero { --ph-top-space: 80px; --ph-side: 20px; --ph-height: 400px; padding-bottom: 40px; }
+    .ev-pagehero .ev-pagehero__crumbs { margin-bottom: 16px; }
+    .ev-pagehero .ev-pagehero__crumbs li { font-size: 12px; }
+    .ev-pagehero .ev-pagehero__row { padding-top: 20px; }
+    .ev-pagehero .ev-pagehero__sub { padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-pagehero .ev-pagehero__img { animation: none; }
+}
+
+/* ==========================================================
+   Mobile: start the banner below the header.
+
+   Below 991px the theme turns .abreco-header-area into a solid white bar.
+   It is position:absolute (then fixed on .sticky), so it never takes up
+   space and would sit over the top of this banner. The home hero already
+   solves this by offsetting itself by exactly the bar height, so this
+   banner reuses the same --ev-hdr-h variable and keeps the two in step.
+   ========================================================== */
+@media (max-width: 991.98px) {
+    .ev-pagehero {
+        margin-top: var(--ev-hdr-h, 88px);
+        --ph-top-space: 24px;      /* nothing overlaps it now */
+    }
+}
