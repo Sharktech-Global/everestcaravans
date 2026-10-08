@@ -1,100 +1,175 @@
 @extends('layouts.front')
 @section('css_after')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap">
+    {{-- ?v=mtime so an edit is never served from the browser cache --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/about2.css') }}?v={{ filemtime(public_path('assets/css/about2.css')) }}">
 @endsection
 @section('content')
     <!--====== About Breadcrumb Part ======-->
-    <section class="abreco-inner-banner ken-burn"  style="background-image: url('{{ asset('storage/' . @$group->banner_image) }}');">
-    <div class="about-overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <div class="baner-bg-head2">
-                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
-                            <!-- <div class="bg-lines bg-lines-1"><img src="{{ asset('assets/abreco/images/shapes/b-1.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-2"><img src="{{ asset('assets/abreco/images/shapes/b-2.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-3"><img src="{{ asset('assets/abreco/images/shapes/b-3.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-4"><img src="{{ asset('assets/abreco/images/shapes/b-4.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-5"><img src="{{ asset('assets/abreco/images/shapes/b-5.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-6"><img src="{{ asset('assets/abreco/images/shapes/b-6.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-7"><img src="{{ asset('assets/abreco/images/shapes/b-7.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-8"><img src="{{ asset('assets/abreco/images/shapes/b-8.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-9"><img src="{{ asset('assets/abreco/images/shapes/b-9.png') }}" alt=""></div>
-                            <div class="bg-lines bg-lines-10"><img src="{{ asset('assets/abreco/images/shapes/b-10.png') }}" alt=""></div> -->
-                        </div>
-                        <h1>ABOUT ABRECO GROUP</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('partials.page-hero', [
+        'title'       => 'About Us',
+        'subtitle'    => 'Family owned and Australian built. Every Everest caravan leaves our yard ready for the roads most vans never see.',
+        'image'       => 'assets/abreco/images/29.jpg',
+        'breadcrumbs' => [['label' => 'About Us']],
+    ])
 
     <!--====== abreco About Group START ======-->
-    <section class="abreco-service-area abreco-group-about pt-110 pb-90" id="abreco-Group">
-        <div class="container">
-            <div class="row mb-40">
-                <!-- <div class="col-lg-4">
-                    <div class="abt-logo abt-logo2 d-flex">
-                        <div class="title title2">
-                            <h2>
-                            <div class="head-icon d-none d-inline-block-991">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="43" viewBox="0 0 38 43" fill="none">
-                                <path d="M21.7307 0H26.1743L15.93 43H11.2178L21.7307 0Z" fill="black"/>
-                                <path d="M32.9475 0H37.3911L27.1468 43H22.4346L32.9475 0Z" fill="black"/>
-                                <path d="M10.5129 0H14.9565L4.71223 43H0L10.5129 0Z" fill="black"/>
-                            </svg> 
+    {{-- Everest Caravans — About page, first section (story + mission / vision / values) --}}
+
+    {{-- Font + CSS, loaded here so nothing else needs linking --}}
+    @php
+        $esCss = 'css/story.css';
+        $esJs  = 'js/story.js';
+    @endphp
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+    @if (file_exists(public_path($esCss)))
+        <link rel="stylesheet" href="{{ asset($esCss) }}?v={{ filemtime(public_path($esCss)) }}">
+    @else
+        <!-- EVEREST: public/{{ $esCss }} not found -->
+    @endif
+
+    @php
+        // ===================== EDIT HERE =====================
+        $es = [
+            'accent' => 'A reputation',             // coloured part of the title
+            'title'  => '15+ years in the making',
+            'paragraphs' => [
+                'Everest Caravans is a family owned business with over 15 years experience in the caravan industry, and the business continues to grow.',
+                'We pride ourselves on premium quality, custom built caravans. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations. Our team hits the road often, so we know exactly what a van needs to handle the Gibb River, Oodnadatta and the Nullarbor.',
+            ],
+
+            // Button under the text
+            'button' => ['label' => 'Book a Factory Visit', 'url' => url('/contact')],
+
+            // Slider on the left. Add as many slides as you like. 'caption' is optional.
+            'slides' => [
+                ['image' => 'assets/abreco/images/newonce/home21.jpg',        'alt' => 'An Everest caravan and tow vehicle parked at a painted silo',        'caption' => 'Built for the toughest tracks'],
+                ['image' => 'assets/abreco/images/vehicles/build-van-17.jpeg', 'alt' => 'An Everest caravan shell being built on the factory floor',          'caption' => 'Made in Campbellfield, VIC'],
+                ['image' => 'assets/images/about/who-we1.jpg',                 'alt' => 'A finished Everest Alpine Quattro in the factory yard',              'caption' => 'Finished to your spec'],
+                ['image' => 'assets/images/about/who-we2.jpg',                 'alt' => 'The A-frame of a finished Everest van, with gas bottles and stone guard', 'caption' => 'Quality checked before delivery'],
+            ],
+            'autoplay' => 5000,   // ms per slide; 0 = no autoplay
+        ];
+
+        $esColumns = [
+            [
+                'title' => 'Mission statement',
+                'icon'  => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/><path d="M12 3V1M21 12h2"/>',
+                'text'  => 'To build premium, custom off-road caravans that are engineered for the toughest Australian terrain, finished to feel like home, and backed by our team for the life of the van.',
+            ],
+            [
+                'title' => 'Our vision',
+                'icon'  => '<path d="M2 19 9 8l4 6 3-4 6 9z"/><path d="m9 8 1.6 2.4L12 9"/>',
+                'text'  => 'To be Australia’s most trusted name in off-road caravans, known for quality you can see, a build process you can follow and a team that stands behind every van we deliver.',
+            ],
+        ];
+
+        // Third column is a photo rather than text, filling the whole column
+        $esColImage    = 'assets/abreco/images/newonce/about121.jpg';
+        $esColImageAlt = 'A finished Everest Pinnacle caravan outside the factory, side door open';
+        // =====================================================
+
+        $esImg = fn ($p) => ($p && file_exists(public_path($p))) ? asset($p) : null;
+    @endphp
+
+    <section class="ev-story" aria-labelledby="evStoryTitle">
+        <div class="ev-story__inner">
+
+            {{-- ================= TOP: photos + story ================= --}}
+            <div class="ev-story__top">
+
+                {{-- Image slider --}}
+                @php $esCount = count($es['slides']); @endphp
+                <div class="ev-story__slider" data-ev-slider data-autoplay="{{ $es['autoplay'] }}"
+                     role="region" aria-roledescription="carousel" aria-label="Everest Caravans photos">
+                    <div class="ev-story__slides">
+                        @foreach ($es['slides'] as $i => $slide)
+                            <figure class="ev-story__slide {{ $i === 0 ? 'is-active' : '' }}"
+                                    role="group" aria-roledescription="slide" aria-label="{{ $i + 1 }} of {{ $esCount }}"
+                                    @if ($i !== 0) aria-hidden="true" @endif>
+                                @if ($esImg($slide['image']))
+                                    <img src="{{ $esImg($slide['image']) }}" alt="{{ $slide['alt'] }}"
+                                         decoding="async" @if ($i === 0) fetchpriority="high" @else loading="lazy" @endif>
+                                @endif
+                                @if (!empty($slide['caption']))
+                                    <figcaption>{{ $slide['caption'] }}</figcaption>
+                                @endif
+                            </figure>
+                        @endforeach
+                    </div>
+
+                    @if ($esCount > 1)
+                        <div class="ev-story__controls">
+                            <div class="ev-story__dots">
+                                @foreach ($es['slides'] as $i => $slide)
+                                    <button type="button" class="ev-story__dot {{ $i === 0 ? 'is-active' : '' }}"
+                                            data-ev-goto="{{ $i }}" aria-label="Show photo {{ $i + 1 }}"
+                                            @if ($i === 0) aria-current="true" @endif></button>
+                                @endforeach
                             </div>
-                                {{ @$group->title }}</h2>
+                            <div class="ev-story__arrows">
+                                <button type="button" class="ev-story__arrow" data-ev-prev aria-label="Previous photo">
+                                    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M16 10H5m4-4-4 4 4 4"/></svg>
+                                </button>
+                                <button type="button" class="ev-story__arrow" data-ev-next aria-label="Next photo">
+                                    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div> -->
-                <div class="col-lg-12 p-0-575">
-                    <div class="abt-titlte abt-titlte2 abt-titlte20 p-15-575 pl-0">
-                        <p>{!! @$group->content !!}</p>
-                    </div>
+                    @endif
+                </div>
+
+                <div class="ev-story__copy">
+                    <h2 class="ev-story__title" id="evStoryTitle">
+                        <span>{{ $es['accent'] }}</span> {{ $es['title'] }}
+                    </h2>
+                    <span class="ev-story__rule" aria-hidden="true"><i></i><i></i></span>
+
+                    @foreach ($es['paragraphs'] as $p)
+                        <p class="ev-story__text">{{ $p }}</p>
+                    @endforeach
+
+                    <a class="ev-story__btn" href="{{ $es['button']['url'] }}">
+                        {{ $es['button']['label'] }}
+                        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                    </a>
                 </div>
             </div>
-            <div class="row ">
-                <div class="col-lg-12">
-                    <div class="abt-bg">
-                        <img src="{{ asset('storage/' . @$group->content_image_one) }}" alt="" class="w-100">
-                        <div class="abt-video">
-                            <a href="{{ @$group->link }}" data-fancybox="images">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"
-                                    fill="none">
-                                    <path
-                                        d="M2 42.0457V5.95431C2 2.66657 5.74609 0.782778 8.3853 2.74334L32.6775 20.789C34.8305 22.3884 34.8305 25.6116 32.6775 27.211L8.3853 45.2566C5.74609 47.2172 2 45.3334 2 42.0457Z"
-                                        fill="white" stroke="white" stroke-width="3" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </a>
+
+            {{-- ================= BOTTOM: mission / vision / values ================= --}}
+            <div class="ev-story__cols">
+                @foreach ($esColumns as $c)
+                    <article class="ev-story__col">
+                        <div class="ev-story__col-head">
+                            <span class="ev-story__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="22" height="22">{!! $c['icon'] !!}</svg>
+                            </span>
+                            <span class="ev-story__num" aria-hidden="true">{{ sprintf('%02d', $loop->iteration) }}</span>
                         </div>
-                    </div>
-                </div>
+                        <h3>{{ $c['title'] }}</h3>
+                        <p>{{ $c['text'] }}</p>
+                    </article>
+                @endforeach
+
+                {{-- Third column is the photo: no head, no heading, edge to edge --}}
+                @if ($esImg($esColImage))
+                    <article class="ev-story__col ev-story__col--media">
+                        <img src="{{ $esImg($esColImage) }}" alt="{{ $esColImageAlt }}"
+                             loading="lazy" decoding="async">
+                    </article>
+                @endif
             </div>
+
         </div>
     </section>
 
-    <!--====== abreco About Motors ======-->
-    <section class="abreco-service-area pt-110 pb-90 d-none" id="abreco-Motors">
-        <div class="container">
-            <div class="row mb-40">
-                <div class="col-lg-3">
-                    <div class="abt-logo abt-logo2 d-flex">
-                        <div class="title title2">
-                            <h2>{{ @$motors->title }}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 p-0-575">
-                    <div class="abt-titlte abt-titlte2 abt-titlte20 p-15-575">
-                        <p>{!! @$motors->content !!}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    @if (file_exists(public_path($esJs)))
+        <script src="{{ asset($esJs) }}?v={{ filemtime(public_path($esJs)) }}" defer></script>
+    @endif
     <!--====== abreco Counter PART START ======-->
     @if($counters->count() > 0)
         <section class="counter-area counter-area2 counter-about-area pt-120 pb-80">

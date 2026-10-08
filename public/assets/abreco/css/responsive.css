@@ -1188,12 +1188,8 @@
         display: block;
         background-position-x: 98%;
     }
-    #web-banner{
-        display: none;
-    }
-    #mobile-banner{
-        display: block !important;
-    }
+    /* The modern .vb-hero now runs at every width; #mobile-banner keeps its
+       d-none from the markup and no longer takes over below 992px. */
     .abt-logo-new2 .title h2{
         color: #000;
     }
@@ -2413,7 +2409,7 @@
     }
     .table-responsive-stack td{
         font-size: 18px;
-        font-weight: 800;
+        font-weight: 700;
     }
     .table-responsive-stack td span{
         font-size: 14px;
@@ -2813,7 +2809,7 @@
 .ev-ftr__cta { text-align: right; }
 .ev-ftr__cta-title {
     margin-bottom: 14px;
-    font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     font-size: clamp(22px, 2vw, 30px);
     font-weight: 700;
     line-height: 1.2;
@@ -2843,7 +2839,7 @@
 /* ---------- Main columns ---------- */
 .ev-ftr__grid {
     display: grid;
-    grid-template-columns: 1.3fr 2fr .9fr;
+    grid-template-columns: 1.7fr 2fr .6fr;
     gap: 52px 0;              /* columns are spaced by their own padding below */
     align-items: stretch;     /* so the rules run the full column height */
     padding: 52px 0 56px;
@@ -2893,7 +2889,11 @@
     color: var(--ef-accent-soft);
 }
 .ev-ftr__list { display: grid; gap: 13px; }
-.ev-ftr__list li { line-height: 1.5; overflow-wrap: break-word; }
+.ev-ftr__list li {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
 .ev-ftr__list a, .ev-ftr__list span { display: inline-block; transition: transform .2s ease, color .2s ease; }
 .ev-ftr__list a:hover { transform: translateX(3px); }
 /* Twelve models would make a very tall single column */
@@ -3009,3 +3009,119 @@
 @media (max-width: 1299.98px) { .copy-right-sec1 > .container { padding-inline: 40px; } }
 @media (max-width: 767.98px)  { .copy-right-sec1 > .container { padding-inline: 24px; } }
 @media (max-width: 479.98px)  { .copy-right-sec1 > .container { padding-inline: 18px; } }
+
+/* Hide the booking search on mobile.
+   Must come after the @media(max-width: 991px) block above, which sets
+   .booking-wrapper { display: block } — same specificity, so source order
+   decides. */
+@media (max-width: 991.98px) {
+    .booking-wrapper { display: none; }
+}
+
+/* ==========================================================
+   Mobile: start the hero below the header.
+
+   .abreco-header-area is position:absolute and goes position:fixed once
+   .sticky lands, so it never takes up space and was sitting over the top
+   of the banner. Making it static would make the page jump when sticky
+   kicks in, so instead the bar gets a fixed height and the hero is offset
+   by exactly that — one variable keeps the two in step.
+   ========================================================== */
+:root { --ev-hdr-h: 88px; }
+@media (max-width: 575.98px) { :root { --ev-hdr-h: 72px; } }
+
+@media (max-width: 991.98px) {
+    .abreco-header-area .header-nav-box {
+        display: flex;
+        align-items: center;
+        min-height: var(--ev-hdr-h);
+        padding: 0;
+    }
+    .abreco-header-area .header-nav-box > .row { width: 100%; margin: 0; }
+
+    /* The banner clears the bar, so the whole image is visible */
+    .vb-hero {
+        margin-top: var(--ev-hdr-h);
+        --vb-top-space: 24px;      /* nothing overlaps it now */
+    }
+}
+
+/* ==========================================================
+   HEADER LOGO — two marks, swapped on scroll.
+
+   logo_secondary is the white wordmark and logo is the black one
+   (same artwork, 688x200 both). The header is transparent over the
+   hero and turns white once .sticky lands, so the mark has to flip
+   with it.
+
+   Both <img> live in one inline-grid cell rather than one being
+   absolutely positioned: the box then sizes itself normally, so every
+   existing .abreco-logo-box a img rule — the 250px base and the
+   110px/120px/80px sticky breakpoints above, and the margin-top —
+   keeps applying to both marks with no extra work.
+   ========================================================== */
+.abreco-logo-box a { display: inline-grid; }
+.abreco-logo-box a .ev-logo {
+    grid-area: 1 / 1;
+    transition: opacity .25s ease;
+}
+.abreco-logo-box a .ev-logo--dark { opacity: 0; }
+
+.abreco-sticky.sticky .abreco-logo-box a .ev-logo--light { opacity: 0; }
+.abreco-sticky.sticky .abreco-logo-box a .ev-logo--dark  { opacity: 1; }
+
+/* Below 991px the bar is white at every scroll position, not just when
+   sticky, so the white mark would never be readable there. */
+@media (max-width: 991px) {
+    .abreco-logo-box a .ev-logo--light { opacity: 0; }
+    .abreco-logo-box a .ev-logo--dark  { opacity: 1; }
+}
+
+/* ==========================================================
+   HEADER MENU — ink colour on the white sticky bar.
+
+   The links are #FFF for the transparent header over the hero, and
+   nothing used to change that when .sticky turns the bar white, so
+   the menu disappeared on scroll. #283895 is the blue taken from the
+   logo artwork.
+   ========================================================== */
+.abreco-sticky.sticky .abreco-header-main-menu ul > li > a { color: #0e1133; }
+.abreco-sticky.sticky .abreco-header-main-menu ul > li > a:hover,
+.abreco-sticky.sticky .abreco-header-main-menu ul > li > a.active { color: #283895; }
+.abreco-sticky.sticky .abreco-header-main-menu ul > li > a.active::before { background-color: #283895; }
+
+/* ==========================================================
+   HEADER MENU — display face.
+
+   The home page sets every section heading in Space Grotesk
+   (--vb-display / --ej-display / --ws-display all resolve to it),
+   so the navbar matches instead of the theme's DM Sans. The font is
+   loaded in the layout head rather than per page, since the bar is
+   on every route.
+
+   style.css sets the family on `ul > li > a` directly, so inheriting
+   from a container is not enough — these selectors restate it one
+   level deeper to win on specificity rather than file order.
+   ========================================================== */
+.abreco-header-area .abreco-header-main-menu ul > li > a,
+.abreco-header-area .abreco-header-main-menu ul > li .sub-menu li a,
+.abreco-header-area .abreco-header-main-menu ul li .pages-mega-menu ul li a,
+.offcanvas_menu .offcanvas_main_menu li a {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ==========================================================
+   INNER PAGE BANNER TITLE — display face.
+
+   .bread-inner h1 in style.css sets no family at all, so these
+   banner headings fell through to the DM Sans on <body> while the
+   home banner (.vb-title) and the new About banner
+   (.ev-pagehero__title) are both Space Grotesk. Same face here so
+   every banner title on the site reads as one set.
+
+   Scoped through .abreco-inner-banner so it outranks the plain
+   `.bread-inner h1` rule on specificity, not just on file order.
+   ========================================================== */
+.abreco-inner-banner .bread-inner h1 {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+}

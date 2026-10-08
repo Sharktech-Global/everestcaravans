@@ -186,9 +186,15 @@
                                                 <div class="mega-menu-recent-ports">
                                                     <ul class="mega-menu-ul-block">
                                                         <div class="mega-img">
-                                                            <img src="{{ asset('storage/' . $Vehiclew->thumb) }}"
+                                                            @php
+                                                                $firstVehicle = $vehicles_web->first();
+                                                            @endphp
+
+                                                            @if ($firstVehicle)
+                                                            <img src="{{ asset('storage/' . $firstVehicle->thumb) }}"
                                                                 alt="" id="menu-image-{{ $types->id }}"
                                                                 class="menu-image">
+                                                            @endif
                                                         </div>
                                                     </ul>
                                                 </div>
