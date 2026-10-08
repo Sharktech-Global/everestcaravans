@@ -8570,3 +8570,17 @@ min-height: 492px;
 .section.copy-right-sec1 {
     background-color: #0b0e22;
 }
+
+@media(max-width: 600px){
+  .popgallery .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+  }
+  .popgallery .card-image {
+      height: 160px;
+  }
+  .popgallery p {
+      padding: 5px;
+      font-size: 12px;
+  }
+}
