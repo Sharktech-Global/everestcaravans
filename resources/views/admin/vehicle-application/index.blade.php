@@ -125,7 +125,9 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td class="font-w600">{{ $data->vehicle_type->name }}</td>
+                                        <td class="font-w600">
+                                            {{ $data->vehicle_type?->name ?? 'Deleted Vehicle Type' }}
+                                        </td>
                                         <td class="font-w600">{{ $data->name }}</td>
                                         <td>
                                             @if ($data->status)
