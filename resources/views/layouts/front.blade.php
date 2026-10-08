@@ -115,7 +115,7 @@
                         <div class="abreco-logo-box"> <!-- logo here -->
                             <a href="{{ route('home') }}">
                                 {{-- <img src="{{ asset('assets/abreco/images/banner/logo.png') }}" alt=""> --}}
-                                <img src="{{ asset('storage/' . @$settings->logo) }}" alt="">
+                                <img src="{{ asset('storage/' . @$settings->logo_secondary) }}" alt="">
 
                             </a>
                         </div>

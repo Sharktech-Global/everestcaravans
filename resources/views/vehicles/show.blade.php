@@ -65,7 +65,7 @@
                                         alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                         Overview</a></li>
                             <li>
-                                <a href="#specifications" id="specifications-link">
+                                <a href="#specs" id="specifications-link">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
                                         alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                         specifications</a></li>
@@ -120,7 +120,7 @@
                             <li><a href="#overview-" class="active"><img
                                         src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
                                         alt="" width="38" height="45" class="img-none-575" />Overview</a></li>
-                            <li><a href="#specifications-"><img
+                            <li><a href="#specs-"><img
                                         src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
                                         alt="" width="38" height="45" class="img-none-575" />specifications</a></li>
                             <li>
@@ -181,107 +181,20 @@
                             </div>
                         </section>
                     @endif
-                    <section id="specifications" class="item accordions">
+                    <section id="specs" class="item accordions spec-card" aria-labelledby="spec-chassis">
                         <div class="item-content">
                             <div class="data">
-                                <h4 class="text-capitalize">{{ @$vehicle->name }} Specifications</h4>
-                                <div class="accordion" id="accordionExample2">
-                                    @if ($category_types_specs->count() > 0) 
-                                        @foreach ($category_types_specs as $category_type)
-                                            @foreach ($category_type->categories()->where('status', 1)->orderBy('name')->get() as $key => $category)
-                                                @if ($vehicle_details->where('category_type_id', $category_type->id)->where('category_id', $category->id)->count() > 0)
-                                                    <div class="card card-accord card-accord2">
-                                                        <div class="card-header" id="heading{{ $category->id }}">
-                                                            <!-- <h2 class="mb-0"> -->
-                                                                <button type="button" class="accordion-btn"
-                                                                    data-toggle="collapse"
-                                                                    data-target="#collapse{{ $category->id }}"><i
-                                                                        class="fa fa-plus"></i>{{ @$category->name }}</button>
-                                                            <!-- </h2> -->
-                                                        </div>
-                                                        <div id="collapse{{ $category->id }}"class="collapse @if ($key == 0) show @endif">
-                                                            <div class="card-body">
-                                                               @if ($vehicle->varients->count() > 0)
-                                                                    <table
-                                                                        class="table table-bordered table-striped table-responsive-stack"
-                                                                        id="table-{{ $category->id }}">
-                                                                        <thead class="thead-dark">
-                                                                            <tr>
-                                                                                <th> </th>
-                                                                                @foreach ($category->subCategories()->where('status', 1)->orderBy('name')->get() as $subcat)
-                                                                                    @if ($vehicle_details->where('category_type_id', $category_type->id)->where('category_id', $category->id)->where('sub_category_id', $subcat->id)->count())
-                                                                                        <th>{{ @$subcat->name }} </th>
-                                                                                    @endif
-                                                                                @endforeach
-                                                                            </tr>
-                                                                        </thead>
-
-                                                                        <tbody class="thead-dark">
-                                                                            @foreach ($vehicle->varients()->get() as $variant)
-                                                                                @php
-                                                                                    $details = $vehicle_details
-                                                                                        ->where('category_type_id', $category_type->id)
-                                                                                        ->where('category_id', $category->id)
-                                                                                        ->where('sub_category_id', $subcat->id)
-                                                                                        ->where('vehicle_variant_id', $variant->id)
-                                                                                        ->first();
-                                                                                @endphp
-                                                                                <tr>
-                                                                                    <td>{{ $variant->name }}</td>
-                                                                                    @foreach ($category->subCategories()->where('status', 1)->orderBy('name')->get() as $subcat1)
-                                                                                        @if ($vehicle_details->where('category_type_id', $category_type->id)->where('category_id', $category->id)->where('sub_category_id', $subcat1->id)->count())
-                                                                                            @php
-                                                                                                $details1 = $vehicle_details
-                                                                                                    ->where('category_type_id', $category_type->id)
-                                                                                                    ->where('category_id', $category->id)
-                                                                                                    ->where('sub_category_id', $subcat1->id)
-                                                                                                    ->where('vehicle_variant_id', $variant->id)
-                                                                                                    ->first();
-                                                                                            @endphp
-                                                                                            @if (@$details1->is_boolean == 1)
-                                                                                                <td>
-                                                                                                    @if (@$details1->status == 0)
-                                                                                                        <i class="fa fa-check primaryColor"
-                                                                                                            aria-hidden="true"></i>
-                                                                                                    @elseif(@$details1->status == 1)
-                                                                                                        <i class="fa fa-minus "
-                                                                                                            aria-hidden="true"></i>
-                                                                                                    @endif
-                                                                                                </td>
-                                                                                            @else
-                                                                                                <td>
-                                                                                                    @if (@$details1->details)
-                                                                                                        {{ @$details1->details }}
-                                                                                                    @else
-                                                                                                        <i class="fa fa-minus "
-                                                                                                            aria-hidden="true"></i>
-                                                                                                    @endif
-                                                                                                </td>
-                                                                                            @endif
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </tr>
-                                                                            @endforeach
-                                                                        </tbody>
-                                                                    </table>
-                                                                @else
-                                                                    <div class="card card-accord card-accord2">
-                                                                        @foreach ($category->subCategories()->where('status', 1)->orderBy('name')->get() as $subcat)
-                                                                        
-                                                                            @if ($vehicle_details->where('category_type_id', $category_type->id)->where('category_id', $category->id)->where('sub_category_id', $subcat->id)->count())
-                                                                                {{ $subcat->name }} <br/>
-                                                                            @endif
-                                                                        @endforeach
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        @endforeach
-                                    @endif
-                                </div>
+                                <h4 class="text-capitalize">Specifications</h4>
+                                @if($vehicle->sections()->count())
+                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                                        @if($section->order == 5)
+                                            <!-- <div class="gallery-grid">
+                                                <h2 class="text-white mb-3">{{ $section->title }}</h2>
+                                            </div> -->
+                                            {!! $section->description !!}
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </section>
@@ -525,60 +438,6 @@
                 </article>
             </div>
             <!-- DATA TABS END -->
-        </div>
-    </section>
-
-    
-    <!--====== Contact PART START ======-->
-    <section class="contact-section section" id="your_identifier">
-        <div class="container">
-            <div class="row">
-
-                
-
-
-                <div class="col-lg-4 order-1-991">
-                    <div class="contact-head">
-                        <h2>Enquire now</h2>
-                        <h5>Time to gear up
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="21" viewBox="0 0 28 21"
-                                fill="none">
-                                <path d="M15.4389 0H17.609L12.606 21H10.3047L15.4389 0Z" fill="white" />
-                                <path d="M25.7436 0H27.9137L22.9107 21H20.6094L25.7436 0Z" fill="white" />
-                                <path d="M5.13422 0H7.30435L2.30132 21H0L5.13422 0Z" fill="white" />
-                            </svg>
-                        </h5>
-                        <p>Now let’s start this new venture together and experience the seamless services and rides of
-                            Abreco with all its premium quality. Commence this journey to find your smooth ride.</p>
-                    </div>
-                </div>
-
-                {{-- @include('forms.contactus_form') --}}
-                  <div class="col-lg-8 order-2-991" id="enquiryFont">
-                    <div class="contact-form">
-                        @include('forms.vehicle_enquiry')
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- Locations Areas -->
-        <div class="container">
-            <div class="row row-padding-mob">
-                @foreach ($locations_footer as $key => $locs)
-                    @php
-                        $key = $key + 1;
-                    @endphp
-                    <div class="col-lg-3 col-6 text-center p-0-991">
-                        <div class="loc-box loc-box-{{ $key }} loc-box-new">
-                            <div class="icon">
-                                <img src="{{ asset('storage/' . $locs->banner_image) }}" alt="">
-                            </div>
-                            <h4>{{ $locs->name }}</h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
         </div>
     </section>
     

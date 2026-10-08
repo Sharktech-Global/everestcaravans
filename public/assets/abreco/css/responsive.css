@@ -2451,9 +2451,8 @@
         background-position: inherit;
     }
     .vehicle-data .container .details-tab-wrapper .tabbed-content{
-        background: inherit !important;
         box-shadow: none !important;
-        padding: 30px 0px 30px !important;
+        padding: 30px 10px 30px !important;
     }
     .vehicle-data .container .details-tab-wrapper .tabbed-content .item{
         padding: 0 15px;
@@ -2462,7 +2461,7 @@
     .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs-new-class{
         position: sticky !important;
         padding: 30px 0 30px;
-        background: #1E285F;
+        /* background: #1E285F; */
         /* box-shadow: 0px 5px 15px rgb(0 0 0 / 30%); */
         border-bottom: 1px solid #dddddd2e;
     }
@@ -2474,7 +2473,7 @@
         padding-top: 35px;
     }
     .vehicle-data{
-        background: #1E285F !important;
+        /* background: #1E285F !important; */
     }
     .vehicle-data .container{
         padding: 0 !important;
