@@ -162,8 +162,7 @@
                             @endif
                         </select>
                     </div> -->
-
-
+                    
                     @if ($sections)
                         <section id="overview" class="item active">
                             <div class="item-content">
@@ -182,48 +181,6 @@
                             </div>
                         </section>
                     @endif
-                    <!-- <section id="features" class="item accordions">
-                        <div class="item-content">
-                            <div class="data">
-                                <h4 class="text-capitalize">{{ @$vehicle->name }} Features</h4>
-                                <div class="accordion" id="accordionExample">
-                                    @if ($features->count() > 0)
-                                        @foreach ($features as $key => $feature)
-                                            <div class="card card-accord">
-                                                <div class="card-header" id="heading_{{ $key }}">
-                                                    
-                                                        <button type="button" class="accordion-btn" data-toggle="collapse"
-                                                            data-target="#collapse_{{ $key }}"><i
-                                                                class="fa fa-plus"></i>{{ @$feature->title }}</button>
-                                                     
-                                                </div>
-                                                <div id="collapse_{{ $key }}"
-                                                    class="collapse @if ($key == 0) show @endif"
-                                                    aria-labelledby="heading_{{ $key }}"
-                                                    data-parent="#accordionExample">
-                                                    <div class="card-body">
-                                                        @if(@$feature->details)
-                                                            <p>{!! @$feature->details !!}</p>
-                                                         @elseif(@$feature->image_files)
-                                                         <div class="row">
-                                                            <div class="col-md-4"> 
-                                                                <img src="{{asset('storage/'.@$feature->image_files->image)}}">
-                                                            </div>
-
-                                                         </div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @php
-                                                $key = $key + 1;
-                                            @endphp
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </section> -->
                     <section id="specifications" class="item accordions">
                         <div class="item-content">
                             <div class="data">
@@ -328,31 +285,6 @@
                             </div>
                         </div>
                     </section>
-                    <!-- <section id="gallery" class="item">
-                        <div class="item-content">
-                            <div class="data w-100" style="padding-right: 0;">
-                                <h4 class="text-capitalize">{{ @$vehicle->name }} Image Gallery</h4>
-                                <main class="mains">
-                                    <div class="containers">
-                                        @if ($galleries)
-                                            @foreach ($galleries as $gallery)
-                                                <div class="card">
-                                                    <div class="card-image">
-                                                        <a href="{{ asset('upload/vehicle/gallery/' . $gallery->image) }}"
-                                                            data-fancybox="gallery" data-caption="{{ @$gallery->title }}">
-                                                            <img src="{{ asset('upload/vehicle/gallery/' . $gallery->image) }}"
-                                                                alt="{{ @$gallery->title }}">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </main>
-                            </div>
-                        </div>
-                    </section> -->
-                    
                     <section id="external-gallery" class="item accordions popgallery">
                         <div class="item-content">
                             <div class="data">
@@ -440,7 +372,6 @@
                             </div>
                         </div>
                     </section>
-
                     <section id="booking" class="item booking web">
                         <!-- @if ($errors->any())
                             <div class="alert alert-danger">
@@ -524,10 +455,73 @@
                                 </form>
                             </div>
                         </div>
-                    </section>
+                    </section> 
+                    <!-- <section id="features" class="item accordions">
+                        <div class="item-content">
+                            <div class="data">
+                                <h4 class="text-capitalize">{{ @$vehicle->name }} Features</h4>
+                                <div class="accordion" id="accordionExample">
+                                    @if ($features->count() > 0)
+                                        @foreach ($features as $key => $feature)
+                                            <div class="card card-accord">
+                                                <div class="card-header" id="heading_{{ $key }}">
+                                                    
+                                                        <button type="button" class="accordion-btn" data-toggle="collapse"
+                                                            data-target="#collapse_{{ $key }}"><i
+                                                                class="fa fa-plus"></i>{{ @$feature->title }}</button>
+                                                     
+                                                </div>
+                                                <div id="collapse_{{ $key }}"
+                                                    class="collapse @if ($key == 0) show @endif"
+                                                    aria-labelledby="heading_{{ $key }}"
+                                                    data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        @if(@$feature->details)
+                                                            <p>{!! @$feature->details !!}</p>
+                                                         @elseif(@$feature->image_files)
+                                                         <div class="row">
+                                                            <div class="col-md-4"> 
+                                                                <img src="{{asset('storage/'.@$feature->image_files->image)}}">
+                                                            </div>
 
-                    
-
+                                                         </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @php
+                                                $key = $key + 1;
+                                            @endphp
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+                    <!-- <section id="gallery" class="item">
+                        <div class="item-content">
+                            <div class="data w-100" style="padding-right: 0;">
+                                <h4 class="text-capitalize">{{ @$vehicle->name }} Image Gallery</h4>
+                                <main class="mains">
+                                    <div class="containers">
+                                        @if ($galleries)
+                                            @foreach ($galleries as $gallery)
+                                                <div class="card">
+                                                    <div class="card-image">
+                                                        <a href="{{ asset('upload/vehicle/gallery/' . $gallery->image) }}"
+                                                            data-fancybox="gallery" data-caption="{{ @$gallery->title }}">
+                                                            <img src="{{ asset('upload/vehicle/gallery/' . $gallery->image) }}"
+                                                                alt="{{ @$gallery->title }}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                    </section> -->                 
                 </article>
             </div>
             <!-- DATA TABS END -->

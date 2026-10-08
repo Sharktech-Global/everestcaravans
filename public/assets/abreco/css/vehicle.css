@@ -154,7 +154,7 @@ p {
 }
 .vehicle-data .container .details-tab-wrapper .tabs {
   position: absolute;
-  top: -40px;
+  top: -35px;
   width: 100%;
   left: 0;
 }
@@ -179,12 +179,13 @@ p {
   text-align: left;
 }
 .vehicle-data .container .details-tab-wrapper .tabs ul li a {
-  padding: 25px 20px;
-  color: var(--white);
-  font-weight: 400;
-  text-transform: capitalize;
-  font-size: 20px;
-  border-radius: 10px;
+    padding: 20px 20px;
+    color: var(--white);
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 18px;
+    border-radius: 10px;
+    text-align: center;
 }
 .vehicle-data .container .details-tab-wrapper .tabs ul li a:hover, .vehicle-data .container .details-tab-wrapper .tabs ul li a.active {
   background: var(--color-1);
@@ -962,3 +963,29 @@ p {
     grid-gap: 10px;
   }
 }/*# sourceMappingURL=vehicle-detail.css.map */
+
+
+
+
+
+
+
+
+.vehicle-data .details-tab-wrapper .tabbed-content > .item {
+    display: none;
+    margin: 0 !important;
+    padding-top: 0;
+}
+
+.vehicle-data .details-tab-wrapper .tabbed-content > .item.active {
+    display: block;
+}
+
+.vehicle-data .details-tab-wrapper .tabbed-content {
+    position: relative;
+}
+
+.vehicle-data .details-tab-wrapper .tabbed-content > .item.active {
+    margin: 0 !important;
+    padding: 40px 0 0;
+}
