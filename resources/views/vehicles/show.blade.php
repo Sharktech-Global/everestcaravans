@@ -32,20 +32,20 @@
     </section> -->
 
     <!-- vehicle banner mobile view -->
-    <section class="abreco-inner-banner abreco-inner-banner-2 d-none d-block-575" style="background-image: url('{{ asset('storage/' . @$vehicle->mobile_banner) }}');">
+    <!-- <section class="abreco-inner-banner abreco-inner-banner-2 d-none d-block-575" style="background-image: url('{{ asset('storage/' . @$vehicle->mobile_banner) }}');">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="bread-inner">
                         <div class="baner-bg-head2">
-                            <!-- <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt=""> -->
+                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
                         </div>
                         <h1>{{ @$vehicle->name }}</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--====== abreco Vehicle Overview tabs ======-->
     <section class="vehicle-data" id="vehicle-data">
@@ -67,34 +67,51 @@
             <div class="details-tab-wrapper" id="link-scroll-data">
                 <article class="tabbed-content">
                     <!-- desktop /Mobile  view -->
+                     @php
+                        $tabSections = $vehicle->sections()->get();
+                    @endphp
                     <nav class="tabs tabs-new-class">
                         <ul class="text-center">
+                            @if ($tabSections->contains('order', 1))
                             <li>
                                 <a href="#overview" id="overview-link" class="active">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
                                         alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                        Overview</a></li>
-                            <li>
-                                <a href="#specs" id="specifications-link">
-                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
-                                        alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                        specifications</a></li>
-                            <li>
-                                <a href="#external-gallery" id="external-gallery-link">
+                                        Overview</a>
+                            </li>
+                            @endif
+                            @if ($tabSections->contains('order', 2))
+                                <li>
+                                    <a href="#specs" id="specifications-link">
+                                        <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
+                                            alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                            specifications</a>
+                                </li>
+                            @endif
+                            @if ($tabSections->contains('order', 3))
+                                <li>
+                                    <a href="#external-gallery" id="external-gallery-link">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
                                     alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                    External Gallery</a></li>
+                                    External Gallery</a>
+                                </li>
+                            @endif
+                            @if ($tabSections->contains('order', 4))
                             <li>
                                 <a href="#internal-gallery" id="internal-gallery-link">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
                                     alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                     Internal Gallery</a></li>
+                            @endif
+                            @if ($tabSections->contains('order', 5))
                             <li>
                                 <a href="#floor-plans" id="floor-plans-link">
                                     <!-- <img 
                                     src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
                                     alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                    Floor Plans</a></li>
+                                    Floor Plans</a>
+                                </li>
+                            @endif
                             @if ($vehicle->is_booking == '1')
                                 <li>
                                     <a href="#booking" id="booking-link">
@@ -173,48 +190,92 @@
                         </select>
                     </div> -->
                     
-                    @if ($sections)
-                        <section id="overview" class="item active">
-                            <div class="item-content">
-                                <div class="data">
-                                    <h4 class="text-capitalize">{{ @$sections->title }}</h4>
-                                    <p class="mb-5 inner-text">{{ @$sections->description }}</p>
-                                    @if(@$vehicle->brochure)
-                                    <div class="ab-button-wrapper"><a  href="{{ @$vehicle->brochure }}"
-                                            class="ab-button" target="_blank">Download Brochure</a></div>
-                                    @endif
-                                </div>
-                                <div class="image">
-                                    <img src="{{ asset('storage/' . @$vehicle->image) }}" alt="" width=""
-                                        height="" />
-                                </div>
-                            </div>
-                        </section>
+                    @if($vehicle->sections()->count())
+                        @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                            @if($section->order == 1)
+                                <section id="overview" class="item active">
+                                    <div class="item-content">
+                                        <div class="data">
+                                            <h4 class="text-capitalize">{{ @$section->title }}</h4>
+                                            <p class="mb-5 inner-text">{{ @$section->description }}</p>
+                                            @if(@$vehicle->brochure)
+                                            <div class="ab-button-wrapper"><a  href="{{ @$vehicle->brochure }}"
+                                                    class="ab-button" target="_blank">Download Brochure</a></div>
+                                            @endif
+                                        </div>
+                                        <div class="image">
+                                            @php
+                                                $galleryImages = $vehicle->sections()
+                                                    ->where('order', 1)
+                                                    ->first()
+                                                    ?->images()
+                                                    ->orderBy('order')
+                                                    ->get() ?? collect();
+                                            @endphp
+
+                                            @if ($galleryImages->isNotEmpty())
+
+                                                {{-- Show Section 1 Gallery --}}
+                                                <div class="owl-carousel vehicle-gallery-slider">
+                                                    @foreach ($galleryImages as $image)
+                                                        <div class="item">
+                                                            <div class="card">
+                                                                <div class="card-image">
+                                                                    <a href="{{ asset('storage/' . $image->image) }}"
+                                                                    data-fancybox="overview-gallery"
+                                                                    data-caption="{{ $image->title ?? '' }}">
+                                                                        <img src="{{ asset('storage/' . $image->image) }}"
+                                                                            alt="{{ $image->title ?? '' }}">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+                                            @else
+
+                                                {{-- Show Vehicle Main Image --}}
+                                                @if (!empty($vehicle->image))
+                                                    <div class="image">
+                                                        <img src="{{ asset('storage/' . $vehicle->image) }}"
+                                                            alt="{{ $vehicle->name ?? 'Vehicle' }}">
+                                                    </div>
+                                                @endif
+
+                                            @endif
+                                        </div>
+                                    </div>
+                                </section>
+                            @endif
+                        @endforeach
                     @endif
-                    <section id="specs" class="item accordions spec-card" aria-labelledby="spec-chassis">
-                        <div class="item-content">
-                            <div class="data">
-                                <h4 class="text-capitalize">Specifications</h4>
-                                @if($vehicle->sections()->count())
-                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 2)
-                                            <!-- <div class="gallery-grid">
-                                                <h2 class="text-white mb-3">{{ $section->title }}</h2>
-                                            </div> -->
-                                            {!! $section->description !!}
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </section>
-                    <section id="external-gallery" class="item accordions popgallery">
-                        <div class="item-content">
-                            <div class="data">
-                                <h4 class="text-capitalize">External Gallery</h4>
-                                @if($vehicle->sections()->count())
-                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 3)
+
+                    @if($vehicle->sections()->count())
+                        @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                            @if($section->order == 2)
+                                <section id="specs" class="item accordions spec-card" aria-labelledby="spec-chassis">
+                                    <div class="item-content">
+                                        <div class="data">
+                                            <h4 class="text-capitalize">Specifications</h4>
+                                                <!-- <div class="gallery-grid">
+                                                    <h2 class="text-white mb-3">{{ $section->title }}</h2>
+                                                </div> -->
+                                                {!! $section->description !!}
+                                        </div>
+                                    </div>
+                                </section>
+                            @endif
+                        @endforeach
+                    @endif
+
+                    @if($vehicle->sections()->count())
+                        @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                            @if($section->order == 3)
+                                <section id="external-gallery" class="item accordions popgallery">
+                                    <div class="item-content">
+                                        <div class="data">
+                                            <h4 class="text-capitalize">External Gallery</h4>
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -231,19 +292,20 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </section>
-                    <section id="internal-gallery" class="item accordions popgallery">
-                        <div class="item-content">
-                            <div class="data">
-                                <h4 class="text-capitalize">Internal Gallery</h4>
-                                @if($vehicle->sections()->count())
-                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 4)
+                                        </div>
+                                    </div>
+                                </section>
+                            @endif
+                        @endforeach
+                    @endif
+                    
+                    @if($vehicle->sections()->count())
+                        @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                            @if($section->order == 4)
+                                <section id="internal-gallery" class="item accordions popgallery">
+                                    <div class="item-content">
+                                        <div class="data">
+                                            <h4 class="text-capitalize">Internal Gallery</h4>
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -260,19 +322,20 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </section>
-                    <section id="floor-plans" class="item accordions popgallery">
-                        <div class="item-content">
-                            <div class="data">
-                                <h4 class="text-capitalize">floor-plans</h4>
-                                @if($vehicle->sections()->count())
-                                    @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
-                                        @if($section->order == 5)
+                                        </div>
+                                    </div>
+                                </section>
+                            @endif
+                        @endforeach
+                    @endif
+
+                    @if($vehicle->sections()->count())
+                        @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
+                            @if($section->order == 5)
+                                <section id="floor-plans" class="item accordions popgallery">
+                                    <div class="item-content">
+                                        <div class="data">
+                                            <h4 class="text-capitalize">floor-plans</h4>
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -289,12 +352,13 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </section>
+                                        </div>
+                                    </div>
+                                </section>
+                            @endif
+                        @endforeach
+                    @endif
+
                     <section id="booking" class="item booking web">
                         <!-- @if ($errors->any())
                             <div class="alert alert-danger">
@@ -762,6 +826,75 @@
                 }
             });
         
+        $(document).ready(function () {
+    $('.vehicle-gallery-slider').owlCarousel({
+        items: 1,
+        loop: $('.vehicle-gallery-slider .item').length > 1,
+        margin: 0,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        smartSpeed: 300,
+        autoHeight: false,
+        navText: [
+            '<span aria-hidden="true">&#10094;</span>',
+            '<span aria-hidden="true">&#10095;</span>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            1200: {
+                items: 1
+            }
+        }
+    });
+});
+
+$(document).on(
+    'click',
+    '.vehicle-gallery-slider [data-fancybox="overview-gallery"]',
+    function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        // Close any existing Fancybox instance
+        if ($.fancybox.getInstance()) {
+            $.fancybox.close();
+        }
+
+        const $originalImages = $(
+            '.vehicle-gallery-slider .owl-item:not(.cloned) [data-fancybox="overview-gallery"]'
+        );
+
+        const clickedImage = $(this).attr('href');
+
+        const images = $originalImages.map(function () {
+            return {
+                src: $(this).attr('href'),
+                opts: {
+                    caption: $(this).attr('data-caption') || ''
+                }
+            };
+        }).get();
+
+        const startIndex = Math.max(
+            0,
+            $originalImages.toArray().findIndex(
+                el => $(el).attr('href') === clickedImage
+            )
+        );
+
+        $.fancybox.open(images, {
+            loop: true,
+            buttons: ['zoom', 'slideShow', 'thumbs', 'close']
+        }, startIndex);
+    }
+);
     </script>
+    
     
 @endsection

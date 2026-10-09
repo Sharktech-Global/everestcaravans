@@ -1170,3 +1170,68 @@ p {
     .spec-item__body { animation: none; }
     .spec-item__icon, .spec-item__icon::before, .spec-item__icon::after { transition: none; }
   }
+
+
+
+
+
+
+.vehicle-gallery-slider {
+    position: relative;
+    width: 100%;
+}
+
+.vehicle-gallery-slider .card {
+    margin: 0;
+    border: none;
+    background: transparent;
+}
+
+.vehicle-gallery-slider .card-image {
+    width: 100%;
+    overflow: hidden;
+}
+
+.vehicle-gallery-slider .card-image img {
+    display: block;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Navigation arrows */
+.vehicle-gallery-slider .owl-nav button.owl-prev,
+.vehicle-gallery-slider .owl-nav button.owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vehicle-gallery-slider .owl-nav button.owl-prev {
+    left: 15px;
+}
+
+.vehicle-gallery-slider .owl-nav button.owl-next {
+    right: 15px;
+}
+
+.vehicle-gallery-slider .owl-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+@media (max-width: 767px) {
+    .vehicle-gallery-slider .card-image img {
+        height: 250px;
+    }
+}
