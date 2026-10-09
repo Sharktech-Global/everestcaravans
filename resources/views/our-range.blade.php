@@ -35,7 +35,7 @@
                                     id="v-pills-{{ $type->slug }}-tab " clicker="{{ $type->slug }}" data-toggle="pill"
                                     href="#v-pills-{{ $type->slug }}" role="tab"
                                     aria-controls="v-pills-{{ $type->slug }}" aria-selected="true">
-                                    <span>{{ $type->name }}</span>
+                                    <span>{{ $type->name }}</span><i class="fas fa-chevron-right"></i>
                                 </a>
                             @endforeach
                         </div>

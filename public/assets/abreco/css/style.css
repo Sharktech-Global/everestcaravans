@@ -2243,8 +2243,8 @@ p {
     flex: 0 0 33.33%;
     position: relative;
     border: 1px solid #E8E8E8;
-    text-align: center;
-    padding: 1rem;
+    text-align: left;
+    padding: 10px 20px;
     font-family: 'DM Sans', sans-serif;
     text-transform: uppercase;
     position: relative;
@@ -2253,6 +2253,12 @@ p {
     overflow: hidden;
     border-radius: 10px;
     background: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.abreco-features-tabs-btn .nav a:hover {
+  background: #cdcdcd;
 }
 
 .abreco-features-tabs-btn .nav a i {
@@ -2260,11 +2266,11 @@ p {
   width: 35px;
   text-align: center;
   line-height: 35px;
-  background: #f1f2f7;
-  color: #63636a;
+  /* background: #dbd8d8; */
+  color: #000;
   display: inline-block;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .abreco-features-tabs-btn .nav a.active {
   color: #fff;
@@ -2358,7 +2364,7 @@ p {
 
 .abreco-features-tabs-btn .nav a.active i {
   color: #fff;
-  background: #2b70fa;
+  /* background: #001486; */
 }
 .abreco-features-tabs-btn.abreco-features-9-tabs-btn a {
   color: #63636a;
