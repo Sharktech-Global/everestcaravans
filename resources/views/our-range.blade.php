@@ -71,7 +71,7 @@
                                     @endphp
                                     {{-- Display vehicles for the current type --}}
                                     @foreach ($vehicles_under_type as $vehicle_data)
-                                        <div class="col-lg-4 mb-3 box">
+                                        <div class="col-lg-6 mb-3 box">
                                             <div class="fea-inner">
                                                 <div class="img">
                                                    <a href="{{ route('vehicles.show', @$vehicle_data->slug) }}">
