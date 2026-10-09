@@ -2,21 +2,12 @@
 
 @section('content')
     <!--====== contact Breadcrumb Part ======-->
-    <section class="abreco-inner-banner contact-bg-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner bread-inner-contact">
-                        <div class="baner-bg-head2">
-                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
-                        </div>
-                        <h1>CONTACT US</h1>
-                        <p>Get in touch with us today and make your dream a reality!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('partials.page-hero', [
+        'title'       => 'Contact Us',
+        'subtitle'    => 'Get in touch with us today and make your dream a reality!',
+        'image'       => 'assets/abreco/images/newonce/contactheader.jpg',
+        'breadcrumbs' => [['label' => 'Contact Us']],
+    ])
 
     <!--====== Showroom contact Part ======-->
     <!-- <section class="show-contact pt-120 pb-100 p-relative" id="showrooms">
@@ -42,116 +33,84 @@
         </div>
     </section> -->
 
-    <!--====== Assistance contact Part ======-->
-   <section class="assistance-area section pt-0 pb-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="assistance-box">
-                        <div class="row">
-                            <!-- <div class="col-lg-4">
-                                <div class="assist-inner first">
-                                    <h2><span>For assisstance on</span>
-                                        Commercial vehicles & Service Booking</h2>
-                                </div>
-                            </div> -->
-                            @if($settings)
-                            <div class="col-lg-4">
-                                <div class="assist-inner third">
-                                    <div class="icon-third">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="31" viewBox="0 0 33 31" fill="none">
-                                                <path d="M19.5749 28.6747C21.3167 29.3327 22.8649 29.6037 24.2196 29.6037C29.174 29.6037 31.4964 26.0427 31.4964 26.004C31.8834 25.1912 31.9608 22.4044 31.9995 22.0947C31.9995 21.9399 31.9221 21.7851 31.7673 21.7464L24.297 18.1467C24.1422 18.0693 23.9874 18.108 23.8713 18.1854C22.2843 19.5401 20.9296 21.5141 20.4652 22.2496C12.9175 19.695 9.93714 13.8504 9.35655 12.5731C11.3693 10.9087 11.9886 9.05084 12.0273 8.97342C12.066 8.89601 12.066 8.77989 12.0273 8.70248L8.81467 1.23224C8.73726 1.07741 8.62114 1 8.42761 1L4.94408 1.11612C4.86667 1.11612 4.82796 1.15482 4.75055 1.19353C0.454189 3.86424 0.957366 9.08954 0.996072 9.32178C0.996072 9.36048 0.996072 9.39919 0.996072 9.39919C1.8476 11.8764 2.93137 14.7019 4.40219 16.9856C10.3242 26.1202 19.033 28.5199 19.5749 28.6747ZM5.0989 1.85153L8.19538 1.73541L11.2531 8.8186C11.0596 9.28307 10.3629 10.7926 8.65985 12.1086C8.54373 12.2247 8.46632 12.3795 8.54373 12.5344C8.65985 12.844 11.4854 20.082 20.5426 23.0237C20.6974 23.0624 20.8909 23.0237 21.007 22.8689C21.007 22.8301 22.4392 20.5078 24.2196 18.9209L31.2641 22.327C31.2254 23.4882 31.0706 25.1912 30.8771 25.6557C30.8383 25.6944 27.3935 30.8036 19.8846 27.9006H19.8459C19.7685 27.8619 11.0596 25.6944 5.13761 16.5598C3.70549 14.3535 2.66043 11.6054 1.8476 9.16695C1.69278 8.70248 1.49925 4.21259 5.0989 1.85153Z" fill="white" stroke="white"/>
-                                                <path d="M8.46558 9.63129C8.54299 9.70871 8.6204 9.74741 8.73652 9.74741C8.85264 9.74741 8.93005 9.70871 9.00746 9.63129C9.16228 9.47647 9.16228 9.24423 9.00746 9.08941C7.3044 7.42506 6.14322 3.67058 6.14322 3.63187C6.06581 3.43834 5.87228 3.32223 5.67875 3.36093C5.48522 3.43834 5.3691 3.63187 5.40781 3.8254C5.44651 4.01893 6.60769 7.81212 8.46558 9.63129Z" fill="white" stroke="white"/>
-                                                <path d="M28.8644 25.0752C28.9031 25.0752 28.9418 25.0752 28.9805 25.0752C29.1354 25.0752 29.2902 24.9591 29.3676 24.8042C29.445 24.6107 29.3289 24.3785 29.0967 24.3398C25.6518 23.3334 24.0262 21.94 24.0262 21.9013C23.8714 21.7465 23.6391 21.7852 23.4843 21.94C23.3295 22.0948 23.3682 22.3271 23.523 22.4819C23.5617 22.5206 25.2648 23.9914 28.8644 25.0752Z" fill="white" stroke="white"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <p><span>Head Office</span> 
-                                        <a href="tel: {{@$settings->mobile}}"> {{@$settings->address}}</a> 
-                                        </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="assist-inner third">
-                                    <div class="icon-third">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="31" viewBox="0 0 33 31" fill="none">
-                                                <path d="M19.5749 28.6747C21.3167 29.3327 22.8649 29.6037 24.2196 29.6037C29.174 29.6037 31.4964 26.0427 31.4964 26.004C31.8834 25.1912 31.9608 22.4044 31.9995 22.0947C31.9995 21.9399 31.9221 21.7851 31.7673 21.7464L24.297 18.1467C24.1422 18.0693 23.9874 18.108 23.8713 18.1854C22.2843 19.5401 20.9296 21.5141 20.4652 22.2496C12.9175 19.695 9.93714 13.8504 9.35655 12.5731C11.3693 10.9087 11.9886 9.05084 12.0273 8.97342C12.066 8.89601 12.066 8.77989 12.0273 8.70248L8.81467 1.23224C8.73726 1.07741 8.62114 1 8.42761 1L4.94408 1.11612C4.86667 1.11612 4.82796 1.15482 4.75055 1.19353C0.454189 3.86424 0.957366 9.08954 0.996072 9.32178C0.996072 9.36048 0.996072 9.39919 0.996072 9.39919C1.8476 11.8764 2.93137 14.7019 4.40219 16.9856C10.3242 26.1202 19.033 28.5199 19.5749 28.6747ZM5.0989 1.85153L8.19538 1.73541L11.2531 8.8186C11.0596 9.28307 10.3629 10.7926 8.65985 12.1086C8.54373 12.2247 8.46632 12.3795 8.54373 12.5344C8.65985 12.844 11.4854 20.082 20.5426 23.0237C20.6974 23.0624 20.8909 23.0237 21.007 22.8689C21.007 22.8301 22.4392 20.5078 24.2196 18.9209L31.2641 22.327C31.2254 23.4882 31.0706 25.1912 30.8771 25.6557C30.8383 25.6944 27.3935 30.8036 19.8846 27.9006H19.8459C19.7685 27.8619 11.0596 25.6944 5.13761 16.5598C3.70549 14.3535 2.66043 11.6054 1.8476 9.16695C1.69278 8.70248 1.49925 4.21259 5.0989 1.85153Z" fill="white" stroke="white"/>
-                                                <path d="M8.46558 9.63129C8.54299 9.70871 8.6204 9.74741 8.73652 9.74741C8.85264 9.74741 8.93005 9.70871 9.00746 9.63129C9.16228 9.47647 9.16228 9.24423 9.00746 9.08941C7.3044 7.42506 6.14322 3.67058 6.14322 3.63187C6.06581 3.43834 5.87228 3.32223 5.67875 3.36093C5.48522 3.43834 5.3691 3.63187 5.40781 3.8254C5.44651 4.01893 6.60769 7.81212 8.46558 9.63129Z" fill="white" stroke="white"/>
-                                                <path d="M28.8644 25.0752C28.9031 25.0752 28.9418 25.0752 28.9805 25.0752C29.1354 25.0752 29.2902 24.9591 29.3676 24.8042C29.445 24.6107 29.3289 24.3785 29.0967 24.3398C25.6518 23.3334 24.0262 21.94 24.0262 21.9013C23.8714 21.7465 23.6391 21.7852 23.4843 21.94C23.3295 22.0948 23.3682 22.3271 23.523 22.4819C23.5617 22.5206 25.2648 23.9914 28.8644 25.0752Z" fill="white" stroke="white"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <p><span>Mail Us</span> 
-                                        <a href="tel: {{@$settings->mobile}}"> {{@$settings->email}}</a> 
-                                        </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="assist-inner third">
-                                    <div class="icon-third">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="31" viewBox="0 0 33 31" fill="none">
-                                                <path d="M19.5749 28.6747C21.3167 29.3327 22.8649 29.6037 24.2196 29.6037C29.174 29.6037 31.4964 26.0427 31.4964 26.004C31.8834 25.1912 31.9608 22.4044 31.9995 22.0947C31.9995 21.9399 31.9221 21.7851 31.7673 21.7464L24.297 18.1467C24.1422 18.0693 23.9874 18.108 23.8713 18.1854C22.2843 19.5401 20.9296 21.5141 20.4652 22.2496C12.9175 19.695 9.93714 13.8504 9.35655 12.5731C11.3693 10.9087 11.9886 9.05084 12.0273 8.97342C12.066 8.89601 12.066 8.77989 12.0273 8.70248L8.81467 1.23224C8.73726 1.07741 8.62114 1 8.42761 1L4.94408 1.11612C4.86667 1.11612 4.82796 1.15482 4.75055 1.19353C0.454189 3.86424 0.957366 9.08954 0.996072 9.32178C0.996072 9.36048 0.996072 9.39919 0.996072 9.39919C1.8476 11.8764 2.93137 14.7019 4.40219 16.9856C10.3242 26.1202 19.033 28.5199 19.5749 28.6747ZM5.0989 1.85153L8.19538 1.73541L11.2531 8.8186C11.0596 9.28307 10.3629 10.7926 8.65985 12.1086C8.54373 12.2247 8.46632 12.3795 8.54373 12.5344C8.65985 12.844 11.4854 20.082 20.5426 23.0237C20.6974 23.0624 20.8909 23.0237 21.007 22.8689C21.007 22.8301 22.4392 20.5078 24.2196 18.9209L31.2641 22.327C31.2254 23.4882 31.0706 25.1912 30.8771 25.6557C30.8383 25.6944 27.3935 30.8036 19.8846 27.9006H19.8459C19.7685 27.8619 11.0596 25.6944 5.13761 16.5598C3.70549 14.3535 2.66043 11.6054 1.8476 9.16695C1.69278 8.70248 1.49925 4.21259 5.0989 1.85153Z" fill="white" stroke="white"/>
-                                                <path d="M8.46558 9.63129C8.54299 9.70871 8.6204 9.74741 8.73652 9.74741C8.85264 9.74741 8.93005 9.70871 9.00746 9.63129C9.16228 9.47647 9.16228 9.24423 9.00746 9.08941C7.3044 7.42506 6.14322 3.67058 6.14322 3.63187C6.06581 3.43834 5.87228 3.32223 5.67875 3.36093C5.48522 3.43834 5.3691 3.63187 5.40781 3.8254C5.44651 4.01893 6.60769 7.81212 8.46558 9.63129Z" fill="white" stroke="white"/>
-                                                <path d="M28.8644 25.0752C28.9031 25.0752 28.9418 25.0752 28.9805 25.0752C29.1354 25.0752 29.2902 24.9591 29.3676 24.8042C29.445 24.6107 29.3289 24.3785 29.0967 24.3398C25.6518 23.3334 24.0262 21.94 24.0262 21.9013C23.8714 21.7465 23.6391 21.7852 23.4843 21.94C23.3295 22.0948 23.3682 22.3271 23.523 22.4819C23.5617 22.5206 25.2648 23.9914 28.8644 25.0752Z" fill="white" stroke="white"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <p><span>Call us on</span> 
-                                        <a href="tel: {{@$settings->mobile}}"> {{@$settings->mobile}}</a> 
-                                        </p>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
+
+    <!--====== Contact PART START ======-->
+    {{-- Everest Caravans — Contact page section (image + details | form)
+         Fonts are the site pair (Space Grotesk + Poppins); both already load
+         above, so this section requests none. --}}
+    @php $ecCss = 'css/contact.css'; @endphp
+    @if (file_exists(public_path($ecCss)))
+        <link rel="stylesheet" href="{{ asset($ecCss) }}?v={{ filemtime(public_path($ecCss)) }}">
+    @else
+        <!-- EVEREST: public/{{ $ecCss }} not found -->
+    @endif
+
+    @php
+        // ===================== EDIT HERE =====================
+        $ec = [
+            'image'   => 'assets/abreco/images/newonce/contact21.jpg',    // roughly square, 1084x1078
+            'eyebrow' => 'Contact us',
+            'title'   => 'Get in touch with us',
+            'text'    => 'Planning a custom build, booking a factory visit or need help with your van? Send us a message and our team will get back to you.',
+
+            // TODO: replace phone and email with the real details.
+            // Not taken from $settings — those still hold the old Abreco
+            // values (+91 6282019115 / agm.cvpass@abrecomotors.com).
+            'details' => [
+                ['label' => 'Call us',  'value' => '+61 400 000 000',              'url' => 'tel:+61400000000',                    'icon' => 'phone'],
+                ['label' => 'Email us', 'value' => 'sales@everestcaravans.com.au', 'url' => 'mailto:sales@everestcaravans.com.au', 'icon' => 'mail'],
+            ],
+        ];
+        // =====================================================
+
+        $ecIcons = [
+            'phone' => '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+            'mail'  => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+        ];
+        $ecImg = file_exists(public_path($ec['image'])) ? asset($ec['image']) : null;
+    @endphp
+
+    <section class="ev-contact" aria-labelledby="evContactTitle">
+        <div class="ev-contact__inner">
+
+            {{-- LEFT: photo + contact details --}}
+            <div class="ev-contact__info">
+                @if ($ecImg)
+                    <div class="ev-contact__media">
+                        <img src="{{ $ecImg }}" alt="An Everest Avalanche set up on a beach with bikes on the rack" loading="lazy" decoding="async">
                     </div>
+                @endif
+
+                <h3 class="ev-contact__subhead">Contact information</h3>
+
+                <ul class="ev-contact__details">
+                    @foreach ($ec['details'] as $d)
+                        <li>
+                            <span class="ev-contact__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="20" height="20">{!! $ecIcons[$d['icon']] !!}</svg>
+                            </span>
+                            <span class="ev-contact__detail">
+                                <small>{{ $d['label'] }}</small>
+                                <a href="{{ $d['url'] }}">{{ $d['value'] }}</a>
+                            </span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            {{-- RIGHT: form card --}}
+            <div class="ev-contact__card">
+                <p class="ev-contact__eyebrow">{{ $ec['eyebrow'] }}</p>
+                <h2 class="ev-contact__title" id="evContactTitle">{{ $ec['title'] }}</h2>
+                <p class="ev-contact__text">{{ $ec['text'] }}</p>
+
+                <div class="ev-contact__form">
+                    @include('forms.contactus_form')
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!--====== Contact PART START ======-->
-    <section class="contact-section section" id="contact-identifier">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-4 order-1-991">
-                    <div class="contact-head">
-                        <h2>Enquire now</h2>
-                        <h5>Time to gear up
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="28" height="21" viewBox="0 0 28 21"
-                                fill="none">
-                                <path d="M15.4389 0H17.609L12.606 21H10.3047L15.4389 0Z" fill="white" />
-                                <path d="M25.7436 0H27.9137L22.9107 21H20.6094L25.7436 0Z" fill="white" />
-                                <path d="M5.13422 0H7.30435L2.30132 21H0L5.13422 0Z" fill="white" />
-                            </svg> -->
-                        </h5>
-                        <p>Now let’s start this new venture together and experience the seamless services and rides of
-                            Abreco with all its premium quality. Commence this journey to find your smooth ride.</p>
-                    </div>
-                </div>
-                @include('forms.contactus_form')
-            </div>
-        </div>
-        <!-- Locations Areas -->
-        <div class="container">
-            <div class="row row-padding-mob">
-                @foreach ($locations_footer as $key => $locs)
-                    @php
-                        $key =$key + 1;
-                    @endphp
-                    <div class="col-lg-3 col-6 text-center p-0-991">
-                        <div class="loc-box loc-box-{{$key}} loc-box-new">
-                            <div class="icon">
-                                <img src="{{ asset('storage/'.@$locs->banner_image) }}" alt="">
-                            </div>
-                            <h4>{{ $locs->name }}</h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+    
     @endsection

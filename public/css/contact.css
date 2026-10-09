@@ -1,0 +1,257 @@
+/* Everest Caravans — Contact page section (light theme)
+   Every rule is prefixed with .ev-contact so theme styles can't leak in.
+   The form block below restyles whatever forms.contactus_form outputs.
+   Corner radius for everything lives in --ct-radius. */
+
+.ev-contact {
+    --ct-ink: #0E1330;
+    --ct-brand: #283895;
+    --ct-brand-dark: #1D2A72;
+    --ct-gold: #D9AE55;
+    --ct-text: #555A6E;
+    --ct-line: #E3E5EE;
+    --ct-field: #F3F4FA;
+    --ct-bg: #F5F6FA;
+    --ct-radius: 4px;
+    /* Site typography: Space Grotesk for headings, Poppins for body.
+       Space Grotesk loads in the layout head; Poppins comes from the page
+       hero partial at the top of this page. */
+    --ct-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ct-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+
+    display: block;
+    margin: 0;
+    padding: 110px 0;
+    background: var(--ct-bg);
+    font-family: var(--ct-font);
+    color: var(--ct-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-contact *, .ev-contact *::before, .ev-contact *::after { box-sizing: border-box; }
+.ev-contact h2, .ev-contact h3, .ev-contact p, .ev-contact ul, .ev-contact li {
+    margin: 0; padding: 0;
+    font-family: var(--ct-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-contact ul { list-style: none; }
+.ev-contact a { text-decoration: none; }
+.ev-contact img { max-width: none; border: 0; }
+.ev-contact svg { display: block; flex: none; }
+
+.ev-contact .ev-contact__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: start;
+    gap: 48px;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ---------- Left ---------- */
+.ev-contact .ev-contact__media {
+    position: relative;
+    aspect-ratio: 12 / 10;
+    overflow: hidden;
+    border-radius: var(--ct-radius);
+    background: #E6E8F2;
+}
+.ev-contact .ev-contact__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ev-contact .ev-contact__subhead {
+    margin: 40px 0 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--ct-line);
+    font-family: var(--ct-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ct-ink);
+}
+
+/* Phone | Email — side by side with a hairline divider */
+.ev-contact .ev-contact__details {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    padding-top: 26px;
+}
+.ev-contact .ev-contact__details li { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ev-contact .ev-contact__details li + li {
+    margin-left: 24px;
+    padding-left: 24px;
+    border-left: 1px solid var(--ct-line);
+}
+.ev-contact .ev-contact__icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--ct-radius);
+    background: var(--ct-ink);
+    color: var(--ct-gold);
+}
+.ev-contact .ev-contact__icon svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-contact .ev-contact__detail { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+.ev-contact .ev-contact__detail small { margin-bottom: 4px; font-size: 13.5px; color: var(--ct-text); }
+.ev-contact .ev-contact__detail a {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ct-ink);
+    overflow-wrap: anywhere;
+    transition: color .2s ease;
+}
+.ev-contact .ev-contact__detail a:hover { color: var(--ct-brand); }
+
+/* ---------- Right: card ---------- */
+.ev-contact .ev-contact__card {
+    padding: 20px;
+    border: 1px solid var(--ct-line);
+    border-radius: var(--ct-radius);
+    background: #fff;
+}
+.ev-contact .ev-contact__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    font-family: var(--ct-display);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ct-brand);
+}
+.ev-contact .ev-contact__eyebrow::after { content: ""; width: 40px; height: 1px; background: var(--ct-line); }
+.ev-contact .ev-contact__title {
+    margin-bottom: 16px;
+    font-family: var(--ct-display);
+    font-size: clamp(32px, 3.2vw, 48px);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -.035em;
+    color: var(--ct-ink);
+}
+.ev-contact .ev-contact__text {
+    max-width: 52ch;
+    margin-bottom: 34px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* ---------- Form styling (applies to your included form) ---------- */
+.ev-contact .ev-contact__form form { margin: 0; }
+
+/* forms.contactus_form was written for the old two-column row, so it opens
+   with <div class="col-lg-8">. Bootstrap makes that 66.666667% wide, which
+   is why the form sits two-thirds across inside this card. Reset the outer
+   wrapper only. */
+.ev-contact .ev-contact__form > [class*="col-"] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+/* Bootstrap 4 rows carry margin: 0 -15px, which would now hang the fields
+   15px outside the card. Retuned to +/-9px so the pairs keep an 18px gutter
+   between them while the outer edges sit flush with the card padding. */
+.ev-contact .ev-contact__form .row {
+    margin-left: -9px;
+    margin-right: -9px;
+}
+.ev-contact .ev-contact__form .row > [class*="col-"] {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+.ev-contact .ev-contact__form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ct-ink);
+}
+.ev-contact .ev-contact__form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+.ev-contact .ev-contact__form select,
+.ev-contact .ev-contact__form textarea {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 18px;
+    border: 1px solid transparent;
+    border-radius: var(--ct-radius);
+    background: var(--ct-field);
+    font-family: var(--ct-font);
+    font-size: 15.5px;
+    color: var(--ct-ink);
+    box-shadow: none;
+    outline: none;
+    transition: border-color .2s ease, background-color .2s ease;
+}
+.ev-contact .ev-contact__form textarea { min-height: 150px; padding: 16px 18px; resize: vertical; }
+.ev-contact .ev-contact__form ::placeholder { color: #7D8196; opacity: 1; }
+.ev-contact .ev-contact__form input:focus,
+.ev-contact .ev-contact__form select:focus,
+.ev-contact .ev-contact__form textarea:focus {
+    border-color: var(--ct-brand);
+    background: #fff;
+}
+.ev-contact .ev-contact__form button[type="submit"],
+.ev-contact .ev-contact__form input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: var(--ct-radius);
+    background: var(--ct-brand);
+    font-family: var(--ct-font);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.ev-contact .ev-contact__form button[type="submit"]:hover,
+.ev-contact .ev-contact__form input[type="submit"]:hover { background: var(--ct-ink); }
+.ev-contact .ev-contact__form button[type="submit"]:focus-visible,
+.ev-contact .ev-contact__form input[type="submit"]:focus-visible { outline: 2px solid var(--ct-brand); outline-offset: 3px; }
+/* Laravel validation messages */
+.ev-contact .ev-contact__form .invalid-feedback,
+.ev-contact .ev-contact__form .text-danger,
+.ev-contact .ev-contact__form .error { font-size: 13px; color: #C0392B; }
+.ev-contact .ev-contact__form .is-invalid { border-color: #C0392B !important; }
+
+/* ---------- Responsive ---------- */
+/* Small laptops: left column is narrow, so stack phone + email instead of breaking the email */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .ev-contact .ev-contact__details { grid-template-columns: 1fr; }
+    .ev-contact .ev-contact__details li + li { margin: 18px 0 0; padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--ct-line); }
+}
+@media (max-width: 991.98px) {
+    .ev-contact { padding: 90px 0; }
+    .ev-contact .ev-contact__inner { grid-template-columns: 1fr; padding: 0 28px; }
+    .ev-contact .ev-contact__card { order: -1; }     /* form first on smaller screens */
+}
+@media (max-width: 575.98px) {
+    .ev-contact { padding: 72px 0; }
+    .ev-contact .ev-contact__inner { padding: 0 16px; gap: 40px; }
+    .ev-contact .ev-contact__card { padding: 30px 22px; }
+    .ev-contact .ev-contact__details { grid-template-columns: 1fr; }
+    .ev-contact .ev-contact__details li + li { margin: 18px 0 0; padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--ct-line); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-contact * { transition: none !important; }
+}

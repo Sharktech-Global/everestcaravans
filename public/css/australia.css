@@ -1,0 +1,214 @@
+/* Everest Caravans — "Built in Melbourne, tested across Australia" (navy + gold theme)
+   Every rule is prefixed with .ev-aus so theme styles can't leak in. */
+
+.ev-aus {
+    --ea-ink: #0E1330;
+    --ea-brand: #283895;
+    --ea-gold: #D9AE55;
+    --ea-gold-light: #F1D58C;
+    --ea-text: rgba(255, 255, 255, .72);
+    --ea-line: rgba(255, 255, 255, .12);
+    --ea-bg: #0E1330;
+    /* Site typography: Space Grotesk for headings, Poppins for body.
+       Both load earlier in the page, so this section requests no font. */
+    --ea-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ea-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+    --ea-radius: 10px;
+
+    display: block;
+    /* Floats as an inset card rather than a full-bleed band: the page shows
+       through on all four sides. overflow:hidden below clips the background
+       photo to the rounded corners. */
+    margin: 0 40px 40px;
+    border-radius: 28px;
+    padding: 110px 0;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--ea-bg);      /* shows if no photo is set */
+    font-family: var(--ea-font);
+    color: var(--ea-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-aus *, .ev-aus *::before, .ev-aus *::after { box-sizing: border-box; }
+.ev-aus h2, .ev-aus p, .ev-aus ul, .ev-aus li {
+    margin: 0; padding: 0;
+    font-family: var(--ea-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-aus ul { list-style: none; }
+.ev-aus img { max-width: 100%; border: 0; }
+.ev-aus svg { display: block; flex: none; }
+
+.ev-aus .ev-aus__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: 72px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ---------- Background photo + dark gradient ---------- */
+.ev-aus .ev-aus__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+}
+.ev-aus .ev-aus__shade 
+{
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 45% 70% at 25% 50%, rgb(3 3 3 / 46%), #00000000 70%), linear-gradient(22deg, rgba(14, 19, 48, .78) 0%, rgb(14 19 48 / 85%) 50%, rgba(14, 19, 48, .94) 100%), linear-gradient(219deg, rgb(14 19 48 / 92%) 0%, rgb(14 19 48 / 0%) 30%, rgb(14 19 48 / 0%) 70%, rgb(14 19 48 / 26%) 100%);
+}
+
+/* ---------- Map ---------- */
+.ev-aus .ev-aus__map {
+    position: relative;
+    aspect-ratio: 1000 / 912;      /* the map SVG's own viewBox */
+}
+.ev-aus .ev-aus__map img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* colours are built into the map file */
+}
+.ev-aus .ev-aus__pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.ev-aus .ev-aus__dot {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 3px solid var(--ea-bg);
+    border-radius: 50%;
+    background: #8C9BF0;
+    box-shadow: 0 4px 10px rgba(14, 19, 48, .3);
+}
+.ev-aus .ev-aus__dot::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid #8C9BF0;
+    opacity: 0;
+    animation: ev-aus-ping 2.6s ease-out infinite;
+}
+.ev-aus .ev-aus__pin:nth-child(3) .ev-aus__dot::after { animation-delay: .6s; }
+.ev-aus .ev-aus__pin:nth-child(4) .ev-aus__dot::after { animation-delay: 1.2s; }
+.ev-aus .ev-aus__pin:nth-child(5) .ev-aus__dot::after { animation-delay: 1.8s; }
+.ev-aus .ev-aus__pin.is-main .ev-aus__dot { width: 20px; height: 20px; background: var(--ea-gold); }
+.ev-aus .ev-aus__pin.is-main .ev-aus__dot::after { border-color: var(--ea-gold); }
+@keyframes ev-aus-ping {
+    0%   { transform: scale(.6); opacity: .9; }
+    100% { transform: scale(2); opacity: 0; }
+}
+/* Small label next to each pin */
+.ev-aus .ev-aus__label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--ea-ink);
+    transform: translateX(-50%);
+}
+.ev-aus .ev-aus__pin.is-main .ev-aus__label { background: var(--ea-gold); color: var(--ea-ink); font-weight: 600; }
+
+/* ---------- Content ---------- */
+.ev-aus .ev-aus__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-family: var(--ea-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ea-gold-light);
+}
+.ev-aus .ev-aus__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--ea-gold);
+}
+.ev-aus .ev-aus__title {
+    margin-bottom: 22px;
+    font-family: var(--ea-display);
+    font-size: clamp(30px, 3.2vw, 46px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    color: #fff;
+    text-wrap: balance;
+}
+.ev-aus .ev-aus__text {
+    max-width: 52ch;
+    margin-bottom: 36px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: white;
+}
+
+/* Places: 2 × 2 with dividers */
+.ev-aus .ev-aus__places {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--ea-line);
+}
+.ev-aus .ev-aus__places li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 16px 18px 0;
+    border-bottom: 1px solid var(--ea-line);
+}
+.ev-aus .ev-aus__places li:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--ea-line); }
+.ev-aus .ev-aus__places svg {
+    fill: none;
+    stroke: #8C9BF0;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.ev-aus .ev-aus__places li.is-main svg { stroke: var(--ea-gold); }
+.ev-aus .ev-aus__places span { display: flex; flex-direction: column; line-height: 1.35; }
+.ev-aus .ev-aus__places strong { font-size: 16px; font-weight: 600; color: #fff; }
+.ev-aus .ev-aus__places small { font-size: 13px; color: rgba(255, 255, 255, .55); }
+.ev-aus .ev-aus__places li.is-main small { color: var(--ea-gold-light); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-aus { margin: 0 24px 24px; border-radius: 22px; padding: 90px 0; }
+    .ev-aus .ev-aus__inner { grid-template-columns: 1fr; gap: 48px; padding: 0 28px; }
+    .ev-aus .ev-aus__map { max-width: 560px; width: 100%; margin: 0 auto; }
+}
+@media (max-width: 575.98px) {
+    .ev-aus { margin: 0 14px 14px; border-radius: 16px; padding: 72px 0; }
+    .ev-aus .ev-aus__inner { padding: 0 20px; }
+    .ev-aus .ev-aus__label { display: none; }          /* list below names the places on small screens */
+    .ev-aus .ev-aus__places { grid-template-columns: 1fr; }
+    .ev-aus .ev-aus__places li:nth-child(even) { padding-left: 0; border-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-aus .ev-aus__dot::after { animation: none; }
+}

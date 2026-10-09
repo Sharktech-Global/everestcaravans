@@ -8,12 +8,12 @@
     --es-text: #555A6E;
     --es-line: #E3E5EE;
     --es-tint: #EEF0FB;
-    --es-font: "Lexend", "Segoe UI", Roboto, Arial, sans-serif;
+    --es-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     /* Headline face, matching the home page sections. Loaded in the layout head. */
     --es-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-    --es-max: 1240px;
+    --es-max: 1340px;
     --es-side: 40px;
-    --es-radius: 10px;
+    --es-radius: 5px;
 
     display: block;
     margin: 0;
@@ -59,7 +59,7 @@
     background: var(--es-ink);
     box-shadow: 0 30px 60px -32px rgba(14, 19, 48, .5);
 }
-.ev-story .ev-story__slides { position: absolute; inset: 0; }
+.ev-story .ev-story__slides { position: absolute; inset: 0; overflow: hidden; border-radius: var(--es-radius); }
 .ev-story .ev-story__slide {
     position: absolute;
     inset: 0;
@@ -78,6 +78,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: var(--es-radius);
     transform: scale(1.06);
     transition: transform 6s ease-out;
 }
@@ -129,18 +130,21 @@
 .ev-story .ev-story__dot.is-active { width: 28px; background: var(--es-gold); }
 .ev-story .ev-story__dot:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .ev-story .ev-story__arrows { display: flex; gap: 8px; }
+/* Round, frosted over the photo rather than solid white squares */
 .ev-story .ev-story__arrow {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     padding: 0;
-    border: 0;
-    border-radius: var(--es-radius);
-    background: #fff;
-    color: var(--es-ink);
+    border: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .14);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    color: #fff;
     cursor: pointer;
-    transition: background-color .2s ease, color .2s ease;
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
 }
 .ev-story .ev-story__arrow svg {
     fill: none;
@@ -149,7 +153,12 @@
     stroke-linecap: round;
     stroke-linejoin: round;
 }
-.ev-story .ev-story__arrow:hover { background: var(--es-gold); }
+.ev-story .ev-story__arrow:hover {
+    background: #fff;
+    border-color: #fff;
+    color: var(--es-ink);
+    transform: scale(1.06);
+}
 .ev-story .ev-story__arrow:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 /* Story copy */
@@ -192,34 +201,54 @@
     color: var(--es-text);
 }
 
+/* Primary CTA: pill with the arrow in its own chip. The chip is the svg
+   itself — padding plus a round background — so the markup stays as it is. */
 .ev-story .ev-story__btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    height: 52px;
+    gap: 14px;
+    height: 56px;
     margin-top: 16px;
-    padding: 0 26px;
-    border-radius: var(--es-radius);
+    padding: 0 8px 0 28px;              /* tight on the right, the chip fills it */
+    border-radius: 999px;
     background: var(--es-brand);
     font-size: 15px;
     font-weight: 600;
+    letter-spacing: .01em;
     color: #fff;
     text-decoration: none;
-    transition: background-color .2s ease;
+    box-shadow: 0 12px 26px -14px rgba(40, 56, 149, .75);
+    transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 .ev-story .ev-story__btn svg {
+    box-sizing: content-box;            /* the section sets border-box, which
+                                           would eat the padding below */
+    width: 18px;
+    height: 18px;
+    padding: 11px;                      /* 18 + 22 = a 40px chip */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    transition: transform .2s ease;
+    transition: background-color .25s ease, transform .25s cubic-bezier(.22, .7, .2, 1);
 }
 .ev-story .ev-story__btn:hover,
 .ev-story .ev-story__btn:focus,
 .ev-story .ev-story__btn:visited { color: #fff; text-decoration: none; }
-.ev-story .ev-story__btn:hover { background: var(--es-ink); }
-.ev-story .ev-story__btn:hover svg { transform: translateX(3px); }
+.ev-story .ev-story__btn:hover {
+    background: var(--es-ink);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px -16px rgba(14, 19, 48, .8);
+}
+.ev-story .ev-story__btn:hover svg {
+    background: var(--es-gold);
+    stroke: var(--es-ink);
+    transform: translateX(3px);
+}
+.ev-story .ev-story__btn:active { transform: translateY(0); }
 .ev-story .ev-story__btn:focus-visible { outline: 2px solid var(--es-brand); outline-offset: 3px; }
 
 /* ================= BOTTOM: three columns with dividers ================= */
@@ -375,9 +404,59 @@
     .ev-story .ev-story__col:nth-child(2) { padding-right: 0; }
     .ev-story .ev-story__col:last-child { grid-column: 1 / -1; padding-left: 0; border-left: 0; border-top: 1px solid var(--es-line); }
 }
+/* Round "go to contact" button, bottom right of each text column.
+   The columns are stretched grid items, so making them flex and pushing the
+   button with margin-top:auto lands both buttons on the same baseline even
+   though the two paragraphs are different lengths. The media column is left
+   out — its image fills the whole cell. */
+.ev-story .ev-story__col:not(.ev-story__col--media) {
+    display: flex;
+    flex-direction: column;
+}
+.ev-story .ev-story__go {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-top: auto;              /* sits on the bottom of the column */
+    align-self: flex-end;
+    border: 1.5px solid var(--es-line);
+    border-radius: 50%;
+    color: var(--es-ink);
+    text-decoration: none;
+    transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+/* margin-top:auto collapses to zero once the text fills the column, so the
+   gap under the paragraph is held by the paragraph itself and survives at
+   every text length */
+.ev-story .ev-story__col > p { margin-bottom: 5px; }
+.ev-story .ev-story__go svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-45deg);     /* points up and to the right at rest */
+    transition: transform .35s cubic-bezier(.22, .7, .2, 1);
+}
+.ev-story .ev-story__go:hover,
+.ev-story .ev-story__go:focus {
+    background: var(--es-brand);
+    border-color: var(--es-brand);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.ev-story .ev-story__go:hover svg,
+.ev-story .ev-story__go:focus svg { transform: rotate(0deg); }   /* straightens to horizontal */
+.ev-story .ev-story__go:active { transform: translateY(0); }
+.ev-story .ev-story__go:visited { color: var(--es-ink); }
+.ev-story .ev-story__go:focus-visible { outline: 2px solid var(--es-brand); outline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
     .ev-story .ev-story__col::before, .ev-story .ev-story__icon, .ev-story .ev-story__num::before,
-    .ev-story .ev-story__values svg,
+    .ev-story .ev-story__values svg, .ev-story .ev-story__go, .ev-story .ev-story__go svg,
     .ev-story .ev-story__slide, .ev-story .ev-story__slide img, .ev-story .ev-story__dot { transition: none; }
 }
 @media (max-width: 575.98px) {
@@ -405,6 +484,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: var(--es-radius);
 }
 
 /* On wide screens the column is a stretched grid item, so its height comes
