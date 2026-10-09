@@ -203,19 +203,17 @@
                                                     class="ab-button" target="_blank">Download Brochure</a></div>
                                             @endif
                                         </div>
-                                        <div class="image">
-                                            @php
-                                                $galleryImages = $vehicle->sections()
-                                                    ->where('order', 1)
-                                                    ->first()
-                                                    ?->images()
-                                                    ->orderBy('order')
-                                                    ->get() ?? collect();
-                                            @endphp
+                                        @php
+                                            $galleryImages = $vehicle->sections()
+                                                ->where('order', 1)
+                                                ->first()
+                                                ?->images()
+                                                ->orderBy('order')
+                                                ->get() ?? collect();
+                                        @endphp
 
-                                            @if ($galleryImages->isNotEmpty())
-
-                                                {{-- Show Section 1 Gallery --}}
+                                        @if ($galleryImages->isNotEmpty())
+                                            <div class="image">
                                                 <div class="owl-carousel vehicle-gallery-slider">
                                                     @foreach ($galleryImages as $image)
                                                         <div class="item">
@@ -232,19 +230,16 @@
                                                         </div>
                                                     @endforeach
                                                 </div>
-
-                                            @else
-
-                                                {{-- Show Vehicle Main Image --}}
-                                                @if (!empty($vehicle->image))
-                                                    <div class="image">
-                                                        <img src="{{ asset('storage/' . $vehicle->image) }}"
-                                                            alt="{{ $vehicle->name ?? 'Vehicle' }}">
-                                                    </div>
-                                                @endif
-
+                                            </div>
+                                        @else
+                                            @if (!empty($vehicle->image))
+                                                <div class="image">
+                                                    <img src="{{ asset('storage/' . $vehicle->image) }}"
+                                                        alt="{{ $vehicle->name ?? 'Vehicle' }}">
+                                                </div>
                                             @endif
-                                        </div>
+
+                                        @endif
                                     </div>
                                 </section>
                             @endif
