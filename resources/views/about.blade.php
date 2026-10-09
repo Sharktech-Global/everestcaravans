@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap">
     {{-- ?v=mtime so an edit is never served from the browser cache --}}
     <link rel="stylesheet" href="{{ asset('assets/css/about2.css') }}?v={{ filemtime(public_path('assets/css/about2.css')) }}">
+    {{-- .ws-about ("Who we are") is shared with the home page and its rules live here --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/home2.css') }}?v={{ filemtime(public_path('assets/css/home2.css')) }}">
 @endsection
 @section('content')
     <!--====== About Breadcrumb Part ======-->
@@ -23,9 +25,6 @@
         $esCss = 'css/story.css';
         $esJs  = 'js/story.js';
     @endphp
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
     @if (file_exists(public_path($esCss)))
         <link rel="stylesheet" href="{{ asset($esCss) }}?v={{ filemtime(public_path($esCss)) }}">
     @else
@@ -47,7 +46,7 @@
 
             // Slider on the left. Add as many slides as you like. 'caption' is optional.
             'slides' => [
-                ['image' => 'assets/abreco/images/newonce/home21.jpg',        'alt' => 'An Everest caravan and tow vehicle parked at a painted silo',        'caption' => 'Built for the toughest tracks'],
+                ['image' => 'assets/abreco/images/newonce/home-ban21.jpg',    'alt' => 'A family camped beside their Everest caravan in the outback',       'caption' => 'Built for the toughest tracks'],
                 ['image' => 'assets/abreco/images/vehicles/build-van-17.jpeg', 'alt' => 'An Everest caravan shell being built on the factory floor',          'caption' => 'Made in Campbellfield, VIC'],
                 ['image' => 'assets/images/about/who-we1.jpg',                 'alt' => 'A finished Everest Alpine Quattro in the factory yard',              'caption' => 'Finished to your spec'],
                 ['image' => 'assets/images/about/who-we2.jpg',                 'alt' => 'The A-frame of a finished Everest van, with gas bottles and stone guard', 'caption' => 'Quality checked before delivery'],
@@ -152,6 +151,11 @@
                         </div>
                         <h3>{{ $c['title'] }}</h3>
                         <p>{{ $c['text'] }}</p>
+
+                        <a class="ev-story__go" href="{{ url('/contact') }}"
+                           aria-label="Contact us about {{ $c['title'] }}">
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                        </a>
                     </article>
                 @endforeach
 
@@ -170,188 +174,290 @@
     @if (file_exists(public_path($esJs)))
         <script src="{{ asset($esJs) }}?v={{ filemtime(public_path($esJs)) }}" defer></script>
     @endif
-    <!--====== abreco Counter PART START ======-->
-    @if($counters->count() > 0)
-        <section class="counter-area counter-area2 counter-about-area pt-120 pb-80">
-            <div class="container">
-                <div class="row">
-                    @foreach ($counters as $key => $data)
-                        <div class="col-lg-3 col-md-6 col-12 p-0-991">
-                            @php
-                                $key = $key + 1;
-                            @endphp
-                            <div class="conter-box conter-box{{$key}} conter_box">
-                                <div class="count d-flex mt-2">
-                                @if ($data->counter < 10)
-                                        <span class="zero">0</span>
+
+    <!--====== Who are us ======-->
+    {{-- Everest — "Who we are" with service tabs (tabs switch the quote + image)
+         Same section as the home page; its CSS lives in assets/css/home2.css,
+         which this page links in css_after. --}}
+    @php
+        $wsJs = 'js/about-services.js';
+
+        // ================= EDIT CONTENT HERE =================
+        $wsAbout = [
+            'eyebrow' => 'Who We Are',
+            'title'   => 'Premium Custom Caravans, Built to the Highest Standard',
+            'text'    => 'Everest Caravans is a family owned business with over 15 years experience in the caravan industry. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations.',
+            // Home sends this to /about; we are already on /about, so it points at contact instead
+            'button'  => ['label' => 'Talk to Us', 'url' => url('/contact')],
+            'bg'      => null,                                  // stats panel background; null = reuse the main photo
+            'photo'   => 'assets/images/about/who-we1.jpg',        // large photo, top left
+            'photo2'  => 'assets/images/about/who-we2.jpg',        // smaller photo, overlapping bottom right
+        ];
+
+        // One entry per tab. Clicking a tab swaps the quote text and image.
+        $wsServices = [
+            [
+                'label' => 'Off-Road',
+                'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
+                'title' => 'Engineered for off-road',
+                'text'  => 'Our vans are engineered for purpose. The Everest team hits the road often, so we know exactly what a van needs to handle the Gibb River, Oodnadatta and the Nullarbor.',
+                'image' => 'assets/images/services/off-road.png',
+            ],
+            [
+                'label' => 'Lux Decor',
+                'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
+                'title' => 'Customised from the inside out',
+                'text'  => 'Style your interior with whatever makes you feel right at home. Come into our showroom and select your one-of-a-kind interior.',
+                'image' => 'assets/images/services/lux-decor.png',
+            ],
+            [
+                'label' => 'Quality',
+                'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+                'title' => 'Strict quality control',
+                'text'  => 'Every caravan goes through our strict quality control process and must pass our QC stage before it is delivered to you.',
+                'image' => 'assets/images/services/quality.jpeg',
+            ],
+        ];
+        // =====================================================
+
+        $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) : null;
+        $wsPanelBg = $wsImg($wsAbout['bg']) ?? $wsImg($wsAbout['photo']);
+    @endphp
+
+    <section class="ws-about" aria-labelledby="wsAboutTitle">
+        <div class="ws-about__inner">
+
+            {{-- Heading lives outside the copy column so the photos can sit
+                 between it and the body text when the grid stacks --}}
+            <div class="ws-about__head">
+                <p class="ws-about__eyebrow">{{ $wsAbout['eyebrow'] }}</p>
+                <h2 class="ws-about__title" id="wsAboutTitle">{{ $wsAbout['title'] }}</h2>
+            </div>
+
+            {{-- Photos --}}
+            <div class="ws-about__media">
+                <div class="ws-about__photo ws-about__photo--main">
+                    @if ($wsImg($wsAbout['photo']))
+                        <img src="{{ $wsImg($wsAbout['photo']) }}" alt="Everest Alpine Quattro off-road caravan" loading="lazy" decoding="async">
+                    @endif
+                </div>
+
+                <div class="ws-about__photo ws-about__photo--sub">
+                    @if ($wsImg($wsAbout['photo2']))
+                        <img src="{{ $wsImg($wsAbout['photo2']) }}" alt="Front of an Everest caravan with its stone guard and gas bottles" loading="lazy" decoding="async">
+                    @endif
+                </div>
+            </div>
+
+            {{-- Copy, button, service tabs --}}
+            <div class="ws-about__content">
+                <p class="ws-about__text">{{ $wsAbout['text'] }}</p>
+
+                <div class="ws-about__cta">
+                    <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }}</a>
+                </div>
+
+                {{-- Service tabs + slider --}}
+                <div class="ws-tabs" data-ws-tabs data-autoplay="6000">
+                    <div class="ws-tabs__list" role="tablist" aria-label="What makes an Everest">
+                        @foreach ($wsServices as $i => $svc)
+                            <button type="button" class="ws-tabs__tab {{ $i === 0 ? 'is-active' : '' }}"
+                                    role="tab" id="wsTab{{ $i }}" aria-controls="wsPanel{{ $i }}"
+                                    aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                    tabindex="{{ $i === 0 ? '0' : '-1' }}">
+                                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">{!! $svc['icon'] !!}</svg>
+                                <span>{{ $svc['label'] }}</span>
+                            </button>
+                        @endforeach
+                    </div>
+
+                    <div class="ws-tabs__panels">
+                        @foreach ($wsServices as $i => $svc)
+                            <div class="ws-tabs__panel {{ $i === 0 ? 'is-active' : '' }}"
+                                 role="tabpanel" id="wsPanel{{ $i }}" aria-labelledby="wsTab{{ $i }}"
+                                 {{ $i === 0 ? '' : 'hidden' }}>
+                                <figure class="ws-quote">
+                                    <svg class="ws-quote__mark" viewBox="0 0 32 24" width="32" height="24" aria-hidden="true">
+                                        <path d="M0 24V13.6C0 5.9 4.3 1.3 12.9 0l1.3 3.6C9.6 4.9 7.3 7.4 7 11h6.5v13zm17.8 0V13.6C17.8 5.9 22.1 1.3 30.7 0L32 3.6c-4.6 1.3-6.9 3.8-7.2 7.4h6.5v13z"/>
+                                    </svg>
+                                    <blockquote class="ws-quote__text">{{ $svc['text'] }}</blockquote>
+                                    <figcaption class="ws-quote__by">
+                                        <strong>Everest Caravans</strong>
+                                        <span>Family owned</span>
+                                    </figcaption>
+                                </figure>
+
+                                <div class="ws-tabs__img">
+                                    @if ($wsImg($svc['image']))
+                                        <img src="{{ $wsImg($svc['image']) }}" alt="{{ $svc['title'] }}" loading="lazy" decoding="async">
                                     @endif
-                                    <div class="counter-item">{{ @$data->counter }}
-                                            
-                                    </div>
-                                    <span>{{ $data->plus }}</span>
-                                </div>
-                                <div class="title">
-                                    <h4>{{ $data->title }}</h4>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </section>
-    @endif
 
-    <!--====== Mission | Vision | Values ======-->
-    @if($pages->count() > 0)
-        <section class="mision-area section pt-100 pb-80">
-            <div class="container">
-                <div class="row">
-                    @foreach ($pages as $page)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="mision-box h-100">
-                                <div class="icon">
-                                    <img src="{{ asset('storage/'.$page->banner_image) }}" alt="">
-                                </div>
-                                <h2>{{@$page->title}}</h2>
-                                <p>{!!@$page->content!!}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-    <!--====== Founder Area ======-->
-    <section class="founder-area pb-100 pt-80">
-        <div class="left-img">
-            <img src="{{ asset('assets/abreco/images/trucks/left-img.png') }}" alt="">
-        </div>
-        <div class="founder-inner d-flex align-items-center justify-content-between">
-            <div class="founder-img">
-                <div class="img">
-                    <img src="{{ asset('assets/abreco/images/about-page/chairman2.jpg') }}" alt="">
-                </div>
-            </div>
-            <div class="founder-text">
-                <div class="head">
-                    <h2>Accelerating Beyond Boundaries: A Pursuit of Innovation and Excellence</h2>
-                </div>
-                <div class="para">
-                    <p>{!!@$ceo->details!!} </p>
-                    <span class="name"> <b>{{@$ceo->name}}</b> <span class="designation">{{@$ceo->position}}</span></span>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!--====== Abreco Team Details ======-->
-    <section class="abreco-team section pt-50 pb-120" id="Abreco-team">
-        <div class="container">
-            <div class="row mb-40">
-                <div class="col-lg-3">
-                    <div class="abt-logo abt-logo-new2 d-flex">
-                        <div class="title title2">
-                            <h2>{{@$group->sub_title}}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 p-0-575">
-                    <div class="abt-titlte abt-titlte2 abt-titlte20 p-15-575">
-                        <p>{!!@$group->sub_content!!}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @if($leaders->count() > 0)
-            <div class="team-slider">
-                <div class="owl-carousel">
-                    @foreach ($leaders as $leader)
-                        <div class="item">
-                            <div class="img">
-                                <img src="{{ asset('storage/'.@$leader->image) }}" alt="">
-                            </div>
-                            <div class="name">
-                                <h3>{{@$leader->name}}</h3>
-                                <span>{{@$leader->position}}</span>
-                            </div>
-                        </div>
-                
-                    @endforeach
-                  
-                </div>
-            </div>
+    @if (file_exists(public_path($wsJs)))
+        <script src="{{ asset($wsJs) }}?v={{ filemtime(public_path($wsJs)) }}" defer></script>
+    @endif
+
+    <!--====== Built in Melbourne, tested across Australia ======-->
+    {{-- Everest Caravans — "Built in Melbourne, tested across Australia" (About page)
+         Fonts are the site pair (Space Grotesk + Poppins), both already loaded
+         in the layout head / this page's css_after, so none is requested here. --}}
+    @php $eaCss = 'css/australia.css'; @endphp
+    @if (file_exists(public_path($eaCss)))
+        <link rel="stylesheet" href="{{ asset($eaCss) }}?v={{ filemtime(public_path($eaCss)) }}">
+    @else
+        <!-- EVEREST: public/{{ $eaCss }} not found -->
+    @endif
+
+    @php
+        // ===================== EDIT HERE =====================
+        $ea = [
+            'eyebrow' => 'Across Australia',
+            'title'   => 'Built in Melbourne, tested across Australia',
+            'text'    => 'Built at our Campbellfield factory and proven on Australia’s toughest tracks, so your van is ready for wherever you head next.',
+            'map'     => 'assets/abreco/images/newonce/australia-map-light.svg',   // use australia-map-dark.svg on a light background
+            'bg'      => 'assets/abreco/images/newonce/austever.jpg',             // background photo (dark gradient goes on top)
+        ];
+
+        // Pins on the map. x / y = position on the map in %.
+        $eaPins = [
+            ['name' => 'Campbellfield, VIC',  'tag' => 'Factory & showroom', 'x' => 76.7, 'y' => 80.5, 'main' => true],
+            ['name' => 'Gibb River Road, WA', 'tag' => 'Tested here',         'x' => 33.5, 'y' => 20.3, 'main' => false],
+            ['name' => 'Oodnadatta Track, SA','tag' => 'Tested here',         'x' => 54.5, 'y' => 51.6, 'main' => false],
+            ['name' => 'Nullarbor Plain',     'tag' => 'Tested here',         'x' => 41.9, 'y' => 62.6, 'main' => false],
+        ];
+        // =====================================================
+
+        $eaMap = file_exists(public_path($ea['map'])) ? asset($ea['map']) : null;
+        $eaBg  = file_exists(public_path($ea['bg']))  ? asset($ea['bg'])  : null;
+    @endphp
+
+    <section class="ev-aus" aria-labelledby="evAusTitle">
+        @if ($eaBg)
+            <img class="ev-aus__bg" src="{{ $eaBg }}" alt="" loading="lazy" decoding="async">
         @endif
-    </section>
+        <span class="ev-aus__shade" aria-hidden="true"></span>
 
-    <!--====== Abreco Global Pit Stops ======-->
-    <section class="global-area">
-        <div class="glob-img d-none d-block-575">
-            <img src="{{ asset('assets/abreco/images/shapes/globe.webp') }}" alt="">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4"></div>
-                <div class="col-md-12 col-lg-8">
-                    <div class="global-inner">
-                        <h2>{{@$group->location_title}}</h2>
-                        <p>{!!@$group->location_content!!}</p>
-                        @if($locations->count() > 0)
-                            <div class="global-points d-flex align-items-center justify-content-between">
-                                @foreach ($locations as $location)
-                                    <div class="bo-glo d-flex">
-                                        <div class="img"><img src="{{ asset('storage/'.@$location->icon) }}"
-                                                alt=""></div>
-                                        <h4>{{@$location->name}}</h4>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                </div>
+        <div class="ev-aus__inner">
+
+            {{-- LEFT: dotted map with pins --}}
+            <div class="ev-aus__map">
+                @if ($eaMap)
+                    <img src="{{ $eaMap }}" alt="Map of Australia showing the Everest factory and test tracks" loading="lazy" decoding="async">
+                @endif
+                @foreach ($eaPins as $p)
+                    <span class="ev-aus__pin {{ $p['main'] ? 'is-main' : '' }}"
+                          style="left: {{ $p['x'] }}%; top: {{ $p['y'] }}%;" aria-hidden="true">
+                        <span class="ev-aus__dot"></span>
+                        <span class="ev-aus__label">{{ $p['name'] }}</span>
+                    </span>
+                @endforeach
             </div>
+
+            {{-- RIGHT: content --}}
+            <div class="ev-aus__content">
+                <p class="ev-aus__eyebrow">{{ $ea['eyebrow'] }}</p>
+                <h2 class="ev-aus__title" id="evAusTitle">{{ $ea['title'] }}</h2>
+                <p class="ev-aus__text">{{ $ea['text'] }}</p>
+
+                <ul class="ev-aus__places">
+                    @foreach ($eaPins as $p)
+                        <li class="{{ $p['main'] ? 'is-main' : '' }}">
+                            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M20 10c0 6.5-8 12-8 12s-8-5.5-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>
+                                <strong>{{ $p['name'] }}</strong>
+                                <small>{{ $p['tag'] }}</small>
+                            </span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
         </div>
     </section>
+    <!--====== FAQ ======-->
+    {{-- Everest Caravans — FAQ (image + accordion)
+         Fonts are the site pair (Space Grotesk + Poppins), both already loaded
+         in the layout head / this page's css_after, so none is requested here. --}}
+    @php $efqCss = 'css/faq.css'; @endphp
+    @if (file_exists(public_path($efqCss)))
+        <link rel="stylesheet" href="{{ asset($efqCss) }}?v={{ filemtime(public_path($efqCss)) }}">
+    @else
+        <!-- EVEREST: public/{{ $efqCss }} not found -->
+    @endif
 
-    <!--====== abreco BLOG PART START ======-->
-    <section class="abreco-blog-area pt-90 pb-95">
-        <div class="container">
-            @if($blogs->count() > 0)
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="abreco-section-title">
-                            <h3 class="abreco-title">Drift Across Our Blogs</h3>
-                            <p>We have jot together our stories and knowledge to keep you updated. Give it a quick drift....</p>
-                        </div>
+    @php
+        // ===================== EDIT HERE =====================
+        $efq = [
+            'eyebrow' => 'FAQ',
+            'title'   => 'Get answers to your questions',
+            'button'  => ['label' => 'Ask a Question', 'url' => url('/contact')],
+            'image'   => 'assets/abreco/images/newonce/faq.jpg',          // landscape, ~1200×800
+        ];
+
+        // First item opens by default
+        $efqItems = [
+            ['q' => 'Can I customise my caravan?',
+             'a' => 'Yes. Every Everest van is custom built. You can choose the layout, features and interior finishes, then come into our showroom to select your one-of-a-kind interior.'],
+            ['q' => 'Are Everest caravans built for off-road travel?',
+             'a' => 'They are engineered for purpose. Our team hits the road often, and our vans handle tough terrain such as the Gibb River Road, the Oodnadatta Track and the Nullarbor.'],
+            ['q' => 'Can I visit your factory?',
+             'a' => 'Of course. Our display and manufacturing facility is at 51 Glenbarry Road, Campbellfield VIC 3061, only 20 minutes from Melbourne Airport.'],
+            ['q' => 'What warranty do you offer?',
+             'a' => 'Every Everest caravan comes with a 10 year structural warranty.'],
+            ['q' => 'Do you provide after-sales service?',
+             'a' => 'Yes. We are the manufacturer and the dealer, so you deal with us from the point of sale through delivery, handover and after-care, for the life of your caravan.'],
+            ['q' => 'Do your caravans meet Australian regulations?',
+             'a' => 'Yes. We use the highest quality materials, and every van goes through our strict quality control process before it is delivered.'],
+        ];
+        // =====================================================
+
+        $efqImg = file_exists(public_path($efq['image'])) ? asset($efq['image']) : null;
+    @endphp
+
+    <section class="ev-faq" aria-labelledby="evFaqTitle">
+        <div class="ev-faq__inner">
+
+            {{-- LEFT: heading, link, image --}}
+            <div class="ev-faq__intro">
+                <p class="ev-faq__eyebrow">{{ $efq['eyebrow'] }}</p>
+                <h2 class="ev-faq__title" id="evFaqTitle">{{ $efq['title'] }}</h2>
+
+                <a class="ev-faq__link" href="{{ $efq['button']['url'] }}">
+                    {{ $efq['button']['label'] }}
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg>
+                </a>
+
+                @if ($efqImg)
+                    <div class="ev-faq__media">
+                        <img src="{{ $efqImg }}" alt="An Everest Warrior caravan and tow vehicle at the Nullarbor Plain sign" loading="lazy" decoding="async">
                     </div>
-                </div>
+                @endif
+            </div>
 
-                <div class="row">
-                    @foreach ($blogs as $blog)
-                        <div class="col-lg-6 col-md-12">
-                            <div class="abreco-blog-item mt-30">
-                                <div class="thumb">
-                                <a href="{{ route('blog.details', $blog->slug) }}">
-                                    <img src="{{  asset('storage/'.$blog->feature_image) }}" alt="">
-                                </a>
-                                </div>
-                                <div class="content">
-                                    <h3 class="title"><a href="{{route('blog.details',$blog->slug)}}">{{@$blog->title}}</a></h3>
-                                    <p>{!! \Illuminate\Support\Str::limit(@$blog->details, $limit = 150, $end = '...') !!}</p>
-                                    <a href="{{route('blog.details',$blog->slug)}}" class="blog-btn-home"><span>Read More</span> <i class="fal fa-chevron-right"></i><i
-                                            class="fal fa-chevron-right"></i>
-                                        <i class="fal fa-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach              
-                </div>
-            @endif
+            {{-- RIGHT: accordion (native <details>, only one open at a time) --}}
+            <div class="ev-faq__list">
+                @foreach ($efqItems as $item)
+                    <details class="ev-faq__item" name="ev-faq" @if ($loop->first) open @endif>
+                        <summary>
+                            <span class="ev-faq__num">{{ sprintf('%02d', $loop->iteration) }}</span>
+                            <span class="ev-faq__q">{{ $item['q'] }}</span>
+                            <span class="ev-faq__icon" aria-hidden="true"></span>
+                        </summary>
+                        <div class="ev-faq__a"><p>{{ $item['a'] }}</p></div>
+                    </details>
+                @endforeach
+            </div>
+
         </div>
     </section>
-
-    <!--====== Contact PART START ======-->
-    
-    
 @endsection
 
 @section('js_after')

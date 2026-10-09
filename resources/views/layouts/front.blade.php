@@ -80,16 +80,23 @@
                                 <li @if ($routename == 'home') class="active" @endif>
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
+                                <li @if ($routename == 'our-range') class="active" @endif>
+                                    <a href="{{ route('our-range') }}">Our Range</a>
+                                </li>
+                                <li @if ($routename == 'gallery.index') class="active" @endif>
+                                    <a href="{{ route('gallery.index') }}">Videos</a>
+                                </li>
+                                <li @if ($routename == 'book_test_drive.index') class="active" @endif>
+                                    <a href="{{ route('book_test_drive.index') }}">Book a Factory Visit</a>
+                                </li>
+                                <li @if ($routename == 'finance.show') class="active" @endif>
+                                    <a href="{{ route('finance.show') }}">Finance</a>
+                                </li>
+                                <li @if (in_array($routename, ['blog.show', 'blog.details'])) class="active" @endif>
+                                    <a href="{{ route('blog.show') }}">Blogs</a>
+                                </li>
                                 <li @if ($routename == 'about') class="active" @endif>
                                     <a href="{{ route('about') }}">About Us</a>
-                                </li>
-                                @foreach ($vehicle_types_data as $type)
-                                    <li>
-                                        <a href="{{ route('vehicle_type', $type->slug) }}">{{ $type->name }}</a>
-                                    </li>
-                                @endforeach
-                                <li @if ($routename == 'services.index') class="active" @endif>
-                                    <a href="{{ route('services.index') }}">Services</a>
                                 </li>
                                 <li @if ($routename == 'contact') class="active" @endif>
                                     <a href="{{ route('contact') }}">Contact Us</a>
@@ -136,19 +143,37 @@
                             <ul>
                                 <li>
                                     <a href="{{ route('home') }}"
-                                        @if ($routename == 'home') class="active" @endif>Home </a>
+                                        @if ($routename == 'home') class="active" @endif>Home</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('our-range') }}"
+                                        @if ($routename == 'our-range') class="active" @endif>Our Range</a>
+                                </li>
+                                {{-- No videos page exists yet; pointed at the gallery for now --}}
+                                <li>
+                                    <a href="{{ route('gallery.index') }}"
+                                        @if ($routename == 'gallery.index') class="active" @endif>Videos</a>
+                                </li>
+                                {{-- Nearest existing booking form; its heading still says "Test Drive" --}}
+                                <li>
+                                    <a href="{{ route('book_test_drive.index') }}"
+                                        @if ($routename == 'book_test_drive.index') class="active" @endif>Book a Factory Visit</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('finance.show') }}"
+                                        @if ($routename == 'finance.show') class="active" @endif>Finance</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('blog.show') }}"
+                                        @if (in_array($routename, ['blog.show', 'blog.details'])) class="active" @endif>Blogs</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('about') }}"
                                         @if ($routename == 'about') class="active" @endif>About Us</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('our-range') }}"
-                                        @if ($routename == 'our-range') class="active" @endif>Our Range</a>
-                                </li>
-                                <li>
                                     <a href="{{ route('contact') }}"
-                                        @if ($routename == 'contact') class="active" @endif>Contact Us </a>
+                                        @if ($routename == 'contact') class="active" @endif>Contact Us</a>
                                 </li>
                             </ul>
                         </div>

@@ -3125,3 +3125,29 @@
 .abreco-inner-banner .bread-inner h1 {
     font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
 }
+
+/* ==========================================================
+   HEADER MENU — fits eight items.
+
+   The bar was built for four links at 20px with 17px of side padding
+   and 10px margins either side. At eight that row overflows its
+   col-lg-8, so the type and spacing step down. The flex container
+   already uses space-between, so the items redistribute on their own.
+   ========================================================== */
+@media (min-width: 992px) {
+    .abreco-header-area .abreco-header-main-menu ul > li {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .abreco-header-area .abreco-header-main-menu ul > li > a {
+        font-size: 15px;
+        padding: 20px 10px;
+        white-space: nowrap;       /* "Book a Factory Visit" must not wrap */
+    }
+}
+@media (min-width: 1400px) {
+    .abreco-header-area .abreco-header-main-menu ul > li > a {
+        font-size: 16px;
+        padding: 20px 13px;
+    }
+}
