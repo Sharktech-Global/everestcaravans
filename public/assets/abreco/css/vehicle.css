@@ -166,18 +166,19 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0px;
   max-width: 80%;
 }
 .vehicle-data .container .details-tab-wrapper .tabs ul li {
   background: rgb(30, 40, 95);
   background: linear-gradient(0deg, rgba(40, 56, 149, 0.73) 0%, rgb(138, 147, 196) 45%, rgb(198, 202, 225) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1e285f", endColorstr="#1e285f", GradientType=1);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1803921569);
+  border-radius: 5px;
+  border: 1px solid rgb(231 233 244);
   flex-grow: 1;
   flex-basis: 0;
   text-align: left;
+  background: #b9bed5;
 }
 .vehicle-data .container .details-tab-wrapper .tabs ul li a {
     padding: 20px 20px;
@@ -185,7 +186,7 @@ p {
     font-weight: 500;
     text-transform: capitalize;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
 }
 .vehicle-data .container .details-tab-wrapper .tabs ul li a:hover, .vehicle-data .container .details-tab-wrapper .tabs ul li a.active {

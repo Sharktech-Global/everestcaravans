@@ -330,7 +330,7 @@
                                 <section id="floor-plans" class="item accordions popgallery">
                                     <div class="item-content">
                                         <div class="data">
-                                            <h4 class="text-capitalize">floor-plans</h4>
+                                            <h4 class="text-capitalize">Floor Plans</h4>
                                             <div class="gallery-grid">
                                                 <!-- <h2 class="text-white mb-3">{{ $section->title }}</h2>
                                                 <p class="text-white mb-4">{{ htmlspecialchars_decode(strip_tags($section->description)) }}</p> -->
@@ -507,6 +507,23 @@
                 </article>
             </div>
             <!-- DATA TABS END -->
+             
+            @foreach ($vehicle->sections()->where('order', 6)->get() as $section)
+                <section id="videoo" class="ev-decor item accordions popgallery">
+                    <div class="item-content">
+                        <div class="data">
+                            <h2 class="text-capitalize">Watch the Full Walkthrough</h2>
+                            <h2 class="ev-decor__title is-in" id="evDecorTitle" data-rv="" style="--rv-i: 1;">Customised inside and out, styled to feel like home.</h2>
+                            @if (!empty($section->description))
+                                <div class="youtube-video-wrapper">
+                                    {!! $section->description !!}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </section>
+            @endforeach
+        
         </div>
     </section>
     

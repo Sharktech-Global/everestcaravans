@@ -92,39 +92,39 @@
                                         <td>
                                             <div class="btn-group">
                                                 @if (!@$data->vehicle_type->has_sales_page)
-                                                    <a href="{{ route('admin.vehicles.editions.index', $data->id) }}"
+                                                    <!-- <a href="{{ route('admin.vehicles.editions.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Vehicle editions">Editions</a>
-                                                    <a href="{{ route('admin.vehicles.faq.index', $data->id) }}"
+                                                        title="Vehicle editions">Editions</a> -->
+                                                    <!-- <a href="{{ route('admin.vehicles.faq.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Complete Vehicle Details">FAQ</a>
+                                                        title="Complete Vehicle Details">FAQ</a> -->
                                                     <a href="{{ route('admin.vehicles.content.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                         title="Complete Vehicle Details">Content</a>
                                                     {{-- <a href="{{ route('admin.vehicles.details.index', $data->id) }}"
                                                     class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                     title="Complete Vehicle Details">Details</a> --}}
-                                                    <a href="{{ route('admin.vehicles.details.index', $data->id) }}"
+                                                    <!-- <a href="{{ route('admin.vehicles.details.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Complete Vehicle Details">Details</a>
-                                                    <a href="{{ route('admin.vehicles.features.index', $data->id) }}"
+                                                        title="Complete Vehicle Details">Details</a> -->
+                                                    <!-- <a href="{{ route('admin.vehicles.features.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Complete Vehicle Details">Features</a>
+                                                        title="Complete Vehicle Details">Features</a> -->
                                                     <a href="{{ route('admin.vehicles.seo.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                         title="SEO">SEO</a>
                                                     <a href="{{ route('admin.vehicles.sections.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                         title="Detail Sections">Sections</a>
-                                                    <a href="{{ route('admin.vehicles.varients.index', $data->id) }}"
+                                                    <!-- <a href="{{ route('admin.vehicles.varients.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Vehicle Variants">Variants</a>
-                                                    <a href="{{ route('admin.vehicles.colors.index', $data->id) }}"
+                                                        title="Vehicle Variants">Variants</a> -->
+                                                    <!-- <a href="{{ route('admin.vehicles.colors.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Colors">Colors</a>
-                                                    <a href="{{ route('admin.vehicles.gallery.index', $data->id) }}"
+                                                        title="Colors">Colors</a> -->
+                                                    <!-- <a href="{{ route('admin.vehicles.gallery.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Gallery">Gallery</a>
+                                                        title="Gallery">Gallery</a> -->
                                                 @endif
                                                 <a href="{{ route('admin.vehicles.edit', $data->id) }}"
                                                     class="btn btn-sm btn-secondary" data-toggle="tooltip"
