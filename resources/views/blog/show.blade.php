@@ -3,8 +3,15 @@
   
 @endsection
 @section('content')
+    <!--====== About Breadcrumb Part ======-->
+    @include('partials.page-hero', [
+        'title'       => 'Blogs',
+        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'image'       => 'assets/abreco/images/29.jpg',
+        'breadcrumbs' => [['label' => 'Blogs']],
+    ])
  <!--====== About Breadcrumb Part ======-->
- <section class="abreco-inner-banner blogs-bg-banner">
+ <!-- <section class="abreco-inner-banner blogs-bg-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -17,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--====== abreco BLOG PART START ======--> 
     <section class="abreco-blog-area pt-90 pb-95">

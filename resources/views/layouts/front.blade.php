@@ -147,6 +147,14 @@
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('finance-partner') }}"
+                                        @if ($routename == 'finance-partner') class="active" @endif>Finance</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('blog.show') }}"
+                                        @if ($routename == 'blog.show') class="active" @endif>Blogs </a>
+                                </li>
+                                <li>
                                     <a href="{{ route('contact') }}"
                                         @if ($routename == 'contact') class="active" @endif>Contact Us </a>
                                 </li>

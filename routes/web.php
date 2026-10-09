@@ -48,6 +48,7 @@ Route::post('/careers', 'CareersController@store')->name('careers.store');
 
 Route::get('/about-us', 'AboutController@show')->name('about');
 Route::get('/our-range', 'OurRangeController@show')->name('our-range');
+Route::get('/finance-partner', 'FinancePartnerController@show')->name('finance-partner');
 Route::get('/book-test-drive', 'BookingTestController@index')->name('book_test_drive.index');
 Route::post('/book-test-drive/store', 'BookingTestController@store')->name('book_test_drive.store');
 
