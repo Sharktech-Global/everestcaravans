@@ -177,7 +177,7 @@
                                 href="{{ route('admin.permissions.index') }}"><i
                                     class="fas fa-lock"></i><span class="sidebar-mini-hide">Permissions</span></a>
                         </li> --}}
-                        <li
+                        <!-- <li
                             class="{{ request()->is('admin/sections*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-window-restore"
                                     aria-hidden="true"></i>
@@ -192,7 +192,7 @@
                                         href="{{ route('admin.sections.index') }}">View</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li
                             class="{{ request()->is('admin/vehicles*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-car"></i><span
@@ -253,7 +253,7 @@
                                 </li>
                             </ul>
                         </li> -->
-                        <li
+                        <!-- <li
                             class="{{ request()->is('admin/careers*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fas fa-briefcase"></i><span class="sidebar-mini-hide">Careers</span></a>
@@ -267,7 +267,7 @@
                                         href="{{ route('admin.careers.index') }}">View</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li class="{{ request()->is('admin/careers*') ? 'open' : '' }}"> -->
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
@@ -687,14 +687,14 @@
                             href="{{ route('admin.blogs.index') }}"><i class="fa fa-gift"></i><span
                                 class="sidebar-mini-hide">Blogs</span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/gallery*') ? 'active' : '' }}"
                             href="{{ route('admin.gallery.create') }}"><i class="fa fa-gift"></i><span
                                 class="sidebar-mini-hide">Gallery</span></a>
-                    </li>
+                    </li> -->
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">General</span><span
                             class="sidebar-mini-hidden">General</span></li>
-                    <li>
+                    <!-- <li>
                         <a class="{{ (request()->is('admin/features*')) ? 'active' : '' }}"
                             href="{{ route('admin.features.index') }}"><i
                                 class="fas fa-list"></i><span class="sidebar-mini-hide">Features</span></a>
@@ -739,9 +739,9 @@
                         <a class="{{ request()->is('admin/location_types*') ? 'active' : '' }}"
                             href="{{ route('image_category.index') }}"><i class="fa fa-map"></i><span
                                 class="sidebar-mini-hide">Image Category</span></a>
-                    </li>
+                    </li> -->
 
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/service_types*') ? 'active' : '' }}"
                             href="{{ route('admin.service_types.index') }}"><i
                                 class="fas fa-wrench"></i><span class="sidebar-mini-hide">Service Types</span></a>
@@ -751,7 +751,7 @@
                             href="{{ route('admin.service_products.index') }}"><i
                                 class="fas fa-wrench"></i><span class="sidebar-mini-hide">Service
                                 Products</span></a>
-                    </li>
+                    </li> -->
                     {{-- <li>
                             <a class="{{ request()->is('admin/contact-settings*') ? 'active' : '' }}"
                     href="{{ route('admin.contact.index') }}"><i class="fas fa-phone"></i><span
@@ -772,21 +772,21 @@
                             href="{{ route('admin.vehicle-types.index') }}"><i
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Vehicle Types</span></a>
                     </li>
-                     <li>
+                     <!-- <li>
                         <a class="{{ request()->is('admin/vehicle-categories*') ? 'active' : '' }}"
                             href="{{ route('admin.vehicleCategories.index') }}"><i
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Vehicle Category</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="{{ request()->is('admin/vehicle-types*') ? 'active' : '' }}"
                             href="{{ route('admin.vehicle-application.index') }}"><i
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Vehicle Application</span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/documents*') ? 'active' : '' }}"
                             href="{{ route('admin.documents.index') }}"><i
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Documents</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="{{ request()->is('admin/seo*') ? 'active' : '' }}"
                             href="{{ route('seo.index') }}"><i class="fas fa-search"></i><span
@@ -823,12 +823,12 @@
                             href="{{ route('admin.home-enquiries.contact') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Contact Enquiries</span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/career-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.career-enquiries.index') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Career
                                 Enquiries</span></a>
-                    </li>
+                    </li> -->
                     {{-- <li>
                             <a class="{{ request()->is('admin/offer-enquiries*') ? 'active' : '' }}"
                     href="{{ route('admin.offer-enquiries.index') }}"><i
@@ -841,18 +841,18 @@
                         class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Quick
                         Enquiries</span></a>
                     </li> --}}
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/service-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.service-enquiries.index') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Service
                                 Enquiries</span></a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a class="{{ request()->is('admin/test-drive-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.test-drive-enquiries.index') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Test Drive
                                 Enquiries</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="{{ request()->is('admin/vehicle-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.vehicle-enquiries.index') }}"><i

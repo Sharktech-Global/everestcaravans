@@ -28,7 +28,8 @@ class BlogController extends Controller
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',
             'seo_keywords' => 'nullable',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
        
@@ -42,12 +43,17 @@ class BlogController extends Controller
         $detail->seo_description = $validated['seo_description'];
         $detail->seo_keywords = $validated['seo_keywords'];
         if ($request->hasFile('feature_image')) {
-            Storage::disk('public')->delete($detail->feature_image);
+
+            if (!empty($detail->feature_image)) {
+                Storage::disk('public')->delete($detail->feature_image);
+            }
+
             $path = $request->file('feature_image')->storeAs(
                 'upload/blogs/feature_image',
-                 $request->feature_image->getClientOriginalName(),
+                $request->file('feature_image')->getClientOriginalName(),
                 'public'
             );
+
             $detail->feature_image = $path;
         }
         $res = $detail->save();

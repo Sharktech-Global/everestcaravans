@@ -98,9 +98,9 @@
                                                     <!-- <a href="{{ route('admin.vehicles.faq.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                         title="Complete Vehicle Details">FAQ</a> -->
-                                                    <a href="{{ route('admin.vehicles.content.index', $data->id) }}"
+                                                    <!-- <a href="{{ route('admin.vehicles.content.index', $data->id) }}"
                                                         class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                        title="Complete Vehicle Details">Content</a>
+                                                        title="Complete Vehicle Details">Content</a> -->
                                                     {{-- <a href="{{ route('admin.vehicles.details.index', $data->id) }}"
                                                     class="btn btn-sm btn-secondary" data-toggle="tooltip"
                                                     title="Complete Vehicle Details">Details</a> --}}
