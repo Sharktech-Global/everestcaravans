@@ -8575,6 +8575,44 @@ min-height: 492px;
     background-color: #0b0e22;
 }
 
+section#Features.abreco-features-area {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+
+@media (min-width: 1369px) and (max-width: 1600px) {
+  section#Features.abreco-features-area {
+      padding-left: 100px;
+      padding-right: 100px;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1368px) {
+  section#Features.abreco-features-area {
+      padding-left: 100px;
+      padding-right: 100px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  section#Features.abreco-features-area {
+      padding-left: 0px;
+      padding-right: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+	section#Features.abreco-features-area {
+      padding-left: 0px;
+      padding-right: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+	
+}
+
 @media(max-width: 600px){
   .popgallery .card {
     border-radius: 8px;
