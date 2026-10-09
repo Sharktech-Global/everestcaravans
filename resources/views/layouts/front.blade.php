@@ -149,32 +149,6 @@
                                     <a href="{{ route('our-range') }}"
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
                                 </li>
-                                {{-- No videos page exists yet; pointed at the gallery for now --}}
-                                <li>
-                                    <a href="{{ route('gallery.index') }}"
-                                        @if ($routename == 'gallery.index') class="active" @endif>Videos</a>
-                                </li>
-                                {{-- Nearest existing booking form; its heading still says "Test Drive" --}}
-                                <li>
-                                    <a href="{{ route('book_test_drive.index') }}"
-                                        @if ($routename == 'book_test_drive.index') class="active" @endif>Book a Factory Visit</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('finance.show') }}"
-                                        @if ($routename == 'finance.show') class="active" @endif>Finance</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('blog.show') }}"
-                                        @if (in_array($routename, ['blog.show', 'blog.details'])) class="active" @endif>Blogs</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('about') }}"
-                                        @if ($routename == 'about') class="active" @endif>About Us</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('our-range') }}"
-                                        @if ($routename == 'our-range') class="active" @endif>Our Range</a>
-                                </li>
                                 <li>
                                     <a href="{{ route('finance-partner') }}"
                                         @if ($routename == 'finance-partner') class="active" @endif>Finance</a>
@@ -182,6 +156,10 @@
                                 <li>
                                     <a href="{{ route('blog.show') }}"
                                         @if ($routename == 'blog.show') class="active" @endif>Blogs </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('about') }}"
+                                        @if ($routename == 'about') class="active" @endif>About Us</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contact') }}"
