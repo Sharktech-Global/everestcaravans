@@ -1,0 +1,236 @@
+/* Everest Caravans — FAQ (editorial)
+   Every rule is prefixed with .ev-faq so theme styles can't leak in. */
+
+.ev-faq {
+    --fq-ink: #0E1330;
+    --fq-brand: #283895;
+    --fq-gold: #D9AE55;
+    --fq-text: #555A6E;
+    --fq-line: #E3E5EE;
+    --fq-radius: 5px;
+    --fq-max: 1340px;               /* same content width as the story section */
+    --fq-side: 40px;
+    /* Site typography: Space Grotesk for headings, Poppins for body.
+       Both load earlier in the page, so this section requests no font. */
+    --fq-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --fq-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+
+    display: block;
+    margin: 0;
+    padding: 60px 0;
+    background: #fff;
+    font-family: var(--fq-font);
+    color: var(--fq-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-faq *, .ev-faq *::before, .ev-faq *::after { box-sizing: border-box; }
+.ev-faq h2, .ev-faq p {
+    margin: 0; padding: 0;
+    font-family: var(--fq-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-faq a { text-decoration: none; }
+.ev-faq img { max-width: none; border: 0; }
+.ev-faq svg { display: block; flex: none; }
+
+.ev-faq .ev-faq__inner {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    align-items: start;
+    /* Fixed cap, not a percentage: a % width keeps growing with the viewport,
+       so the section never lines up with the ones above it and sprawls on a
+       wide screen. The gap is fluid instead, which is what was actually
+       pinching the two columns between 992px and 1200px. */
+    gap: clamp(44px, 5.5vw, 96px);
+    width: 100%;
+    max-width: var(--fq-max);
+    margin: 0 auto;
+    padding: 0 var(--fq-side);
+}
+
+/* ---------- Left (stays in view while the list scrolls) ---------- */
+.ev-faq .ev-faq__intro {
+    position: sticky;
+    top: 120px;
+}
+.ev-faq .ev-faq__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    font-family: var(--fq-display);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--fq-brand);
+}
+.ev-faq .ev-faq__eyebrow::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--fq-line);
+}
+.ev-faq .ev-faq__title {
+    margin-bottom: 28px;
+    font-family: var(--fq-display);
+    font-size: clamp(36px, 3.8vw, 56px);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -.04em;
+    color: var(--fq-ink);
+    text-wrap: balance;
+}
+/* Secondary CTA: the outlined twin of the solid pill in the story section
+   above, so the page's two calls to action read as one family. */
+.ev-faq .ev-faq__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    height: 56px;
+    padding: 0 8px 0 28px;
+    border: 1.5px solid var(--fq-line);
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--fq-ink);
+    background: #fff;
+    transition: border-color .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.ev-faq .ev-faq__link svg {
+    box-sizing: content-box;            /* the section sets border-box, which
+                                           would eat the padding below */
+    width: 16px;
+    height: 16px;
+    padding: 12px;                      /* 16 + 24 = a 40px chip */
+    border-radius: 50%;
+    background: var(--fq-ink);
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: background-color .25s ease, transform .25s cubic-bezier(.22, .7, .2, 1);
+}
+.ev-faq .ev-faq__link:hover,
+.ev-faq .ev-faq__link:focus {
+    color: var(--fq-brand);
+    border-color: var(--fq-brand);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -16px rgba(40, 56, 149, .6);
+}
+.ev-faq .ev-faq__link:hover svg,
+.ev-faq .ev-faq__link:focus svg {
+    background: var(--fq-brand);
+    transform: translate(2px, -2px);    /* the glyph points up and to the right */
+}
+.ev-faq .ev-faq__link:active { transform: translateY(0); }
+.ev-faq .ev-faq__link:visited { color: var(--fq-ink); }
+.ev-faq .ev-faq__link:focus-visible { outline: 2px solid var(--fq-brand); outline-offset: 4px; }
+
+.ev-faq .ev-faq__media {
+    position: relative;
+    margin-top: 26px;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    border-radius: var(--fq-radius);
+    background: #EEF0FB;
+}
+.ev-faq .ev-faq__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--fq-radius);
+}
+
+/* ---------- Question list: hairlines, no boxes ---------- */
+.ev-faq .ev-faq__list { border-top: 1px solid var(--fq-line); }
+.ev-faq .ev-faq__item { border-bottom: 1px solid var(--fq-line); }
+
+.ev-faq .ev-faq__item summary {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    list-style: none;
+    cursor: pointer;
+}
+.ev-faq .ev-faq__item summary::-webkit-details-marker { display: none; }
+.ev-faq .ev-faq__item summary:focus-visible { outline: 2px solid var(--fq-brand); outline-offset: 4px; border-radius: 4px; }
+
+.ev-faq .ev-faq__num {
+    font-family: var(--fq-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fq-gold);
+    font-variant-numeric: tabular-nums;
+}
+.ev-faq .ev-faq__q {
+    font-size: clamp(17px, 1.4vw, 20px);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+    color: var(--fq-ink);
+    transition: color .2s ease;
+}
+.ev-faq .ev-faq__item summary:hover .ev-faq__q { color: var(--fq-brand); }
+
+/* Plus that turns into a cross when open */
+.ev-faq .ev-faq__icon { position: relative; width: 16px; height: 16px; justify-self: end; transition: transform .3s ease; }
+.ev-faq .ev-faq__icon::before,
+.ev-faq .ev-faq__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--fq-ink);
+    transform: translateY(-50%);
+}
+.ev-faq .ev-faq__icon::after { transform: translateY(-50%) rotate(90deg); }
+.ev-faq .ev-faq__item[open] .ev-faq__icon { transform: rotate(45deg); }
+.ev-faq .ev-faq__item[open] .ev-faq__q { color: var(--fq-brand); }
+
+.ev-faq .ev-faq__a { padding: 0 36px 30px 60px; }
+.ev-faq .ev-faq__a p {
+    max-width: 58ch;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--fq-text);
+}
+
+/* Smooth open/close where supported (Chrome/Edge); others snap open */
+@supports (interpolate-size: allow-keywords) {
+    .ev-faq .ev-faq__item { interpolate-size: allow-keywords; }
+    .ev-faq .ev-faq__item::details-content {
+        height: 0;
+        overflow: hidden;
+        transition: height .35s ease, content-visibility .35s allow-discrete;
+    }
+    .ev-faq .ev-faq__item[open]::details-content { height: auto; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-faq { padding: 90px 0; }
+    .ev-faq { --fq-side: 28px; }
+    .ev-faq .ev-faq__inner { grid-template-columns: 1fr; gap: 56px; }
+    .ev-faq .ev-faq__intro { position: static; }
+    .ev-faq .ev-faq__media { max-width: 640px; aspect-ratio: 16 / 10; }
+}
+@media (max-width: 575.98px) {
+    .ev-faq { padding: 72px 0; }
+    .ev-faq { --fq-side: 20px; }
+    .ev-faq .ev-faq__item summary { grid-template-columns: 32px minmax(0, 1fr) 16px; gap: 12px; padding: 22px 0; }
+    .ev-faq .ev-faq__a { padding: 0 0 24px 44px; }
+    .ev-faq .ev-faq__media { margin-top: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-faq * { transition: none !important; }
+}

@@ -1,0 +1,327 @@
+/* ==========================================================
+   Everest Caravans — Awards "Journey" component
+   Markup: resources/views/partials/ev-journey.blade.php
+   Loaded by that partial, so this file is all the section needs.
+   Every rule is prefixed with .ev-journey so theme styles can't leak in.
+   ========================================================== */
+
+.ev-journey {
+    --ej-bg: #0E1330;                /* dark navy — same as the About section's giant word */
+    --ej-bg-glow: #1F2B6E;           /* lighter navy behind the heading and list */
+    --ej-photo: none;                /* set inline from Blade */
+    --ej-shade-edge: .94;            /* overlay strength at top/bottom (0–1) */
+    --ej-shade-mid: .80;             /* overlay strength in the middle — lower shows more photo */
+    --ej-white: #F4F2EE;
+    --ej-mute: rgba(244, 242, 238, .62);
+    --ej-gold: #D9AE55;
+    --ej-gold-light: #F1D58C;
+    --ej-gold-grad: linear-gradient(180deg, #F8E3A3 0%, #E2B95E 45%, #B8862F 70%, #E9C977 100%);
+    --ej-line: rgba(217, 174, 85, .2);
+    --ej-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ej-cond: "Poppins", system-ui, sans-serif;
+    --ej-max: 1120px;
+    --ej-medal: 64px;
+    --ej-dust:  url("../assets/images/awards/gold-dust.svg");
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 96px 24px 104px;
+    background:
+        /* soft lighter-navy glow behind the content */
+        radial-gradient(ellipse 60% 70% at 50% 40%, rgba(31, 43, 110, .55) 0%, rgba(31, 43, 110, 0) 70%),
+        radial-gradient(ellipse 80% 60% at 50% 120%, rgba(40, 56, 149, .45) 0%, rgba(40, 56, 149, 0) 70%),
+        /* dark-blue gradient over the photo: heavier at top/bottom, lighter in the middle */
+        linear-gradient(180deg,
+            rgb(14 19 48 / var(--ej-shade-edge)) 0%,
+            rgb(14 19 48 / var(--ej-shade-mid)) 45%,
+            rgb(14 19 48 / var(--ej-shade-mid)) 60%,
+            rgb(14 19 48 / var(--ej-shade-edge)) 100%),
+        /* soft side vignette frames the content */
+        linear-gradient(90deg, rgb(14 19 48 / .4) 0%, rgb(14 19 48 / 0) 25%, rgb(14 19 48 / 0) 75%, rgb(14 19 48 / .4) 100%),
+        var(--ej-photo) center / cover no-repeat,
+        var(--ej-bg);
+    color: var(--ej-white);
+}
+.ev-journey * { box-sizing: border-box; }
+.ev-journey__defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- Background: gold dust ---------- */
+.ev-journey__inner {
+    position: relative;
+    max-width: var(--ej-max);
+    margin: 0 auto;
+}
+.ev-journey__inner::before {         /* gold dust across the band */
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -96px -40vw -104px;
+    background: var(--ej-dust) center / cover no-repeat;
+    opacity: .55;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+            mask-image: linear-gradient(90deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+    pointer-events: none;
+}
+
+/* ---------- Heading ---------- */
+.ev-journey__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 64px;
+    text-align: center;
+}
+.ev-journey__stars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+.ev-journey__stars svg { width: 14px; height: 14px; }
+.ev-journey__stars svg:nth-child(2) { width: 26px; height: 26px; }
+
+.ev-journey__titlebar {
+    display: grid;
+    grid-template-columns: 52px auto 52px;
+    align-items: center;
+    gap: 40px;
+}
+.ev-journey__branch { width: 52px; height: 102px; }
+.ev-journey__branch--right { transform: scaleX(-1); }
+
+.ev-journey__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-family: var(--ej-display);
+    font-weight: 500;
+    font-style: normal;
+    /* text-transform: uppercase; */
+    line-height: 1.12;
+    letter-spacing: .01em;
+}
+.ev-journey__title span {
+    background: var(--ej-gold-grad);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.ev-journey__title-top  { font-size: clamp(20px, 2.3vw, 34px); }
+.ev-journey__title-main { font-size: clamp(26px, 3vw, 42px); }
+
+/* ---------- Rows: medal | text | year, one grid for every row ---------- */
+.ev-journey__list {
+    display: grid;
+    grid-template-columns: var(--ej-medal) minmax(0, max-content) minmax(0, 1fr) auto;
+    column-gap: 28px;                 /* set here: subgrid rows inherit it */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ev-journey__row {
+    position: relative;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: center;
+    padding: 18px 20px 18px 16px;
+    border-bottom: 1px solid var(--ej-line);
+    border-radius: 12px;
+    transition: background-color .3s ease;
+}
+.ev-journey__row:last-child { border-bottom-color: transparent; }
+.ev-journey__row::before {           /* gold bar that slides in on hover */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--ej-gold-grad);
+    transform: scaleY(0);
+    transition: transform .35s ease;
+}
+.ev-journey__row:hover { background: rgba(140, 155, 240, .08); }
+.ev-journey__row:hover::before { transform: scaleY(1); }
+
+/* Medal: laurel wreath + three stars + number */
+.ev-journey__medal {
+    grid-column: 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--ej-medal);
+    height: var(--ej-medal);
+}
+.ev-journey__wreath {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.ev-journey__mini-stars {
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    transform: translateX(-50%);
+}
+.ev-journey__mini-stars svg { width: 7px; height: 7px; }
+.ev-journey__mini-stars svg:nth-child(2) { width: 10px; height: 10px; }
+.ev-journey__num {
+    margin-top: 4px;
+    font-family: var(--ej-cond);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+    background: var(--ej-gold-grad);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.ev-journey__cup {
+    width: 26px;
+    height: 26px;
+    margin-top: 4px;
+    fill: none;
+    stroke: url(#evJGold);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Text */
+.ev-journey__text {
+   margin: 0;
+    font-family: var(--ej-cond);
+    font-size: clamp(16px, 1.6vw, 24px);
+    font-weight: 400;
+    line-height: 1.3;
+    /* letter-spacing: .015em; */
+    /* text-transform: uppercase; */
+    color: var(--ej-white);
+}
+.ev-journey__van,
+.ev-journey__gold {
+    font-weight: 500;
+    background: var(--ej-gold-grad);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+/* Name column sizes to the longest van name, so every award text starts level */
+.ev-journey__name {
+    grid-column: 2;
+    white-space: nowrap;
+}
+.ev-journey__what {
+    grid-column: 3;
+    position: relative;
+    align-self: stretch;      /* so the divider spans the whole row */
+    display: flex;
+    align-items: center;
+}
+/* Hairline in the column gap, dividing the van name from the award */
+.ev-journey__what::before {
+    content: "";
+    position: absolute;
+    left: -18px;              /* half the 28px column gap */
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--ej-line);
+}
+/* Spanning a flexible track, so this never widens the max-content name column */
+.ev-journey__what--wide { grid-column: 2 / 4; }
+.ev-journey__what--wide::before { display: none; }   /* nothing on its left to divide */
+
+/* Year column: every year lines up on the right */
+.ev-journey__year {
+    grid-column: 4;
+    justify-self: end;
+    padding: 6px 14px;
+    border: 1px solid rgba(217, 174, 85, .5);
+    border-radius: 999px;
+    font-family: var(--ej-cond);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    color: var(--ej-gold-light);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Fallback where subgrid isn't supported */
+@supports not (grid-template-columns: subgrid) {
+    .ev-journey__row { grid-template-columns: var(--ej-medal) max-content minmax(0, 1fr) auto; column-gap: 28px; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767.98px) {
+    .ev-journey { padding: 72px 18px 80px; --ej-medal: 52px; }
+    .ev-journey__head { margin-bottom: 40px; }
+    .ev-journey__titlebar { grid-template-columns: 30px auto 30px; gap: 12px; }
+    .ev-journey__branch { width: 30px; height: 60px; }
+    .ev-journey__list { grid-template-columns: var(--ej-medal) minmax(0, 1fr); column-gap: 14px; }
+    .ev-journey__row { padding: 16px 6px; row-gap: 8px; }
+    .ev-journey__name { grid-column: 2; white-space: normal; }
+    .ev-journey__what, .ev-journey__what--wide { grid-column: 2; }
+    .ev-journey__what::before { display: none; }   /* stacked, so no column to divide */
+    .ev-journey__num { font-size: 24px; }
+    .ev-journey__cup { width: 22px; height: 22px; }
+    .ev-journey__year { grid-column: 2; justify-self: start; padding: 3px 10px; font-size: 14px; }
+    .ev-journey__medal { grid-column: 1; }
+    .ev-journey__medal { grid-row: span 3; align-self: start; }
+}
+
+/* On phones the photo is mostly hidden behind text, so darken a little more */
+@media (max-width: 767.98px) {
+    .ev-journey { --ej-shade-mid: .86; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ev-journey__row, .ev-journey__row::before { transition: none; }
+}
+
+/* ==========================================================
+   TITLES / LIST TEXT — Space Grotesk, matching the headlines.
+   Two classes deep so these outrank the per-section rules above.
+   ========================================================== */
+.ev-journey .ev-journey__title,
+.ev-journey .ev-journey__row {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ==========================================================
+   ENTRY ANIMATION — optional scroll reveal.
+
+   Only applies once a reveal script adds .rv-js to <html> and tags the
+   elements with data-rv (see public/assets/js/reveal.js). With no JS, no
+   IntersectionObserver, or reduced motion, nothing is ever hidden.
+   --rv-i is the element position among its siblings, set by the script.
+   ========================================================== */
+.rv-js .ev-journey__head > [data-rv],
+.rv-js .ev-journey__row[data-rv] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity .8s cubic-bezier(.22, .7, .2, 1),
+        transform .8s cubic-bezier(.22, .7, .2, 1);
+    transition-delay: calc(var(--rv-i, 0) * 90ms);
+}
+.rv-js .ev-journey__head > [data-rv].is-in,
+.rv-js .ev-journey__row[data-rv].is-in {
+    opacity: 1;
+    transform: none;
+}
+
+/* Award rows travel a little less, so a long list stays calm */
+.rv-js .ev-journey__row[data-rv] { transform: translateY(16px); }
