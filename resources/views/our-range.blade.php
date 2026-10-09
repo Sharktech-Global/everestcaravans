@@ -3,7 +3,15 @@
 @endsection
 @section('content')
     <!--====== About Breadcrumb Part ======-->
-    <section class="abreco-inner-banner ken-burn">
+    @include('partials.page-hero', [
+        'title'       => 'Our Range',
+        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'image'       => 'assets/abreco/images/29.jpg',
+        'breadcrumbs' => [['label' => 'Our Range']],
+    ])
+
+    <!--====== About Breadcrumb Part ======-->
+    <!-- <section class="abreco-inner-banner ken-burn">
         <div class="about-overlay"></div>
         <div class="container">
             <div class="row">
@@ -14,7 +22,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="abreco-features-area pt-90 pb-90" id="Features">
         <div class="container">

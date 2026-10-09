@@ -3,10 +3,20 @@
 <link rel="stylesheet" href="{{ asset('assets/abreco/css/vehicle.css') }}">
 @endsection
 @section('content')
+    <!--====== About Breadcrumb Part ======-->
+    @include('partials.page-hero', [
+        'title'       => $vehicle?->name ?? 'Vehicle Details',
+        'subtitle'    => '',
+        'image'       => 'assets/abreco/images/29.jpg',
+        'breadcrumbs' => [
+            ['label' => 'Our Range', 'url' => url('/our-range')],
+            ['label' => $vehicle?->name ?? 'Vehicle Details'],
+        ],
+    ])
 
 
     <!--====== Vehicle inner Breadcrumb Part ======-->
-    <section class="abreco-inner-banner d-none-575" style="background-image: url('{{ asset('storage/' . @$vehicle->banner_image) }}');">
+    <!-- <section class="abreco-inner-banner d-none-575" style="background-image: url('{{ asset('storage/' . @$vehicle->banner_image) }}');">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -19,7 +29,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- vehicle banner mobile view -->
     <section class="abreco-inner-banner abreco-inner-banner-2 d-none d-block-575" style="background-image: url('{{ asset('storage/' . @$vehicle->mobile_banner) }}');">
