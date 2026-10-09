@@ -966,7 +966,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     color: #3C4260;
     opacity: .85;
 }
-.ws-about .ws-about__media::before {     
+.ws-about .ws-about__media::before {
     top: 0%;
     right: 5%;
     width: 6%;
@@ -2084,4 +2084,3 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 
 /* The photo column comes in from the side rather than from below */
 .rv-js .ws-about__media[data-rv] { transform: translateX(-32px); }
-
