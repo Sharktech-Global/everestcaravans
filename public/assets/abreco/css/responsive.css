@@ -3010,6 +3010,42 @@
 @media (max-width: 767.98px)  { .copy-right-sec1 > .container { padding-inline: 24px; } }
 @media (max-width: 479.98px)  { .copy-right-sec1 > .container { padding-inline: 18px; } }
 
+/* ==========================================================
+   Creator mark in the copyright bar, where the duplicate social
+   icons used to sit.
+
+   creater-logo.png is RGB with no alpha — its background is solid
+   black, which would read as a black tile on the bar's #0b0e22.
+   mix-blend-mode: screen drops pure black to nothing against a dark
+   backdrop and leaves the blue and white artwork, so no re-cut of the
+   file is needed. The bar sets its own opaque background-color, so
+   the blend composites against that flat colour, not the footer photo.
+   ========================================================== */
+.copy-right-sec1 .ev-ftr__creator {
+    display: flex;
+    align-items: center;
+}
+.copy-right-sec1 .ev-ftr__creator img {
+    display: block;
+    width: auto;
+    height: 52px;              /* 200x170 artwork, so ~61px wide */
+    mix-blend-mode: screen;
+    opacity: .88;
+    transition: opacity .25s ease;
+}
+.copy-right-sec1 .ev-ftr__creator:hover img { opacity: 1; }
+
+@media (max-width: 991.98px) {
+    .copy-right-sec1 .ev-ftr__creator { justify-content: center; }
+}
+@media (max-width: 479.98px) {
+    .copy-right-sec1 .ev-ftr__creator img { height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .copy-right-sec1 .ev-ftr__creator img { transition: none; }
+}
+
 /* Hide the booking search on mobile.
    Must come after the @media(max-width: 991px) block above, which sets
    .booking-wrapper { display: block } — same specificity, so source order

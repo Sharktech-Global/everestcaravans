@@ -1,0 +1,342 @@
+/* ==========================================================
+   Everest Caravans — Blog / Latest Updates listing (light theme)
+   Markup: resources/views/blog/show.blade.php
+           resources/views/news-event/index.blade.php
+
+   Three cards per row on desktop, two on tablet, one on phones.
+   Every rule is prefixed with .ev-blog so the legacy theme styles
+   (abreco-*) can't leak in, and so these can't leak out.
+   Corner radius for everything lives in --bl-radius.
+   ========================================================== */
+
+.ev-blog {
+    --bl-ink: #0E1330;
+    --bl-brand: #283895;
+    --bl-brand-dark: #1D2A72;
+    --bl-gold: #D9AE55;
+    --bl-text: #555A6E;
+    --bl-line: #E3E5EE;
+    --bl-card: #fff;
+    --bl-bg: #F5F6FA;
+    --bl-radius: 4px;
+    --bl-cols: 3;                  /* cards per row */
+    --bl-gap: 30px;
+    --bl-ease: cubic-bezier(.22, .7, .2, 1);
+    /* Site typography: Space Grotesk for headings, Poppins for body.
+       Space Grotesk loads in the layout head; Poppins comes from the
+       page hero partial at the top of this page. */
+    --bl-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --bl-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+
+    display: block;
+    margin: 0;
+    padding: 110px 0 120px;
+    background:
+        radial-gradient(ellipse 55% 45% at 50% 0%, rgba(40, 56, 149, .07), rgba(40, 56, 149, 0) 70%),
+        var(--bl-bg);
+    font-family: var(--bl-font);
+    color: var(--bl-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-blog *, .ev-blog *::before, .ev-blog *::after { box-sizing: border-box; }
+.ev-blog h2, .ev-blog h3, .ev-blog p, .ev-blog ul, .ev-blog li {
+    margin: 0; padding: 0;
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-blog ul { list-style: none; }
+.ev-blog a { text-decoration: none; }
+.ev-blog img { max-width: 100%; border: 0; }
+.ev-blog svg { display: block; flex: none; }
+
+.ev-blog .ev-blog__inner {
+    width: 100%;
+    max-width: 1290px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* ---------- Section heading ---------- */
+.ev-blog .ev-blog__head {
+    max-width: 760px;
+    margin-bottom: 56px;
+}
+.ev-blog .ev-blog__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--bl-brand);
+}
+.ev-blog .ev-blog__eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--bl-gold);
+}
+.ev-blog .ev-blog__title {
+    font-family: var(--bl-display);
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--bl-ink);
+}
+.ev-blog .ev-blog__lead {
+    margin-top: 18px;
+    font-size: 16px;
+    color: var(--bl-text);
+}
+
+/* ---------- The grid ---------- */
+.ev-blog .ev-blog__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--bl-cols), minmax(0, 1fr));
+    gap: var(--bl-gap);
+}
+
+/* ---------- Card ---------- */
+.ev-blog .ev-blog__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    background: var(--bl-card);
+    transition:
+        transform .35s var(--bl-ease),
+        box-shadow .35s var(--bl-ease),
+        border-color .35s var(--bl-ease);
+}
+.ev-blog .ev-blog__card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(40, 56, 149, .25);
+    box-shadow: 0 18px 40px rgba(14, 19, 48, .12);
+}
+.ev-blog .ev-blog__card:focus-within {
+    border-color: var(--bl-brand);
+    box-shadow: 0 0 0 3px rgba(40, 56, 149, .18);
+}
+
+/* Photo — fixed ratio so a mixed library still lines up */
+.ev-blog .ev-blog__thumb {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bl-ink);
+}
+.ev-blog .ev-blog__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--bl-ease);
+}
+.ev-blog .ev-blog__card:hover .ev-blog__thumb img { transform: scale(1.06); }
+
+/* No photo yet: a navy panel with the site mark rather than a broken image */
+.ev-blog .ev-blog__thumb--empty {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(ellipse 70% 70% at 50% 0%, rgba(40, 56, 149, .55), rgba(40, 56, 149, 0) 70%),
+        var(--bl-ink);
+}
+.ev-blog .ev-blog__thumb--empty svg {
+    width: 54px;
+    height: 54px;
+    stroke: var(--bl-gold);
+    stroke-width: 1.4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .9;
+}
+
+/* Date sits on the photo, gold on navy */
+.ev-blog .ev-blog__date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 0 var(--bl-radius) 0 0;
+    background: var(--bl-ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--bl-gold);
+}
+.ev-blog .ev-blog__date svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---------- Card body ---------- */
+.ev-blog .ev-blog__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 26px 26px 28px;
+}
+.ev-blog .ev-blog__card-title {
+    font-family: var(--bl-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--bl-ink);
+}
+.ev-blog .ev-blog__card-title a {
+    color: inherit;
+    transition: color .25s ease;
+}
+.ev-blog .ev-blog__card-title a:hover { color: var(--bl-brand); }
+.ev-blog .ev-blog__card-title a:focus-visible {
+    outline: 2px solid var(--bl-brand);
+    outline-offset: 3px;
+}
+/* Stretched link: the title is the card's only link, but the whole card
+   is clickable. The photo and "Read More" stay decorative, so a screen
+   reader hears one link per card instead of three. */
+.ev-blog .ev-blog__card-title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.ev-blog .ev-blog__excerpt {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--bl-text);
+}
+
+/* Pushed to the bottom so every card's link sits on the same line */
+.ev-blog .ev-blog__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 22px;
+    font-family: var(--bl-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bl-brand);
+}
+.ev-blog .ev-blog__more svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .3s var(--bl-ease);
+}
+.ev-blog .ev-blog__card:hover .ev-blog__more { color: var(--bl-brand-dark); }
+.ev-blog .ev-blog__card:hover .ev-blog__more svg { transform: translateX(5px); }
+
+/* The gold rule under the link, drawn on hover */
+.ev-blog .ev-blog__more { position: relative; }
+.ev-blog .ev-blog__more::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    width: 64px;
+    height: 2px;
+    background: var(--bl-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s var(--bl-ease);
+}
+.ev-blog .ev-blog__card:hover .ev-blog__more::after { transform: scaleX(1); }
+
+/* ---------- Empty state ---------- */
+.ev-blog .ev-blog__empty {
+    grid-column: 1 / -1;
+    padding: 72px 30px;
+    border: 1px dashed var(--bl-line);
+    border-radius: var(--bl-radius);
+    background: var(--bl-card);
+    text-align: center;
+}
+.ev-blog .ev-blog__empty h3 {
+    font-family: var(--bl-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bl-ink);
+}
+.ev-blog .ev-blog__empty p { margin-top: 10px; }
+
+/* ---------- Pagination (shown only when the query is paginated) ---------- */
+.ev-blog .ev-blog__pager {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+.ev-blog .ev-blog__pager .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ev-blog .ev-blog__pager .page-link {
+    display: grid;
+    place-items: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    background: var(--bl-card);
+    font-size: 14px;
+    color: var(--bl-ink);
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.ev-blog .ev-blog__pager .page-link:hover {
+    border-color: var(--bl-brand);
+    color: var(--bl-brand);
+}
+.ev-blog .ev-blog__pager .active .page-link {
+    border-color: var(--bl-ink);
+    background: var(--bl-ink);
+    color: #fff;
+}
+.ev-blog .ev-blog__pager .disabled .page-link { opacity: .45; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-blog { padding: 90px 0 100px; --bl-cols: 2; --bl-gap: 24px; }
+    .ev-blog .ev-blog__head { margin-bottom: 44px; }
+}
+@media (max-width: 575.98px) {
+    .ev-blog { padding: 72px 0 80px; --bl-cols: 1; --bl-gap: 22px; }
+    .ev-blog .ev-blog__inner { padding: 0 20px; }
+    .ev-blog .ev-blog__body { padding: 22px 22px 24px; }
+    .ev-blog .ev-blog__card-title { font-size: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ev-blog * { transition: none !important; }
+    .ev-blog .ev-blog__card:hover { transform: none; }
+    .ev-blog .ev-blog__card:hover .ev-blog__thumb img { transform: none; }
+}

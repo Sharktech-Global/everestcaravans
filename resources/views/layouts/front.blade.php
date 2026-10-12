@@ -313,20 +313,15 @@
                             </ul>
                         </div>
                         <div class="copyright-text order-1-991">
-                            <div class="social">
-                                <ul>
-                                    <li><a href="{{ @$settings->facebook }}" target="_blank"><i
-                                                class="fab fa-facebook-f"></i></a></li>
-                                    {{--  <li><a href="{{ @$settings->twitter }}" target="_blank"><i
-                                                class="fab fa-twitter"></i></a></li>  --}}
-                                    <li><a href="{{ @$settings->instagram }}" target="_blank"><i
-                                                class="fab fa-instagram"></i></a></li>
-                                    <li><a href="{{ @$settings->linkedin }}" target="_blank"><i
-                                                class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="{{ @$settings->youtube }}" target="_blank"><i
-                                                class="fab fa-youtube"></i></a></li>
-                                </ul>
-                            </div>
+                            {{-- Creator mark. The social links live in the strip above,
+                                 so this bar carries the mark instead. --}}
+                            @php $evCreator = 'assets/abreco/images/newonce/creater-logo.png'; @endphp
+                            @if (file_exists(public_path($evCreator)))
+                                <div class="ev-ftr__creator">
+                                    <img src="{{ asset($evCreator) }}" alt="Everest Caravans"
+                                         width="200" height="170" loading="lazy" decoding="async">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
