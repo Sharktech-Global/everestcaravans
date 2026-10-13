@@ -67,17 +67,30 @@
         $ecImg = file_exists(public_path($ec['image'])) ? asset($ec['image']) : null;
     @endphp
     <section class="ev-contact-forms" aria-labelledby="evContactTitle">
-        <div class="container">
+        <div class="ev-contact-forms__inner">
 
-            {{-- RIGHT: form card --}}
-            <div class="ev-contact__cards">
+            {{-- Row 1: heading --}}
+            <header class="ev-contact-forms__head">
                 <p class="ev-contact__eyebrow">{{ $ec['eyebrow'] }}</p>
                 <h2 class="ev-contact__title" id="evContactTitle">{{ $ec['title'] }}</h2>
                 <p class="ev-contact__text">{{ $ec['text'] }}</p>
+            </header>
+
+            {{-- Row 2: form on the left, photo on the right --}}
+            <div class="ev-contact-forms__body">
 
                 <div class="ev-contact__form">
                     @include('forms.contactus_form')
                 </div>
+
+                @if ($ecImg)
+                    <div class="ev-contact-forms__media">
+                        <img src="{{ $ecImg }}"
+                             alt="An Everest caravan set up at a campsite"
+                             loading="lazy" decoding="async">
+                    </div>
+                @endif
+
             </div>
         </div>
     </section>

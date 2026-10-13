@@ -87,7 +87,7 @@
                                     <a href="{{ route('videos') }}">Videos</a>
                                 </li>
                                 <li @if ($routename == 'book_test_drive.index') class="active" @endif>
-                                    <a href="{{ route('book_test_drive.index') }}">Book a Factory Visit</a>
+                                    <a href="{{ route('factory-visit.show') }}">Book a Factory Visit</a>
                                 </li>
                                 <li @if ($routename == 'finance.show') class="active" @endif>
                                     <a href="{{ route('finance.show') }}">Finance</a>
@@ -157,7 +157,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('factory-visit.show') }}"
-                                        @if ($routename == 'book-a-factory-visit') class="active" @endif>Visit</a>
+                                        @if ($routename == 'factory-visit.show') class="active" @endif>Visit</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('finance-partner') }}"
@@ -311,8 +311,8 @@
                 @endif
 
                 <ul class="ev-ftr__strip-links">
-                    <li><a href="{{ route('privacy.show') }}">Privacy Policy</a></li>
-                    <li><a href="{{ route('terms.show') }}">Terms of Use</a></li>
+                    <li><a href="{{ route('privacy.show') }}"></a></li>
+                    <li><a href="{{ route('terms.show') }}"></a></li>
                 </ul>
 
                 <ul class="ev-ftr__social">
@@ -342,7 +342,7 @@
 
                                 <li class="ml-3">
                                     <p>All Rights Reserved | Copyright © Abreco Motors {{ date('Y') }} Digitally Empowered By <a
-                                            href="https://netventure.in" target="_blank">NetVenture</a></p>
+                                            href="https://www.vcpility.com.au/" target="_blank">Sharktech VCPility</a></p>
                                 </li>
                             </ul>
                         </div>

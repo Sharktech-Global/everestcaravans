@@ -26,6 +26,10 @@
                 <div class="vb-overlay">
                     <div class="vb-wrap">
 
+                    <img class="mobile"
+     src="{{ asset('storage/' . ($data->mobile_image ?: $data->image)) }}"
+     alt="{{ $data->title }}">
+
                         <div class="vb-main">
                             @if ($data->vehicle)
                                 <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
@@ -196,7 +200,7 @@
             </ul>
 
             <div class="ev-about__actions">
-                <a class="ev-about__btn" href="{{ url('/caravans') }}">View Our Vans</a>
+                <a class="ev-about__btn" href="{{ route('our-range') }}">View Our Vans</a>
                 <a class="ev-about__link" href="{{ url('/contact') }}">Contact Us</a>
             </div>
         </div>
@@ -317,7 +321,7 @@
         'eyebrow' => 'Lux Decor',
         'title'   => 'Customised inside and out, styled to feel like home.',
         'text'    => 'Everest vans are customisable from the inside out. We love giving our owners the chance to style their interior with whatever makes them feel right at home.',
-        'button'  => ['label' => 'Visit Our Showroom', 'url' => url('/contact')],
+        'button'  => ['label' => 'Visit Our Showroom', 'url' => route('factory-visit.show')],
 
         // YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID  (null = no play button)
         'video'   => null,
@@ -428,7 +432,7 @@
         'title'   => 'Talk to the experts',
         'text'    => 'Planning your next off-road adventure? Our team builds these vans and tours in them, so we can help you choose the layout, features and finish that suit the way you travel.',
         'primary'   => ['label' => 'Get in Touch',         'url' => url('/contact')],
-        'secondary' => ['label' => 'Book a factory visit', 'url' => url('/contact#visit')],   // null to hide
+        'secondary' => ['label' => 'Book a factory visit', 'url' => route('factory-visit.show')],   // null to hide
         'image'   => 'assets/abreco/images/newonce/breakerimg1.jpg',   // landscape, subject on the right
     ];
     // =====================================================
@@ -479,7 +483,7 @@
         'eyebrow' => 'Who We Are',
         'title'   => 'Premium Custom Caravans, Built to the Highest Standard',
         'text'    => 'Everest Caravans is a family owned business with over 15 years experience in the caravan industry. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations.',
-        'button'  => ['label' => 'About Everest', 'url' => url('/about')],
+        'button'  => ['label' => 'About Everest', 'url' => route('about')],
         'bg'      => null,                                  // stats panel background; null = reuse the main photo
         'photo'   => 'assets/images/about/who-we1.jpg',        // large photo, top left
         'photo2'  => 'assets/images/about/who-we2.jpg',        // smaller photo, overlapping bottom right
@@ -687,7 +691,7 @@
     $etCta = [
         'brochure' => ['title' => 'View our full ' . date('Y') . ' range brochure', 'label' => 'Download Brochure',
                        'url' => $etHasBrochure ? asset($etBrochure) : url('/contact')],
-        'visit'    => ['title' => 'Book a factory visit', 'label' => 'Book Now', 'url' => url('/contact')],
+        'visit'    => ['title' => 'Book a factory visit', 'label' => 'Book Now', 'url' => route('factory-visit.show')],
     ];
     // =====================================================
 

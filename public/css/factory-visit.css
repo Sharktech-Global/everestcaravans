@@ -1,0 +1,188 @@
+/* ==========================================================
+   Everest Caravans — Factory Visit page layout
+   Markup: resources/views/factory-visit.blade.php
+
+   Two columns: the enquiry form on the left, a panel of warranty
+   badges on the right. The form's own styling lives in contact.css
+   under .ev-contact-form — this file only places it and builds the
+   panel beside it, so the two can change independently.
+
+   Every rule is prefixed with .ev-visit so the legacy theme styles
+   (abreco-*) can't leak in, and so these can't leak out.
+   ========================================================== */
+
+.ev-visit {
+    --fv-ink: #0E1330;
+    --fv-brand: #283895;
+    --fv-gold: #D9AE55;
+    --fv-text: #555A6E;
+    --fv-line: #E3E5EE;
+    --fv-panel: #EFEFF2;
+    --fv-radius: 4px;
+    --fv-aside: 300px;        /* right column width */
+    --fv-gap: 48px;
+    /* Same contour watermark the Tribe section on the home page uses.
+       Path is relative to /css/, where this file lives. */
+    --fv-topo: url("../assets/images/about/topo.svg");
+    /* Site typography: Space Grotesk for headings, Poppins for body.
+       Both already load above this section on the page. */
+    --fv-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --fv-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+
+    display: block;
+    position: relative;
+    isolation: isolate;       /* keeps the decoration behind this section only */
+    overflow: hidden;         /* the topo marks bleed past the edges */
+    padding: 100px 0;
+    /* The soft brand wash the Blog and Tribe sections open with, so this
+       page reads as part of the same set rather than a plain white form. */
+    background:
+        radial-gradient(ellipse 55% 45% at 50% 0%, rgba(40, 56, 149, .07), rgba(40, 56, 149, 0) 70%),
+        #fff;
+    font-family: var(--fv-font);
+    color: var(--fv-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-visit *, .ev-visit *::before, .ev-visit *::after { box-sizing: border-box; }
+.ev-visit img { max-width: 100%; height: auto; border: 0; }
+
+/* ---------- Background decoration ----------
+   Two contour marks, faded almost to nothing and masked so they dissolve
+   at the edges rather than ending on a hard circle. Behind everything and
+   click-through, so they can never catch a tap meant for the form. */
+.ev-visit .ev-visit__topo {
+    position: absolute;
+    z-index: -1;
+    width: 540px;
+    height: 540px;
+    background: var(--fv-topo) center / contain no-repeat;
+    opacity: .05;
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+            mask-image: radial-gradient(closest-side, #000 35%, transparent);
+    pointer-events: none;
+}
+.ev-visit .ev-visit__topo--top { top: -200px; right: -180px; }
+.ev-visit .ev-visit__topo--bottom {
+    bottom: -240px;
+    left: -220px;
+    width: 460px;
+    height: 460px;
+    opacity: .04;
+    transform: rotate(180deg);
+}
+
+/* A thin gold rule across the top edge, the same accent the section
+   eyebrows use, so the band reads as deliberate. */
+.ev-visit::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg,
+        var(--fv-brand) 0%,
+        var(--fv-gold) 38%,
+        rgba(217, 174, 85, 0) 72%);
+}
+
+.ev-visit .ev-visit__inner {
+    width: 100%;
+    max-width: 1290px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--fv-aside);
+    gap: var(--fv-gap);
+    align-items: start;
+}
+
+/* ---------- Left: heading + form ---------- */
+.ev-visit .ev-visit__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--fv-brand);
+}
+.ev-visit .ev-visit__eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--fv-gold);
+}
+.ev-visit .ev-visit__title {
+    margin: 0;
+    font-family: var(--fv-display);
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--fv-ink);
+}
+.ev-visit .ev-visit__text {
+    max-width: 62ch;
+    margin: 16px 0 0;
+    font-size: 16px;
+}
+/* The rule that separates the intro from the fields */
+.ev-visit .ev-visit__form {
+    margin-top: 34px;
+    border-top: 1px solid var(--fv-line);
+}
+
+/* ---------- Right: warranty panel ---------- */
+.ev-visit .ev-visit__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    padding: 40px 28px;
+    border-radius: var(--fv-radius);
+    background: var(--fv-panel);
+}
+.ev-visit .ev-visit__badge {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+}
+.ev-visit .ev-visit__aside-note {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    text-align: center;
+    color: var(--fv-text);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1199.98px) {
+    .ev-visit { --fv-aside: 250px; --fv-gap: 36px; }
+    .ev-visit .ev-visit__badge { max-width: 160px; }
+}
+@media (max-width: 991.98px) {
+    /* Stacked: the badges sit under the form, side by side instead of piled */
+    .ev-visit { padding: 80px 0; }
+    .ev-visit .ev-visit__inner { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .ev-visit .ev-visit__aside {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 28px 40px;
+        padding: 32px 24px;
+    }
+    .ev-visit .ev-visit__badge { max-width: 150px; }
+    .ev-visit .ev-visit__aside-note { flex-basis: 100%; }
+}
+@media (max-width: 575.98px) {
+    .ev-visit { padding: 64px 0; }
+    .ev-visit .ev-visit__inner { padding: 0 20px; }
+    .ev-visit .ev-visit__aside { gap: 22px 24px; padding: 28px 18px; }
+    .ev-visit .ev-visit__badge { max-width: 120px; }
+    /* Scaled down so the marks stay a texture rather than a shape */
+    .ev-visit .ev-visit__topo { width: 320px; height: 320px; }
+    .ev-visit .ev-visit__topo--top { top: -130px; right: -120px; }
+    .ev-visit .ev-visit__topo--bottom { width: 280px; height: 280px; bottom: -150px; left: -130px; }
+}

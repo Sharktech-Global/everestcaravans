@@ -106,7 +106,7 @@
     margin: 0;
     max-width: 16.5em;
     font-family: var(--vb-display);
-    font-size: clamp(2.6rem, 6vw, 100px);
+    font-size: clamp(2.4rem, 4vw, 80px);    
     font-weight: 700;
     line-height: 1.28;
     letter-spacing: -.01em;
@@ -2084,3 +2084,87 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 
 /* The photo column comes in from the side rather than from below */
 .rv-js .ws-about__media[data-rv] { transform: translateX(-32px); }
+
+/* ==========================================================
+   MOBILE TITLE SIZE — one size for every section heading.
+
+   Each section sets its own clamp(), whose floor ranged from 27px to
+   37px, so the headings stepped around on a phone. This pins them all
+   to 28px below 768px. Two classes deep and last in the file so it
+   outranks the per-section rules (and their own media queries) above.
+   ========================================================== */
+@media (max-width: 767.98px) {
+    .vb-hero .vb-title,
+    .ev-about .ev-about__title,
+    .ev-decor .ev-decor__title,
+    .ws-about .ws-about__title,
+    .ev-partners .ev-partners__title,
+    .ev-tribe .ev-tribe__title,
+    .ev-experts .ev-experts__title {
+        font-size: 28px;
+    }
+}
+
+/* ==========================================================
+   HERO ART ON MOBILE — an <img> instead of a background.
+
+   Desktop keeps the photo as .vb-slide's background. On phones the
+   slide shows <img class="mobile"> (the slider's mobile_image, or its
+   main image when none is set) and the background is dropped, so the
+   art is a real element that keeps its own aspect ratio instead of
+   being stretched into a band.
+
+   The background-image is written inline on .vb-slide from Blade, and
+   an inline style can only be overridden with !important.
+   ========================================================== */
+.vb-hero .vb-slide .mobile { display: none; }
+
+@media (max-width: 767.98px) {
+    .vb-hero .vb-slide { background-image: none !important; }
+
+    /* The gradient existed to blend the copy into the background photo.
+       With the photo gone the panel behind the copy is simply solid. */
+    .vb-hero .vb-overlay {
+        align-items: stretch;
+        background: var(--vb-bg);
+    }
+
+    /* Column so the photo can sit at the top and the copy at the bottom */
+    .vb-hero .vb-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .vb-hero .vb-slide .mobile {
+        display: block;
+        /* Full-bleed: cancels the side padding .vb-wrap carries.
+           max-width is reset because the theme caps every img at 100%,
+           which would otherwise clamp this back to the padded width. */
+        width: calc(100% + (var(--vb-side) * 2));
+        max-width: none;
+        margin: 0 calc(var(--vb-side) * -1) auto;   /* auto bottom pushes the copy down */
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+    }
+}
+
+/* ==========================================================
+   BUTTON CORNERS — one radius across the page.
+
+   Each section had set its own: the hero and Lux Decor at 4px, About
+   fully rounded at 999px, the CTA band at 6px, Talk to the Experts on
+   its section radius of 10px, and the Workshop button with none at all.
+   Written two classes deep and last in the file so these win on source
+   order without !important. The section boxes keep their own radius —
+   only the buttons are pinned here.
+   ========================================================== */
+.vb-hero .vb-btn,
+.ev-about .ev-about__btn,
+.ev-decor .ev-decor__btn,
+.ws-about .ws-about__btn,
+.ev-tribe .ev-tribe__btn,
+.ev-ctaband .ev-ctaband__btn,
+.ev-experts .ev-experts__btn {
+    border-radius: 4px;
+}

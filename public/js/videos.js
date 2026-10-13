@@ -20,10 +20,29 @@
     if (!sections.length) return;
 
     Array.prototype.forEach.call(sections, function (root) {
+        countTabs(root);
         setupTabs(root);
         setupPlay(root);
         setupMore(root);
     });
+
+    /* ---------- 0. Tab counts ----------
+       Written from the cards in each panel rather than rendered server
+       side, so the number can never drift from what the panel lists. */
+    function countTabs(root) {
+        var tabs = root.querySelectorAll('.ev-videos__tab');
+
+        Array.prototype.forEach.call(tabs, function (tab) {
+            var badge = tab.querySelector('.ev-videos__count');
+            var id = tab.getAttribute('aria-controls');
+            var panel = id ? root.querySelector('#' + CSS_escape(id)) : null;
+            if (!badge || !panel) return;
+
+            var n = panel.querySelectorAll('.ev-videos__card').length;
+            badge.textContent = n;
+            badge.setAttribute('aria-label', n + ' videos');
+        });
+    }
 
     /* ---------- 1. Tabs ---------- */
     function setupTabs(root) {
@@ -98,8 +117,10 @@
 
         Array.prototype.forEach.call(buttons, function (btn) {
             btn.addEventListener('click', function () {
-                // The button lives in .ev-videos__more, a sibling of the grid
-                var panel = btn.closest ? btn.closest('.ev-videos__panel') : null;
+                // The button lives in .ev-videos__more, a sibling of the grid.
+                // Falls back to the section root for a component rendered
+                // without a panel wrapper.
+                var panel = (btn.closest && btn.closest('.ev-videos__panel')) || root;
                 if (!panel) return;
 
                 var hiddenCards = panel.querySelectorAll('.ev-videos__card[data-more][hidden]');

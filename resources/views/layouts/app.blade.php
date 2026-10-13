@@ -358,7 +358,7 @@
                             <p class="py-4 mb-0 text-white"><span>&copy;{{date('Y')}} - {{config('app.name')}} | All rights reserved</span></p>
                         </li>
                         <li class="px-1 d-inline-block w-50">
-                            <p class="py-4 mb-0 text-white"><span>Crafted with <i class="fa fa-heart fa-beat red" aria-hidden="true"></i>&nbsp;&nbsp;by top <a class="text-hov-cl" href="https://netventure.in" target="_blank">web development company </a> NetVenture</span></p>
+                            <p class="py-4 mb-0 text-white"><span>Crafted with <i class="fa fa-heart fa-beat red" aria-hidden="true"></i>&nbsp;&nbsp;by top <a class="text-hov-cl" href="https://www.vcpility.com.au/" target="_blank">web development company </a>Sharktech VCPility</span></p>
                         </li>
                     </ul>
                 </div>

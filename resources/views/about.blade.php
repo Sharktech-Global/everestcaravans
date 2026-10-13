@@ -42,7 +42,7 @@
             ],
 
             // Button under the text
-            'button' => ['label' => 'Book a Factory Visit', 'url' => url('/contact')],
+            'button' => ['label' => 'Book a Factory Visit', 'url' => route('factory-visit.show')],
 
             // Slider on the left. Add as many slides as you like. 'caption' is optional.
             'slides' => [
