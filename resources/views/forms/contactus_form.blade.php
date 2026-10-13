@@ -85,16 +85,13 @@
                     <label for="contact-vehicle">
                         Preferred Caravan Type
                     </label>
-                    <select name="vehicle_name"
-                            id="contact-vehicle"
-                            class="form-control" required>
-                        <option value="">Select</option>
-                        @foreach (($vehicles ?? collect()) as $data)
-                            <option value="{{ $data->name }}"
-                                @selected(
-                                    old('vehicle_name', $vehicle->name ?? '') == $data->name
-                                )>
-                                {{ $data->name }}
+                    <select name="vehicle_name" id="vehicle_name" class="form-control">
+                        <option value="">Select Your Caravan Type</option>
+
+                        @foreach ($caravanTypes as $type)
+                            <option value="{{ $type->name }}"
+                                @selected(old('vehicle_name') == $type->name)>
+                                {{ $type->name }}
                             </option>
                         @endforeach
                     </select>

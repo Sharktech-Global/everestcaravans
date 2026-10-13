@@ -271,4 +271,41 @@ class HomeEnquiryController extends Controller
             'contacts' => $contacts
         ]);
     }
+
+    public function factoryVisits(Request $request)
+    {
+        $request->validate([
+            'date_from' => 'nullable|date_format:d-m-Y',
+            'date_to' => 'nullable|date_format:d-m-Y',
+        ]);
+
+        $visits = \App\FactoryVisit::query();
+
+        if ($request->filled('date_from')) {
+            $from = \Carbon\Carbon::createFromFormat(
+                '!d-m-Y',
+                $request->date_from
+            )->format('Y-m-d');
+
+            $visits->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->filled('date_to')) {
+            $to = \Carbon\Carbon::createFromFormat(
+                '!d-m-Y',
+                $request->date_to
+            )->format('Y-m-d');
+
+            $visits->whereDate('created_at', '<=', $to);
+        }
+
+        $visits = $visits
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.factory-visits.show', [
+            'visits' => $visits
+        ]);
+    }
+
 }

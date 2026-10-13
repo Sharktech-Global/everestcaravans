@@ -823,6 +823,13 @@
                             href="{{ route('admin.home-enquiries.contact') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Contact Enquiries</span></a>
                     </li>
+                    <li>
+                        <a  class="{{ request()->is('admin/factory-visit-enquiries*') ? 'active' : '' }}" 
+                            href="{{ route('admin.factory-visits.index') }}">
+                            <i class="fa fa-calendar"></i>
+                            <span>Factory Visit Enquiries</span>
+                        </a>
+                    </li>
                     <!-- <li>
                         <a class="{{ request()->is('admin/career-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.career-enquiries.index') }}"><i

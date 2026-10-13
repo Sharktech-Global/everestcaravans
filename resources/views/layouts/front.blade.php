@@ -150,6 +150,10 @@
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('factory-visit.show') }}"
+                                        @if ($routename == 'book-a-factory-visit') class="active" @endif>Visit</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('finance-partner') }}"
                                         @if ($routename == 'finance-partner') class="active" @endif>Finance</a>
                                 </li>

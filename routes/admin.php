@@ -443,6 +443,10 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     Route::get('home-enquiries', 'Admin\HomeEnquiryController@index')->name('admin.home-enquiries.index');
     Route::get('all-enquiries', 'Admin\HomeEnquiryController@all')->name('admin.home-enquiries.all');
     Route::get('contact-enquiries', 'Admin\HomeEnquiryController@contact')->name('admin.home-enquiries.contact');
+    // Factory Visit Enquiries
+    Route::get('factory-visit-enquiries', 'Admin\HomeEnquiryController@factoryVisits')
+    ->middleware('auth:admin')
+    ->name('admin.factory-visits.index');
 
     //Career Enquiries
     Route::get('career-enquiries', 'Admin\CareerEnquiryController@index')->name('admin.career-enquiries.index');

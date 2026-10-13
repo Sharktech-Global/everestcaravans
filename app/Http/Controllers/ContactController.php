@@ -34,7 +34,9 @@ class ContactController extends Controller
 
     public function show()
     {
-        $vehicles = Vehicle::where('status', 1)->get();
+        $caravanTypes = VehicleType::where('status', 1)
+    ->orderBy('name')
+    ->get(['id', 'name']);
         $settings = Setting::get();
         $page= Seo::where('route_name','contact')->first();
         $this->seo()->setTitle(@$page->seo_title);
@@ -45,7 +47,7 @@ class ContactController extends Controller
         $this->seo()->twitter()->setTitle(@$page->seo_title);
         $this->seo()->twitter()->setDescription(@$page->seo_description);
         // dd($vehicles);
-        return view('contact', compact('vehicles','page'));
+        return view('contact', compact('caravanTypes', 'page'));
     }
 
     

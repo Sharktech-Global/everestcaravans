@@ -262,3 +262,8 @@ Route::get('gallery', 'GalleryController@index')->name('gallery.index');
 // ccavenue payment gateway
 Route::get('ccavenue', 'CcavenueController@index')->name('ccavenue.payment.index');
 Route::post('ccavenue-response', 'CcavenueController@response')->name('ccavenue.payment.response');
+
+Route::get('/book-a-factory-visit', 'FactoryVisitController@show')
+    ->name('factory-visit.show');
+Route::post('/book-a-factory-visit', 'FactoryVisitController@store')
+    ->name('factory-visit.store');
