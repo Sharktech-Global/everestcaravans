@@ -129,7 +129,7 @@
         <div class="header-logobg2"></div> -->
         <div class="container-fluid header-fluid">
             <div class="header-nav-box">
-                <div class="row align-items-center">
+                <div class="row align-items-center justify-content-center">
                     <div class="col-lg-2 col-md-4 col-sm-5 col-6 order-1 order-sm-1">
                         <div class="abreco-logo-box"> <!-- logo here -->
                             <a href="{{ route('home') }}">

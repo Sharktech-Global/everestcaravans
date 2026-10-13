@@ -13,6 +13,7 @@
     <!--====== Banner Part START ======-->
 
 
+
 <section id="web-banner" class="vb-hero" aria-roledescription="carousel" aria-label="Featured vehicles">
     <div class="vb-slider owl-carousel">
         @foreach ($sliders as $data)

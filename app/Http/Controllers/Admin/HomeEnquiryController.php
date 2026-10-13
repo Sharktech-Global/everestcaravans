@@ -17,6 +17,7 @@ use App\TestDriveEnquiry;
 use App\UsedcarEnquiry;
 use App\VehicleEnquiry;
 use Illuminate\Http\Request;
+use App\BookingEnquiry;
 
 class HomeEnquiryController extends Controller
 {
@@ -305,6 +306,42 @@ class HomeEnquiryController extends Controller
 
         return view('admin.factory-visits.show', [
             'visits' => $visits
+        ]);
+    }
+
+    public function bookingEnquiries(Request $request)
+    {
+        $request->validate([
+            'date_from' => 'nullable|date_format:d-m-Y',
+            'date_to' => 'nullable|date_format:d-m-Y',
+        ]);
+
+        $enquiries = BookingEnquiry::query();
+
+        if ($request->filled('date_from')) {
+            $from = \Carbon\Carbon::createFromFormat(
+                '!d-m-Y',
+                $request->date_from
+            )->format('Y-m-d');
+
+            $enquiries->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->filled('date_to')) {
+            $to = \Carbon\Carbon::createFromFormat(
+                '!d-m-Y',
+                $request->date_to
+            )->format('Y-m-d');
+
+            $enquiries->whereDate('created_at', '<=', $to);
+        }
+
+        $enquiries = $enquiries
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.booking-enquiries.show', [
+            'enquiries' => $enquiries,
         ]);
     }
 

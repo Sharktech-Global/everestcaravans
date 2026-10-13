@@ -208,7 +208,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li
+                        <!-- <li
                             class="{{ request()->is('admin/locations*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fas fa-location-arrow"></i><span
@@ -223,8 +223,8 @@
                                         href="{{ route('admin.locations.index') }}">View</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fas fa-location-arrow"></i><span
                                     class="sidebar-mini-hide">Counters</span></a>
@@ -238,7 +238,7 @@
                                         href="{{ route('admin.counter-settings-list.index') }}">List</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li class="{{ request()->is('admin/area*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fas fa-location-arrow"></i><span class="sidebar-mini-hide">Areas</span></a>
@@ -269,7 +269,7 @@
                             </ul>
                         </li> -->
                         <!-- <li class="{{ request()->is('admin/careers*') ? 'open' : '' }}"> -->
-                        <li>
+                        <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fas fa-briefcase"></i><span class="sidebar-mini-hide">Finance</span></a>
                             <ul>
@@ -282,13 +282,9 @@
                                         href="{{ route('finance.index') }}">View</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
-                        <li>
-                            <a class="{{ request()->is('admin/bookings*') ? 'active' : '' }}"
-                                href="{{ route('admin.bookings.index') }}"><i
-                                    class="fas fa-book"></i><span class="sidebar-mini-hide">Bookings</span></a>
-                        </li>
+                        <l/li>
                         <li
                             class="{{ request()->is('admin/home-slider*') ? 'open' : '' }}">
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
@@ -329,9 +325,9 @@
                                         Vision</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.about-group.index') }}">Abreco Group</a>
+                                    <a href="{{ route('admin.about-group.index') }}">Who we are</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="{{ route('admin.about-motors.index') }}">Abreco
                                         Motors</a>
                                 </li>
@@ -342,10 +338,10 @@
                                 <li>
                                     <a href="{{ route('admin.about-location.index') }}">About
                                         Location</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">News & Events</span></a>
                             <ul>
@@ -356,8 +352,8 @@
                                     <a href="{{ route('admin.news-events-list.index') }}">List</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">Policies</span></a>
                             <ul>
@@ -369,23 +365,29 @@
                                     <a class="{{ request()->is('admin/terms*') ? 'active' : '' }}"
                                         href="{{ route('admin.terms.index') }}">Terms of Use</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a class="{{ request()->is('admin/cookies*') ? 'active' : '' }}"
                                         href="{{ route('admin.cookies.index') }}">Cookie Policy</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a class="{{ request()->is('admin/refund-policy-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.refund-policy-page.index') }}">Refund
                                         Policy</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li>
                             <a class="{{ request()->is('admin/insurance-page/faqs') ? 'active' : '' }}"
                                 href="{{ route('admin.insurance-page.index', 'faqs') }}"><i
                                     class="fas fa-lock"></i>FAQs</a>
                         </li> -->
+                        
                         <li>
+                            <a class="{{ request()->is('admin/enquiry-page*') ? 'active' : '' }}"
+                                href="{{ route('admin.faq.index') }}"><i
+                            class="fas fa-lock"></i>FAQs</a>
+                        </li>
+                        <!-- <li>
                             <a class="nav-submenu {{ request()->is('admin/contact-page') ? 'active' : '' }}
                                 {{ request()->is('admin/home-settings') ? 'active' : '' }}
                                 {{-- {{ request()->is('admin/about-page') ? 'active' : '' }} --}}
@@ -407,8 +409,8 @@
                                 {{ request()->is('admin/test-drive') ? 'active' : '' }}"
                                 data-toggle="nav-submenu" href="#"><i class="fas fa-wrench"></i><span
                                     class="sidebar-mini-hide">Pages
-                                </span></a>
-                            <ul>
+                                </span></a> -->
+                            <!-- <ul> -->
                                 <!-- <li>
                                     <a class="{{ request()->is('admin/about-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.about-page.index') }}"> Page</a>
@@ -434,10 +436,10 @@
                                         href="{{ route('admin.buy-new-car.index') }}">Buy New Car</a>
                                 </li> -->
 
-                                <li>
+                                <!-- <li>
                                     <a class="{{ request()->is('admin/career-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.career-page.index') }}">Career Page</a>
-                                </li>
+                                </li> -->
 
                                 <!-- <li>
                                     <a class="{{ request()->is('admin/cng-model-page*') ? 'active' : '' }}"
@@ -448,10 +450,10 @@
                                     <a class="{{ request()->is('admin/enquiry-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.enquiry-page.index') }}">Enquiry Page</a>
                                 </li> -->
-                                <li>
+                                <!-- <li>
                                     <a class="{{ request()->is('admin/enquiry-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.faq.index') }}">Faq</a>
-                                </li>
+                                </li> -->
 
 
                                 <!-- <li>
@@ -534,11 +536,11 @@
                         href="{{ route('admin.dealership-page.index') }}">Dealership Page</a>
                         </li> --}}
 
-                        <li>
+                        <!-- <li>
                             <a class="{{ request()->is('admin/location-map-page*') ? 'active' : '' }}"
                                 href="{{ route('admin.location-map-page.index') }}">Location Maps
                                 Page</a>
-                        </li>
+                        </li> -->
 
                         <!-- <li>
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span
@@ -609,8 +611,8 @@
                                     <a class="{{ request()->is('admin/subscribe-page*') ? 'active' : '' }}"
                                         href="{{ route('admin.subscribe-page.index') }}">Subscribe Page</a>
                                 </li> -->
-                    </ul>
-                    </li>
+                    <!-- </ul>
+                    </li> -->
                     {{-- <li class="{{ request()->is('admin/marketing*') ? 'open' : '' }}">
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-search"></i><span
                             class="sidebar-mini-hide">Marketing
@@ -626,7 +628,7 @@
                         </li>
                     </ul>
                     </li> --}}
-                    <li
+                    <!-- <li
                         class="{{ request()->is('admin/services*') ? 'open' : '' }}">
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-plus"></i><span
                                 class="sidebar-mini-hide">Services</span></a>
@@ -640,8 +642,8 @@
                                     href="{{ route('admin.services.index') }}">View</a>
                             </li>
                         </ul>
-                    </li>
-                    <li
+                    </li> -->
+                    <!-- <li
                         class="{{ request()->is('admin/services_content*') ? 'open' : '' }}">
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-plus"></i><span
                                 class="sidebar-mini-hide">Service Content</span></a>
@@ -655,7 +657,7 @@
                                     href="{{ route('service_content.index') }}">View</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     {{-- <li>
                             <a class="{{ request()->is('admin/announcements*') ? 'active' : '' }}"
                     href="{{ route('admin.announcements.index') }}"><i
@@ -792,8 +794,8 @@
                             href="{{ route('seo.index') }}"><i class="fas fa-search"></i><span
                                 class="sidebar-mini-hide">SEO</span></a>
                     </li>
-                    <li class="nav-main-heading"><span class="sidebar-mini-visible">Enquiries</span><span
-                        class="sidebar-mini-hidden">Reports</span></li>
+                    <!-- <li class="nav-main-heading"><span class="sidebar-mini-visible">Enquiries</span><span
+                        class="sidebar-mini-hidden">Reports</span></li> -->
                 {{-- @if(Auth::guard('admin')->user()->email == 'shyam.krishnan@popularv.com' || Auth::guard('admin')->user()->email == 'developer@netventure.in') --}}
                 {{-- <li>
                     <a class="{{ request()->is('admin/all-enquiries*') ? 'active' : '' }}"
@@ -801,11 +803,11 @@
                     class="sidebar-mini-hide">Enquiries</span></a>
                 </li> --}}
                 {{-- @else --}}
-                <li>
+                <!-- <li>
                     <a class="{{ request()->is('admin/contact-enquiries*') ? 'active' : '' }}"
                         href="{{ route('admin.payment-enquiries.index') }}"><i
                             class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Booking Reports</span></a>
-                </li>
+                </li> -->
 
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">Enquiries</span><span
                             class="sidebar-mini-hidden">Enquiries</span></li>
@@ -817,7 +819,13 @@
                     </li> --}}
                     {{-- @else --}}
                    
-
+                    <li>
+                        <a class="{{ request()->is('admin/booking-enquiries*') ? 'active' : '' }}" 
+                        href="{{ route('admin.booking-enquiries.index') }}"><i
+                                class="fa fa-wpforms"></i>
+                            <span>Booking Enquiries</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="{{ request()->is('admin/contact-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.home-enquiries.contact') }}"><i
@@ -860,12 +868,12 @@
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Test Drive
                                 Enquiries</span></a>
                     </li> -->
-                    <li>
+                    <!-- <li>
                         <a class="{{ request()->is('admin/vehicle-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.vehicle-enquiries.index') }}"><i
                                 class="fa fa-wpforms"></i><span class="sidebar-mini-hide">Vehicle
                                 Enquiries</span></a>
-                    </li>
+                    </li> -->
                     {{-- <li>
                             <a class="{{ request()->is('admin/service-product-enquiries*') ? 'active' : '' }}"
                     href="{{ route('admin.service-product-enquiries.index') }}"><i

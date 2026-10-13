@@ -57,7 +57,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['settings'] = GeneralSetting::select('mobile','whatsapp','logo','favicon','instagram','youtube','facebook','map')->first();
-        $data['sliders'] = HomeSlider::select('id','title','type','vehicle_id','description','image','booking','status')->where('status', 1)->get();
+        $data['sliders'] = HomeSlider::select('id','title','type','vehicle_id','description','image','mobile_image','booking','status')->where('status', 1)->get();
         $data['vehicle_slider'] =VehicleSlider::select('id','type','order_id','name','slug','logo','description','image','vehicle_id','booking','status')->whereStatus(1)->get();
         // $vehicles_filtered = Vehicle::whereStatus(1)->whereHas('vehicle_type', function ($q) {
         //     $q->where('has_sales_page', 0);

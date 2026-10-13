@@ -629,5 +629,11 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     //Vehicle Categories
     Route::get('vehicleCategories', 'Admin\VehicleCategorieController@index')->name('admin.vehicleCategories.index');
     Route::delete('vehicleCategories/{id}/destroy','Admin\VehicleCategorieController@destroy')->name('admin.vehicleCategories.destroy');
+Route::get(
+    'booking-enquiries',
+    'Admin\HomeEnquiryController@bookingEnquiries'
+)
+->middleware('auth:admin')
+->name('admin.booking-enquiries.index');
 
 });

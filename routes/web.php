@@ -109,7 +109,7 @@ Route::get('/refund-policy', 'RefundPolicyController@show')->name('refund-policy
 // Route::get('/coming-soon', 'ComingSoonController@show')->name('coming-soon.show');
 // Route::get('/network', 'NetworkController@show')->name('network.show');
 // Route::get('/cng-models', 'CngModelsController@show')->name('cng-models.show');
-// Route::get('/testimonials', 'TestimonialsController@show')->name('testimonials.show');
+Route::get('/testimonials', 'TestimonialsController@show')->name('testimonials.show');
 
 Route::get('/terms-of-use', 'TermsController@show')->name('terms.show');
 
@@ -268,3 +268,8 @@ Route::get('/book-a-factory-visit', 'FactoryVisitController@show')
     ->name('factory-visit.show');
 Route::post('/book-a-factory-visit', 'FactoryVisitController@store')
     ->name('factory-visit.store');
+
+    Route::post(
+    '/vehicles/{slug}/booking-enquiry',
+    [\App\Http\Controllers\BookingEnquiryController::class, 'store']
+)->name('vehicles.booking-enquiry');

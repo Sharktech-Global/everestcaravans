@@ -71,7 +71,7 @@ class HomeController extends Controller
         $this->seo()->twitter()->setTitle(@$home_settings->seo_title);
         $this->seo()->twitter()->setDescription(@$home_settings->seo_description);
 
-        $sliders = HomeSlider::select('id','sub_title', 'title', 'vehicle_id', 'description', 'image', 'booking', 'status')->where('status', 1)->get();
+        $sliders = HomeSlider::select('id','sub_title', 'title', 'vehicle_id', 'description', 'image', 'mobile_image', 'booking', 'status')->where('status', 1)->get();
         // $vehicle_slider =VehicleSlider::select('id','type','order_id','name','slug','logo','description','image','vehicle_id','booking','status')->whereStatus(1)->get();
         $vehicles = Vehicle::select('id', 'name', 'slug', 'vehicle_type_id', 'application_id','title','image','is_booking','booking_amount')
                                                 ->with(['vehicle_type' => function ($query) {
