@@ -141,7 +141,7 @@
     line-height: 1.97;
     color: var(--vb-desc);
 }
-.vb-desc p { margin: 0 0 .6em; }
+.vb-desc p { margin: 0 0 .6em; color: #fff; }
 .vb-desc p:last-child { margin-bottom: 0; }
 
 
