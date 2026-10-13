@@ -103,12 +103,12 @@
 
 /* ---------- Title ---------- */
 .vb-title {
-   margin: 0;
-    max-width: 13.5em;
+    margin: 0;
+    max-width: 16.5em;
     font-family: var(--vb-display);
-    font-size: clamp(2.6rem, 4vw, 3.75rem);
-    font-weight: 600;
-    line-height: 1.18;
+    font-size: clamp(2.6rem, 6vw, 100px);
+    font-weight: 700;
+    line-height: 1.28;
     letter-spacing: -.01em;
     text-transform: uppercase;
     color: var(--vb-white);

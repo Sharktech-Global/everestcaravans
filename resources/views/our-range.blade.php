@@ -6,7 +6,7 @@
     @include('partials.page-hero', [
         'title'       => 'Our Range',
         'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
-        'image'       => 'assets/abreco/images/29.jpg',
+        'image'       => 'assets/abreco/images/newonce/blog-banner.jpg',
         'breadcrumbs' => [['label' => 'Our Range']],
     ])
 

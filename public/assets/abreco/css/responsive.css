@@ -2804,7 +2804,37 @@
 .ev-ftr__marks { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
 .ev-ftr__logo img { width: 230px; height: auto; }
 .ev-ftr__divider { width: 1px; height: 54px; background: var(--ef-rule); }
-.ev-ftr__badge { width: 76px; height: auto; }
+.ev-ftr__badge { width: 110px; height: auto; }
+/* warranty.svg is a wide strip (205x57) rather than a near-square badge,
+   so a 76px width would shrink it to ~21px tall. Size it by height instead,
+   to sit level with the certificate beside it. */
+/* Written two classes deep on purpose: the phone breakpoint narrows
+   .ev-ftr__badge to a fixed 62px, and at equal specificity that later rule
+   would win and crush this 205x57 strip into a square. */
+.ev-ftr__badge.ev-ftr__badge--wide { width: auto; height: 60px; }
+
+/* ==========================================================
+   Inline link inside body copy.
+
+   The theme sets a global `a { display: inline-block }`, which stops a
+   linked phrase breaking across lines — a long one gets pushed whole to
+   the next line. This puts it back to inline and gives it a colour, since
+   the theme leaves links the same colour as the text around them.
+   ========================================================== */
+a.ev-inline-link {
+    display: inline;
+    color: #283895;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .25s ease;
+}
+a.ev-inline-link:hover,
+a.ev-inline-link:focus { color: #1D2A72; text-decoration: underline; }
+a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+    a.ev-inline-link { transition: none; }
+}
 
 .ev-ftr__cta { text-align: right; }
 .ev-ftr__cta-title {
@@ -2835,6 +2865,43 @@
 }
 .ev-ftr__btn:hover { background: #3A49A8; color: var(--ef-white); transform: translateY(-2px); }
 .ev-ftr__btn:focus-visible { outline: 2px solid var(--ef-accent-soft); outline-offset: 3px; }
+
+/* ==========================================================
+   Slide-out (left) menu — closing call to action.
+   Full width so it reads as the end of the panel, and styled to
+   match .ev-ftr__btn since the two are the same action.
+   ========================================================== */
+.offcanvas_menu_wrapper .ev-sidecta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    margin-top: 24px;
+    border-radius: 8px;
+    background: #283895;
+    color: #fff;
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .25s ease, transform .25s ease;
+}
+.offcanvas_menu_wrapper .ev-sidecta svg {
+    width: 18px; height: 18px;
+    fill: none; stroke: currentColor;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.offcanvas_menu_wrapper .ev-sidecta:hover { background: #1D2A72; color: #fff; transform: translateY(-2px); }
+.offcanvas_menu_wrapper .ev-sidecta:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .offcanvas_menu_wrapper .ev-sidecta { transition: none; }
+    .offcanvas_menu_wrapper .ev-sidecta:hover { transform: none; }
+}
 
 /* ---------- Main columns ---------- */
 .ev-ftr__grid {
@@ -2953,7 +3020,9 @@
 }
 @media (max-width: 1099.98px) {
     .ev-ftr__grid { grid-template-columns: 1fr 1fr; gap: 44px 0; }
-    .ev-ftr__intro { grid-column: 1 / -1; padding-right: 0; border-right: 0; }
+    /* Spans the full row here, so it has no neighbour to be ruled off from.
+       Written to match the :not(:last-child) rule that draws those lines. */
+    .ev-ftr__grid > .ev-ftr__intro { grid-column: 1 / -1; padding-right: 0; border-right: 0; }
     .ev-ftr__grid > * { padding-inline: 32px; }
     .ev-ftr__grid > .ev-ftr__col--range { padding-left: 0; }
 }
@@ -2963,8 +3032,12 @@
     .ev-ftr__cta { text-align: left; }
     .ev-ftr__grid { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 44px; }
     .ev-ftr__intro { grid-column: auto; }
-    /* Stacked: separate the blocks with a rule underneath instead */
-    .ev-ftr__grid > * { padding-inline: 0; border-right: 0; }
+    /* Stacked: separate the blocks with a rule underneath instead.
+       The :not(:last-child) that draws the column rules is two classes
+       deep, so plain `.ev-ftr__grid > *` loses to it and the vertical
+       lines stayed on top of the stacked blocks — match it here. */
+    .ev-ftr__grid > * { padding-inline: 0; }
+    .ev-ftr__grid > *:not(:last-child) { border-right: 0; }
     .ev-ftr__grid > *:not(:last-child) {
         padding-bottom: 32px;
         border-bottom: 1px solid var(--ef-rule);
@@ -2973,12 +3046,20 @@
     .ev-ftr__strip-item { padding-right: 0; margin-right: 0; border-right: 0; }
     .ev-ftr__strip-links { margin-left: 0; }
     .ev-ftr__social { margin-left: 0; }
+    /* On desktop the horizontal spacing came from the items' own padding and
+       margins, all of which are zeroed just above — so without a column gap
+       any two items that share a line sit flush against each other. */
+    .ev-ftr__strip { column-gap: 28px; }
 }
 @media (max-width: 479.98px) {
     .ev-ftr { --ef-side: 18px; }
     .ev-ftr__marks { gap: 18px; }
     .ev-ftr__logo img { width: 160px; }
     .ev-ftr__badge { width: 62px; }
+    .ev-ftr__badge.ev-ftr__badge--wide { height: 40px; }
+    /* The marks run onto two lines at this width, which leaves a divider
+       stranded at the start of a line. The gap alone separates them. */
+    .ev-ftr__divider { display: none; }
     .ev-ftr__col--range .ev-ftr__list { columns: 1; }
     .ev-ftr__strip-value { font-size: 16px; }
     .ev-ftr__strip-links { flex-wrap: wrap; gap: 8px 20px; }
@@ -2991,6 +3072,34 @@
 }
 .section.copy-right-sec1 {
     background-color: #0b0e22;
+}
+
+/* ==========================================================
+   Copyright bar on mobile.
+
+   style.css drops .footer-copyright to `display: block !important` below
+   992px, which quietly disables the .order-1-991 / .order-2-991 classes
+   the markup carries — the creator mark was meant to come first there and
+   was landing second. Flex is restored two classes deep (and !important,
+   since that is the only thing that beats !important) so the order holds,
+   then both halves are centred and given breathing room.
+   ========================================================== */
+@media (max-width: 991.98px) {
+    .copy-right-sec1 .footer-copyright {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 28px 0;
+    }
+    .copy-right-sec1 .footer-copyright > * { width: 100%; }
+    .copy-right-sec1 .footer-btns-copy ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .copy-right-sec1 .footer-btns-copy li { margin: 0; }
+    .copy-right-sec1 .footer-btns-copy p { margin: 0; line-height: 1.6; }
 }
 
 /* ==========================================================
@@ -3125,6 +3234,63 @@
 .abreco-sticky.sticky .abreco-header-main-menu ul > li > a:hover,
 .abreco-sticky.sticky .abreco-header-main-menu ul > li > a.active { color: #283895; }
 .abreco-sticky.sticky .abreco-header-main-menu ul > li > a.active::before { background-color: #283895; }
+
+/* ==========================================================
+   NAVBAR CALL TO ACTION — "Submit Now" as a button.
+
+   The bar is transparent over the hero and turns white once .sticky
+   lands, and the sticky rule just above repaints every nav link dark.
+   A solid navy pill reads on both, so the second selector carries the
+   same colours into the sticky state rather than letting that rule win.
+   ========================================================== */
+.abreco-header-main-menu ul > li.ev-navcta { margin-left: 18px; }
+.abreco-header-main-menu ul > li.ev-navcta > a,
+.abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 26px;
+    border-radius: 8px;
+    background: #283895;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background-color .25s ease, transform .25s ease;
+}
+.abreco-header-main-menu ul > li.ev-navcta > a:hover,
+.abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a:hover {
+    background: #1D2A72;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.abreco-header-main-menu ul > li.ev-navcta > a:focus-visible {
+    outline: 2px solid #8C9BF0;
+    outline-offset: 3px;
+}
+/* The nav's active underline has no place on a filled button */
+.abreco-header-main-menu ul > li.ev-navcta > a::before { display: none; }
+
+@media (max-width: 1440px) {
+    .abreco-header-main-menu ul > li.ev-navcta > a,
+    .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 1199.98px) {
+    .abreco-header-main-menu ul > li.ev-navcta { margin-left: 10px; }
+    .abreco-header-main-menu ul > li.ev-navcta > a,
+    .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
+        padding: 9px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .abreco-header-main-menu ul > li.ev-navcta > a { transition: none; }
+    .abreco-header-main-menu ul > li.ev-navcta > a:hover { transform: none; }
+}
 
 /* ==========================================================
    HEADER MENU — display face.

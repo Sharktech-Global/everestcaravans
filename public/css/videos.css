@@ -1,0 +1,328 @@
+/* Everest Caravans — Videos section
+   Every rule is prefixed with .ev-videos so theme styles can't leak in.
+   Corner radius for everything lives in --vd-radius. */
+
+.ev-videos {
+    --vd-ink: #0E1330;
+    --vd-brand: #283895;
+    --vd-brand-dark: #1D2A72;
+    --vd-gold: #D9AE55;
+    --vd-text: #555A6E;
+    --vd-line: #E3E5EE;
+    --vd-bg: #F5F6FA;
+    --vd-radius: 4px;
+    --vd-font: "Lexend", "Segoe UI", Roboto, Arial, sans-serif;
+
+    display: block;
+    margin: 0;
+    padding: 70px 0;
+    background: var(--vd-bg);
+    font-family: var(--vd-font);
+    color: var(--vd-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+.ev-videos *, .ev-videos *::before, .ev-videos *::after { box-sizing: border-box; }
+.ev-videos h2, .ev-videos h3, .ev-videos p, .ev-videos ul, .ev-videos li {
+    margin: 0; padding: 0;
+    font-family: var(--vd-font);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.ev-videos ul { list-style: none; }
+.ev-videos a { text-decoration: none; }
+.ev-videos img { max-width: none; border: 0; }
+.ev-videos svg { display: block; flex: none; }
+.ev-videos button { font-family: var(--vd-font); }
+.ev-videos [hidden] { display: none !important; }
+
+.ev-videos .ev-videos__inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ---------- Heading ---------- */
+.ev-videos .ev-videos__head { text-align: center; }
+.ev-videos .ev-videos__heading {
+    font-size: clamp(32px, 3.4vw, 48px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    color: var(--vd-ink);
+}
+.ev-videos .ev-videos__intro {
+    max-width: 60ch;
+    margin: 14px auto 0;
+    text-wrap: balance;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* ---------- Tabs (logos on a hairline, count sits on the line) ---------- */
+.ev-videos .ev-videos__tabs-wrap { display: flex; justify-content: center; margin: 44px 0 64px; }
+.ev-videos .ev-videos__tabs {
+    display: inline-flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--vd-line);
+}
+.ev-videos .ev-videos__tab {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 300px;
+    height: 84px;
+    padding: 0 32px 22px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.ev-videos .ev-videos__tab img {
+    display: block;
+    width: auto;
+    max-width: 170px;
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: .45;
+    transition: filter .25s ease, opacity .25s ease;
+}
+.ev-videos .ev-videos__tab-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #9A9EB0;
+    transition: color .25s ease;
+}
+/* active bar */
+.ev-videos .ev-videos__tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--vd-brand);
+    transform: scaleX(0);
+    transition: transform .3s ease;
+}
+/* count square on the line */
+.ev-videos .ev-videos__count {
+    position: absolute;
+    left: 50%;
+    bottom: -13px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 6px;
+    border-radius: var(--vd-radius);
+    background: var(--vd-ink);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity .25s ease, transform .25s ease;
+}
+.ev-videos .ev-videos__tab:hover img { filter: grayscale(0); opacity: .8; }
+.ev-videos .ev-videos__tab:hover .ev-videos__tab-name { color: var(--vd-ink); }
+.ev-videos .ev-videos__tab[aria-selected="true"] img { filter: none; opacity: 1; }
+.ev-videos .ev-videos__tab[aria-selected="true"] .ev-videos__tab-name { color: var(--vd-ink); }
+.ev-videos .ev-videos__tab[aria-selected="true"]::after { transform: scaleX(1); }
+.ev-videos .ev-videos__tab[aria-selected="true"] .ev-videos__count { opacity: 1; transform: translate(-50%, 0); }
+.ev-videos .ev-videos__tab:focus-visible { outline: 2px solid var(--vd-brand); outline-offset: 2px; }
+
+.ev-videos .ev-videos__panel:focus { outline: none; }
+
+/* ---------- Grid + cards (borderless, editorial) ---------- */
+.ev-videos .ev-videos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+.ev-videos .ev-videos__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid var(--vd-line);
+    border-radius: var(--vd-radius);
+    background: #fff;
+    overflow: hidden;
+    transition: border-color .25s ease;
+}
+.ev-videos .ev-videos__card:hover { border-color: var(--vd-brand); }
+
+.ev-videos .ev-videos__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--vd-ink);
+    overflow: hidden;
+}
+.ev-videos .ev-videos__play {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+.ev-videos .ev-videos__play img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;              /* crops YouTube's black bars */
+    transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+.ev-videos .ev-videos__play::after {           /* shade lifts slightly on hover */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 19, 48, 0) 45%, rgba(14, 19, 48, .55) 100%);
+    transition: background-color .3s ease;
+}
+/* Play: white square that opens out to "Play video" on hover */
+.ev-videos .ev-videos__btn {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    max-width: 48px;
+    padding: 0 14px;
+    border-radius: var(--vd-radius);
+    background: #fff;
+    color: var(--vd-ink);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width .35s cubic-bezier(.2, .7, .2, 1), background-color .25s ease, color .25s ease;
+}
+.ev-videos .ev-videos__btn svg { fill: currentColor; }
+.ev-videos .ev-videos__btn-text {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.ev-videos .ev-videos__play:hover img { transform: scale(1.05); }
+.ev-videos .ev-videos__play:hover::after { background-color: rgba(14, 19, 48, .12); }
+.ev-videos .ev-videos__play:hover .ev-videos__btn,
+.ev-videos .ev-videos__play:focus-visible .ev-videos__btn { max-width: 160px; background: var(--vd-brand); color: #fff; }
+.ev-videos .ev-videos__play:hover .ev-videos__btn-text,
+.ev-videos .ev-videos__play:focus-visible .ev-videos__btn-text { opacity: 1; transition-delay: .1s; }
+.ev-videos .ev-videos__play:focus-visible { outline: 3px solid var(--vd-gold); outline-offset: -3px; }
+.ev-videos .ev-videos__media iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.ev-videos .ev-videos__body { flex: 1; padding: 22px 24px 24px; }
+.ev-videos .ev-videos__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--vd-text);
+}
+.ev-videos .ev-videos__label span {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--vd-brand);
+    font-weight: 600;
+}
+.ev-videos .ev-videos__label span::after { content: ""; width: 18px; height: 1px; background: #C9CDDD; }
+.ev-videos .ev-videos__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 17.5px;
+    font-weight: 500;
+    line-height: 1.42;
+    letter-spacing: -.012em;
+    color: var(--vd-ink);
+    transition: color .25s ease;
+}
+.ev-videos .ev-videos__card:hover .ev-videos__title { color: var(--vd-brand); }
+.ev-videos .ev-videos__yt {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: space-between;
+    height: 54px;
+    padding: 0 24px;
+    border-top: 1px solid var(--vd-line);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--vd-ink);
+    transition: color .2s ease, background-color .2s ease;
+}
+.ev-videos .ev-videos__yt svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .25s ease;
+}
+.ev-videos .ev-videos__yt:hover { color: var(--vd-brand); background: #F8F9FC; }
+.ev-videos .ev-videos__yt:hover svg { transform: translate(2px, -2px); }
+
+/* ---------- Show more ---------- */
+.ev-videos .ev-videos__more { margin-top: 48px; text-align: center; }
+.ev-videos .ev-videos__more-btn {
+    height: 52px;
+    padding: 0 28px;
+    border: 1px solid var(--vd-ink);
+    border-radius: var(--vd-radius);
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--vd-ink);
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+}
+.ev-videos .ev-videos__more-btn:hover { background: var(--vd-ink); color: #fff; }
+.ev-videos .ev-videos__more-btn:focus-visible { outline: 2px solid var(--vd-brand); outline-offset: 3px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .ev-videos { padding: 90px 0; }
+    .ev-videos .ev-videos__inner { padding: 0 28px; }
+    .ev-videos .ev-videos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+}
+@media (max-width: 575.98px) {
+    .ev-videos { padding: 72px 0; }
+    .ev-videos .ev-videos__inner { padding: 0 16px; }
+    .ev-videos .ev-videos__tabs-wrap { margin: 34px 0 48px; }
+    .ev-videos .ev-videos__tabs { width: 100%; }
+    .ev-videos .ev-videos__tab { flex: 1; min-width: 0; height: 70px; padding: 0 12px 18px; }
+    .ev-videos .ev-videos__tab img { max-width: 130px; height: 34px; }
+    .ev-videos .ev-videos__grid { grid-template-columns: 1fr; }
+    .ev-videos .ev-videos__btn { left: 14px; bottom: 14px; height: 44px; max-width: 44px; padding: 0 12px; }
+    .ev-videos .ev-videos__grid { gap: 20px; }
+    .ev-videos .ev-videos__body { padding: 20px 20px 22px; }
+    .ev-videos .ev-videos__yt { padding: 0 20px; }
+    .ev-videos .ev-videos__title { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ev-videos * { transition: none !important; }
+}

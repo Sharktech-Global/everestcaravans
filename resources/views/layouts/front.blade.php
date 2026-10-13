@@ -83,8 +83,8 @@
                                 <li @if ($routename == 'our-range') class="active" @endif>
                                     <a href="{{ route('our-range') }}">Our Range</a>
                                 </li>
-                                <li @if ($routename == 'gallery.index') class="active" @endif>
-                                    <a href="{{ route('gallery.index') }}">Videos</a>
+                                <li @if ($routename == 'videos') class="active" @endif>
+                                    <a href="{{ route('videos') }}">Videos</a>
                                 </li>
                                 <li @if ($routename == 'book_test_drive.index') class="active" @endif>
                                     <a href="{{ route('book_test_drive.index') }}">Book a Factory Visit</a>
@@ -110,6 +110,12 @@
                                     <span class="toll-number">0 1800 890 0118</span>
                                 </a>
                             </div>
+
+                            {{-- Closing call to action, last item in the slide-out menu --}}
+                            <a class="ev-sidecta" href="{{ route('contact') }}">
+                                Submit Now
+                                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -158,16 +164,20 @@
                                         @if ($routename == 'finance-partner') class="active" @endif>Finance</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('videos') }}"
+                                        @if ($routename == 'videos') class="active" @endif>Videos</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('blog.show') }}"
-                                        @if ($routename == 'blog.show') class="active" @endif>Blogs </a>
+                                        @if (in_array($routename, ['blog.show', 'blog.details'])) class="active" @endif>Blogs </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('about') }}"
                                         @if ($routename == 'about') class="active" @endif>About Us</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('contact') }}"
-                                        @if ($routename == 'contact') class="active" @endif>Contact Us</a>
+                                {{-- Last item, styled as a button rather than a nav link --}}
+                                <li class="ev-navcta">
+                                    <a href="{{ route('contact') }}">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -189,9 +199,10 @@
     @php
         // ---- Footer content ----
         $evRange = [
-            'Avalanche Quad Van', 'Camo S2 18.7F', 'Kombat E2 20.F', 'Nitro Extreme 18.6F',
-            'Falcon 18.7 - 21F', 'Alpine Quattro 18.7F', 'Calibra 20.6F', 'Summitt 22.8F',
-            'Kombat Performance 19.7F - 21F', 'Alpine Freestyle 18.7F', 'Alpine 18.6F', 'Kombat E1 19.7F',
+            'Falcon', 'Avalanche Quad', 'Summitt', 'Calibra',
+            'Nitro', 'Alpine', 'Kombat', 'S.C.O.T.A',
+            'Storm', 'Ice Glider', 'Blizzard', 'Vantage',
+            'Camo', 'Drifter', 'Warrior',
         ];
 
         // TODO: confirm real trading hours — placeholder.
@@ -215,7 +226,12 @@
                         </a>
                         <span class="ev-ftr__divider" aria-hidden="true"></span>
                         <img class="ev-ftr__badge" src="{{ asset('assets/abreco/images/certificate.png') }}"
-                             alt="Australian Made" width="138" height="122" loading="lazy" decoding="async">
+                             alt="Australian Made" width="178" height="142" loading="lazy" decoding="async">
+                        <span class="ev-ftr__divider" aria-hidden="true"></span>
+                        {{-- Wide strip rather than a square badge, so it is sized by height --}}
+                        <img class="ev-ftr__badge ev-ftr__badge--wide"
+                             src="{{ asset('assets/abreco/images/newonce/warranty.svg') }}"
+                             alt="Structural warranty" width="205" height="57" loading="lazy" decoding="async">
                     </div>
 
                     <div class="ev-ftr__cta">
