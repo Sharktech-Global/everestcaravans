@@ -255,10 +255,10 @@
                     </p>
 
                     <dl class="ev-ftr__meta">
-                        @foreach ($evMeta as $m)
-                            <dt>{{ $m['label'] }}</dt>
-                            <dd>{{ $m['value'] }}</dd>
-                        @endforeach
+                        @if (@$settings->address)
+                            <dt>Address</dt>
+                            <dd>{{ @$settings->address }}</dd>
+                        @endif
                         <dt>Status</dt>
                         <dd class="ev-ftr__status"><span aria-hidden="true"></span>Taking custom builds</dd>
                     </dl>
@@ -266,11 +266,15 @@
 
                 <nav class="ev-ftr__col ev-ftr__col--range" aria-label="Our range">
                     <h4 class="ev-ftr__title">Our Range</h4>
-                    <ul class="ev-ftr__list">
-                        @foreach ($evRange as $name)
-                            <li><span>{{ $name }}</span></li>
-                        @endforeach
-                    </ul>
+                    
+
+                            <ul class="ev-ftr__list">
+                                @foreach ($footerVehicleTypes as $type)
+                                    <li>
+                                        <span><a href="/our-range">{{ $type->name }}</a></span>
+                                    </li>
+                                @endforeach
+                            </ul>
                 </nav>
 
                 <nav class="ev-ftr__col" aria-label="Company">
@@ -287,14 +291,24 @@
 
             {{-- Contact strip --}}
             <div class="ev-ftr__strip">
+                @if (@$settings->address)
+                    <div class="ev-ftr__strip-item">
+                        <span class="ev-ftr__label">Address</span>
+                        <span class="ev-ftr__strip-value">{{ @$settings->address }}</span>
+                    </div>
+                @endif
+                @if (@$settings->mobile)
                 <div class="ev-ftr__strip-item">
                     <span class="ev-ftr__label">Phone</span>
                     <a class="ev-ftr__strip-value" href="tel:+61393579440">(03) 9357 9440</a>
                 </div>
-                <div class="ev-ftr__strip-item">
-                    <span class="ev-ftr__label">Email</span>
-                    <a class="ev-ftr__strip-value" href="mailto:info@everestcaravans.com.au">info@everestcaravans.com.au</a>
-                </div>
+                @endif
+                @if (@$settings->email)
+                    <div class="ev-ftr__strip-item">
+                        <span class="ev-ftr__label">Email</span>
+                        <a class="ev-ftr__strip-value" href="mailto:{{ @$settings->email }}">{{ @$settings->email }}</a>
+                    </div>
+                @endif
 
                 <ul class="ev-ftr__strip-links">
                     <li><a href="{{ route('privacy.show') }}">Privacy Policy</a></li>
