@@ -267,7 +267,7 @@
                                             style="font-size:0px;padding:18px 0px 0px 0px;word-break:break-word;">
                                                 <div style="font-family:Ubuntu, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000;">
                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;">We will keep you informed of the progress of your booking, and our team will contact you shortly to discuss the next steps, including payment options and delivery date.<br></span></p>
-                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Should you have any further questions or concerns, please feel free to reach out to us at info@Abrecoautogroup.com. We are always here to help.<br></span></p>
+                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Should you have any further questions or concerns, please feel free to reach out to us at info@everestcaravans.com.au. We are always here to help.<br></span></p>
                                                     <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Once again, thank you for choosing Abreco Motors. We look forward to serving you and providing an exceptional car-buying experience.<br></span></p>
                                                        
                                                 </div>

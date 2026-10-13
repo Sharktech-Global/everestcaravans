@@ -1,5 +1,4 @@
 @extends('layouts.front')
-
 @section('content')
     <!--====== contact Breadcrumb Part ======-->
     @include('partials.page-hero', [
@@ -8,7 +7,6 @@
         'image'       => 'assets/abreco/images/newonce/contactheader.jpg',
         'breadcrumbs' => [['label' => 'Contact Us']],
     ])
-
     <!--====== Showroom contact Part ======-->
     <!-- <section class="show-contact pt-120 pb-100 p-relative" id="showrooms">
         <div class="container">
@@ -32,8 +30,6 @@
             </div>
         </div>
     </section> -->
-
-
     <!--====== Contact PART START ======-->
     {{-- Everest Caravans — Contact page section (image + details | form)
          Fonts are the site pair (Space Grotesk + Poppins); both already load
@@ -44,7 +40,6 @@
     @else
         <!-- EVEREST: public/{{ $ecCss }} not found -->
     @endif
-
     @php
         // ===================== EDIT HERE =====================
         $ec = [
@@ -57,32 +52,45 @@
             // Not taken from $settings — those still hold the old Abreco
             // values (+91 6282019115 / agm.cvpass@abrecomotors.com).
             'details' => [
-                ['label' => 'Call us',  'value' => '+61 400 000 000',              'url' => 'tel:+61400000000',                    'icon' => 'phone'],
-                ['label' => 'Email us', 'value' => 'sales@everestcaravans.com.au', 'url' => 'mailto:sales@everestcaravans.com.au', 'icon' => 'mail'],
+            
+                ['label' => 'Call us',  'value' => '51 Glenbarry Road, Campbellfield VIC 3061', 'url' => '#', 'icon' => 'location'],
+                ['label' => 'Call us',  'value' => '(03) 9357 9440', 'url' => 'tel:0393579440', 'icon' => 'phone'],
+                ['label' => 'Email us', 'value' => 'info@everestcaravans.com.au', 'url' => 'mailto:info@everestcaravans.com.au', 'icon' => 'mail'],
             ],
         ];
         // =====================================================
-
         $ecIcons = [
             'phone' => '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
             'mail'  => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+            'location' => '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
         ];
         $ecImg = file_exists(public_path($ec['image'])) ? asset($ec['image']) : null;
     @endphp
+    <section class="ev-contact-forms" aria-labelledby="evContactTitle">
+        <div class="container">
 
+            {{-- RIGHT: form card --}}
+            <div class="ev-contact__cards">
+                <p class="ev-contact__eyebrow">{{ $ec['eyebrow'] }}</p>
+                <h2 class="ev-contact__title" id="evContactTitle">{{ $ec['title'] }}</h2>
+                <p class="ev-contact__text">{{ $ec['text'] }}</p>
+
+                <div class="ev-contact__form">
+                    @include('forms.contactus_form')
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="ev-contact" aria-labelledby="evContactTitle">
         <div class="ev-contact__inner">
-
             {{-- LEFT: photo + contact details --}}
             <div class="ev-contact__info">
-                @if ($ecImg)
+                <!-- @if ($ecImg)
                     <div class="ev-contact__media">
                         <img src="{{ $ecImg }}" alt="An Everest Avalanche set up on a beach with bikes on the rack" loading="lazy" decoding="async">
                     </div>
-                @endif
-
+                @endif -->
                 <h3 class="ev-contact__subhead">Contact information</h3>
-
                 <ul class="ev-contact__details">
                     @foreach ($ec['details'] as $d)
                         <li>
@@ -97,20 +105,10 @@
                     @endforeach
                 </ul>
             </div>
-
             {{-- RIGHT: form card --}}
             <div class="ev-contact__card">
-                <p class="ev-contact__eyebrow">{{ $ec['eyebrow'] }}</p>
-                <h2 class="ev-contact__title" id="evContactTitle">{{ $ec['title'] }}</h2>
-                <p class="ev-contact__text">{{ $ec['text'] }}</p>
-
-                <div class="ev-contact__form">
-                    @include('forms.contactus_form')
-                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.277893552489!2d144.9573551!3d-37.663966599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6501ee8bc573d%3A0x2ba81ecf18c41b94!2s51%20Glenbarry%20Rd%2C%20Campbellfield%20VIC%203061%2C%20Australia!5e1!3m2!1sen!2sin!4v1791870850951!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
-
         </div>
     </section>
-
-
     @endsection

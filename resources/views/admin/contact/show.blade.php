@@ -77,6 +77,8 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Suburb</th>
+                                <th>State</th>
                                 <th>Vehicle</th>
                                 <th>Message</th>
 
@@ -93,7 +95,9 @@
                                         <td class="font-w600">{{ $data->name }}</td>
                                         <td class="font-w600">{{ $data->phone }}</td>
                                         <td class="font-w600">{{ @$data->email }}</td>
-                                        <td class="font-w600">{{ @$data->vehicle->name }}</td>
+                                        <td>{{ $data->suburb ?? '-' }}</td>
+                                        <td>{{ $data->state ?? '-' }}</td>
+                                        <td class="font-w600">{{ $data->vehicle_name ?: '-' }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 {{-- <a href="{{ route('admin.home-enquiries.message', $data->id) }}"

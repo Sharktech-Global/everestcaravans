@@ -254,19 +254,21 @@ class HomeEnquiryController extends Controller
     public function contact(Request $request)
     {
         $contacts = ContactUs::query();
-    
-        if ($request->has('date_from')) {
-            $contacts->whereDate('created_at', '>=', date('Y-m-d', strtotime($request->date_from)));
+
+        if ($request->filled('date_from')) {
+            $contacts->whereDate('created_at', '>=', $request->date_from);
         }
-    
-        if ($request->has('date_to')) {
-            $contacts->whereDate('created_at', '<=', date('Y-m-d', strtotime($request->date_to)));
+
+        if ($request->filled('date_to')) {
+            $contacts->whereDate('created_at', '<=', $request->date_to);
         }
-    
-        // Additional filters and sorting if needed
-    
-        $contacts = $contacts->get();
-    
-        return view('admin.contact.show', ['contacts' => $contacts]);
+
+        $contacts = $contacts
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.contact.show', [
+            'contacts' => $contacts
+        ]);
     }
 }

@@ -48,50 +48,82 @@ class ContactController extends Controller
         return view('contact', compact('vehicles','page'));
     }
 
-    public function store(Request $request)
-    {
+    
+public function store(Request $request)
+{
+    // Step 1: Validate Everest Caravans form fields
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|min:3|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|string|max:30',
+        'suburb' => 'nullable|string|max:255',
+        'state' => 'nullable|in:ACT,NSW,NT,QLD,SA,TAS,VIC,WA',
+        'vehicle_name' => 'nullable|string|max:255',
+        'message' => 'nullable|string',
+        'g-recaptcha-response' => 'required|captcha',
+    ]);
 
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'phone' => 'required|numeric',
-            'vehicle_name' => 'required',
-            'query_type' =>'nullable',
-            'message' => 'nullable',
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
-        if ($validator->fails()) {
+    if ($validator->fails()) {
         return redirect()->back()
             ->withErrors($validator)
             ->withInput()
             ->withFragment('fotcont');
-        }
-        $enquiry = new ContactUs();
-        $enquiry->name = $request->name;
-        $enquiry->email = $request->email;
-        $enquiry->phone = $request->phone;
-        $enquiry->vehicle_name = $request->vehicle_name;
-        $enquiry->query_type = $request->query_type;
-        $enquiry->message = $request->message;
-        $res = $enquiry->save();
-
-        if ($res) {
-            $admin = Admin::where('email','agm.cvpass@abrecomotors.com')->first();
-            // $admin = Admin::first();
-            $details['name'] = $request->name;
-            $details['email'] = $request->email;
-            $details['phone'] = $request->phone;
-            $details['vehicle_name'] = $request->vehicle_name;
-            $details['query_type'] =$request->query_type;
-            $details['message']=$request->message;
-            $details['admin_name'] = $admin->name;
-            Notification::send($admin, new ContactNotification($details));
-            Notification::route('mail', $details['email'])->notify(new ContactusNotification($details));
-            // return redirect()->back()->with('success', 'Submitted Sucessfully');
-            return redirect('thank-you');
-        } else {
-            return redirect()->back()->with('error', 'Failed to contact us. Please try again.');
-        }
     }
+
+    $validated = $validator->validated();
+
+    // Step 2: Save enquiry to database
+    $enquiry = new ContactUs();
+
+    $enquiry->name = $validated['name'];
+    $enquiry->email = $validated['email'];
+    $enquiry->phone = $validated['phone'];
+    $enquiry->suburb = $validated['suburb'] ?? null;
+    $enquiry->state = $validated['state'] ?? null;
+    $enquiry->vehicle_name = $validated['vehicle_name'] ?? null;
+    $enquiry->query_type = null;
+    $enquiry->message = $validated['message'] ?? null;
+
+    $enquiry->save();
+
+    // Step 3: Prepare notification details
+    $details = [
+        'name' => $enquiry->name,
+        'email' => $enquiry->email,
+        'phone' => $enquiry->phone,
+        'suburb' => $enquiry->suburb,
+        'state' => $enquiry->state,
+        'vehicle_name' => $enquiry->vehicle_name,
+        'query_type' => null,
+        'message' => $enquiry->message,
+        'admin_name' => 'Everest Caravans Team',
+    ];
+
+    // Step 4: Send email to Everest Caravans admin
+    $adminEmail = config('mail.everest_contact_to');
+
+    try {
+        if (!empty($adminEmail)) {
+            Notification::route('mail', $adminEmail)
+                ->notify(new ContactNotification($details));
+        }
+
+        // Step 5: Send acknowledgement to customer
+        Notification::route('mail', $enquiry->email)
+            ->notify(new ContactusNotification($details));
+
+    } catch (\Throwable $e) {
+        \Illuminate\Support\Facades\Log::error(
+            'Everest contact notification failed',
+            [
+                'enquiry_id' => $enquiry->id,
+                'error' => $e->getMessage(),
+            ]
+        );
+    }
+
+    // Step 6: Redirect to thank-you page
+    return redirect('thank-you');
+}
+
 }

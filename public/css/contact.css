@@ -79,15 +79,21 @@
 
 /* Phone | Email — side by side with a hairline divider */
 .ev-contact .ev-contact__details {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    display: flex;
+    flex-direction: column;
     padding-top: 26px;
 }
-.ev-contact .ev-contact__details li { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.ev-contact .ev-contact__details li + li {
-    margin-left: 24px;
-    padding-left: 24px;
+.ev-contact .ev-contact__details li { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    min-width: 0; 
+    margin-left: 0;
+    padding-left: 0;
     border-left: 1px solid var(--ct-line);
+    margin-bottom: 30px;
+}
+.ev-contact .ev-contact__details li + li {
 }
 .ev-contact .ev-contact__icon {
     display: grid;
@@ -109,7 +115,7 @@
 .ev-contact .ev-contact__detail { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
 .ev-contact .ev-contact__detail small { margin-bottom: 4px; font-size: 13.5px; color: var(--ct-text); }
 .ev-contact .ev-contact__detail a {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--ct-ink);
     overflow-wrap: anywhere;
@@ -254,4 +260,103 @@
 }
 @media (prefers-reduced-motion: reduce) {
     .ev-contact * { transition: none !important; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ev-contact-form {
+    background: #fff;
+    padding: 40px 0;
+    border-radius: 10px;
+}
+
+.ev-contact-form h3 {
+    color: #082b58;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.ev-contact-form .form-group {
+    margin-bottom: 22px;
+}
+
+.ev-contact-form label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #092b57;
+    margin-bottom: 10px;
+}
+
+.ev-contact-form .form-control {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    padding: 10px 12px;
+    background: #fff;
+    color: #183b66;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.ev-contact-form textarea.form-control {
+    min-height: 108px;
+    resize: vertical;
+}
+
+.ev-contact-form .form-control:focus {
+    border-color: #175df5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(23, 93, 245, .1);
+}
+
+.ev-contact-submit {
+    width: 100%;
+    padding: 13px 20px;
+    background: #175df5;
+    color: #fff;
+    border: 0;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ev-contact-submit:hover {
+    background: #104bcb;
+}
+
+.ev-contact-forms {
+padding: 100px 0;
+}
+.ev-contact-forms .ev-contact__inner .ev-contact__cards {
+
+}
+.ev-contact-forms .ev-contact__inner .ev-contact__cards .ev-contact__eyebrow {
+
+}
+.ev-contact-forms .ev-contact__inner .ev-contact__cards .ev-contact__title {
+
+}
+.ev-contact-forms .ev-contact__inner .ev-contact__cards .ev-contact__text {
+
+}
+
+.ev-contact-forms .ev-contact__inner .ev-contact__cards .ev-contact__form {
+
 }

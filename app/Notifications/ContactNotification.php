@@ -3,64 +3,36 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class ContactNotification extends Notification
 {
     use Queueable;
+
     public $details;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    
     public function __construct($details)
     {
         $this->details = $details;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
     public function toMail($notifiable)
     {
-        $details  =  $this->details ;
         return (new MailMessage)
-        ->view('emails.contact', [
-            'details' => $details,
-        ])
-        // ->bcc(['nvsite@gmail.com'])
-        ->subject('Abreco Motors :: New Contact Request.');
+            ->subject('Everest Caravans :: New Contact Enquiry')
+            ->view('emails.contact', [
+                'details' => $this->details,
+            ]);
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
-        return [
-            //
-        ];
+        return [];
     }
 }

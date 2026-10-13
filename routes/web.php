@@ -73,7 +73,7 @@ Route::post('/book-test-drive/store', 'BookingTestController@store')->name('book
 // Route::get('/booking/transaction/cod', 'CodController@payment')->name('cod.payment');
 
 Route::get('/contact', 'ContactController@show')->name('contact');
-Route::post('/contact', 'ContactController@store')->name('contact.store ');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 // Route::get('/contact-us/network/{type}', 'ContactController@network')->name('contact.network');
 
 Route::get('/enquiry/{slug}', 'EnquiryController@show')->name('enquiry.index');

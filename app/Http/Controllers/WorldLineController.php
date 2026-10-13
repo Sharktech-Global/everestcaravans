@@ -201,8 +201,8 @@ class WorldLineController extends Controller
             $details['txnid'] = @$payment->txnid;
             $details['location'] = @$booking->location->name;
             $details['date'] = @$booking->created_at;
-            // Notification::route('mail', 'info@Abrecoautogroup.com')->notify(new ContactNotification($details));
-            Notification::route('mail', 'sreelakshmi.netventure@gmail.com')->notify(new PaymentNotification($details));
+            // Notification::route('mail', 'divin.netventure@gmail.com')->notify(new ContactNotification($details));
+            Notification::route('mail', 'divin.netventure@gmail.com')->notify(new PaymentNotification($details));
             Notification::route('mail', $email)->notify(new PaymentThankyouNotification($details));
             return redirect()->route('worldline.payment.success')->with('booking-success', 'Booking Successful');
 

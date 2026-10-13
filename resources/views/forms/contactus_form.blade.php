@@ -1,116 +1,133 @@
-  <div class="col-lg-8 order-2-991">
-      <div class="contact-form">
-          <form action="{{ route('contact.store ') }}" method="POST" name="form1" id='fotcont'>
-              @csrf
-              @if (session('error'))
-                  <div class="alert alert-danger alert-dismissable" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                      </button>{{ session('error') }}
-                  </div>
-              @endif
-              @if (session('success'))
-                  <div class="alert alert-success alert-dismissable" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                      </button>{{ session('success') }}
-                  </div>
-              @endif
-              @if ($errors->any())
-                  <div class="alert alert-danger">
-                      <ul class="list-unstyled">
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-              @endif
-              <div class="row">
-                  <div class="col-lg-6 col-md-12">
-                      <div class="form-group">
-                          <input type="text" name="name" placeholder="Your Name *" class="form-control" required
-                              value="{{ old('name') }}">
-                          {{--  @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror  --}}
-                      </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                      <div class="form-group">
-                          <select name="vehicle_name" id="vehicle_name" class="form-control" required>
-                              <option disabled selected>Vehicle Name *</option>
-                              @foreach ($vehicles as $data)
-                                @if(@$vehicle)
-                                  <option
-                                      value="{{ @$data->name }}"{{ $vehicle->id == $data->id ? 'selected' : '' }}>
-                                      {{ @$data->name }}</option>
-                                @else
-                                    <option
-                                      value="{{ @$data->name }}"{{ old('vehicle_name') == $data->name ? 'selected' : '' }}>
-                                      {{ @$data->name }}</option>
-                                @endif
-                              @endforeach
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                      <div class="form-group">
-                          <input type="tel" name="phone" id="phone" placeholder="Phone Number *"
-                              class="form-control" required value="{{ old('phone') }}">
-                          {{--  @error('phone')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror  --}}
-                      </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                      <div class="form-group">
-                          <input type="email" name="email" id="email" placeholder="Email Id *"
-                              class="form-control" required value="{{ old('email') }}">
-                          {{--  @error('email')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror  --}}
-                      </div>
-                  </div>
-                  <div class="col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <textarea name="message" id="message" cols="30" rows="10" placeholder="Type your Message....">{{ old('message') }}</textarea >
-                          {{--  @error('message')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror  --}}
-                      </div>
-                  </div>
-                  <div class="col-lg-4 col-md-12">
-                      <div class="">
-                          <div class="form-group">
-                              {!! NoCaptcha::renderJs() !!}
-                              {!! NoCaptcha::display(['data-theme' => 'light', 'required' => 'required']) !!}
-                              @if ($errors->has('g-recaptcha-response'))
-                                  <span class="help-block">
-                                      <label style="color:red">{{ $errors->first('g-recaptcha-response') }}</label>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-                  </div>
+<div class="order-2-991">
+    <div class="ev-contact-form">
+        <form action="{{ route('contact.store') }}"
+        method="POST"
+        id="fotcont">
+        @csrf
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                  <div class="col-lg-8 col-md-12">
-                      <div class="form-group form-btn-style">
-                          <!-- <input type="submit" name="submit" class="form-control submit-btn" value="Submit Form" required> -->
-                          <button type="submit" name="submit" id='submitButton' class="form-control submit-btn new-btn-style" >
-                              <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14"
-                                  viewBox="0 0 21 14" fill="none">
-                                  <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
-                                      stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
-                              <img src="{{ asset('assets/abreco/images/shapes/right.svg') }}" class="d-none white"
-                                  alt="">
-                              Submit Form
-                          </button>
-                      </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contact-name">Full Name</label>
+                    <input type="text" id="contact-name"
+                        name="name" class="form-control"
+                        placeholder="Enter your full name"
+                        value="{{ old('name') }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email"
+                        name="email" class="form-control"
+                        placeholder="your@email.com"
+                        value="{{ old('email') }}" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contact-phone">Phone</label>
+                    <input type="tel" id="contact-phone"
+                        name="phone" class="form-control"
+                        placeholder="+61 400 000 000"
+                        value="{{ old('phone') }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="contact-suburb">Suburb</label>
+                    <input type="text" id="contact-suburb"
+                        name="suburb" class="form-control"
+                        placeholder="Enter your suburb"
+                        value="{{ old('suburb') }}" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contact-state">Select your state</label>
+                    <select id="contact-state" name="state"
+                            class="form-control" required>
+                        <option value="">Select</option>
+                        @foreach ([
+                            'ACT' => 'Australian Capital Territory',
+                            'NSW' => 'New South Wales',
+                            'NT' => 'Northern Territory',
+                            'QLD' => 'Queensland',
+                            'SA' => 'South Australia',
+                            'TAS' => 'Tasmania',
+                            'VIC' => 'Victoria',
+                            'WA' => 'Western Australia'
+                        ] as $code => $state)
+                            <option value="{{ $code }}"
+                                @selected(old('state') == $code)>
+                                {{ $state }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="contact-vehicle">
+                        Preferred Caravan Type
+                    </label>
+                    <select name="vehicle_name"
+                            id="contact-vehicle"
+                            class="form-control" required>
+                        <option value="">Select</option>
+                        @foreach (($vehicles ?? collect()) as $data)
+                            <option value="{{ $data->name }}"
+                                @selected(
+                                    old('vehicle_name', $vehicle->name ?? '') == $data->name
+                                )>
+                                {{ $data->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="contact-message">Message (optional)</label>
+                    <textarea name="message"
+                            id="contact-message"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Tell us how we can help">{{ old('message') }}</textarea>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display(['data-theme' => 'light']) !!}
+                    @error('g-recaptcha-response')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group col-md-6 text-center">
+                    <button type="submit" class="ev-contact-submit"
+                            id="submitButton"> Submit </button>
+                </div>
+            </div>
 
-                  </div>
-              </div>
-
-          </form>
-      </div>
-  </div>
+            <div class="form-row">
+            </div>
+        </form>
+    </div>
+</div>

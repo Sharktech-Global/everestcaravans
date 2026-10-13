@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
+    'everest_contact_to' => env('EVEREST_CONTACT_EMAIL'),
 
     /*
     |--------------------------------------------------------------------------
