@@ -29,8 +29,8 @@
 @include('partials.ev-videos', [
     'key'     => 'gorv',
     'videos'  => $videos  ?? $evGorvVideos,
-    'title'   => $title   ?? 'Independent reviews',
-    'text'    => $text    ?? 'What GoRV made of our vans after taking them out on the road.',
+    'title'   => $title   ?? 'GO RV Reviews',
+    'text'    => $text    ?? '',
     'label'   => $label   ?? 'GoRV review',
     'logo'    => $logo    ?? 'assets/abreco/images/newonce/gorv_v.png',
     'perPage' => $perPage ?? 9,

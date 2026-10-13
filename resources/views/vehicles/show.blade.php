@@ -117,7 +117,7 @@
                                     <a href="#booking" id="booking-link">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-booking.webp') }}"
                                             alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                            booking</a></li>
+                                            Enquiry</a></li>
                             @endif
                             <!-- <li>
                                 <a href="#gallery" id="gallery-link">
@@ -165,7 +165,7 @@
                             @if ($vehicle->is_booking == '1')
                                 <li><a href="#booking-"><img
                                             src="{{ asset('assets/abreco/images/vehicle-img/icon-booking.webp') }}"
-                                            alt="" width="38" height="45" class="img-none-575" />booking</a></li>
+                                            alt="" width="38" height="45" class="img-none-575" />Enquiry</a></li>
                             @endif
                             <!-- <li><a href="#gallery-"><img
                                         src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}"
@@ -366,126 +366,127 @@
                         @endif -->
                         <div class="item-content">
                             <div class="image bg-color-3 br-10">
-                                <h4 class="text-capitalize">Book Your {{@$vehicle->name}} Now</h4>
+                                <h4 class="text-capitalize">Enquire About Your <br>{{@$vehicle->name}} Now</h4>
                                 <p class="mb-0">{!!@$vehicle->description!!}
                                 </p>
-                                <p class="mb-0">(Please note that our booking form is currently undergoing development. No live payment transactions could be performed currently.)
+                                <p class="mb-0">Please fill in the enquiry form and we will get back to you as soon as possible.
                                 </p>
                             </div>
                             <div class="data bg-color-3">
-                                <form action="{{ route('vehicles.booking-enquiry', $vehicle->slug) }}"
-      method="POST"
-      id="vehicle-booking-enquiry-form"
-      class="w-100">
-    @csrf
+                                @include('forms.vehicle_booking_enquiry')
+                                <!-- <form action="{{ route('vehicles.booking-enquiry', $vehicle->slug) }}"
+                                    method="POST"
+                                    id="vehicle-booking-enquiry-form"
+                                    class="w-100">
+                                    @csrf
 
-    <div class="row">
-        <div class="col first">
-            <input type="text" class="form-control"
-                   name="name" placeholder="Your Name"
-                   value="{{ old('name') }}" required>
-            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
+                                    <div class="row">
+                                        <div class="col first">
+                                            <input type="text" class="form-control"
+                                                name="name" placeholder="Your Name"
+                                                value="{{ old('name') }}" required>
+                                            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
 
-        <div class="col second">
-            <input type="email" class="form-control"
-                   name="email" placeholder="Email Address"
-                   value="{{ old('email') }}" required>
-            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
-    </div>
+                                        <div class="col second">
+                                            <input type="email" class="form-control"
+                                                name="email" placeholder="Email Address"
+                                                value="{{ old('email') }}" required>
+                                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col first">
-            <input type="tel" class="form-control"
-                   name="phone" placeholder="Phone Number"
-                   value="{{ old('phone') }}" required>
-            @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
+                                    <div class="row">
+                                        <div class="col first">
+                                            <input type="tel" class="form-control"
+                                                name="phone" placeholder="Phone Number"
+                                                value="{{ old('phone') }}" required>
+                                            @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
 
-        <div class="col second">
-            <input type="text" class="form-control"
-                   value="{{ $vehicle->name }}"
-                   aria-label="Vehicle Name" readonly>
-        </div>
-    </div>
+                                        <div class="col second">
+                                            <input type="text" class="form-control"
+                                                value="{{ $vehicle->name }}"
+                                                aria-label="Vehicle Name" readonly>
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col first">
-            <input type="text" class="form-control"
-                   name="suburb" placeholder="Suburb"
-                   value="{{ old('suburb') }}" required>
-            @error('suburb') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
+                                    <div class="row">
+                                        <div class="col first">
+                                            <input type="text" class="form-control"
+                                                name="suburb" placeholder="Suburb"
+                                                value="{{ old('suburb') }}" required>
+                                            @error('suburb') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
 
-        <div class="col second">
-            <select name="state" class="form-control" required>
-                <option value="" disabled {{ old('state') ? '' : 'selected' }}>Select State</option>
-                @foreach ([
-                    'NSW' => 'New South Wales',
-                    'VIC' => 'Victoria',
-                    'QLD' => 'Queensland',
-                    'WA'  => 'Western Australia',
-                    'SA'  => 'South Australia',
-                    'TAS' => 'Tasmania',
-                    'ACT' => 'Australian Capital Territory',
-                    'NT'  => 'Northern Territory'
-                ] as $code => $state)
-                    <option value="{{ $code }}" {{ old('state') === $code ? 'selected' : '' }}>
-                        {{ $state }}
-                    </option>
-                @endforeach
-            </select>
-            @error('state') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
-    </div>
+                                        <div class="col second">
+                                            <select name="state" class="form-control" required>
+                                                <option value="" disabled {{ old('state') ? '' : 'selected' }}>Select State</option>
+                                                @foreach ([
+                                                    'NSW' => 'New South Wales',
+                                                    'VIC' => 'Victoria',
+                                                    'QLD' => 'Queensland',
+                                                    'WA'  => 'Western Australia',
+                                                    'SA'  => 'South Australia',
+                                                    'TAS' => 'Tasmania',
+                                                    'ACT' => 'Australian Capital Territory',
+                                                    'NT'  => 'Northern Territory'
+                                                ] as $code => $state)
+                                                    <option value="{{ $code }}" {{ old('state') === $code ? 'selected' : '' }}>
+                                                        {{ $state }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('state') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control"
-                   name="postcode" placeholder="Postcode"
-                   value="{{ old('postcode') }}"
-                   inputmode="numeric" maxlength="4" required>
-            @error('postcode') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
-    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control"
+                                                name="postcode" placeholder="Postcode"
+                                                value="{{ old('postcode') }}"
+                                                inputmode="numeric" maxlength="4" required>
+                                            @error('postcode') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col">
-            <textarea name="additional_details"
-                      class="form-control"
-                      rows="4"
-                      placeholder="Additional Details (Optional)">{{ old('additional_details') }}</textarea>
-            @error('additional_details')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <textarea name="additional_details"
+                                                    class="form-control"
+                                                    rows="4"
+                                                    placeholder="Additional Details (Optional)">{{ old('additional_details') }}</textarea>
+                                            @error('additional_details')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col-12">
-            {!! NoCaptcha::renderJs() !!}
-            {!! NoCaptcha::display(['data-theme' => 'light']) !!}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {!! NoCaptcha::renderJs() !!}
+                                            {!! NoCaptcha::display(['data-theme' => 'light']) !!}
 
-            @error('g-recaptcha-response')
-                <div class="text-danger mt-2">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
+                                            @error('g-recaptcha-response')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-    <div class="row">
-        <div class="col">
-            @if (session('booking_enquiry_success'))
-                <div class="alert alert-success">
-                    {{ session('booking_enquiry_success') }}
-                </div>
-            @endif
-        </div>
-        <div class="col button-wrapper">
-            <button type="submit">Submit Enquiry</button>
-        </div>
-    </div>
-</form>
+                                    <div class="row">
+                                        <div class="col">
+                                            @if (session('booking_enquiry_success'))
+                                                <div class="alert alert-success">
+                                                    {{ session('booking_enquiry_success') }}
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="col button-wrapper">
+                                            <button type="submit">Submit Enquiry</button>
+                                        </div>
+                                    </div>
+                                </form> -->
                             </div>
                         </div>
                     </section> 
@@ -563,8 +564,7 @@
                 <section id="videoo" class="ev-decor item accordions popgallery">
                     <div class="item-content">
                         <div class="data">
-                            <h2 class="text-capitalize">Watch the Full Walkthrough</h2>
-                            <h2 class="ev-decor__title is-in" id="evDecorTitle" data-rv="" style="--rv-i: 1;">Customised inside and out, styled to feel like home.</h2>
+                            <h2 class="text-capitalize">{{ @$section->title }}</h2>
                             @if (!empty($section->description))
                                 <div class="youtube-video-wrapper">
                                     {!! $section->description !!}
@@ -574,6 +574,26 @@
                     </div>
                 </section>
             @endforeach
+            
+            <section id="gorv-review" class="ev-decor item accordions popgallery">
+                <div class="item-content">
+                    <div class="data">                            
+                        @include('partials.ev-videos-tabs')
+                    </div>
+                </div>
+            </section>
+            
+            <section id="final-enquiry" class="ev-decor item accordions popgallery">
+                <div class="item-content">
+                    <div class="data">
+                        <h4 class="text-capitalize text-white text-center">Book Your {{@$vehicle->name}} Now</h4>
+                        <br>
+                        @include('forms.vehicle_booking_enquiry')
+                    </div>
+                </div>
+            </section>
+
+            
         
         </div>
     </section>
