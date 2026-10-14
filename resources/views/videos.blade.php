@@ -4,7 +4,7 @@
     <!--====== Videos Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'Videos',
-        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'subtitle'    => 'See Everest Caravans in action. Explore our videos showcasing innovative designs, premium features and unforgettable adventures.',
         'image'       => 'assets/abreco/images/newonce/blog-banner.jpg',
         'breadcrumbs' => [['label' => 'Videos']],
     ])

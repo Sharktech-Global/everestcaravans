@@ -3,7 +3,7 @@
     <!--====== Blog Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'Blogs',
-        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'subtitle'    => 'Stories from the road, expert tips and the latest from Everest Caravans. Find inspiration for wherever your next journey takes you.',
         'image'       => 'assets/abreco/images/newonce/blog-banner.jpg',
         'breadcrumbs' => [['label' => 'Blogs']],
     ])

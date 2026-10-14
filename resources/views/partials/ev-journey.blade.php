@@ -61,8 +61,8 @@
 
     $evYears = $evRows->max('year') - $evRows->min('year') + 1;
 
-    $evTitle = $title ?? 'Top 5 Vans in Australia';
-    $evSub   = $subtitle ?? 'Everest&rsquo;s Journey for the Past ' . $evYears . ' Years';
+    $evTitle = 'Top 5 Vans in Australia';
+    $evSub   = 'Everest&rsquo;s Journey for the Past ' . $evYears . ' Years';
 
     // Background photo (sits under a dark-blue gradient)
     $evJourneyBg = asset($image ?? 'assets/abreco/images/newonce/home-ban21.jpg');

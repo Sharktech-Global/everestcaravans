@@ -5,7 +5,7 @@
     <!--====== About Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'Our Range',
-        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'subtitle'    => 'Built for adventure and designed for comfort. Explore our range of Australian-made caravans, ready to take you further.',
         'image'       => 'assets/abreco/images/newonce/blog-banner.jpg',
         'breadcrumbs' => [['label' => 'Our Range']],
     ])
