@@ -89,7 +89,7 @@
 
 @if (count($evList))
 @unless ($evPanelOnly)
-<section class="ev-videos" @if ($evTitle) aria-labelledby="evVidTitle-{{ $evKey }}" @else aria-label="Videos" @endif>
+<section class="ev-videos pt-3" @if ($evTitle) aria-labelledby="evVidTitle-{{ $evKey }}" @else aria-label="Videos" @endif>
     <div class="ev-videos__inner">
 
         @if ($evTitle || $evText || $evLogoUrl)

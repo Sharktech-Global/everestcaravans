@@ -331,7 +331,7 @@
 }
 
 .ev-contact-form .form-control:focus {
-    border-color: #175df5;
+    border-color: #283895;
     outline: none;
     box-shadow: 0 0 0 3px rgba(23, 93, 245, .1);
 }
@@ -339,7 +339,7 @@
 .ev-contact-submit {
     width: 100%;
     padding: 13px 20px;
-    background: #175df5;
+    background: #283895;
     color: #fff;
     border: 0;
     border-radius: 7px;

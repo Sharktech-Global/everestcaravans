@@ -21,6 +21,7 @@ use App\VehicleSeo;
 use App\VehicleApplication;
 use App\VehicleGallery;
 use App\VehicleSection;
+use App\Testimonial;
 
 class VehicleController extends Controller
 {
@@ -61,9 +62,10 @@ class VehicleController extends Controller
         })->get();
         $galleries = VehicleGallery::where('vehicle_id',$vehicle->id)->get();
         $vehicles_list= Vehicle::where('status',1)->orderBy('order','ASC')->get();
+        $testimonials = Testimonial::latest()->get();
         //  dd($vehicle);
         // $vehicles = ($gallery->currentPage() * $gallery->perPage()) - $gallery->perPage();
-        return view('vehicles.show', ['features' => $features,'sections' => $sections,'galleries' => $galleries,'refer' => $refer,'areas_sales' => $areas_sales,'vehicle' => $vehicle, 'locations' => $locations, 'vehicle_details' => $vehicle_details, 'category_types_specs' => $category_types_specs,'areas' => $areas,'vehicles_list'=>$vehicles_list]);
+        return view('vehicles.show', ['features' => $features,'sections' => $sections,'galleries' => $galleries,'refer' => $refer,'areas_sales' => $areas_sales,'vehicle' => $vehicle, 'locations' => $locations, 'vehicle_details' => $vehicle_details, 'category_types_specs' => $category_types_specs,'areas' => $areas,'vehicles_list'=>$vehicles_list, 'testimonials'=>$testimonials]);
     }
     public function booking(Request $request, $slug)
     {

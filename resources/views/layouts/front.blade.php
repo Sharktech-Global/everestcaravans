@@ -157,7 +157,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('factory-visit.show') }}"
-                                        @if ($routename == 'factory-visit.show') class="active" @endif>Visit</a>
+                                        @if ($routename == 'factory-visit.show') class="active" @endif>Book a Factory Visit</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('finance-partner') }}"
@@ -341,7 +341,7 @@
 
 
                                 <li class="ml-3">
-                                    <p>All Rights Reserved | Copyright © Abreco Motors {{ date('Y') }} Digitally Empowered By <a
+                                    <p>All Rights Reserved | Copyright © Everest Caravans {{ date('Y') }} Digitally Empowered By <a
                                             href="https://www.vcpility.com.au/" target="_blank">Sharktech VCPility</a></p>
                                 </li>
                             </ul>

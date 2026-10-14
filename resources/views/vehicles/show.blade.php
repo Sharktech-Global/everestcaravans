@@ -565,7 +565,7 @@
     </section>
              
     @foreach ($vehicle->sections()->where('order', 6)->get() as $section)
-        <section id="videoo" class="ev-decor item accordions popgallery">
+        <section id="videoo" class="videoo ev-decor item accordions popgallery">
             <div class="container">
                 <div class="item-content">
                     <div class="data">
@@ -580,8 +580,143 @@
             </div>
         </section>
     @endforeach
-        
-    @include('partials.ev-videos-tabs')
+
+    <section class="videoo vehicle-reviews">
+        <div class="container">
+            <h2 class="text-capitalize text-center mb-4">Customer Reviews</h2>
+            <p class="text-center mb-5">Read what our customers have to say about their experience with Everest Caravans.</p>
+
+            <!-- Review Tabs -->
+            <ul class="nav nav-tabs review-tabs" id="reviewTabs" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active"
+                    id="everest-review-tab"
+                    data-toggle="tab"
+                    href="#everest-review"
+                    role="tab"
+                    aria-controls="everest-review"
+                    aria-selected="true">
+                        Google Reviews
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                    id="everest-revieww-tab"
+                    data-toggle="tab"
+                    href="#everest-revieww"
+                    role="tab"
+                    aria-controls="everest-revieww"
+                    aria-selected="false">
+                        Everest Reviews
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                    id="gorv-review-tab"
+                    data-toggle="tab"
+                    href="#gorv-review"
+                    role="tab"
+                    aria-controls="gorv-review"
+                    aria-selected="false">
+                        GO RV Reviews
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content pt-4" id="reviewTabsContent">
+                <!-- Google Review -->
+                <div class="tab-pane fade show active"
+                    id="everest-review"
+                    role="tabpanel"
+                    aria-labelledby="everest-review-tab">
+                    <div class="row everest-reviews-grid">
+                        @forelse ($testimonials as $testimonial)
+                            <div class="col-lg-4 col-md-6 col-12 mb-5">
+                                <div class="everest-review-item">
+                                    <!-- Review Card -->
+                                    <div class="everest-review-card">
+                                        <div class="everest-review-header">
+                                            <span class="review-quote">“</span>
+                                            <div class="review-stars">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i class="fa fa-star {{ $i <= (int) $testimonial->rating ? 'active' : '' }}"></i>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        @if ($testimonial->message)
+                                            <div class="everest-review-text">
+                                                {{ $testimonial->message }}
+                                            </div>
+                                        @endif
+                                        @if ($testimonial->url)
+                                            <div class="everest-review-video">
+                                                <iframe
+                                                    src="{{ $testimonial->url }}"
+                                                    title="Review by {{ $testimonial->name }}"
+                                                    loading="lazy"
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                        @endif
+                                        <!-- <span class="everest-review-brand">
+                                            EVEREST
+                                        </span> -->
+                                    </div>
+                                    <!-- Customer Details -->
+                                    <div class="everest-review-author">
+                                        <img
+                                            src="{{ $testimonial->photo
+                                                ? asset('storage/' . $testimonial->photo)
+                                                : asset('assets/images/avatar.png') }}"
+                                            alt="{{ $testimonial->name }}"
+                                            loading="lazy">
+                                        <div class="everest-review-author-info">
+                                            <h5>{{ $testimonial->name }}</h5>
+                                            <!-- @if ($testimonial->designation)
+                                                <span>{{ $testimonial->designation }}</span>
+                                            @endif -->
+                                            @if ($testimonial->created_at)
+                                                <small>{{ $testimonial->created_at->format('F d, Y') }}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="col-12 text-center py-5">
+                                <p>No reviews available at the moment.</p>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+
+                <!-- Everest Reviews -->
+                <div class="tab-pane fade"
+                    id="everest-revieww"
+                    role="tabpanel"
+                    aria-labelledby="everest-revieww-tab">
+                    @include('partials.ev-videos-everest')
+                </div>
+
+                <!-- GO RV Reviews -->
+                <div class="tab-pane fade"
+                    id="gorv-review"
+                    role="tabpanel"
+                    aria-labelledby="gorv-review-tab">
+                    @include('partials.ev-videos-gorv')
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
     
     <section id="final-enquiry" class="ev-decor item accordions popgallery">
         <div class="container">

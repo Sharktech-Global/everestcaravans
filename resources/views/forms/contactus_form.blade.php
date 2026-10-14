@@ -110,20 +110,20 @@
             </div>
             
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                     {!! NoCaptcha::renderJs() !!}
                     {!! NoCaptcha::display(['data-theme' => 'light']) !!}
                     @error('g-recaptcha-response')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group col-md-6 text-center">
-                    <button type="submit" class="ev-contact-submit"
-                            id="submitButton"> Submit </button>
-                </div>
             </div>
 
             <div class="form-row">
+                <div class="form-group col-md-12 text-center">
+                    <button type="submit" class="ev-contact-submit"
+                            id="submitButton"> Submit </button>
+                </div>
             </div>
         </form>
     </div>

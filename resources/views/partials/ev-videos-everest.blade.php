@@ -43,7 +43,7 @@
 @include('partials.ev-videos', [
     'key'     => 'everest',
     'videos'  => $videos  ?? $evEverestVideos,
-    'title'   => $title   ?? 'Our videos',
+    'title'   => $title   ?? '',
     'text'    => $text    ?? 'Walk-arounds and internal tours of our custom builds, filmed in the yard.',
     'label'   => $label   ?? 'Everest Caravans',
     'logo'    => $logo    ?? (@$settings->logo ? 'storage/' . $settings->logo : null),

@@ -1244,10 +1244,10 @@ p {
 
 
 
-#videoo {
+.videoo {
   padding: 0 0 100px;
 }
-#videoo h2 {
+.videoo h2 {
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -1292,4 +1292,191 @@ p {
   font-weight: 500;
   padding: 15px 40px;
   text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+section.vehicle-reviews {
+    background: #f5f6fa;
+    padding: 80px 0;
+}
+
+.review-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-tabs .nav-link {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+}
+
+.review-tabs .nav-link.active {
+    color: #283895;
+    border-bottom: 3px solid #283895;
+    background: transparent;
+}
+
+.review-tabs .nav-link:hover {
+    color: #283895;
+}
+
+.vehicle-reviews .tab-content {
+    padding: 20px 0;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+
+
+/* Everest Reviews Grid */
+
+.everest-reviews-grid {
+    margin-top: 20px;
+}
+
+.everest-review-item {
+    width: 100%;
+}
+
+/* Review Card */
+
+.everest-review-card {
+    position: relative;
+    background: #f8f8f8;
+    border: 1px solid #eeeeee;
+    border-radius: 7px;
+    padding: 20px 18px 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+    min-height: 180px;
+}
+
+/* Quote and Stars */
+
+.everest-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.review-quote {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #bdbdbd;
+    line-height: 25px;
+}
+
+.review-stars {
+    display: flex;
+    gap: 3px;
+}
+
+.review-stars i {
+    font-size: 16px;
+    color: #d1d1d1;
+}
+
+.review-stars i.active {
+    color: #ffca00;
+}
+
+/* Review Text */
+
+.everest-review-text {
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.55;
+    color: #222;
+    overflow-wrap: anywhere;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Everest Branding */
+
+.everest-review-brand {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #e36d30;
+}
+
+/* Customer Details */
+
+.everest-review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+.everest-review-author img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.everest-review-author-info h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 4px;
+}
+
+.everest-review-author-info span,
+.everest-review-author-info small {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Video */
+
+.everest-review-video {
+    margin-top: 15px;
+}
+
+.everest-review-video iframe {
+    width: 100%;
+    height: 190px;
+    border: 0;
+    border-radius: 6px;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .everest-review-card {
+        min-height: auto;
+    }
+
+    .everest-review-text {
+        font-size: 14px;
+    }
 }

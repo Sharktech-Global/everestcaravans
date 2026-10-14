@@ -29,7 +29,7 @@
 @include('partials.ev-videos', [
     'key'     => 'gorv',
     'videos'  => $videos  ?? $evGorvVideos,
-    'title'   => $title   ?? 'GO RV Reviews',
+    'title'   => $title   ?? '',
     'text'    => $text    ?? '',
     'label'   => $label   ?? 'GoRV review',
     'logo'    => $logo    ?? 'assets/abreco/images/newonce/gorv_v.png',

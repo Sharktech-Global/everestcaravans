@@ -1105,8 +1105,8 @@ p {
     position: absolute;
     content: "";
     background-color: #fff;
-    width: 80%;
-    height: 4px;
+    width: 20%;
+    height: 1px;
     border-radius: 10px;
     left: 50%;
     bottom: 12px;
