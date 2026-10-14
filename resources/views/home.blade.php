@@ -38,7 +38,7 @@
                             <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
 
                             @if ($data->vehicle)
-                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Enquire Now</a>
+                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Book a walkthrough</a>
                             @endif
                         </div>
 

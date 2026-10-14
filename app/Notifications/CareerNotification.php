@@ -48,7 +48,7 @@ class CareerNotification extends Notification
             'details' => $details,
         ])
         // ->bcc(['nvsite@gmail.com'])
-        ->subject('Abreco Motors :: New Career Request.');
+        ->subject('Everest Caravans :: New Career Request.');
     }
 
     /**
