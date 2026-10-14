@@ -15,6 +15,10 @@
             ['label' => $vehicle?->name ?? 'Vehicle Details'],
         ],
     ])
+    @php
+        $vehicleSections = $vehicle->sections()->orderBy('order')->get();
+        $firstSectionOrder = $vehicleSections->first()?->order;
+    @endphp
 
 
     <!--====== Vehicle inner Breadcrumb Part ======-->
@@ -76,7 +80,7 @@
                         <ul class="text-center">
                             @if ($tabSections->contains('order', 1))
                             <li>
-                                <a href="#overview" id="overview-link" class="active">
+                                <a href="#overview" id="overview-link" class="{{ $firstSectionOrder == 1 ? 'active' : '' }}">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-overview.webp') }}"
                                         alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                         Overview</a>
@@ -84,7 +88,7 @@
                             @endif
                             @if ($tabSections->contains('order', 2))
                                 <li>
-                                    <a href="#specs" id="specifications-link">
+                                    <a href="#specs" id="specifications-link" class="{{ $firstSectionOrder == 2 ? 'active' : '' }}">
                                         <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-specification.webp') }}"
                                             alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                             specifications</a>
@@ -92,22 +96,22 @@
                             @endif
                             @if ($tabSections->contains('order', 3))
                                 <li>
-                                    <a href="#external-gallery" id="external-gallery-link">
-                                    <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
-                                    alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
-                                    External Gallery</a>
+                                    <a href="#external-gallery" id="external-gallery-link" class="{{ $firstSectionOrder == 3 ? 'active' : '' }}">
+                                        <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}"
+                                            alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
+                                            External Gallery</a>
                                 </li>
                             @endif
                             @if ($tabSections->contains('order', 4))
                             <li>
-                                <a href="#internal-gallery" id="internal-gallery-link">
+                                <a href="#internal-gallery" id="internal-gallery-link" class="{{ $firstSectionOrder == 4 ? 'active' : '' }}">
                                     <!-- <img src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
                                     alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
                                     Internal Gallery</a></li>
                             @endif
                             @if ($tabSections->contains('order', 5))
                             <li>
-                                <a href="#floor-plans" id="floor-plans-link">
+                                <a href="#floor-plans" id="floor-plans-link" class="{{ $firstSectionOrder == 5 ? 'active' : '' }}">
                                     <!-- <img 
                                     src="{{ asset('assets/abreco/images/vehicle-img/icon-gallery.webp') }}" 
                                     alt="" width="38" height="45" class="img-none-1065 img-none-575" /> -->
@@ -195,7 +199,7 @@
                     @if($vehicle->sections()->count())
                         @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
                             @if($section->order == 1)
-                                <section id="overview" class="item active">
+                                <section id="overview" class="item {{ $firstSectionOrder == 1 ? 'active' : '' }}">
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">{{ @$section->title }}</h4>
@@ -251,7 +255,7 @@
                     @if($vehicle->sections()->count())
                         @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
                             @if($section->order == 2)
-                                <section id="specs" class="item accordions spec-card" aria-labelledby="spec-chassis">
+                                <section id="specs" class="item accordions spec-card {{ $firstSectionOrder == 2 ? 'active' : '' }}" aria-labelledby="spec-chassis">
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">Specifications</h4>
@@ -269,7 +273,7 @@
                     @if($vehicle->sections()->count())
                         @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
                             @if($section->order == 3)
-                                <section id="external-gallery" class="item accordions popgallery">
+                                <section id="external-gallery" class="item accordions popgallery {{ $firstSectionOrder == 3 ? 'active' : '' }}">
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">External Gallery</h4>
@@ -299,7 +303,7 @@
                     @if($vehicle->sections()->count())
                         @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
                             @if($section->order == 4)
-                                <section id="internal-gallery" class="item accordions popgallery">
+                                <section id="internal-gallery" class="item accordions popgallery {{ $firstSectionOrder == 4 ? 'active' : '' }}">
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">Internal Gallery</h4>
@@ -329,7 +333,7 @@
                     @if($vehicle->sections()->count())
                         @foreach ($vehicle->sections()->orderBy('order')->get() as $section)
                             @if($section->order == 5)
-                                <section id="floor-plans" class="item accordions popgallery">
+                                <section id="floor-plans" class="item accordions popgallery {{ $firstSectionOrder == 5 ? 'active' : '' }}">
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">Floor Plans</h4>
