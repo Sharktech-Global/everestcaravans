@@ -67,9 +67,9 @@
     // Background photo (sits under a dark-blue gradient). Falls back to the
     // old banner if the uploaded file is ever removed, so the section can
     // never end up with a broken url() in its inline style.
-    $evBgPath = $image ?? 'assets/abreco/images/newonce/ev-journey.jpg';
+    $evBgPath = $image ?? 'assets/images/slider/ev-journey.jpg';
     if (!is_file(public_path($evBgPath))) {
-        $evBgPath = 'assets/abreco/images/newonce/home-ban21.jpg';
+        $evBgPath = 'assets/images/slider/ev-journey.jpg';
     }
     $evJourneyBg = asset(implode('/', array_map('rawurlencode', explode('/', $evBgPath))));
 
