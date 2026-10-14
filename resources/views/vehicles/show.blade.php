@@ -7,7 +7,9 @@
     @include('partials.page-hero', [
         'title'       => $vehicle?->name ?? 'Vehicle Details',
         'subtitle'    => '',
-        'image'       => 'assets/abreco/images/29.jpg',
+        'image'       => $vehicle?->banner_image
+                        ? asset('storage/' . $vehicle->banner_image)
+                        : asset('assets/abreco/images/29.jpg'),
         'breadcrumbs' => [
             ['label' => 'Our Range', 'url' => url('/our-range')],
             ['label' => $vehicle?->name ?? 'Vehicle Details'],
@@ -559,42 +561,37 @@
                 </article>
             </div>
             <!-- DATA TABS END -->
+        </div>
+    </section>
              
-            @foreach ($vehicle->sections()->where('order', 6)->get() as $section)
-                <section id="videoo" class="ev-decor item accordions popgallery">
-                    <div class="item-content">
-                        <div class="data">
-                            <h2 class="text-capitalize">{{ @$section->title }}</h2>
-                            @if (!empty($section->description))
-                                <div class="youtube-video-wrapper">
-                                    {!! $section->description !!}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </section>
-            @endforeach
-            
-            <section id="gorv-review" class="ev-decor item accordions popgallery">
-                <div class="item-content">
-                    <div class="data">                            
-                        @include('partials.ev-videos-tabs')
-                    </div>
-                </div>
-            </section>
-            
-            <section id="final-enquiry" class="ev-decor item accordions popgallery">
+    @foreach ($vehicle->sections()->where('order', 6)->get() as $section)
+        <section id="videoo" class="ev-decor item accordions popgallery">
+            <div class="container">
                 <div class="item-content">
                     <div class="data">
-                        <h4 class="text-capitalize text-white text-center">Book Your {{@$vehicle->name}} Now</h4>
-                        <br>
-                        @include('forms.vehicle_booking_enquiry')
+                        <h2 class="text-capitalize">{{ @$section->title }}</h2>
+                        @if (!empty($section->description))
+                            <div class="youtube-video-wrapper">
+                                {!! $section->description !!}
+                            </div>
+                        @endif
                     </div>
                 </div>
-            </section>
-
-            
+            </div>
+        </section>
+    @endforeach
         
+    @include('partials.ev-videos-tabs')
+    
+    <section id="final-enquiry" class="ev-decor item accordions popgallery">
+        <div class="container">
+            <div class="item-content">
+                <div class="data">
+                    <h4 class="text-capitalize text-white text-center">Enquire About Your {{@$vehicle->name}} Now</h4>
+                    <br>
+                    @include('forms.vehicle_booking_enquiry')
+                </div>
+            </div>
         </div>
     </section>
     
@@ -699,7 +696,6 @@
             fileChosen.textContent = this.files[0].name
         })
     </script>
-
     <!-- Accordion -->
     <script>
         $(document).ready(function() {
@@ -730,7 +726,6 @@
                 });
         });
     </script>
-
     <script>
         $("#mobile-selectr").change(function() {
             const selectedValue = $(this).val();
@@ -739,7 +734,6 @@
             $(`#${selectedValue}`).addClass('show active');
         });
     </script>
-
     <script>
         $(document).ready(function() {
             $('#form-submit-booking-web').submit(function(e) {
@@ -825,10 +819,9 @@
         });
 
     </script>
-
     <!-- fixed menus -->
     <script>
-         window.onscroll = function() {
+        window.onscroll = function() {
             var header = document.querySelector('.tabs-new-class');
             if (window.pageYOffset <= header.offsetTop) {
                 header.classList.remove('fixed');
@@ -838,147 +831,145 @@
         };
       
         // You can adjust the screen width threshold as needed
-            $("#overview-link").on("click", function(event) {
-                event.preventDefault(); // Prevent the default behavior of the anchor link
+        $("#overview-link").on("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
 
-                // Get the target section by its id
-                const targetSection = $("#link-scroll-data");
-                if ($(window).width() <= 768) { 
-                    if (targetSection.length) {
-                        // Use the `animate` function to scroll to the section with a smooth effect
-                        $("html, body").animate({
-                            scrollTop: targetSection.offset().top
-                        }, 100); // You can adjust the animation speed (in milliseconds)
-                    }
+            // Get the target section by its id
+            const targetSection = $("#link-scroll-data");
+            if ($(window).width() <= 768) { 
+                if (targetSection.length) {
+                    // Use the `animate` function to scroll to the section with a smooth effect
+                    $("html, body").animate({
+                        scrollTop: targetSection.offset().top
+                    }, 100); // You can adjust the animation speed (in milliseconds)
                 }
-            });
-            $("#features-link").on("click", function(event) {
-                event.preventDefault(); // Prevent the default behavior of the anchor link
+            }
+        });
+        $("#features-link").on("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
 
-                // Get the target section by its id
-                const targetSection = $("#link-scroll-data");
-                if ($(window).width() <= 768) { 
-                    if (targetSection.length) {
-                        // Use the `animate` function to scroll to the section with a smooth effect
-                        $("html, body").animate({
-                            scrollTop: targetSection.offset().top
-                        }, 100); // You can adjust the animation speed (in milliseconds)
-                    }
+            // Get the target section by its id
+            const targetSection = $("#link-scroll-data");
+            if ($(window).width() <= 768) { 
+                if (targetSection.length) {
+                    // Use the `animate` function to scroll to the section with a smooth effect
+                    $("html, body").animate({
+                        scrollTop: targetSection.offset().top
+                    }, 100); // You can adjust the animation speed (in milliseconds)
                 }
-            });
-            $("#specifications-link").on("click", function(event) {
-                event.preventDefault(); // Prevent the default behavior of the anchor link
+            }
+        });
+        $("#specifications-link").on("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
 
-                // Get the target section by its id
-                const targetSection = $("#link-scroll-data");
-                if ($(window).width() <= 768) { 
-                    if (targetSection.length) {
-                        // Use the `animate` function to scroll to the section with a smooth effect
-                        $("html, body").animate({
-                            scrollTop: targetSection.offset().top
-                        }, 100); // You can adjust the animation speed (in milliseconds)
-                    }
+            // Get the target section by its id
+            const targetSection = $("#link-scroll-data");
+            if ($(window).width() <= 768) { 
+                if (targetSection.length) {
+                    // Use the `animate` function to scroll to the section with a smooth effect
+                    $("html, body").animate({
+                        scrollTop: targetSection.offset().top
+                    }, 100); // You can adjust the animation speed (in milliseconds)
                 }
-            });
-            $("#gallery-link").on("click", function(event) {
-                event.preventDefault(); // Prevent the default behavior of the anchor link
+            }
+        });
+        $("#gallery-link").on("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
 
-                // Get the target section by its id
-                const targetSection = $("#link-scroll-data");
-                if ($(window).width() <= 768) { 
-                    if (targetSection.length) {
-                        // Use the `animate` function to scroll to the section with a smooth effect
-                        $("html, body").animate({
-                            scrollTop: targetSection.offset().top
-                        }, 100); // You can adjust the animation speed (in milliseconds)
-                    }
+            // Get the target section by its id
+            const targetSection = $("#link-scroll-data");
+            if ($(window).width() <= 768) { 
+                if (targetSection.length) {
+                    // Use the `animate` function to scroll to the section with a smooth effect
+                    $("html, body").animate({
+                        scrollTop: targetSection.offset().top
+                    }, 100); // You can adjust the animation speed (in milliseconds)
                 }
-            });
-            $("#booking-link").on("click", function(event) {
-                event.preventDefault(); // Prevent the default behavior of the anchor link
+            }
+        });
+        $("#booking-link").on("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor link
 
-                // Get the target section by its id
-                const targetSection = $("#link-scroll-data");
-                if ($(window).width() <= 768) { 
-                    if (targetSection.length) {
-                        // Use the `animate` function to scroll to the section with a smooth effect
-                        $("html, body").animate({
-                            scrollTop: targetSection.offset().top
-                        }, 100); // You can adjust the animation speed (in milliseconds)
-                    }
+            // Get the target section by its id
+            const targetSection = $("#link-scroll-data");
+            if ($(window).width() <= 768) { 
+                if (targetSection.length) {
+                    // Use the `animate` function to scroll to the section with a smooth effect
+                    $("html, body").animate({
+                        scrollTop: targetSection.offset().top
+                    }, 100); // You can adjust the animation speed (in milliseconds)
                 }
-            });
+            }
+        });
         
         $(document).ready(function () {
-    $('.vehicle-gallery-slider').owlCarousel({
-        items: 1,
-        loop: $('.vehicle-gallery-slider .item').length > 1,
-        margin: 0,
-        nav: false,
-        dots: false,
-        autoplay: true,
-        smartSpeed: 300,
-        autoHeight: false,
-        navText: [
-            '<span aria-hidden="true">&#10094;</span>',
-            '<span aria-hidden="true">&#10095;</span>'
-        ],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1200: {
-                items: 1
-            }
-        }
-    });
-});
-
-$(document).on(
-    'click',
-    '.vehicle-gallery-slider [data-fancybox="overview-gallery"]',
-    function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-
-        // Close any existing Fancybox instance
-        if ($.fancybox.getInstance()) {
-            $.fancybox.close();
-        }
-
-        const $originalImages = $(
-            '.vehicle-gallery-slider .owl-item:not(.cloned) [data-fancybox="overview-gallery"]'
-        );
-
-        const clickedImage = $(this).attr('href');
-
-        const images = $originalImages.map(function () {
-            return {
-                src: $(this).attr('href'),
-                opts: {
-                    caption: $(this).attr('data-caption') || ''
+            $('.vehicle-gallery-slider').owlCarousel({
+                items: 1,
+                loop: $('.vehicle-gallery-slider .item').length > 1,
+                margin: 0,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                smartSpeed: 300,
+                autoHeight: false,
+                navText: [
+                    '<span aria-hidden="true">&#10094;</span>',
+                    '<span aria-hidden="true">&#10095;</span>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    }
                 }
-            };
-        }).get();
+            });
+        });
 
-        const startIndex = Math.max(
-            0,
-            $originalImages.toArray().findIndex(
-                el => $(el).attr('href') === clickedImage
-            )
+        $(document).on(
+            'click',
+            '.vehicle-gallery-slider [data-fancybox="overview-gallery"]',
+            function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                // Close any existing Fancybox instance
+                if ($.fancybox.getInstance()) {
+                    $.fancybox.close();
+                }
+
+                const $originalImages = $(
+                    '.vehicle-gallery-slider .owl-item:not(.cloned) [data-fancybox="overview-gallery"]'
+                );
+
+                const clickedImage = $(this).attr('href');
+
+                const images = $originalImages.map(function () {
+                    return {
+                        src: $(this).attr('href'),
+                        opts: {
+                            caption: $(this).attr('data-caption') || ''
+                        }
+                    };
+                }).get();
+
+                const startIndex = Math.max(
+                    0,
+                    $originalImages.toArray().findIndex(
+                        el => $(el).attr('href') === clickedImage
+                    )
+                );
+
+                $.fancybox.open(images, {
+                    loop: true,
+                    buttons: ['zoom', 'slideShow', 'thumbs', 'close']
+                }, startIndex);
+            }
         );
-
-        $.fancybox.open(images, {
-            loop: true,
-            buttons: ['zoom', 'slideShow', 'thumbs', 'close']
-        }, startIndex);
-    }
-);
 
     </script>
-    
-    
 @endsection

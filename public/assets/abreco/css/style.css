@@ -1073,7 +1073,7 @@ p {
   list-style-type: none;
   border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
 }
 .abreco-header-main-menu ul > li {
@@ -1088,7 +1088,7 @@ p {
   }
 }
 .abreco-header-main-menu ul > li > a {
-    color: #FFF;
+    color: #d6d6d6;
     font-family: 'DM Sans', sans-serif;
     font-size: 20px;
     font-style: normal;
@@ -1096,6 +1096,9 @@ p {
     line-height: normal;
     padding: 20px 17px;
     position: relative;
+}
+.abreco-header-main-menu ul > li > a:hover {
+    color: #FFF;
 }
 
 .abreco-header-main-menu ul > li > a.active::before{

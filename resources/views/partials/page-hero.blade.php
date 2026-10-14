@@ -27,8 +27,10 @@
 @php
     $phTitle  = $title ?? 'Page';
     $phSub    = $subtitle ?? null;
-    $phImage  = $image ?? 'assets/images/page-hero/default.jpg';
-    $phImgUrl = file_exists(public_path($phImage)) ? asset($phImage) : null;
+    $phImage = $image ?? 'assets/images/page-hero/default.jpg';
+    $phImgUrl = filter_var($phImage, FILTER_VALIDATE_URL)
+        ? $phImage
+        : (file_exists(public_path($phImage)) ? asset($phImage) : null);
 
     // Home is always first; if no breadcrumbs are passed, the title is used.
     $phCrumbs = array_merge(

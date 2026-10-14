@@ -1,6 +1,6 @@
 @media(max-width: 1920px){
     .abreco-sticky.sticky .abreco-logo-box a img{
-        max-width: 110px;
+        max-width: 180px;
     }
     .abreco-sticky.sticky{
         padding-top: 15px;
@@ -28,7 +28,7 @@
         max-width: 85%;
     }
     .header-fluid{
-        padding: 0 40px;
+        padding: 0 15px;
     }
 }
 
@@ -3215,6 +3215,10 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 .abreco-sticky.sticky .abreco-logo-box a .ev-logo--light { opacity: 0; }
 .abreco-sticky.sticky .abreco-logo-box a .ev-logo--dark  { opacity: 1; }
 
+.abreco-sticky.sticky .row.align-items-center.justify-content-center {
+    justify-content: space-between !important;
+}
+
 /* Below 991px the bar is white at every scroll position, not just when
    sticky, so the white mark would never be readable there. */
 @media (max-width: 991px) {
@@ -3350,6 +3354,6 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 @media (min-width: 1400px) {
     .abreco-header-area .abreco-header-main-menu ul > li > a {
         font-size: 16px;
-        padding: 20px 13px;
+        padding: 20px 25px;
     }
 }
