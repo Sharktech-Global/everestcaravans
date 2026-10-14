@@ -586,46 +586,41 @@
             <h2 class="text-capitalize text-center mb-4">Customer Reviews</h2>
             <p class="text-center mb-5">Read what our customers have to say about their experience with Everest Caravans.</p>
 
-            <!-- Review Tabs -->
-            <ul class="nav nav-tabs review-tabs" id="reviewTabs" role="tablist">
+            
+            <div class="review-tabs-wrapper">
+                <ul class="nav nav-tabs review-tabs" id="reviewTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                        id="google-review-tab"
+                        data-toggle="tab"
+                        href="#google-review"
+                        role="tab">
+                            Google Reviews
+                        </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active"
-                    id="everest-review-tab"
-                    data-toggle="tab"
-                    href="#everest-review"
-                    role="tab"
-                    aria-controls="everest-review"
-                    aria-selected="true">
-                        Google Reviews
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                        id="everest-revieww-tab"
+                        data-toggle="tab"
+                        href="#everest-revieww"
+                        role="tab">
+                            Everest Reviews
+                        </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link"
-                    id="everest-revieww-tab"
-                    data-toggle="tab"
-                    href="#everest-revieww"
-                    role="tab"
-                    aria-controls="everest-revieww"
-                    aria-selected="false">
-                        Everest Reviews
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                        id="gorv-review-tab"
+                        data-toggle="tab"
+                        href="#gorv-review"
+                        role="tab">
+                            GO RV Reviews
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-                <li class="nav-item">
-                    <a class="nav-link"
-                    id="gorv-review-tab"
-                    data-toggle="tab"
-                    href="#gorv-review"
-                    role="tab"
-                    aria-controls="gorv-review"
-                    aria-selected="false">
-                        GO RV Reviews
-                    </a>
-                </li>
-
-            </ul>
 
             <!-- Tab Content -->
             <div class="tab-content pt-4" id="reviewTabsContent">

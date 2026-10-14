@@ -1304,43 +1304,90 @@ p {
 
 
 
-section.vehicle-reviews {
-    background: #f5f6fa;
-    padding: 80px 0;
+
+/* Review Tabs - Responsive */
+
+.review-tabs-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.review-tabs-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .review-tabs {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    min-width: 100%;
+    padding: 0 15px;
+    margin: 0;
     border-bottom: 1px solid #ddd;
 }
 
+.review-tabs .nav-item {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
 .review-tabs .nav-link {
-    padding: 12px 25px;
+    display: block;
+    white-space: nowrap;
+    padding: 14px 20px;
     font-size: 16px;
     font-weight: 600;
+    text-align: center;
     color: #333;
     border: none;
     border-bottom: 3px solid transparent;
+    border-radius: 0;
     background: transparent;
 }
 
-.review-tabs .nav-link.active {
-    color: #283895;
-    border-bottom: 3px solid #283895;
-    background: transparent;
-}
-
+.review-tabs .nav-link.active,
 .review-tabs .nav-link:hover {
-    color: #283895;
+    color: #243da5;
+    background: transparent;
+    border-color: transparent transparent #243da5;
 }
 
-.vehicle-reviews .tab-content {
-    padding: 20px 0;
-    max-width: 70%;
-    margin: 0 auto;
+/* Tablet */
+
+@media (max-width: 991px) {
+    .review-tabs {
+        gap: 10px;
+    }
+
+    .review-tabs .nav-link {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
 }
+
+/* Mobile */
+
+@media (max-width: 575px) {
+    .review-tabs {
+        justify-content: flex-start;
+        gap: 5px;
+        padding: 0 8px;
+    }
+
+    .review-tabs .nav-link {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+}
+
 
 
 
@@ -1467,6 +1514,17 @@ section.vehicle-reviews {
     height: 190px;
     border: 0;
     border-radius: 6px;
+}
+
+section.videoo.vehicle-reviews {
+  background: #f5f6fa;
+  padding: 80px 0 60px;
+}
+
+.vehicle-reviews .tab-content {
+    max-width: 70%;
+    padding: 20px 0px;
+    margin: 0px auto;
 }
 
 /* Responsive */
