@@ -264,7 +264,7 @@ p {
   width: 45px;
   text-align: center;
   line-height: 45px;
-  background: linear-gradient(#469EFF, #126ACB);
+  background: linear-gradient(#283895, #0b5cb6);
   border-radius: 6px;
   color: #fff;
   display: flex;
@@ -5137,13 +5137,13 @@ p {
 }
 
 .fea-inner .inner-details .inner-btn a.first-btn{
-  color: #086BD8;
-  border: 1px solid #086BD8;
+  color: #283895;
+  border: 1px solid #283895;
   background: #FFF;
 }
 
 .fea-inner .inner-details .inner-btn a.first-btn:hover{
-  background-color: #086BD8;
+  background-color: #283895;
   color: #fff;
 }
 
@@ -5154,7 +5154,7 @@ p {
 }
 
 .fea-inner .inner-details .inner-btn a.sec-btn:hover{
-  background-color: #086BD8;
+  background-color: #283895;
 }
 
 .abt-titlte{
