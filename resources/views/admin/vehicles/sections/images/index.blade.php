@@ -48,7 +48,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row d-none">
                     <div class="col-md-12 @error('description') is-invalid @enderror">
                         <div class="form-material">
                             <textarea class="form-control summernote" id="description" name="description" rows="2"
