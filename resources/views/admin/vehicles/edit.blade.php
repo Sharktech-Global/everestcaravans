@@ -121,7 +121,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicle->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicle->image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -139,7 +139,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicle->thumb) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicle->thumb) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -157,7 +157,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicle->banner_image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicle->banner_image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -175,7 +175,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicle->online_image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicle->online_image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -194,7 +194,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicle->mobile_banner) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicle->mobile_banner) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">

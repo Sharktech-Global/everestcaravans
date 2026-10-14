@@ -17,7 +17,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td align="center" style="width:180px;text-align: center;">
-                                                        <img alt="Abreco" height="auto"
+                                                        <img alt="Everest" height="auto"
                                                             src="{{ asset('assets/front/images/abreco_logo.webp') }}"
                                                             style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:50%;font-size:13px;margin: 0 auto;"
                                                             width="90">

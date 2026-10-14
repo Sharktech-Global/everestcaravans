@@ -125,7 +125,7 @@
                 background: radial-gradient(circle, rgba(11,37,99,1) 0%, rgba(43,78,120,1) 100%);">
                     <div class="sidebar-mini-visible-b align-v animated fadeIn">
                         <img class="img-avatar img-avatar32"
-                            src="{{ asset('assets/images/logo/logo.png') }}" alt="Abreco">
+                            src="{{ asset('assets/images/logo/logo.png') }}" alt="Everest">
                     </div>
                     <!-- END Visible only in mini mode -->
 
@@ -133,7 +133,7 @@
                     <div class="text-center sidebar-mini-hidden-b">
                         <a class="img-link" href="{{ route('admin.profile') }}">
                             <img class="img-avatar"
-                                src="{{ asset('assets/images/logo/logo.png') }}" alt="Abreco">
+                                src="{{ asset('assets/images/logo/logo.png') }}" alt="Everest">
                         </a>
                         <ul class="mt-10 list-inline">
                             <li class="list-inline-item">

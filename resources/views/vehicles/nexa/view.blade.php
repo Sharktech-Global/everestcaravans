@@ -539,7 +539,7 @@
                 <div class="row checkbox">
                     <div class="col-sm-12">
                         <label><input type="checkbox" class="chkbox">I agree that by clicking the ‘Submit’ button below,
-                            I am explicitly soliciting a call and message via whatsapp and any other medium from Abreco Motors.
+                            I am explicitly soliciting a call and message via whatsapp and any other medium from Everest Caravans.
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default register-btn">Submit</button>

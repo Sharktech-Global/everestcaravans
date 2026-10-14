@@ -94,7 +94,7 @@
                                 dimension (225 × 225 px)<br>
                             width-225 , height-225
                                 @if (@$Service->image)
-                                    <img alt="Abreco" src="{{ asset('storage/' . @$Service->image) }}"
+                                    <img alt="Everest" src="{{ asset('storage/' . @$Service->image) }}"
                                         style="width: 100px;margin: 15px 0;">
                                 @endif
                             </div>

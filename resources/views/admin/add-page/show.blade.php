@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="w-100 px-3">
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 p-0 float-left h-100">
-                        <img class="w-100 h-100" alt="abreco" title="Maruti"
+                        <img class="w-100 h-100" alt="Everest" title="Maruti"
                             src="{{ asset('storage/'.$addpage->image) }}">
                     </div>
                 </div>

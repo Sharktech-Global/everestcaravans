@@ -69,7 +69,7 @@
                                     <small>
                                         @foreach (json_decode($data->vehicle_details) as $key => $value)
                                         - {{ strtoupper($key) }}: @if($key == 'proof') <a href="{{asset('storage/'.$value)}}" target="_blank"> 
-                                        <img alt="abreco" src="{{asset('storage/'.$value)}}" width='100px' height='100px'> </a> @else {{ $value }} @endif <br>
+                                        <img alt="Everest" src="{{asset('storage/'.$value)}}" width='100px' height='100px'> </a> @else {{ $value }} @endif <br>
                                         @endforeach
                                     </small> <br>
                                 </label>

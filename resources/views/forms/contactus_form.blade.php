@@ -1,3 +1,13 @@
+@php
+    // The Contact and Factory Visit controllers pass $caravanTypes, but this
+    // form is also included by the FAQ, Exchange and Services pages, whose
+    // controllers do not — and the missing variable 500'd those three pages.
+    // Falling back here keeps the form usable wherever it is dropped in.
+    $caravanTypes = $caravanTypes ?? \App\VehicleType::where('status', 1)
+        ->orderBy('name')
+        ->get(['id', 'name']);
+@endphp
+
 <div class="order-2-991">
     <div class="ev-contact-form">
         <form action="{{ route('contact.store') }}"

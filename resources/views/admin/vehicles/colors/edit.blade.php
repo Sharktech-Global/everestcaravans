@@ -96,7 +96,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $vehicleColor->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $vehicleColor->image) }}"  alt="Everest" width="250px">
                         </div>
 
                     </div>

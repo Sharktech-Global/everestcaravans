@@ -90,7 +90,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $section->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $section->image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -104,7 +104,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $section->thumbnail) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $section->thumbnail) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -119,7 +119,7 @@
                         </div>
                         @if($section->background)
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $section->background) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $section->background) }}"  alt="Everest" width="250px">
                             </div>
                         @endif
                     </div>

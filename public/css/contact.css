@@ -73,7 +73,7 @@
     padding-bottom: 18px;
     border-bottom: 1px solid var(--ct-line);
     font-family: var(--ct-display);
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 600;
     line-height: 1.2;
     color: var(--ct-ink);
@@ -337,7 +337,7 @@
 }
 
 .ev-contact-submit {
-    width: 100%;
+    width: 75%;
     padding: 13px 20px;
     background: #283895;
     color: #fff;
@@ -366,7 +366,7 @@
     --cf-text: #555A6E;
     --cf-line: #E3E5EE;
     --cf-radius: 4px;
-    --cf-gap: 48px;
+    --cf-gap: 28px;
     --cf-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
 
     position: relative;
@@ -428,7 +428,7 @@
    the row height, which the form sets. */
 .ev-contact-forms .ev-contact-forms__body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);   /* even halves */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);   /* even halves */
     gap: var(--cf-gap);
     align-items: stretch;
 }

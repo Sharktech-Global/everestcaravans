@@ -196,7 +196,7 @@
                                                 style="font-size:0px;padding:18px 0px 0px 0px;word-break:break-word;">
                                                 <div
                                                     style="font-family:Ubuntu, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000;">
-                                                   <p><span style="color: #080808;text-align:left;font-size: 14px;">Thank you for choosing Abreco Motors as your preferred car dealer. We are thrilled to inform you that your car booking has been confirmed, and we are excited to help you begin your journey with your new Maruti car!<br></span></p>
+                                                   <p><span style="color: #080808;text-align:left;font-size: 14px;">Thank you for choosing Everest Caravans as your preferred car dealer. We are thrilled to inform you that your car booking has been confirmed, and we are excited to help you begin your journey with your new Maruti car!<br></span></p>
                                                     <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px;">Here are the details of your booking:</span></p>
                                                         
                                                 </div>
@@ -268,7 +268,7 @@
                                                 <div style="font-family:Ubuntu, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000;">
                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;">We will keep you informed of the progress of your booking, and our team will contact you shortly to discuss the next steps, including payment options and delivery date.<br></span></p>
                                                     <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Should you have any further questions or concerns, please feel free to reach out to us at info@everestcaravans.com.au. We are always here to help.<br></span></p>
-                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Once again, thank you for choosing Abreco Motors. We look forward to serving you and providing an exceptional car-buying experience.<br></span></p>
+                                                    <p><span style="color: #080808;text-align:left;font-size: 14px;margin-top:10px">Once again, thank you for choosing Everest Caravans. We look forward to serving you and providing an exceptional car-buying experience.<br></span></p>
                                                        
                                                 </div>
                                             </td>
@@ -278,7 +278,7 @@
                                             style="font-size:0px;padding:18px 0px 0px 0px;word-break:break-word;">
                                                 <div style="font-family:Ubuntu, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000;">
                                                     <p><span style="font-size: 15px; color: #0e0d0d;">Best Regards,</strong></span></p>
-                                                    <p><span style="font-size: 15px; color: #0e0d0d;">Abreco Motors</strong></span></p>
+                                                    <p><span style="font-size: 15px; color: #0e0d0d;">Everest Caravans</strong></span></p>
                                                 </div>
                                             </td>
                                         </tr>

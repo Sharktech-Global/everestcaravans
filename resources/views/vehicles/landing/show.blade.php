@@ -437,7 +437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <div id="warning-message">
         <p>
-            <img src="{{ asset('assets/images/landscape.png') }}" alt="Abreco" width="70"><br>
+            <img src="{{ asset('assets/images/landscape.png') }}" alt="Everest" width="70"><br>
             Landscape mode is disabled<br>Please rotate your device
         </p>
     </div>
@@ -667,7 +667,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                         @foreach ($section->images()->orderBy('order')->get() as $image)
                                                             <div class="card img-wrapper">
                                                                 <div class="media media-2x1 gd-primary">
-                                                                    <img alt="Abreco" class="profile-image"
+                                                                    <img alt="Everest" class="profile-image"
                                                                         src="{{ asset('storage/' . $image->image) }}">
                                                                     <div class="img-overlay"></div>
                                                                     @if ($image->description)
@@ -713,7 +713,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     @foreach ($section->images()->orderBy('order')->get() as $image)
                                                         <div class="text-white row tab-pane fade show @if ($loop->first) active @endif" id="nav-{{ $image->id }}"
                                                             role="tabpanel" aria-labelledby="nav-{{ $image->id }}-tab">
-                                                            <div class="float-left col-md-4"><img alt="Abreco" class="w-100"
+                                                            <div class="float-left col-md-4"><img alt="Everest" class="w-100"
                                                                     src="{{ asset('storage/' . $image->image) }}">
                                                             </div>
                                                             @if ($image->description)

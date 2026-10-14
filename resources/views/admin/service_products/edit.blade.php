@@ -64,7 +64,7 @@
                             <input type="file" id="image" name="image">
                             <label for="image">Image</label>
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $serviceProduct->image) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $serviceProduct->image) }}"  alt="Everest" width="250px">
                             </div>
                         </div>
                         @error('image')
@@ -76,7 +76,7 @@
                             <input type="file" id="image_secondary" name="image_secondary">
                             <label for="image_secondary">Image</label>
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $serviceProduct->image_secondary) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $serviceProduct->image_secondary) }}"  alt="Everest" width="250px">
                             </div>
                         </div>
                         @error('image_secondary')
@@ -88,7 +88,7 @@
                             <input type="file" id="image_third" name="image_third">
                             <label for="image_third">Image</label>
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $serviceProduct->image_third) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $serviceProduct->image_third) }}"  alt="Everest" width="250px">
                             </div>
                         </div>
                         @error('image_third')

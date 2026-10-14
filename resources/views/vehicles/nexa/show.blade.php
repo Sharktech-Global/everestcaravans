@@ -85,11 +85,11 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 vehicle-images">
-                                    <img src="{{asset('storage/'.@$vehicle->image)}}" height="auto" width="100%" alt="Abreco">
+                                    <img src="{{asset('storage/'.@$vehicle->image)}}" height="auto" width="100%" alt="Everest">
                                 </div>
                             @else
                                 <div class="col-sm-6 vehicle-images">
-                                    <img src="{{asset('storage/'.@$vehicle->image)}}" height="auto" width="100%" alt="Abreco">
+                                    <img src="{{asset('storage/'.@$vehicle->image)}}" height="auto" width="100%" alt="Everest">
                                 </div>
                                 <div class="col-sm-6 vehicle-data">
                                     <h2 class="title text-dark">{{@$vehicle->name}}</h2>

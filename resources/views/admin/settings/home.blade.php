@@ -94,7 +94,7 @@
                             <input type="file" id="testdrive_image" name="testdrive_image">
                             <label for="testdrive_image">Test Drive Image</label>
                             @if(@$home_settings->testdrive_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->testdrive_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->testdrive_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -107,7 +107,7 @@
                             <input type="file" id="insurance_image" name="insurance_image">
                             <label for="insurance_image">Insurance Image</label>
                             @if(@$home_settings->insurance_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->insurance_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->insurance_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -122,7 +122,7 @@
                             <input type="file" id="exchange_image" name="exchange_image">
                             <label for="exchange_image">Exchange Image</label>
                             @if(@$home_settings->exchange_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->exchange_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->exchange_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -135,7 +135,7 @@
                             <input type="file" id="service_image" name="service_image">
                             <label for="service_image">Service Image</label>
                             @if(@$home_settings->service_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->service_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->service_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -158,7 +158,7 @@
                             <input type="file" id="background_image" name="background_image">
                             <label for="background_image">Background Image</label>
                             @if(@$home_settings->background_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->background_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->background_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -171,7 +171,7 @@
                             <input type="file" id="contact_image" name="contact_image">
                             <label for="contact_image">Contact Background Image</label>
                             @if(@$home_settings->contact_image)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$home_settings->contact_image) }}"
+                            <img alt="Everest" src="{{ asset('storage/'.@$home_settings->contact_image) }}"
                             style="width: 200px;margin: 15px 0;">
                             @endif
                         </div>

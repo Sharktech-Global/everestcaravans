@@ -29,37 +29,37 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-1.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-1.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-1.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-1.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-2.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-2.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-2.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-2.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-3.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-3.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-3.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-3.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-4.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-4.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-4.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-4.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-5.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-5.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-5.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-5.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image px-2">
                                             <div class="img-wrapper">
-                                                <a href="{{ asset('assets/images/slider/about-gallery-6.jpg') }}"><img alt="Abreco" src="{{ asset('assets/images/slider/about-gallery-6.jpg') }}" class="img-responsive"></a>
+                                                <a href="{{ asset('assets/images/slider/about-gallery-6.jpg') }}"><img alt="Everest" src="{{ asset('assets/images/slider/about-gallery-6.jpg') }}" class="img-responsive"></a>
                                                 <div class="img-overlay"></div>
                                             </div>
                                         </div>
@@ -74,13 +74,13 @@
                     {{-- <div class="px-3 w-100">
                     @if (@$page->content_image_one)
                     <div class="float-left p-0 col-lg-8 col-md-12 col-sm-12 col-xs-12 h-100">
-                        <img class="w-100 h-100" alt="Abreco" title="Maruti" src="{{ asset('storage/'.@$page->content_image_one) }}">
+                        <img class="w-100 h-100" alt="Everest" title="Maruti" src="{{ asset('storage/'.@$page->content_image_one) }}">
                     </div>
                     @endif
                     @if (@$page->content_image_two || @$page->content_image_three)
                     <div class="float-left p-0 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        <img class="w-100" alt="Abreco" title="Maruti" src="{{ asset('storage/'.@$page->content_image_two) }}">
-                        <img class="w-100" alt="Abreco" title="Maruti" src="{{ asset('storage/'.@$page->content_image_three) }}">
+                        <img class="w-100" alt="Everest" title="Maruti" src="{{ asset('storage/'.@$page->content_image_two) }}">
+                        <img class="w-100" alt="Everest" title="Maruti" src="{{ asset('storage/'.@$page->content_image_three) }}">
                     </div>
                     @endif
                 </div> --}}

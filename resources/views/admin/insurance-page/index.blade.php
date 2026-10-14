@@ -68,7 +68,7 @@
                         </div>
                         @if ($page->banner_image)
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $page->banner_image) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $page->banner_image) }}"  alt="Everest" width="250px">
                             </div>
                         @endif
                     </div>
@@ -84,7 +84,7 @@
                         </div>
                         @if ($page->background_image)
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $page->background_image) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $page->background_image) }}"  alt="Everest" width="250px">
                             </div>
                         @endif
                     </div>

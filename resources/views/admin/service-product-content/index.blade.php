@@ -58,7 +58,7 @@
                     </div>
                     @if(@$service_product->banner_image)
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$service_product->banner_image) }}"  alt="Abreco"
+                        <img src="{{ asset('storage/'.$service_product->banner_image) }}"  alt="Everest"
                         width="250px">
                     </div>
                     @endif
@@ -76,7 +76,7 @@
                     </div>
                     @if(@$service_product->image)
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$service_product->image) }}"  alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$service_product->image) }}"  alt="Everest" width="250px">
                     </div>
                     @endif
                 </div>

@@ -277,9 +277,9 @@
         background-color: #fff;
     }
     .abreco-sticky.sticky .toggle-btn{
-        right: -120px;
+            right: 30px;
         top: 0;
-        transform: translateY(-170%);
+        transform: translateY(-50%);
     }
     .toggle-btn i{
         color: #000;
@@ -1689,8 +1689,7 @@
     }
     .toggle-btn{
         top: 65%;
-        transform: translateY(-112%);
-        font-size: 22px;
+        font-size: 25px;
         margin-top: -6px;
     }
     .offcanvas_menu {
@@ -1782,9 +1781,10 @@
         left: 112px;
     }
     .abreco-features-area{
-        padding-top: 210px;
+        padding-top: 70px;
         z-index: inherit;
         padding-bottom: 30px;
+        margin:12px;
     }
     /* .owl-carousel .owl-item img{
         display: none;
@@ -2903,10 +2903,65 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     .offcanvas_menu_wrapper .ev-sidecta:hover { transform: none; }
 }
 
+/* ==========================================================
+   Slide-out menu — Roadside Assistance block.
+
+   It inherits .service-bread-btn's old theme styling: magenta
+   (#9d166c), italic and a 10px corner, none of which belong to this
+   palette. The stacking fix that keeps the number on its own line was
+   also scoped to 575px, but this panel is in use all the way to 991px,
+   so between those widths the label and the number sat side by side in
+   a 290px panel and "0 1800 890 0118" broke across three lines.
+   ========================================================== */
+.offcanvas_menu_wrapper .toll-free-btn-banner-sidemenu a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 14px 18px;
+    border-radius: 4px;
+    background-color: #283895;
+    color: #fff;
+    font-style: normal;
+}
+.offcanvas_menu_wrapper .toll-free-btn-banner-sidemenu a:hover {
+    background-color: #1D2A72;
+    color: #fff;
+}
+.offcanvas_menu_wrapper .toll-free-btn-banner-sidemenu .toll-head {
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .72);
+}
+.offcanvas_menu_wrapper .toll-free-btn-banner-sidemenu .toll-number {
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.25;
+    white-space: nowrap;      /* never break a phone number across lines */
+}
+
+/* The close button is the other leftover blue (#2b70fa) with a 10px
+   corner; bring it onto the brand and the site's 4px radius. */
+.offcanvas_menu_wrapper .canvas_close a {
+    border-radius: 4px;
+    border-color: #283895;
+    background: #283895;
+}
+.offcanvas_menu_wrapper .canvas_close a:hover {
+    border-color: #1D2A72;
+    background: #1D2A72;
+}
+
 /* ---------- Main columns ---------- */
 .ev-ftr__grid {
     display: grid;
-    grid-template-columns: 1.7fr 2fr .6fr;
+    grid-template-columns: 1.7fr 1.4fr .8fr;
     gap: 52px 0;              /* columns are spaced by their own padding below */
     align-items: stretch;     /* so the rules run the full column height */
     padding: 52px 0 56px;
@@ -2999,7 +3054,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     text-transform: uppercase;
     color: var(--ef-dim);
 }
-.ev-ftr__strip-value { font-size: 17px; font-weight: 600; color: var(--ef-white); }
+.ev-ftr__strip-value { font-size: 12px; font-weight: 300; color: var(--ef-white); }
 .ev-ftr__strip-links {
     display: flex;
     gap: 26px;
@@ -3087,8 +3142,8 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 @media (max-width: 991.98px) {
     .copy-right-sec1 .footer-copyright {
         display: flex !important;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column-reverse;
+                align-items: center;
         gap: 18px;
         padding: 28px 0;
     }
@@ -3183,6 +3238,13 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
         padding: 0;
     }
     .abreco-header-area .header-nav-box > .row { width: 100%; margin: 0; }
+
+    /* Keep the logo and the hamburger on one line — the Bootstrap row
+       wraps by default, which dropped the toggle onto a second row. */
+    .abreco-header-area .header-nav-box .row.align-items-center.justify-content-center {
+        display: flex;
+        flex-wrap: nowrap;
+    }
 
     /* The banner clears the bar, so the whole image is visible */
     .vb-hero {

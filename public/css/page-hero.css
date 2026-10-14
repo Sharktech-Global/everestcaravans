@@ -123,7 +123,7 @@
     .ev-pagehero { --ph-top-space: 96px; --ph-side: 28px; --ph-height: clamp(420px, 56vh, 560px); }
 }
 @media (max-width: 575.98px) {
-    .ev-pagehero { --ph-top-space: 80px; --ph-side: 20px; --ph-height: 400px; padding-bottom: 40px; }
+    .ev-pagehero { --ph-top-space: 80px; --ph-side: 20px; --ph-height: 220px; padding-bottom: 40px; }
     .ev-pagehero .ev-pagehero__crumbs { margin-bottom: 16px; }
     .ev-pagehero .ev-pagehero__crumbs li { font-size: 12px; }
     .ev-pagehero .ev-pagehero__row { padding-top: 20px; }

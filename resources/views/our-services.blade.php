@@ -23,7 +23,7 @@
                 @foreach ($add_pages as $add_page)
                 <div class="col-md-3 text-center">
                     <a class="serviceboxwrapper" href="{{ route('addPage.view',$add_page->slug) }}">
-                        <img src="{{ asset('storage/'.$add_page->image) }}" alt="Abreco" />
+                        <img src="{{ asset('storage/'.$add_page->image) }}" alt="Everest" />
                         <span>{{$add_page->title}}</span>
                     </a>
                 </div>

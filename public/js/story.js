@@ -28,8 +28,10 @@
 
         function schedule() {
             clearTimeout(timer);
-            if (!delay || reduce || paused) return;
-            timer = setTimeout(function () { go(current + 1); }, delay);
+            // Still advances under prefers-reduced-motion — the CSS drops the
+            // transition there, so the slide changes without animating.
+            if (!delay || paused) return;
+            timer = setTimeout(function () { go(current + 1); }, reduce ? delay * 1.8 : delay);
         }
 
         root.querySelector('[data-ev-prev]').addEventListener('click', function () { go(current - 1); });

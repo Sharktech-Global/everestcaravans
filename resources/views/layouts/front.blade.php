@@ -83,14 +83,14 @@
                                 <li @if ($routename == 'our-range') class="active" @endif>
                                     <a href="{{ route('our-range') }}">Our Range</a>
                                 </li>
-                                <li @if ($routename == 'videos') class="active" @endif>
-                                    <a href="{{ route('videos') }}">Videos</a>
-                                </li>
-                                <li @if ($routename == 'book_test_drive.index') class="active" @endif>
+                                <li @if ($routename == 'factory-visit.show') class="active" @endif>
                                     <a href="{{ route('factory-visit.show') }}">Book a Factory Visit</a>
                                 </li>
-                                <li @if ($routename == 'finance.show') class="active" @endif>
-                                    <a href="{{ route('finance.show') }}">Finance</a>
+                                <li @if ($routename == 'finance-partner') class="active" @endif>
+                                    <a href="{{ route('finance-partner') }}">Finance</a>
+                                </li>
+                                <li @if ($routename == 'videos') class="active" @endif>
+                                    <a href="{{ route('videos') }}">Videos</a>
                                 </li>
                                 <li @if (in_array($routename, ['blog.show', 'blog.details'])) class="active" @endif>
                                     <a href="{{ route('blog.show') }}">Blogs</a>
@@ -105,9 +105,9 @@
 
                             {{-- Was nested inside the <ul>, which is invalid markup --}}
                             <div class="service-bread-btn toll-free-btn-banner toll-free-btn-banner-sidemenu">
-                                <a href="tel:018008900118">
+                                <a href="tel:(03) 9357 9440">
                                     <span class="toll-head">Roadside Assistance</span>
-                                    <span class="toll-number">0 1800 890 0118</span>
+                                    <span class="toll-number">(03) 9357 9440</span>
                                 </a>
                             </div>
 
@@ -281,8 +281,11 @@
                     <h4 class="ev-ftr__title">Company</h4>
                     <ul class="ev-ftr__list">
                         <li><a href="{{ route('about') }}">About us</a></li>
-                        <li><a href="{{ route('services.index') }}">Services</a></li>
-                        <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <li><a href="{{ route('our-range') }}">Range</a></li>
+                        <li><a href="{{ route('videos') }}">Videos</a></li>
+                        <li><a href="{{ route('factory-visit.show') }}">factory visit</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact</a></li>
+
                     </ul>
                 </nav>
 

@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="comparison py-5">
                         <div class="compare-car text-center" data-toggle="modal" data-target="#compare-models">
-                            <img src="@if($vehicle->image){{ asset('storage/'.@$vehicle->image) }}@else{{ asset('assets/images/compare/selected-car.png') }}@endif"  alt="Abreco">
+                            <img src="@if($vehicle->image){{ asset('storage/'.@$vehicle->image) }}@else{{ asset('assets/images/compare/selected-car.png') }}@endif"  alt="Everest">
                             <h4>@if(@$vehicle->name) {{@$vehicle->name}} @else Model 1 @endif</h4>
                             {{-- <p>Change Model</p> --}}
                         </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="comparison py-5">
                         <div class="compare-car text-center" data-toggle="modal" data-target="#compare-models">
-                            <img src="@if(@$vehicle1->image){{ asset('storage/'.@$vehicle1->image) }}@else{{ asset('assets/images/compare/selected-car.png') }}@endif"  alt="Abreco">
+                            <img src="@if(@$vehicle1->image){{ asset('storage/'.@$vehicle1->image) }}@else{{ asset('assets/images/compare/selected-car.png') }}@endif"  alt="Everest">
                             <h4>@if(@$vehicle1->name) {{@$vehicle1->name}} @else Model 2 @endif</h4>
                             {{-- <p>Change Model</p> --}}
                         </div>
@@ -150,7 +150,7 @@
                             </form>
                         </div>
                         <div class="col-6">
-                            <img src="{{ asset('assets/images/compare/selected-car.png') }}"  alt="Abreco">
+                            <img src="{{ asset('assets/images/compare/selected-car.png') }}"  alt="Everest">
                             <h4>Lexus ES 300h Exquisite</h4>
                         </div>
                     </div>

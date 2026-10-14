@@ -116,7 +116,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $homeSlider->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $homeSlider->image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -132,7 +132,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $homeSlider->mobile_image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $homeSlider->mobile_image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -146,7 +146,7 @@
                             @enderror
                         </div>
                         {{-- <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $homeSlider->title) }}"  alt="Abreco" width="250px"
+                            <img src="{{ asset('storage/' . $homeSlider->title) }}"  alt="Everest" width="250px"
                                 style="background-color: black;padding: 10px;">
                         </div>  --}}
                          <div class="col-md-4 @error('sub_title') is-invalid @enderror">

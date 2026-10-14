@@ -200,7 +200,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td style="width:132px;">
-                                                                <img alt="Abreco" height="auto"
+                                                                <img alt="Everest" height="auto"
                                                                     src="{{ asset('assets/images/contact.png') }}"
                                                                     style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
                                                                     width="132">

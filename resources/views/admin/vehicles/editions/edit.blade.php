@@ -70,7 +70,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $edition->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $edition->image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -85,7 +85,7 @@
                         </div>
                         @if($edition->thumb)
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $edition->thumb) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $edition->thumb) }}"  alt="Everest" width="250px">
                             </div>
                         @endif
                     </div>
@@ -101,7 +101,7 @@
                         </div>
                         @if($edition->banner_image)
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $edition->banner_image) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . $edition->banner_image) }}"  alt="Everest" width="250px">
                             </div>
                         @endif
                     </div>

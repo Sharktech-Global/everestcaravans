@@ -10,11 +10,11 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Abreco motors", // set false to total remove
+            'title'        => "Everest Caravans", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => "Abreco motors", // set false to total remove
+            'description'  => "Everest Caravans", // set false to total remove
             'separator'    => ' | ',
-            'keywords'     => ['Abreco motors'],
+            'keywords'     => ['Everest Caravans'],
             'canonical'    => null, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
@@ -37,11 +37,11 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Abreco motors', // set false to total remove
-            'description' => "Abreco motors", // set false to total remove
+            'title'       => 'Everest Caravans', // set false to total remove
+            'description' => "Everest Caravans", // set false to total remove
             'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => 'website',
-            'site_name'   => 'Abreco motors ',
+            'site_name'   => 'Everest Caravans',
             'images'      => [env('APP_URL', 'https://backend.abrecomotors.nvds.in') . '/assets/images/logo/ogg-image.jpg'],
         ],
     ],
@@ -53,7 +53,7 @@ return [
             'card'        => 'summary_large_image',
             'site'        => '@abreco',
             'image'       => env('APP_URL', 'https://backend.abrecomotors.nvds.in') . '/assets/images/logo/ogg-image.jpg',
-            'description' => 'Abreco motors',
+            'description' => 'Everest Caravans',
         ],
     ],
     'json-ld' => [
@@ -61,8 +61,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Abreco motors', // set false to total remove
-            'description' => "Abreco motors", // set false to total remove
+            'title'       => 'Everest Caravans', // set false to total remove
+            'description' => "Everest Caravans", // set false to total remove
             'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [env('APP_URL', 'https://backend.abrecomotors.nvds.in') . '/assets/images/logo/ogg-image.jpg'],

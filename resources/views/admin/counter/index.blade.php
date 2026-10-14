@@ -72,7 +72,7 @@
                                     <input type="file" id="image" name="image">
                                     <label for="image">Image</label>
                                     @if(@$page->image)
-                                    <img alt="abreco" src="{{ asset('storage/'.@$page->image) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->image) }}"
                                         style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>

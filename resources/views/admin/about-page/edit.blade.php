@@ -95,7 +95,7 @@
                                     dimension( 52 x 55px)<br>
                                     width-52 height-55
                                     @if(@$page->banner_image)
-                                    <img alt="abreco" src="{{ asset('storage/'.@$page->banner_image) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->banner_image) }}"
                                         style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>
@@ -112,7 +112,7 @@
                                     dimension( 52 x 55px)<br>
                                     width-52 height-55
                                     @if(@$page->content_image_one)
-                                    <img alt="abreco" src="{{ asset('storage/'.@$page->content_image_one) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->content_image_one) }}"
                                     style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>
@@ -127,7 +127,7 @@
                                     dimension( 52 x 55px)<br>
                                     width-52 height-55
                                     @if(@$page->content_image_two)
-                                    <img alt="abreco" src="{{ asset('storage/'.@$page->content_image_two) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->content_image_two) }}"
                                     style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>
@@ -142,7 +142,7 @@
                                     dimension( 52 x 55px)<br>
                                     width-52 height-55
                                     @if(@$page->content_image_three)
-                                    <img alt="abreco" src="{{ asset('storage/'.@$page->content_image_three) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->content_image_three) }}"
                                     style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>

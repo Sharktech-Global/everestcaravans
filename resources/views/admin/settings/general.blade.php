@@ -193,7 +193,7 @@
                             <input type="file" id="logo" name="logo">
                             <label for="logo">White Logo First</label>
                             @if(@$settings->logo)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$settings->logo) }}" style="width:
+                            <img alt="Everest" src="{{ asset('storage/'.@$settings->logo) }}" style="width:
                             200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -206,7 +206,7 @@
                             <input type="file" id="logo_secondary" name="logo_secondary">
                             <label for="logo_secondary">White Logo Second</label>
                             @if(@$settings->logo_secondary)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$settings->logo_secondary) }}" style="width:
+                            <img alt="Everest" src="{{ asset('storage/'.@$settings->logo_secondary) }}" style="width:
                             200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -219,7 +219,7 @@
                             <input type="file" id="logo_fourth" name="logo_fourth">
                             <label for="logo_fourth">Dark Logo First</label>
                             @if(@$settings->logo_fourth)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$settings->logo_fourth) }}" style="width:
+                            <img alt="Everest" src="{{ asset('storage/'.@$settings->logo_fourth) }}" style="width:
                             200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -232,7 +232,7 @@
                             <input type="file" id="logo_third" name="logo_third">
                             <label for="logo_third">Dark Logo Second</label>
                             @if(@$settings->logo_third)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$settings->logo_third) }}" style="width:
+                            <img alt="Everest" src="{{ asset('storage/'.@$settings->logo_third) }}" style="width:
                             200px;margin: 15px 0;">
                             @endif
                         </div>
@@ -245,7 +245,7 @@
                             <input type="file" id="favicon" name="favicon">
                             <label for="favicon">Favicon</label>
                             @if(@$settings->favicon)
-                            <img alt="Abreco" src="{{ asset('storage/'.@$settings->favicon) }}" style="width:
+                            <img alt="Everest" src="{{ asset('storage/'.@$settings->favicon) }}" style="width:
                             32px;margin: 15px 0;">
                             @endif
                         </div>

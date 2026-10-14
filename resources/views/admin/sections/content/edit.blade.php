@@ -68,7 +68,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $content->icon) }}"  alt="abreco" width="250px">
+                            <img src="{{ asset('storage/' . $content->icon) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                    

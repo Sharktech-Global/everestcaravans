@@ -56,7 +56,7 @@
                                         </td>
                                         <td class="font-w600">{{@$data->title}}</td>
                                         <td class="font-w600">{{@$data->sub_title}}</td>
-                                        <td class="font-w600"><img alt="Abreco" src="{{ asset('storage/' . $data->image) }}"
+                                        <td class="font-w600"><img alt="Everest" src="{{ asset('storage/' . $data->image) }}"
                                                 width="250px"></td>
                                         <td class="font-w600">{!! $data->description !!}</td>
                                         <td>

@@ -92,7 +92,7 @@
                 <div class="offset-lg-1 col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-5">
                     <h2 class="text-white mb-3">EXPLORE</h2>
                     @foreach ($section->images()->orderBy('order')->get() as $image)
-                    <img alt="Abreco" class="pt-65" src="{{ asset('storage/'.$image->image) }}">
+                    <img alt="Everest" class="pt-65" src="{{ asset('storage/'.$image->image) }}">
                     @endforeach
                 </div>
             </div>
@@ -110,7 +110,7 @@
                         <div class="slide">
                             <a href="{{ asset('storage/'.$image->image) }}" data-toggle="lightbox"
                                 data-gallery="gallery" class="col-md-12">
-                                <img alt="Abreco" src="{{ asset('storage/'.$image->image) }}" class="img-fluid
+                                <img alt="Everest" src="{{ asset('storage/'.$image->image) }}" class="img-fluid
                                 rounded">
                                 <p>{{ $image->description }}</p>
                             </a>
@@ -134,11 +134,11 @@
                     @foreach ($section->images()->orderBy('order')->get() as $image)
                     @if($loop->first)
                     <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 p-0 float-left h-100">
-                        <img alt="Abreco" class="w-100 h-100" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="w-100 h-100" src="{{ asset('storage/'.$image->image) }}">
                     </div>
                     @else
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 p-0 float-left">
-                        <img alt="Abreco" class="" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="" src="{{ asset('storage/'.$image->image) }}">
                     </div>
                     @endif
                     @endforeach
@@ -158,7 +158,7 @@
                 <div class="w-100 px-3">
                     @foreach ($section->images()->orderBy('order')->get() as $image)
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 p-0 float-left h-100 mb-2">
-                        <img alt="Abreco" class="w-100 h-100" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="w-100 h-100" src="{{ asset('storage/'.$image->image) }}">
                     </div>
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 float-left pl-5 mb-2">
                         {!! $image->description !!}
@@ -183,13 +183,13 @@
                         <div class="posab">
                             {!! $image->description !!}
                         </div>
-                        <img alt="Abreco" class="" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="" src="{{ asset('storage/'.$image->image) }}">
                     </div>
                     @else
                     <div class="col-lg-8 col-md-12 col-sm-6 col-xs-12 float-left bg-676767 py-4">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img alt="Abreco" class="" src="{{ asset('storage/'.$image->image) }}">
+                                <img alt="Everest" class="" src="{{ asset('storage/'.$image->image) }}">
                             </div>
                             <div class="col-md-8 pt-80">
                                 {!! $image->description !!}
@@ -213,11 +213,11 @@
                     @foreach ($section->images()->orderBy('order')->get() as $image)
                     @if($loop->first)
                     <div class="col-lg-8 col-md-12 col-sm-6 col-xs-12 float-left">
-                        <img alt="Abreco" class="" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="" src="{{ asset('storage/'.$image->image) }}">
                     </div>
                     @else
                     <div class="col-lg-2 col-md-12 col-sm-3 col-xs-12 float-left">
-                        <img alt="Abreco" class="" src="{{ asset('storage/'.$image->image) }}">
+                        <img alt="Everest" class="" src="{{ asset('storage/'.$image->image) }}">
                         <p class="text-white lh-18 mt-1">{!! $image->description !!}</p>
                     </div>
                     @endif

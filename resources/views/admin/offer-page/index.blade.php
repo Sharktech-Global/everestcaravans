@@ -53,7 +53,7 @@
                                     <input type="file" id="banner_image" name="banner_image">
                                     <label for="banner_image">Banner Image</label>
                                     @if(@$offer->banner_image)
-                                    <img alt="Abreco" src="{{ asset('storage/'.@$offer->banner_image) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$offer->banner_image) }}"
                                     style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>
@@ -68,7 +68,7 @@
                                     <input type="file" id="image" name="image">
                                     <label for="image">Image</label>
                                     @if(@$offer->image)
-                                    <img alt="Abreco" src="{{ asset('storage/'.@$offer->image) }}" style="width:
+                                    <img alt="Everest" src="{{ asset('storage/'.@$offer->image) }}" style="width:
                                     200px;margin: 15px 0;">
                                     @endif
                                 </div>

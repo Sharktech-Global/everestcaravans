@@ -178,7 +178,7 @@
         {{-- Copy --}}
         <div class="ev-about__content">
             <p class="ev-about__eyebrow">
-                Who Are We?
+                Where the Road Ends
                 <svg viewBox="0 0 26 16" aria-hidden="true"><path d="M2 12V4.5A2.5 2.5 0 0 1 4.5 2H16a5 5 0 0 1 5 5v5z"/><path d="M1 12h23"/><circle cx="8" cy="13" r="2"/><path d="M5 5.5h5v3H5zM13 5.5h3"/></svg>
             </p>
 

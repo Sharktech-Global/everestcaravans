@@ -116,7 +116,7 @@
 
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $testimonial->photo) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $testimonial->photo) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">

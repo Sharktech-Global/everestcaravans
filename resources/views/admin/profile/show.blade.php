@@ -10,7 +10,7 @@
             <div class="mb-15">
                 <a class="img-link" href="javascript::void(0)">
                     <img class="img-avatar img-avatar96 img-avatar-thumb"
-                        src="{{ Avatar::create(Auth::user()->name)->toBase64() }}"  alt="Abreco">
+                        src="{{ Avatar::create(Auth::user()->name)->toBase64() }}"  alt="Everest">
                 </a>
             </div>
             <!-- END Avatar -->

@@ -62,15 +62,15 @@
                                                 <a href="{{ $slider->explore }}" target="_blank">{{ $slider->name }}</a>
                                             @endif
                                         </td>
-                                        <td class="font-w600"><img alt="Abreco" src="{{ asset('storage/' . $slider->image) }}"
+                                        <td class="font-w600"><img alt="Everest" src="{{ asset('storage/' . $slider->image) }}"
                                                 width="250px"></td>
                                         <td class="font-w600">{{ $slider->description }}</td>
-                                        <td class="font-w600"><img alt="Abreco" src="{{ asset('storage/' . $slider->logo) }}"
+                                        <td class="font-w600"><img alt="Everest" src="{{ asset('storage/' . $slider->logo) }}"
                                                 width="250px">
                                         </td>
-                                        {{-- <td class="font-w600"><img alt="Abreco" src="{{ asset('storage/' . $slider->thumb1) }}"
+                                        {{-- <td class="font-w600"><img alt="Everest" src="{{ asset('storage/' . $slider->thumb1) }}"
                                                 width="250px"></td>
-                                        <td class="font-w600"><img alt="Abreco" src="{{ asset('storage/' . $slider->thumb2) }}"
+                                        <td class="font-w600"><img alt="Everest" src="{{ asset('storage/' . $slider->thumb2) }}"
                                                 width="250px"></td> --}}
                                         <td>
                                             @if ($slider->status)

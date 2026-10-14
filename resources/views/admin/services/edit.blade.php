@@ -80,7 +80,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$Service->image) }}" alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$Service->image) }}" alt="Everest" width="250px">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -94,7 +94,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$Service->mobile_image) }}" alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$Service->mobile_image) }}" alt="Everest" width="250px">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -108,7 +108,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$Service->banner_image) }}" alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$Service->banner_image) }}" alt="Everest" width="250px">
                     </div>
                 </div>
 

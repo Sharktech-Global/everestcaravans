@@ -76,7 +76,7 @@
                                                 <div class="img">
                                                    <a href="{{ route('vehicles.show', @$vehicle_data->slug) }}">
                                                    <img src="{{ asset('storage/' . @$vehicle_data->image) }}"
-                                                        alt="abreco">
+                                                        alt="Everest">
                                                    </a>
                                                 </div>
                                                 <div class="inner-details">

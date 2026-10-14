@@ -44,17 +44,17 @@
                                                         @if ($slider->vehicle)
                                                             <a
                                                                 href="/"><img
-                                                                    alt="Abreco"
+                                                                    alt="Everest"
                                                                     src="{{ asset('storage/' . $slider->image) }}"
                                                                     class="mx-auto pt-100">
                                                             @else
                                                                 <a target="_blank" href="{{ $slider->explore }}"><img
-                                                                        alt="Abreco"
+                                                                        alt="Everest"
                                                                         src="{{ asset('storage/' . $slider->image) }}"
                                                                         class="mx-auto pt-100">
                                                                     @endif </a>
                                                     </div>
-                                                    <div class="order-2 col-md-6 col-xs-6 order-md-1"><img alt="Abreco"
+                                                    <div class="order-2 col-md-6 col-xs-6 order-md-1"><img alt="Everest"
                                                             src="{{ asset('storage/' . $slider->title) }}">
                                                         @if ($slider->description != '<p><br></p><h2><br></h2>')
                                                             <h5>{!! $slider->description !!}</h5>
@@ -110,12 +110,12 @@
                             <div class="slide {{ $vehicle->name }}">
                                 @if (isset($vehicle->explore))
                                     <a href="{{ $vehicle->explore }}">
-                                        <h6 class='mt-3 mb-0 text-center'>{{ $vehicle->name }}</h6><img alt="Abreco"
+                                        <h6 class='mt-3 mb-0 text-center'>{{ $vehicle->name }}</h6><img alt="Everest"
                                             src="{{ asset('storage/' . $vehicle->image) }}">
                                     </a>
                                 @else
                                     <a href="{{ route('vehicles.show', $vehicle->vehicle->slug) }}">
-                                        <h6 class='mt-3 mb-0 text-center'>{{ $vehicle->name }}</h6><img alt="Abreco"
+                                        <h6 class='mt-3 mb-0 text-center'>{{ $vehicle->name }}</h6><img alt="Everest"
                                             src="{{ asset('storage/' . $vehicle->image) }}">
                                     </a>
                                 @endif
@@ -300,7 +300,7 @@
                                             <a href="/"><img
                                                     width="618" height="304"
                                                     src="{{ asset('storage/' . $slider->image) }}"
-                                                    class="ls-l" alt="Abreco"
+                                                    class="ls-l" alt="Everest"
                                                     style="top:205px; left:374px;"
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:13.2% 24.3% -1000px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:13.2% 24.3% -1000px; parallax:true; parallaxlevel:50;">
                                             </a>
@@ -309,14 +309,14 @@
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-185.1% 134.1% -1400px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-185.1% 134.1% -1400px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:70;"><img
                                                         width="185" height="185"
                                                         src="{{ asset('storage/' . $slider->thumb1) }}"
-                                                        class=" ls-imagelightbox" alt="Abreco"
+                                                        class=" ls-imagelightbox" alt="Everest"
                                                         style="border-radius:0%; top:31px; left:798px; transform:skew(-10deg)!important;"></a>
                                                 @endif @if ($slider->thumb2)
                                                     <a style="" class="ls-l" href="#" target="_blank"
                                                         data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-149.2% 170.4% -1200px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-149.2% 170.4% -1200px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:60;"><img
                                                             width="125" height="125"
                                                             src="{{ asset('storage/' . $slider->thumb2) }}"
-                                                            class=" ls-imagelightbox" alt="Abreco"
+                                                            class=" ls-imagelightbox" alt="Everest"
                                                             style="border-radius:0%; top:66px; left:642px; transform:skew(-10deg)!important;">
                                                     </a>
                                                 @endif
@@ -352,7 +352,7 @@
                                             class="ls-l ls-vehicle-logo"
                                             data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:78.2% 416.7% -700px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:78.2% 416.7% -700px; parallax:true; parallaxlevel:35;">
                                             @if ($slider->logo)
-                                                <img src="{{ asset('storage/' . $slider->logo) }}" alt="Abreco">
+                                                <img src="{{ asset('storage/' . $slider->logo) }}" alt="Everest">
                                                 @endif
                                         </p>
                                         <p style="font-weight:400;width:310px; font-size:20px; line-height:28px; color:#505050; top:240px; left:69px; white-space:normal;"
@@ -370,7 +370,7 @@
                                             <a href="/"><img
                                                     width="618" height="304"
                                                     src="{{ asset('storage/' . $slider->image) }}"
-                                                    class="ls-l" alt="Abreco"
+                                                    class="ls-l" alt="Everest"
                                                     style="top:205px; left:374px;"
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:13.2% 24.3% -1000px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:13.2% 24.3% -1000px; parallax:true; parallaxlevel:50;"></a>
                                             @endif @if ($slider->thumb1)
@@ -378,14 +378,14 @@
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-185.1% 134.1% -1400px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-185.1% 134.1% -1400px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:70;"><img
                                                         width="185" height="185"
                                                         src="{{ asset('storage/' . $slider->thumb1) }}"
-                                                        class=" ls-imagelightbox" alt="Abreco"
+                                                        class=" ls-imagelightbox" alt="Everest"
                                                         style="border-radius:0%; top:31px; left:798px; transform:skew(-10deg)!important;"></a>
                                                 @endif @if ($slider->thumb2)
                                                     <a style="" class="ls-l" href="#" target="_blank"
                                                         data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-149.2% 170.4% -1200px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-149.2% 170.4% -1200px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:60;"><img
                                                             width="125" height="125"
                                                             src="{{ asset('storage/' . $slider->thumb2) }}"
-                                                            class=" ls-imagelightbox" alt="Abreco"
+                                                            class=" ls-imagelightbox" alt="Everest"
                                                             style="border-radius:0%; top:66px; left:642px; transform:skew(-10deg)!important;"></a>
                                                 @endif
                                     </div>
@@ -431,7 +431,7 @@
                                             class="ls-l ls-vehicle-logo"
                                             data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:78.2% 416.7% -700px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:78.2% 416.7% -700px; parallax:true; parallaxlevel:35;">
                                             @if ($slider->logo)
-                                                <img src="{{ asset('storage/' . $slider->logo) }}" alt="Abreco">
+                                                <img src="{{ asset('storage/' . $slider->logo) }}" alt="Everest">
                                                 @endif
                                         </p>
                                         <p style="font-weight:400;width:370px; font-size:20px; line-height:28px; color:#505050; top:240px; left:69px; white-space:normal;"
@@ -449,7 +449,7 @@
                                         @if ($slider->image)
                                             <a target="_blank" href="{{ $slider->explore }}"><img width="618"
                                                     height="304" src="{{ asset('storage/' . $slider->image) }}"
-                                                    class="ls-l" alt="Abreco"
+                                                    class="ls-l" alt="Everest"
                                                     style="top:205px; left:374px;"
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:13.2% 24.3% -1000px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:13.2% 24.3% -1000px; parallax:true; parallaxlevel:50;"></a>
                                             @endif @if ($slider->thumb1)
@@ -457,7 +457,7 @@
                                                     data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-185.1% 134.1% -1400px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-185.1% 134.1% -1400px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:70;">
                                                     <img width="185" height="185"
                                                         src="{{ asset('storage/' . $slider->thumb1) }}"
-                                                        class=" ls-imagelightbox" alt="Abreco"
+                                                        class=" ls-imagelightbox" alt="Everest"
                                                         style="border-radius:0%; top:31px; left:798px; transform:skew(-10deg)!important;">
                                                 </a>
                                                 @endif @if ($slider->thumb2)
@@ -465,7 +465,7 @@
                                                         data-ls="offsetxin:-150; durationin:2000; easingin:easeOutExpo; rotateyin:-30; transformoriginin:-149.2% 170.4% -1200px; offsetxout:100; durationout:800; easingout:easeInExpo; rotateyout:30; transformoriginout:-149.2% 170.4% -1200px; hover:false; hoveropacity:1; hoverscalex:0.95; hoverscaley:0.95; parallax:true; parallaxlevel:60;"><img
                                                             width="125" height="125"
                                                             src="{{ asset('storage/' . $slider->thumb2) }}"
-                                                            class=" ls-imagelightbox" alt="Abreco"
+                                                            class=" ls-imagelightbox" alt="Everest"
                                                             style="border-radius:0%; top:66px; left:642px; transform:skew(-10deg)!important;"></a>
                                                 @endif
                                     </div>

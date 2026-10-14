@@ -31,7 +31,7 @@
                 <h1 class="text-dark text-center title">Whoops!</h1>
                 <h4 class="text-dark text-center sub-title">Looks like you're lost</h4>
                 <div class="not-found-img text-center mt-5">
-                    <img class="avatar" src="{{ asset('assets/images/cars/404_page.webp') }}" alt="Abreco" usemap="#Map" style="margin: 0 auto;" />
+                    <img class="avatar" src="{{ asset('assets/images/cars/404_page.webp') }}" alt="Everest" usemap="#Map" style="margin: 0 auto;" />
                     {{-- <map name="Map">
                         <area shape="rect" coords="695,221,777,250" href="{{ route('home') }}"> <!-- back button -->
                         <area shape="rect" coords="705,260,786,292" href="{{ route('home') }}"> <!-- home button -->

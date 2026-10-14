@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="content">
-    <h2 class="content-heading">Abreco Motors</h2>
+    <h2 class="content-heading">Everest Caravans</h2>
     <nav class="breadcrumb bg-white push">
         <a class="breadcrumb-item" href="{{ route('admin.home') }}">Dashboard</a>
-        <a class="breadcrumb-item" href="{{ route('admin.about-motors.index') }}">Abreco Motors</a>
+        <a class="breadcrumb-item" href="{{ route('admin.about-motors.index') }}">Everest Caravans</a>
         <span class="breadcrumb-item active">Update</span>
     </nav>
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Update Abreco Motors</h3>
+            <h3 class="block-title">Update Everest Caravans</h3>
         </div>
         <div class="block-content">
             @if (session('error'))

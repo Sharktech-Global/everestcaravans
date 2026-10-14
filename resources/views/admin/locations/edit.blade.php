@@ -165,7 +165,7 @@
                             dimension (265 × 187 px)
 
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . @$location->banner_image) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . @$location->banner_image) }}"  alt="Everest" width="250px">
                             </div>
 
                             @error('banner_image')
@@ -180,7 +180,7 @@
                             dimension (265 × 187 px)
 
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . @$location->icon2) }}"  alt="Abreco" width="250px">
+                                <img src="{{ asset('storage/' . @$location->icon2) }}"  alt="Everest" width="250px">
                             </div>
                             @error('icon2')
                                 <div class="invalid-feedback">{{ $message }}</div>

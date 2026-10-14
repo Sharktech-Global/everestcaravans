@@ -15,7 +15,7 @@
                 <div class="col-md-6">
                     <div class="comparison py-5">
                         <div class="compare-car text-center" data-toggle="modal" data-target="#compare-models">
-                            <img src="@if(@$data->image) {{ asset('storage/'.@$data->image) }} @else {{ asset('assets/images/compare/car-placeholder-1.png') }} @endif"  alt="Abreco">
+                            <img src="@if(@$data->image) {{ asset('storage/'.@$data->image) }} @else {{ asset('assets/images/compare/car-placeholder-1.png') }} @endif"  alt="Everest">
                             <h4>@if(@$data->name) {{@$data->name}} @else Select Model 1 @endif</h4>
                             <p>@if(@$data->name) Edit Model @else Add a Model @endif</p>
 
@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <div class="comparison py-5">
                         <div class="compare-car text-center" data-toggle="modal" data-target="#compare-models1">
-                            <img src="@if(@$data1->image) {{ asset('storage/'.$data1->image) }} @else {{ asset('assets/images/compare/car-placeholder-1.png') }} @endif"  alt="Abreco">
+                            <img src="@if(@$data1->image) {{ asset('storage/'.$data1->image) }} @else {{ asset('assets/images/compare/car-placeholder-1.png') }} @endif"  alt="Everest">
                             <h4>@if(@$data1->name) {{$data1->name}} @else Select Model 2 @endif</h4>
                             <p>@if(@$data1->name) Edit Model @else Add a Model @endif</p>
                         </div>
@@ -114,7 +114,7 @@
                             </form>
                         </div>
                         <div class="col-6" >
-                            <img alt="Abreco" id="comparison-image" src="@if(@$data->image) {{ asset('storage/'.@$data->image) }} @else {{ asset('assets/images/compare/selected-car.png') }} @endif" >
+                            <img alt="Everest" id="comparison-image" src="@if(@$data->image) {{ asset('storage/'.@$data->image) }} @else {{ asset('assets/images/compare/selected-car.png') }} @endif" >
                             <h4 id='comparison-vehicle-name'>@if(@$data->name){{@$data->name}}@endif</h4>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                             </form>
                         </div>
                         <div class="col-6" >
-                            <img alt="Abreco" id="comparison-image1" src="@if(@$data1->image) {{ asset('storage/'.$data1->image) }} @else {{ asset('assets/images/compare/selected-car.png') }} @endif" >
+                            <img alt="Everest" id="comparison-image1" src="@if(@$data1->image) {{ asset('storage/'.$data1->image) }} @else {{ asset('assets/images/compare/selected-car.png') }} @endif" >
                             <h4 id='comparison-vehicle-name1'>@if(@$data1->name){{$data1->name}}@endif</h4>
                         </div>
                     </div>

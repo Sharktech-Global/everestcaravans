@@ -160,7 +160,7 @@
                                         </td>
                                         <td class="font-w600">
                                             @if ($data->photo)
-                                                <img alt="Abreco" class="pt-65" style="width: 50px;"
+                                                <img alt="Everest" class="pt-65" style="width: 50px;"
                                                     src="{{ asset('storage/' . $data->photo) }}">
                                             @endif
                                         </td>

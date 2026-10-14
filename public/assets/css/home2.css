@@ -164,7 +164,7 @@
    solid at the same stop. Content is pushed to the bottom row. */
 @media (max-width: 767.98px) {
     .vb-hero {
-        --vb-height: clamp(620px, 98vh, 820px);
+        --vb-height: clamp(720px, 100vh, 820px);
         --vb-side: 20px;
         --vb-photo-h: 46%;       /* height of the image row */
     }
@@ -191,15 +191,13 @@
 }
 /* ---------- Small phones ---------- */
 @media (max-width: 479.98px) {
-    .vb-hero { --vb-height: clamp(560px, 92vh, 700px); --vb-side: 18px; --vb-photo-h: 42%; }
+    .vb-hero { --vb-height: clamp(680px, 95vh, 700px); --vb-side: 18px; --vb-photo-h: 42%; }
     .vb-title { font-size: clamp(27px, 9vw, 36px); }
     /* Three lines of copy is plenty under a headline this size */
     .vb-desc {
         display: -webkit-box;
         -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+        -webkit-box-orient: vertical;    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2167,4 +2165,37 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .ev-ctaband .ev-ctaband__btn,
 .ev-experts .ev-experts__btn {
     border-radius: 4px;
+}
+
+/* ==========================================================
+   HERO ON MOBILE — let the slide grow to its content.
+
+   The slide was a fixed --vb-height with overflow:hidden and the copy
+   clamped to three lines, so longer descriptions were cut off. On
+   phones the height now follows the content instead: the overlay comes
+   out of absolute positioning so it can push the slide open, and the
+   clamp is lifted. Owl sizes its stage to the tallest slide, so the
+   carousel still lines up.
+   ========================================================== */
+@media (max-width: 767.98px) {
+    .vb-hero,
+    .vb-hero .vb-slide { height: auto; }
+    .vb-hero { overflow: visible; }
+    .vb-hero .vb-slider,
+    .vb-hero .owl-stage-outer,
+    .vb-hero .owl-stage,
+    .vb-hero .owl-item { height: auto; }
+
+    /* Absolute would contribute no height and collapse the slide */
+    .vb-hero .vb-overlay {
+        position: static;
+        padding-bottom: 44px;
+    }
+
+    /* Show the description in full */
+    .vb-hero .vb-desc {
+        display: block;
+        overflow: visible;
+        -webkit-line-clamp: none;
+    }
 }

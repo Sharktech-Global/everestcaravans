@@ -69,7 +69,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$addPage->image) }}" alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$addPage->image) }}" alt="Everest" width="250px">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -83,7 +83,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$addPage->banner_image) }}" alt="Abreco" width="250px">
+                        <img src="{{ asset('storage/'.$addPage->banner_image) }}" alt="Everest" width="250px">
                     </div>
                 </div>
 

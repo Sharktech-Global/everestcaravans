@@ -82,7 +82,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $slider->logo) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $slider->logo) }}"  alt="Everest" width="250px">
                         </div>
                         <div class="col-md-6 @error('image') is-invalid @enderror">
                             <div class="form-material">
@@ -94,7 +94,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $slider->image) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $slider->image) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -108,7 +108,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $slider->thumb1) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $slider->thumb1) }}"  alt="Everest" width="250px">
                         </div>
                         <div class="col-md-6 @error('thumb2') is-invalid @enderror">
                             <div class="form-material">
@@ -120,7 +120,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $slider->thumb2) }}"  alt="Abreco" width="250px">
+                            <img src="{{ asset('storage/' . $slider->thumb2) }}"  alt="Everest" width="250px">
                         </div>
                     </div>
 

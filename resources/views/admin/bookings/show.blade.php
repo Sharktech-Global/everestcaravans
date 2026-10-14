@@ -57,7 +57,7 @@
                             <th>Proof</th>
                             <td> @foreach (json_decode($enquiry->vehicle_details) as $key => $value)
                                   @if($key == 'proof')<a href="{{asset('storage/'.$value)}}" target="_blank"> 
-                                <img alt="abreco" src="{{asset('storage/'.$value)}}" width='100px' height='100px'> </a> 
+                                <img alt="Everest" src="{{asset('storage/'.$value)}}" width='100px' height='100px'> </a> 
                                  @endif <br>
                                 @endforeach
                             </td>

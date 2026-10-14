@@ -76,7 +76,7 @@
                                     <input type="file" id="banner_image" name="banner_image">
                                     <label for="banner_image">Banner Image</label>
                                     @if(@$page->banner_image)
-                                    <img alt="Abreco" src="{{ asset('storage/'.@$page->banner_image) }}"
+                                    <img alt="Everest" src="{{ asset('storage/'.@$page->banner_image) }}"
                                         style="width: 200px;margin: 15px 0;">
                                     @endif
                                 </div>

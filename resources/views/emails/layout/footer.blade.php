@@ -36,7 +36,7 @@
                                                                         style="font-size:0;height:35px;vertical-align:middle;width:35px;">
                                                                         <a href="https://www.facebook.com/PopularMarutiOfficial/"
                                                                             target="_blank">
-                                                                            <img alt="Abreco" height="35"
+                                                                            <img alt="Everest" height="35"
                                                                                 src="{{ asset('assets/images/logo/facebook.png') }}"
                                                                                 style="border-radius:3px;display:block;"
                                                                                 width="35">
@@ -46,7 +46,7 @@
                                                                         style="font-size:0;height:35px;vertical-align:middle;width:35px;">
                                                                         <a  href="https://twitter.com/PopularMaruti"
                                                                             target="_blank">
-                                                                            <img alt="Abreco" height="35"
+                                                                            <img alt="Everest" height="35"
                                                                                 src="{{ asset('assets/images/logo/twitter.png') }}"
                                                                                 style="border-radius:3px;display:block;"
                                                                                 width="35">
@@ -56,7 +56,7 @@
                                                                         style="font-size:0;height:35px;vertical-align:middle;width:35px;">
                                                                         <a   href="https://www.linkedin.com/company/popular-vehicles-&-services-pvt-ltd"
                                                                             target="_blank">
-                                                                            <img alt="Abreco" height="35"
+                                                                            <img alt="Everest" height="35"
                                                                                 src="{{ asset('assets/images/logo/linkedin.png') }}"
                                                                                 style="border-radius:3px;display:block;"
                                                                                 width="35">

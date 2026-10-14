@@ -3,21 +3,13 @@
   
 @endsection
 @section('content')
-  <!--====== About Breadcrumb Part ======-->
-  <section class="abreco-inner-banner blogs-bg-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <div class="baner-bg-head2">
-                            <img src="assets/images/shapes/banner-head.png" alt="">
-                        </div>
-                        <h1>The Evolution Of Tata Motors</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--====== Blog Breadcrumb Part ======-->
+    @include('partials.page-hero', [
+        'title'       => 'Blogs',
+        'subtitle'    => 'BUILT FOR YOUR LIFESTYLE!',
+        'image'       => 'assets/abreco/images/newonce/blog-banner.jpg',
+        'breadcrumbs' => [['label' => 'Blogs']],
+    ])
 
     <!--====== abreco BLOG PART START ======--> 
     @if($blog)

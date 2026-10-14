@@ -88,7 +88,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/'.$vehicleSectionImage->image) }}"  alt="Abreco"
+                        <img src="{{ asset('storage/'.$vehicleSectionImage->image) }}"  alt="Everest"
                         width="250px">
                     </div>
                 </div>

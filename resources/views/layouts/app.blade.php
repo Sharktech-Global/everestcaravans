@@ -43,7 +43,7 @@
 <body @if (Request::is( '/')) class="homepage" @else class="innerpage" @endif> 
     {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WZ23Q7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
     <div id="warning-message">
-        <p> <img src="{{asset('assets/images/landscape.png')}}" alt="Abreco" width="70"><br>Landscape mode is disabled<br>Please rotate your device </p>
+        <p> <img src="{{asset('assets/images/landscape.png')}}" alt="Everest" width="70"><br>Landscape mode is disabled<br>Please rotate your device </p>
     </div>
     <div class="main-div">
         <div class="offcanvas-menu-overlay"></div>
@@ -170,7 +170,7 @@
                                         <nav id="navigation1" class="navigation">
                                             <div class="nav-menus-wrapper">
                                                 <ul id="nav-menu" class="nav-menu align-to-right" style="padding-left: 30px !important;">
-                                                    <li class="{{request()->is('/') ? 'active' : ''}}"><a href="{{route('home')}}"><img src="{{asset('assets/images/logo/home.png')}}" alt="Abreco"></a></li>
+                                                    <li class="{{request()->is('/') ? 'active' : ''}}"><a href="{{route('home')}}"><img src="{{asset('assets/images/logo/home.png')}}" alt="Everest"></a></li>
                                                     <li class=""><a href="#">Corporate</a>
                                                         <ul class="nav-dropdown">
                                                             <li class="{{request()->is('about') ? 'active' : ''}}"> <a href="{{route('about')}}">About</a> </li>                                                           
@@ -282,7 +282,7 @@
                             <div class="footer__widget quicklinks firstchildd">
                                 <ul class="float-left w-100">
                                     <li class="float-left w-100">
-                                        <a target="_blank" href="#"><img alt="Abreco" src="{{asset('assets/images/logo/kuttukkaran-logo.webp')}}"></a> 
+                                        <a target="_blank" href="#"><img alt="Everest" src="{{asset('assets/images/logo/kuttukkaran-logo.webp')}}"></a> 
                                     </li>
                                 </ul>
                                 <h3 class="primaryColor w-100">DOWNLOAD THE APP NOW</h3>
