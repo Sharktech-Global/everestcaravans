@@ -197,7 +197,7 @@
                                     <div class="item-content">
                                         <div class="data">
                                             <h4 class="text-capitalize">{{ @$section->title }}</h4>
-                                            <p class="mb-5 inner-text">{{ @$section->description }}</p>
+                                            <div class="mb-5 inner-text">{!! $section->description !!}</div>
                                             @if(@$vehicle->brochure)
                                             <div class="ab-button-wrapper"><a  href="{{ @$vehicle->brochure }}"
                                                     class="ab-button" target="_blank">Download Brochure</a></div>

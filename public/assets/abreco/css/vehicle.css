@@ -232,11 +232,16 @@ p {
   margin-bottom: 20px;
   color: var(--black);
 }
-.inner-text{
+.inner-text, .inner-text p{
   color: var(--black);
   font-size: 20px;
     line-height: 35px;
 }
+
+.inner-text p {
+  margin-bottom: 20px;
+}
+
 .vehicle-data .container .details-tab-wrapper .item.active .item-content .data .buttonn {
   border: 1px solid var(--white);
   font-weight: 500;
