@@ -1728,7 +1728,7 @@
         bottom: 0;
     }
     .abreco-sticky.sticky .abreco-logo-box a img {
-        max-width: 80px;
+        max-width: 120px;
     }
     .intro-slide[data-position="1"], .intro-slide2[data-position="1"]{
         transform: rotateY(0deg) translate(-80px,-117px);
@@ -1838,7 +1838,7 @@
     }
     .abreco-sticky.sticky .toggle-btn {
         top: 65%;
-        transform: translateY(-112%);
+        transform: translateY(-60%);
         font-size: 22px;
         right: 30px;
     }
@@ -3409,7 +3409,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     }
     .abreco-header-area .abreco-header-main-menu ul > li > a {
         font-size: 15px;
-        padding: 20px 10px;
+        padding: 20px 17px;
         white-space: nowrap;       /* "Book a Factory Visit" must not wrap */
     }
 }
@@ -3417,5 +3417,38 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     .abreco-header-area .abreco-header-main-menu ul > li > a {
         font-size: 16px;
         padding: 20px 25px;
+    }
+}
+
+/* ==========================================================
+   Vehicle detail — tab strip scrolls on tablet too.
+
+   Below 576px the strip is already a slider: the row keeps its natural
+   item widths and the container scrolls sideways. Between 576 and 991
+   it fell back to the desktop treatment, where `flex: 1 1 0` squeezes
+   every tab into an equal share of 95% of the width, so the labels
+   crush together once there are more than a few.
+
+   These mirror the rules in the max-width:575px block above, raised to
+   991.98px so the two ranges behave the same. !important matches the
+   earlier declarations they have to beat.
+   ========================================================== */
+@media (max-width: 991.98px) {
+    .vehicle-data .container .details-tab-wrapper .tabbed-content .tabs {
+        display: block !important;
+        position: relative !important;
+        overflow-x: auto !important;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul {
+        gap: 8px;
+        max-width: 100% !important;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .vehicle-data .container .details-tab-wrapper .tabs ul li {
+        width: max-content;
+        min-width: 0;
+        max-width: none;
+        flex: 0 0 auto !important;
     }
 }

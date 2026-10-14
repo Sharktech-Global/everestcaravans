@@ -13,7 +13,7 @@
         ],
         'title'    => 'Top 5 Vans in Australia',                        // main heading line
         'subtitle' => 'Our Journey for the Past 4 Years',               // top line; built from the years when omitted
-        'image'    => 'assets/abreco/images/newonce/home-ban21.jpg',    // background photo
+        'image'    => 'storage/upload/slider/banner_image/ev-journey.jpg',  // background photo
         'sort'     => true,                                             // newest first, ranked awards before trophies
     ])
 
@@ -64,8 +64,14 @@
     $evTitle = 'Top 5 Vans in Australia';
     $evSub   = 'Everest&rsquo;s Journey for the Past ' . $evYears . ' Years';
 
-    // Background photo (sits under a dark-blue gradient)
-    $evJourneyBg = asset($image ?? 'assets/abreco/images/newonce/home-ban21.jpg');
+    // Background photo (sits under a dark-blue gradient). Falls back to the
+    // old banner if the uploaded file is ever removed, so the section can
+    // never end up with a broken url() in its inline style.
+    $evBgPath = $image ?? 'storage/upload/slider/banner_image/ev-journey.jpg';
+    if (!is_file(public_path($evBgPath))) {
+        $evBgPath = 'assets/abreco/images/newonce/home-ban21.jpg';
+    }
+    $evJourneyBg = asset(implode('/', array_map('rawurlencode', explode('/', $evBgPath))));
 
     // Unique heading id, so the section can appear more than once on a page
     $evId = 'evJourneyTitle' . \Illuminate\Support\Str::random(6);

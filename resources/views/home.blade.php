@@ -42,11 +42,22 @@
                             @endif
                         </div>
 
-                        @if ($data->description)
-                            <div class="vb-desc">
-                                {!! strip_tags($data->description, '<p><br><strong><em><b><i>') !!}
-                            </div>
-                        @endif
+                        {{-- Badge + copy share the right-hand column, so the
+                             wrap stays a two-item grid on desktop --}}
+                        <div class="vb-aside">
+                            @php $vbWarranty = 'assets/abreco/images/newonce/warranty.svg'; @endphp
+                            @if (file_exists(public_path($vbWarranty)))
+                                <img class="vb-warranty" src="{{ asset($vbWarranty) }}"
+                                     alt="10 year structural warranty"
+                                     width="205" height="57" loading="lazy" decoding="async">
+                            @endif
+
+                            @if ($data->description)
+                                <div class="vb-desc">
+                                    {!! strip_tags($data->description, '<p><br><strong><em><b><i>') !!}
+                                </div>
+                            @endif
+                        </div>
 
                     </div>
                 </div>

@@ -1032,7 +1032,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 }
 .ws-about .ws-about__text {
     margin: 0 0 40px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--ws-text);
 }
@@ -2198,4 +2198,33 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
         overflow: visible;
         -webkit-line-clamp: none;
     }
+}
+
+/* ==========================================================
+   HERO WARRANTY BADGE — sits above the description.
+
+   .vb-aside holds the badge and the copy together so .vb-wrap stays a
+   two-item grid on desktop; a third child would have dropped onto a new
+   row. The artwork is gold and white on transparency, so it needs no
+   plate over the photo.
+   ========================================================== */
+.vb-aside { display: block; }
+
+/* Three classes deep on purpose: Owl ships
+   `.owl-carousel .owl-item img { width: 100% }`, which outranks a
+   single-class rule and stretched the badge to the column width. */
+.vb-hero .vb-aside .vb-warranty {
+    display: block;
+    aspect-ratio: 205 / 57;      /* the file has a viewBox but no width/height */
+    width: auto;
+    max-width: 100%;
+    height: 54px;
+    margin: 0 0 18px;
+}
+
+@media (max-width: 767.98px) {
+    .vb-hero .vb-aside .vb-warranty { height: 44px; margin-bottom: 14px; }
+}
+@media (max-width: 479.98px) {
+    .vb-hero .vb-aside .vb-warranty { height: 38px; }
 }

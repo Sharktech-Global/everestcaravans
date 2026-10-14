@@ -1256,8 +1256,32 @@ p {
 
 #final-enquiry {
   background-color: #283895;
-  padding: 100px;
+  padding: 70px;
 }
+
+@media (max-width: 767px) {
+
+  #final-enquiry {
+  background-color: #283895;
+  padding: 20px;
+}
+    #final-enquiry h4 {
+        font-size: 28px !important;
+        font-weight: 600;
+    }
+#final-enquiry form {
+    max-width: 100% !important;
+    margin: 0 auto;
+}
+#final-enquiry {
+    background-color: #283895;
+    padding: 50px 10px;
+}
+#final-enquiry .row {
+    flex-direction: column-reverse;
+}
+}
+
 #final-enquiry h4 {
   font-size: 40px;
   font-weight: 600;
