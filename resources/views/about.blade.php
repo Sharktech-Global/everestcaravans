@@ -124,13 +124,11 @@
 
                 <div class="ev-story__copy">
                     <h2 class="ev-story__title" id="evStoryTitle">
-                        <span>{{ $es['accent'] }}</span> {{ $es['title'] }}
+                        <span>{{ @$group->title }}</span> {{ @$group->sub_title }}
                     </h2>
                     <span class="ev-story__rule" aria-hidden="true"><i></i><i></i></span>
 
-                    @foreach ($es['paragraphs'] as $p)
-                        <p class="ev-story__text">{{ $p }}</p>
-                    @endforeach
+                    <div class="ev-story__text">{!! @$group->content !!}</div>
 
                     <a class="ev-story__btn" href="{{ $es['button']['url'] }}">
                         {{ $es['button']['label'] }}
@@ -141,24 +139,20 @@
 
             {{-- ================= BOTTOM: mission / vision / values ================= --}}
             <div class="ev-story__cols">
-                @foreach ($esColumns as $c)
-                    <article class="ev-story__col">
-                        <div class="ev-story__col-head">
-                            <span class="ev-story__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22">{!! $c['icon'] !!}</svg>
-                            </span>
-                            <span class="ev-story__num" aria-hidden="true">{{ sprintf('%02d', $loop->iteration) }}</span>
-                        </div>
-                        <h3>{{ $c['title'] }}</h3>
-                        <p>{{ $c['text'] }}</p>
-
-                        <a class="ev-story__go" href="{{ url('/contact') }}"
-                           aria-label="Contact us about {{ $c['title'] }}">
-                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
-                        </a>
-                    </article>
-                @endforeach
-
+                @if($pages->count() > 0)
+                    @foreach ($pages as $page)
+                        <article class="ev-story__col">
+                            <div class="ev-story__col-head">
+                                <span class="ev-story__icon" aria-hidden="true">
+                                    <img src="{{ asset('storage/'.$page->banner_image) }}" alt="">
+                                </span>
+                                <span class="ev-story__num" aria-hidden="true">{{ sprintf('%02d', $loop->iteration) }}</span>
+                            </div>
+                            <h3>{{@$page->title}}</h3>
+                            <p>{!!@$page->content!!}</p>
+                        </article>
+                    @endforeach
+                @endif
                 {{-- Third column is the photo: no head, no heading, edge to edge --}}
                 @if ($esImg($esColImage))
                     <article class="ev-story__col ev-story__col--media">
@@ -444,14 +438,14 @@
 
             {{-- RIGHT: accordion (native <details>, only one open at a time) --}}
             <div class="ev-faq__list">
-                @foreach ($efqItems as $item)
+                @foreach ($faqs as $data)
                     <details class="ev-faq__item" name="ev-faq" @if ($loop->first) open @endif>
                         <summary>
                             <span class="ev-faq__num">{{ sprintf('%02d', $loop->iteration) }}</span>
-                            <span class="ev-faq__q">{{ $item['q'] }}</span>
+                            <span class="ev-faq__q">{{ @$data->title }}</span>
                             <span class="ev-faq__icon" aria-hidden="true"></span>
                         </summary>
-                        <div class="ev-faq__a"><p>{{ $item['a'] }}</p></div>
+                        <div class="ev-faq__a"><p>{!! @$data->description !!}</p></div>
                     </details>
                 @endforeach
             </div>

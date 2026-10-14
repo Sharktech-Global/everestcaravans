@@ -321,21 +321,24 @@
                                     class="sidebar-mini-hide">About Us</span></a>
                             <ul>
                                 <li>
+                                    <a href="{{ route('admin.about-group.index') }}">Details</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('admin.about-page.index') }}">Mission And
                                         Vision</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.about-group.index') }}">Who we are</a>
+                                    <a href="{{ route('admin.faq.index') }}">FAQs</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a href="{{ route('admin.about-motors.index') }}">Abreco
                                         Motors</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a
                                         href="{{ route('admin.about-group-leaders.index') }}">Leadership</a>
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <a href="{{ route('admin.about-location.index') }}">About
                                         Location</a>
                                 </li> -->
@@ -382,11 +385,11 @@
                                     class="fas fa-lock"></i>FAQs</a>
                         </li> -->
                         
-                        <li>
+                        <!-- <li>
                             <a class="{{ request()->is('admin/enquiry-page*') ? 'active' : '' }}"
                                 href="{{ route('admin.faq.index') }}"><i
                             class="fas fa-lock"></i>FAQs</a>
-                        </li>
+                        </li> -->
                         <!-- <li>
                             <a class="nav-submenu {{ request()->is('admin/contact-page') ? 'active' : '' }}
                                 {{ request()->is('admin/home-settings') ? 'active' : '' }}
@@ -780,7 +783,7 @@
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Vehicle Category</span></a>
                     </li> -->
                     <li>
-                        <a class="{{ request()->is('admin/vehicle-types*') ? 'active' : '' }}"
+                        <a class="{{ request()->is('admin/vehicle-application*') ? 'active' : '' }}"
                             href="{{ route('admin.vehicle-application.index') }}"><i
                                 class="fa fa-tags"></i><span class="sidebar-mini-hide">Vehicle Application</span></a>
                     </li>

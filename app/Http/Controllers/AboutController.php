@@ -10,6 +10,7 @@ use App\AboutLocation;
 use App\Blog;
 use App\Seo;
 use App\CounterList;
+use App\Faq;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class AboutController extends Controller
         $counters = CounterList::get();
         $blogs = Blog::where('status',1)->get();
         $locations= AboutLocation::where('status',1)->get();
+        $faqs = Faq::where('status', 1)->get();
         // dd($counters);
         $page= Seo::where('route_name','about-us')->first();
         $this->seo()->setTitle(@$page->seo_title);
@@ -38,7 +40,7 @@ class AboutController extends Controller
         $this->seo()->twitter()->setTitle(@$page->seo_title);
         $this->seo()->twitter()->setDescription(@$page->seo_description);
         // dd($groups);
-        return view('about',['motors' => $motors,'pages' => $pages,'leaders' => $leaders,'group' => $group,'counters' => $counters,'ceo' => $ceo,'blogs' => $blogs,'locations' => $locations]);
+        return view('about',['motors' => $motors,'pages' => $pages,'leaders' => $leaders,'group' => $group,'counters' => $counters,'ceo' => $ceo,'blogs' => $blogs,'locations' => $locations,'faqs' => $faqs]);
     }
 
     public function founder()

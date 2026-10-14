@@ -193,7 +193,7 @@
     background: var(--es-gold);
 }
 
-.ev-story .ev-story__text {
+.ev-story .ev-story__text, .ev-story .ev-story__text p {
     max-width: 58ch;
     margin-bottom: 15px;
     font-size: 15.5px;
