@@ -291,7 +291,12 @@
 
 .ev-contact-form {
     background: #fff;
-    padding: 40px 0;
+    padding: 0;
+    border-radius: 10px;
+}
+.ev-contact-form form {
+    background: #efeff2;
+    padding: 40px;
     border-radius: 10px;
 }
 
@@ -475,9 +480,9 @@
    read as different designs. Both are cards now, on one radius and one
    border colour, with the photo matching.
    ========================================================== */
-.ev-contact-forms .ev-contact-form {
+/* .ev-contact-forms .ev-contact-form {
     padding: 18px;
-}
+} */
 .ev-contact-forms .ev-contact-forms__media {
     box-shadow: 0 18px 44px rgba(14, 19, 48, .07);
 }
@@ -493,6 +498,12 @@
     overflow: hidden;
 }
 
+
+@media (max-width: 600px) {
+    .ev-contact-form form {
+        padding: 20px;
+    }
+}
 @media (max-width: 575.98px) {
     .ev-contact-forms .ev-contact-form,
     .ev-contact .ev-contact__info { padding: 26px 20px; }
