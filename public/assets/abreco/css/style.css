@@ -5112,6 +5112,7 @@ p {
     font-weight: 500;
     color: #000;
     line-height: 34px;
+    text-transform: uppercase;
 }
 
 .fea-inner .inner-details p{

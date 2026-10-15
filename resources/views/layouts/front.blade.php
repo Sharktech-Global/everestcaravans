@@ -130,6 +130,7 @@
     text-decoration: none;
     transition: .25s;
     backdrop-filter: blur(10px);
+    text-transform: uppercase;
 }
 
 .abreco-header-main-menu .ev-range-megamenu-item:hover {
