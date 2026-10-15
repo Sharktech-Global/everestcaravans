@@ -281,19 +281,19 @@
                                 </li>
                             </ul>
 
+                            {{-- Closing call to action, last item in the slide-out menu --}}
+                            <!-- <a class="ev-sidecta mt-0" href="{{ route('contact') }}">
+                                Contact Us
+                                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                            </a> -->
+
                             {{-- Was nested inside the <ul>, which is invalid markup --}}
                             <div class="service-bread-btn toll-free-btn-banner toll-free-btn-banner-sidemenu">
                                 <a href="tel:(03) 9357 9440">
-                                    <span class="toll-head">Roadside Assistance</span>
+                                    <span class="toll-head">Call Us</span>
                                     <span class="toll-number">(03) 9357 9440</span>
                                 </a>
                             </div>
-
-                            {{-- Closing call to action, last item in the slide-out menu --}}
-                            <a class="ev-sidecta" href="{{ route('contact') }}">
-                                Submit Now
-                                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
-                            </a>
                         </div>
                     </div>
                 </div>

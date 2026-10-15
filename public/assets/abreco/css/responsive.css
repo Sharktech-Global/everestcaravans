@@ -261,12 +261,12 @@
         /* backdrop-filter: blur(2px); */
     }
     .abreco-logo-box a img {
-        max-width: 240px;
+        max-width: 150px;
         margin-top: 24px;
         top: 34px;
     }
     .abreco-header-area{
-        padding-bottom: 10px;
+        padding-bottom: 0px;
     }
     .toggle-btn{
         right: 30px;
@@ -413,6 +413,9 @@
     .abreco-header-main-menu ul > li .big-device-none {
         display: block;
     }
+    .container, .container-md, .container-sm {
+        max-width: 100%;
+    }
     .shop-small-left-slider-active {
         max-width: 310px;
         transform: rotate(0deg);
@@ -461,7 +464,7 @@
 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-.container {width:450px}
+.container {width:100%; max-width: 100%;}
 .shop-small-left-slider-active {
 	max-width: 310px;
 	transform: rotate(0deg);
@@ -475,6 +478,13 @@
 @media(min-width: 991px){
     .abreco-sticky.sticky .offset-lg-2 {
         margin-left: 4.666667%;
+    }
+        .container, .container-lg, .container-md, .container-sm {
+        max-width: 100%;
+    }
+    .abreco-logo-box a img {
+        max-width: 180px;
+        margin-top: 0;
     }
 }
 
@@ -1688,7 +1698,8 @@
         margin-bottom: 6px;
     }
     .toggle-btn{
-        top: 65%;
+        top: 5px;
+        right: 10px;
         font-size: 25px;
         margin-top: -6px;
     }
@@ -3228,9 +3239,10 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
    by exactly that — one variable keeps the two in step.
    ========================================================== */
 :root { --ev-hdr-h: 88px; }
-@media (max-width: 575.98px) { :root { --ev-hdr-h: 72px; } }
+@media (max-width: 575.98px) { :root { --ev-hdr-h: 70px; } }
 
 @media (max-width: 991.98px) {
+    :root { --ev-hdr-h: 70px; }
     .abreco-header-area .header-nav-box {
         display: flex;
         align-items: center;
