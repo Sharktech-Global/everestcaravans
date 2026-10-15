@@ -26,11 +26,19 @@
             'eyebrow' => 'From the blog',
             'title'   => 'Our latest blogs',
             'lead'    => 'We have jotted together our stories and knowledge to keep you updated. Give it a quick drift.',
+
+            // Mark in the top-right corner of every card photo. null hides it.
+            'mark'    => @$settings->logo ? 'storage/' . $settings->logo : null,
         ];
         // =====================================================
 
         // Newest first
         $blPosts = collect($blogs ?? [])->sortByDesc(fn ($b) => $b->date_display ?: $b->created_at)->values();
+
+        // Uploaded logo names carry spaces and brackets, so encode each segment
+        $blMark = $bl['mark'] && is_file(public_path($bl['mark']))
+            ? asset(implode('/', array_map('rawurlencode', explode('/', $bl['mark']))))
+            : null;
     @endphp
 
     <section class="ev-blog" aria-labelledby="evBlogTitle">
@@ -74,6 +82,14 @@
                             @else
                                 {{-- No photo yet: the van mark keeps the card from looking broken --}}
                                 <svg viewBox="0 0 24 24"><path d="M3 16V7a1 1 0 0 1 1-1h12l4 5v5"/><path d="M3 16h18"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/></svg>
+                            @endif
+
+                            @if ($blMark)
+                                {{-- Decorative, and click-through so it cannot
+                                     block the card's stretched link --}}
+                                <span class="ev-blog__mark" aria-hidden="true">
+                                    <img src="{{ $blMark }}" alt="" loading="lazy" decoding="async">
+                                </span>
                             @endif
 
                             @if ($blDate)

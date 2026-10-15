@@ -340,3 +340,36 @@
     .ev-blog .ev-blog__card:hover { transform: none; }
     .ev-blog .ev-blog__card:hover .ev-blog__thumb img { transform: none; }
 }
+
+/* ==========================================================
+   CARD MARK — brand badge in the photo's top-right corner.
+
+   A white disc so a dark logo reads over any photo. It is decorative,
+   and pointer-events:none lets taps fall through to the card's
+   stretched link underneath rather than dying on the badge.
+   ========================================================== */
+.ev-blog .ev-blog__mark {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    padding: 9px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(14, 19, 48, .22);
+    pointer-events: none;
+}
+.ev-blog .ev-blog__mark img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 575.98px) {
+    .ev-blog .ev-blog__mark { top: 12px; right: 12px; width: 48px; height: 48px; padding: 8px; }
+}
