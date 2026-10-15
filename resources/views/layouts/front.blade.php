@@ -67,7 +67,7 @@
     left: 0;
     width: 100%;
     min-width: 600px;
-    background: #111b32;
+    background: #fff;
     border-top: 3px solid #3448a4;
     box-shadow: 0 20px 40px rgba(0,0,0,.25);
     border-radius: 0 0 8px 8px;
@@ -95,14 +95,14 @@
 }
 
 .ev-range-megamenu-heading h3 {
-    color: #fff;
+    color: #283895;
     font-size: 22px;
     font-weight: 700;
     margin: 0 0 8px;
 }
 
 .ev-range-megamenu-heading p {
-    color: #b9c4d6;
+    color: #7a7a7a;
     font-size: 14px;
     margin-bottom: 25px;
 }
@@ -111,8 +111,8 @@
 
 .ev-range-megamenu-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px 25px;
 }
 
 .abreco-header-main-menu .ev-range-megamenu-item {
@@ -120,21 +120,22 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    background: #202e49;
-    border: 1px solid #35435c;
-    border-radius: 6px;
-    padding: 16px;
-    color: #fff;
+    background: #202e4900;
+    border-bottom: 1px solid #35435c;
+    border-radius: 0;
+    padding: 10px 6px;
+    color: #000000;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     transition: .25s;
+    backdrop-filter: blur(10px);
 }
 
 .abreco-header-main-menu .ev-range-megamenu-item:hover {
-    background: #30469a;
-    border-color: #6478d9;
-    color: #fff;
+    background: transparent;
+    border-color: #283895;
+    color: #283895;
 }
 
 .ev-range-megamenu-item i {
@@ -149,7 +150,7 @@
 }
 
 .abreco-header-main-menu .ev-range-megamenu-footer a {
-    color: #fff;
+    color: #283895;
     font-size: 14px;
     font-weight: 600;
 }
