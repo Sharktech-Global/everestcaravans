@@ -634,7 +634,7 @@
                                         </div>
                                         @if ($testimonial->message)
                                             <div class="everest-review-text">
-                                                {{ $testimonial->message }}
+                                                {!! $testimonial->message !!}
                                             </div>
                                         @endif
                                         @if ($testimonial->url)

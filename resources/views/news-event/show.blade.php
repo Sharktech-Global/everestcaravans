@@ -1,5 +1,10 @@
 @extends('layouts.front')
 @section('css_after')
+<style>
+    .evenet-details p, .evenet-details img, .evenet-details h2 {
+        margin-bottom: 15px;
+    }
+</style>
 @endsection
 @section('content')
     @include('partials.page-hero', [
@@ -69,7 +74,7 @@
                                 <img class="w-100" src="{{ asset('storage/' . $news->image) }}" alt="">
                             </div>
 
-                            <p class="pt-60">{{ @$news->content }}</p>
+                            <div class="pt-40 evenet-details">{!! @$news->content !!}</div>
                         </div>
                     </div>
                 </div>
