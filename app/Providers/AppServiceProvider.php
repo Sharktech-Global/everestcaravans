@@ -45,9 +45,10 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
 
-            $vehicleTypes = VehicleType::where('status', 1)
-                ->orderBy('name', 'ASC')
-                ->get(['id', 'name', 'slug']);
+             $vehicleTypes = VehicleType::where('status', 1)
+            ->orderBy('order', 'ASC')
+            ->orderBy('name', 'ASC')
+            ->get(['id', 'name', 'slug', 'order']);
 
             // Existing footer categories
             $view->with('footerVehicleTypes', $vehicleTypes);
