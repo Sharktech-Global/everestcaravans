@@ -132,7 +132,7 @@
             <div class="form-row">
                 <div class="form-group col-md-12 text-center">
                     <button type="submit" class="ev-contact-submit"
-                            id="submitButton"> Submit </button>
+                            id="submitButton">Submit Now<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button>
                 </div>
             </div>
         </form>

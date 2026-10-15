@@ -1309,7 +1309,12 @@ p {
 #final-enquiry textarea.form-control {
   height: 150px;
 }
-#final-enquiry button, #booking button {
+/* Was a plain black block for every button in these two sections. The
+   enquiry submit now carries .ev-contact-submit--light from
+   public/css/buttons.css, so this is narrowed to buttons that have not
+   opted into that — otherwise the ID selector here would outrank it. */
+#final-enquiry button:not([class*="ev-contact-submit"]),
+#booking button:not([class*="ev-contact-submit"]) {
   background-color: #000;
   color: #fff;
   font-size: 20px;

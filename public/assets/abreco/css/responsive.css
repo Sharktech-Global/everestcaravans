@@ -3343,6 +3343,9 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     box-shadow: 0 10px 22px -12px rgba(40, 56, 149, .75);
     transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
+li.ev-navcta a {
+    padding: 15px 10px 15px 15px !important;
+}
 .abreco-header-main-menu ul > li.ev-navcta > a svg,
 .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a svg {
     box-sizing: content-box;

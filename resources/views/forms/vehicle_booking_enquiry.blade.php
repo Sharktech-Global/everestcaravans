@@ -100,7 +100,7 @@
                                                     {{ session('booking_enquiry_success') }}
                                                 </div>
                                             @endif
-                                            <button type="submit">Submit Enquiry</button>
+                                            <button type="submit" class="ev-contact-submit ev-contact-submit--light">Submit Enquiry <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button>
                                         </div>
                                     </div>
                                 </form>

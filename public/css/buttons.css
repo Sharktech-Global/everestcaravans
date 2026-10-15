@@ -211,3 +211,110 @@
     .ev-story .ev-story__btn,
     .ev-story .ev-story__btn svg { transition: none; transform: none; }
 }
+
+/* ==========================================================
+   FORM SUBMIT — the same pill, on <button type="submit">.
+
+   Used by forms/contactus_form and forms/factory_visit_form, so it
+   appears on Contact, Factory Visit, FAQs, Services and Exchange. Only
+   the appearance changes: the element, its type, id and name stay as
+   they are, so nothing about posting the form is affected.
+
+   contact.css sets this to a 75% wide rectangle; this file loads after
+   it, so these win on source order without !important.
+   ========================================================== */
+button.ev-contact-submit,
+.ev-contact-submit {
+    --eb-ink: #0E1330;
+    --eb-brand: #283895;
+    --eb-gold: #D9AE55;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: auto;                        /* was 75% */
+    height: 56px;
+    padding: 0 8px 0 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--eb-brand);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 12px 26px -14px rgba(40, 56, 149, .75);
+    transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.ev-contact-submit svg {
+    box-sizing: content-box;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    padding: 11px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: background-color .25s ease, transform .25s cubic-bezier(.22, .7, .2, 1);
+}
+.ev-contact-submit:hover {
+    background: var(--eb-ink);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px -16px rgba(14, 19, 48, .8);
+}
+.ev-contact-submit:hover svg {
+    background: var(--eb-gold);
+    stroke: var(--eb-ink);
+    transform: translateX(3px);
+}
+.ev-contact-submit:active { transform: translateY(0); }
+.ev-contact-submit:focus-visible { outline: 2px solid var(--eb-brand); outline-offset: 3px; }
+/* A form mid-submit should not look clickable */
+.ev-contact-submit[disabled] { opacity: .6; cursor: not-allowed; transform: none; }
+
+@media (max-width: 575.98px) {
+    .ev-contact-submit { height: 50px; padding-left: 22px; font-size: 14px; gap: 10px; }
+    .ev-contact-submit svg { width: 16px; height: 16px; padding: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ev-contact-submit,
+    .ev-contact-submit svg { transition: none; transform: none; }
+}
+
+/* ==========================================================
+   Light variant — reversed out, for a button on a coloured panel.
+
+   Same shape as .ev-contact-submit, flipped like the CTA band: white
+   plate, dark blue letters, gold on hover. Used by the vehicle page's
+   enquiry form, which sits on blue panels (#3648A3 and #283895) where
+   a brand-blue button would disappear.
+   ========================================================== */
+.ev-contact-submit.ev-contact-submit--light {
+    background: #fff;
+    color: var(--eb-brand);
+    box-shadow: 0 12px 26px -14px rgba(0, 0, 0, .55);
+}
+.ev-contact-submit.ev-contact-submit--light svg {
+    background: rgba(40, 56, 149, .10);
+    stroke: var(--eb-brand);
+}
+.ev-contact-submit.ev-contact-submit--light:hover {
+    background: var(--eb-gold);
+    color: var(--eb-ink);
+    box-shadow: 0 18px 32px -16px rgba(0, 0, 0, .6);
+}
+.ev-contact-submit.ev-contact-submit--light:hover svg {
+    background: rgba(14, 19, 48, .16);
+    stroke: var(--eb-ink);
+}
+/* White ring, since the brand outline would vanish on these panels */
+.ev-contact-submit.ev-contact-submit--light:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }

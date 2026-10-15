@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('css_after')
-<link rel="stylesheet" href="{{ asset('assets/abreco/css/vehicle.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/abreco/css/vehicle.css') }}?v={{ filemtime(public_path('assets/abreco/css/vehicle.css')) }}">
 @endsection
 @section('content')
     <!--====== About Breadcrumb Part ======-->
