@@ -479,9 +479,9 @@
     .abreco-sticky.sticky .offset-lg-2 {
         margin-left: 4.666667%;
     }
-        .container, .container-lg, .container-md, .container-sm {
+        /* .container, .container-lg, .container-md, .container-sm {
         max-width: 100%;
-    }
+    } */
     .abreco-logo-box a img {
         max-width: 180px;
         margin-top: 0;
