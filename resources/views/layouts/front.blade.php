@@ -283,7 +283,7 @@
                         <li><a href="{{ route('about') }}">About us</a></li>
                         <li><a href="{{ route('our-range') }}">Range</a></li>
                         <li><a href="{{ route('videos') }}">Videos</a></li>
-                        <li><a href="{{ route('factory-visit.show') }}">factory visit</a></li>
+                        <li><a href="{{ route('factory-visit.show') }}">Factory visit</a></li>
                                                 <li><a href="{{ route('contact') }}">Contact</a></li>
 
                     </ul>
@@ -344,7 +344,7 @@
 
 
                                 <li class="ml-3">
-                                    <p>All Rights Reserved | Copyright © Everest Caravans {{ date('Y') }} Digitally Empowered By <a
+                                    <p>Copyright © {{ date('Y') }} Everest Caravans. Digitally Empowered By <a
                                             href="https://www.vcpility.com.au/" target="_blank">Sharktech VCPility</a></p>
                                 </li>
                             </ul>

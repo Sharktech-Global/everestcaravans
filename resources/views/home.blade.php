@@ -678,7 +678,7 @@
     // until then each card falls back to the platform name so it is never empty.
     $etReviews = [
         ['name' => 'Google',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '#', 'accent' => '#4285F4'],
-        ['name' => 'Facebook', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => '#', 'accent' => '#1877F2'],
+        ['name' => 'Facebook', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
         ['name' => 'Go RV',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '#', 'accent' => '#13A9AE'],
     ];
 
