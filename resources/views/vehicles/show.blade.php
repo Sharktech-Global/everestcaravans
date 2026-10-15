@@ -594,33 +594,18 @@
             <div class="review-tabs-wrapper">
                 <ul class="nav nav-tabs review-tabs" id="reviewTabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active"
-                        id="google-review-tab"
-                        data-toggle="tab"
-                        href="#google-review"
-                        role="tab">
-                            Google Reviews
-                        </a>
+                        <a class="nav-link active" id="google-review-tab" data-toggle="tab" href="#google-review" role="tab">
+                            Google Reviews</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                        id="everest-revieww-tab"
-                        data-toggle="tab"
-                        href="#everest-revieww"
-                        role="tab">
-                            Everest Reviews
-                        </a>
+                        <a class="nav-link" id="everest-revieww-tab" data-toggle="tab" href="#everest-revieww" role="tab">
+                            Everest Reviews</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                        id="gorv-review-tab"
-                        data-toggle="tab"
-                        href="#gorv-review"
-                        role="tab">
-                            GO RV Reviews
-                        </a>
+                        <a class="nav-link" id="gorv-review-tab" data-toggle="tab" href="#gorv-review" role="tab">
+                            GO RV Reviews</a>
                     </li>
                 </ul>
             </div>
@@ -630,10 +615,10 @@
             <div class="tab-content pt-4" id="reviewTabsContent">
                 <!-- Google Review -->
                 <div class="tab-pane fade show active"
-                    id="everest-review"
+                    id="google-review"
                     role="tabpanel"
-                    aria-labelledby="everest-review-tab">
-                    <div class="row everest-reviews-grid">
+                    aria-labelledby="google-review-tab">
+                    <div class="row google-reviews-grid">
                         @forelse ($testimonials as $testimonial)
                             <div class="col-lg-4 col-md-6 col-12 mb-5">
                                 <div class="everest-review-item">
