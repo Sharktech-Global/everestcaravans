@@ -677,9 +677,9 @@
     // One image per card. Drop the files in public/assets/images/reviews/ —
     // until then each card falls back to the platform name so it is never empty.
     $etReviews = [
-        ['name' => 'Google',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '#', 'accent' => '#4285F4'],
+        ['name' => 'Google',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '/google-reviews', 'accent' => '#4285F4'],
         ['name' => 'Facebook', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
-        ['name' => 'Go RV',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '#', 'accent' => '#13A9AE'],
+        ['name' => 'Go RV',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '/go-rv-review', 'accent' => '#13A9AE'],
     ];
 
     $etFactory = [
@@ -724,7 +724,7 @@
             @foreach ($etReviews as $r)
                 @php $etImg = file_exists(public_path($r['image'])) ? asset($r['image']) : null; @endphp
                 <li>
-                    <a class="ev-review" href="{{ $r['url'] }}" target="_blank" rel="noopener noreferrer"
+                    <a class="ev-review" href="{{ $r['url'] }}" rel="noopener noreferrer"
                        style="--et-accent: {{ $r['accent'] }};"
                        aria-label="See all {{ $r['name'] }} reviews">
                         @if ($etImg)
