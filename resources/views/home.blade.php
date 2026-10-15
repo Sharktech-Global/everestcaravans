@@ -677,9 +677,9 @@
     // One image per card. Drop the files in public/assets/images/reviews/ —
     // until then each card falls back to the platform name so it is never empty.
     $etReviews = [
-        ['name' => 'Google',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '/google-reviews', 'accent' => '#4285F4'],
-        ['name' => 'Facebook', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
-        ['name' => 'Go RV',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '/go-rv-review', 'accent' => '#13A9AE'],
+        ['name' => 'Google', 'target' => '_self',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '/google-reviews', 'accent' => '#4285F4'],
+        ['name' => 'Facebook', 'target' => '_blank', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
+        ['name' => 'Go RV', 'target' => '_self',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '/go-rv-review', 'accent' => '#13A9AE'],
     ];
 
     $etFactory = [
@@ -726,7 +726,7 @@
                 <li>
                     <a class="ev-review" href="{{ $r['url'] }}" rel="noopener noreferrer"
                        style="--et-accent: {{ $r['accent'] }};"
-                       aria-label="See all {{ $r['name'] }} reviews">
+                       aria-label="See all {{ $r['name'] }} reviews" target="{{ $r['target'] }}">
                         @if ($etImg)
                             <img class="ev-review__img" src="{{ $etImg }}" alt="See all our {{ $r['name'] }} reviews"
                                  loading="lazy" decoding="async">
