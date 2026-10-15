@@ -200,11 +200,11 @@
                             <ul>
                                 <li>
                                     <a class="{{ request()->is('admin/vehicles/create') ? 'active' : '' }}"
-                                        href="{{ route('admin.vehicles.create') }}">Add</a>
+                                        href="{{ route('admin.vehicles.create') }}">Add New</a>
                                 </li>
                                 <li>
                                     <a class="{{ request()->is('admin/vehicles') ? 'active' : '' }}"
-                                        href="{{ route('admin.vehicles.index') }}">View</a>
+                                        href="{{ route('admin.vehicles.index') }}">View List</a>
                                 </li>
                             </ul>
                         </li>
@@ -344,18 +344,18 @@
                                 </li> -->
                             </ul>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
-                                    class="sidebar-mini-hide">News & Events</span></a>
+                                    class="sidebar-mini-hide">GO RV Reviews</span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ route('admin.news-events.index') }}">Settings</a>
+                                    <a href="{{ route('admin.news-events.index') }}">Add New</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.news-events-list.index') }}">List</a>
+                                    <a href="{{ route('admin.news-events-list.index') }}">View List</a>
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
                         <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">Policies</span></a>

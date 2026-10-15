@@ -35,12 +35,13 @@ class NewsAndEventsListController extends Controller
         $detail->content = $validated['details'];
         $detail->status = $validated['status'];
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($detail->image);
+
             $path = $request->file('image')->storeAs(
                 'upload/blogs/image',
-                 $request->image->getClientOriginalName(),
+                $request->file('image')->getClientOriginalName(),
                 'public'
             );
+
             $detail->image = $path;
         }
         $res = $detail->save();
@@ -58,42 +59,60 @@ class NewsAndEventsListController extends Controller
         return view('admin.news-events.list.edit', ['list' => $list]);
     }
 
-    public function update(Request $request,$id)
-    {
-        $detail = NewsEventsList::where('id',$id)->first();
-        $user = auth()->guard('admin')->user();
-        $validated = $request->validate([
-            'title' => 'required|unique:news_events_lists,title,' . $detail->id,
-            'sub_title' => 'nullable',
-            'date_of_event' => 'nullable',
-            'content' => 'nullable',
-            // 'images' => 'nullable',
-            'status' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+    
+public function update(Request $request, $id)
+{
+    $detail = NewsEventsList::findOrFail($id);
+    $user = auth()->guard('admin')->user();
 
-        ]);
-        $detail->title = $validated['title'];
-        $detail->sub_title = $validated['sub_title'];
-        $detail->date_of_event = $validated['date_of_event'];
-        $detail->status = $validated['status'];
-        $detail->content = $validated['content'];
-        if ($request->hasFile('images')) {
+    $validated = $request->validate([
+        'title' => 'required|unique:news_events_lists,title,' . $detail->id,
+        'sub_title' => 'nullable',
+        'date_of_event' => 'nullable',
+        'content' => 'nullable',
+        'status' => 'required',
+        'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+    ]);
+
+    $detail->title = $validated['title'];
+    $detail->sub_title = $validated['sub_title'] ?? null;
+    $detail->date_of_event = $validated['date_of_event'] ?? null;
+    $detail->status = $validated['status'];
+    $detail->content = $validated['content'] ?? null;
+
+    // Update image only when a new image is uploaded
+    if ($request->hasFile('images')) {
+
+        $path = $request->file('images')->store(
+            'upload/blogs/images',
+            'public'
+        );
+
+        // Delete previous image only if it exists
+        if (!empty($detail->image)) {
             Storage::disk('public')->delete($detail->image);
-            $path = $request->file('images')->storeAs(
-                'upload/blogs/images',
-                $request->image->getClientOriginalName(),
-                'public'
-            );
-            $detail->image = $path;
         }
-        $res = $detail->save();
-        if ($res) {
-            activity('admin')->performedOn($detail)->causedBy($user)->withProperties(['data' => $request])->log('Added Image to vehicle feature #' . $detail->title . '.');
-            return redirect()->back()->with('success', 'Successfully Updated blog.');
-        } else {
-            return redirect()->back()->with('error', 'Failed to update blog. Please try again.');
-        }
+
+        $detail->image = $path;
     }
+
+    $res = $detail->save();
+
+    if ($res) {
+        activity('admin')
+            ->performedOn($detail)
+            ->causedBy($user)
+            ->withProperties(['data' => $request->except('images')])
+            ->log('Updated News & Events #' . $detail->title . '.');
+
+        return redirect()->back()
+            ->with('success', 'Successfully updated News & Events.');
+    }
+
+    return redirect()->back()
+        ->with('error', 'Failed to update News & Events. Please try again.');
+}
+
 
     public function destroy(Request $request, $id)
     {

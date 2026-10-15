@@ -2,7 +2,13 @@
 @section('css_after')
 @endsection
 @section('content')
-    <section class="abreco-inner-banner news-bg-banner">
+    @include('partials.page-hero', [
+        'title'       => 'GO RV Reviews',
+        'subtitle'    => 'News, events and stories from the Everest Caravans yard.',
+        'image'       => 'assets/abreco/images/newonce/austever.jpg',
+        'breadcrumbs' => [['label' => 'GO RV Reviews']],
+    ])
+    <!-- <section class="abreco-inner-banner news-bg-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -10,19 +16,19 @@
                         <div class="baner-bg-head2">
                             <img src="assets/images/shapes/banner-head.png" alt="">
                         </div>
-                        <h1>The Evolution Of Tata Motors</h1>
+                        <h1>{{ @$news->title }}</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--====== abreco BLOG PART START ======-->
     <section class="abreco-blog-area pt-90 pb-95">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 custom-offset-right">
-                    <div class="date-section">
+                    <!-- <div class="date-section">
                         <ul>
                             <li><span><i class="fa fa-calendar mr-2"></i></span> Jun 20,2023</li>
                             <li><span><i class="fa fa-map-marker mr-2"></i></span> Kozhikode</li>
@@ -34,8 +40,8 @@
                             iure vitae eligendi quia nobis voluptatem vel est fuga quidem voluptas reiciendis, animi
                             blanditiis eius maiores modi amet dolor voluptates hic sed. Officia aliquid, fugiat, adipisci ut
                             expedita aperiam ab at ducimus suscipit deserunt ipsa dolorum magnam.</p>
-                    </div>
-                    <div class="row">
+                    </div> -->
+                    <!-- <div class="row">
                         {{--  <div class="col-lg-6 col-md-12">
                             <div class="abreco-blog-item mt-30">
                                 <div class="thumb">
@@ -50,13 +56,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-12 pt-50 pb-50 news-blokquote">
-                            <blockquote class="text-center">
+
+                            <blockquote class="text-left">
                                 <q>{{ @$news->title }}</q>
-                                <a href="#">– Joshua J. Marine</a>
+                                <span class="mt-2">Posted on: {{ @$news->date_of_event }}</span>
                             </blockquote>
+
+                            <div class="thumb">
+                                <img class="w-100" src="{{ asset('storage/' . $news->image) }}" alt="">
+                            </div>
+
                             <p class="pt-60">{{ @$news->content }}</p>
                         </div>
                     </div>

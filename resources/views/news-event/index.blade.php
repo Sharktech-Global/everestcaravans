@@ -3,10 +3,10 @@
 @section('content')
     <!--====== Blog Breadcrumb Part ======-->
     @include('partials.page-hero', [
-        'title'       => 'Latest Updates',
+        'title'       => 'GO RV Reviews',
         'subtitle'    => 'News, events and stories from the Everest Caravans yard.',
         'image'       => 'assets/abreco/images/newonce/austever.jpg',
-        'breadcrumbs' => [['label' => 'Latest Updates']],
+        'breadcrumbs' => [['label' => 'GO RV Reviews']],
     ])
 
     <!--====== BLOG LISTING START ======-->
@@ -36,11 +36,11 @@
     <section class="ev-blog" aria-labelledby="evBlogTitle">
         <div class="ev-blog__inner">
 
-            <header class="ev-blog__head">
+            <!-- <header class="ev-blog__head">
                 <p class="ev-blog__eyebrow">{{ $bl['eyebrow'] }}</p>
                 <h2 class="ev-blog__title" id="evBlogTitle">{{ $bl['title'] }}</h2>
                 <p class="ev-blog__lead">{{ $bl['lead'] }}</p>
-            </header>
+            </header> -->
 
             <div class="ev-blog__grid">
                 @forelse ($blPosts as $post)

@@ -178,9 +178,11 @@ Route::get('/blog', 'BlogController@show')->name('blog.show');
 Route::get('/blog/{id}', 'BlogController@view')->name('blog.details');
 
 //News
-Route::get('/news-event', 'NewsController@index')->name('news.index');
-Route::get('news-event/{slug}', 'NewsController@inner')->name('news.show');
-
+// Route::get('/news-event', 'NewsController@index')->name('news.index');
+// Route::get('news-event/{slug}', 'NewsController@inner')->name('news.show');
+// GO RV Reviews
+Route::get('/go-rv-review', 'NewsController@index')->name('news.index');
+Route::get('/go-rv-review/{slug}', 'NewsController@inner')->name('news.show');
 
 
 // service
