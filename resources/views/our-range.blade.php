@@ -72,11 +72,12 @@
     color: #fff;
     padding: 8px 15px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: 0.4px;
     pointer-events: none;
+    text-transform: uppercase;
 }
 
 /* Responsive */
