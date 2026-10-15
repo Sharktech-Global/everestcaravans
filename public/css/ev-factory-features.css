@@ -1,97 +1,18 @@
-/* ==========================================================
-   Everest Caravans — Factory feature cards
-   Markup: resources/views/partials/ev-factory-features.blade.php
-   Loaded by that partial, so this file is all the cards need.
-
-   The row sits on a light background; only the icon tiles are dark.
-   Each tile is a square rotated 45deg, with the icon counter-rotated
-   inside so it stays upright. The diamond needs more room than its own
-   width, so the feature has padding to clear its points.
-
-   Colours and sizes come from the vars below — override them on the
-   element (or on a parent) to drop the cards on a dark section:
-     style="--ff-ink:#F4F2EE; --ff-brand:#D9AE55; --ff-label:#F4F2EE;"
-   ========================================================== */
-
 .ev-factory__features {
-    --ff-ink: #0E1330;          /* tile background */
-    --ff-brand: #283895;        /* tile background on hover */
-    --ff-label: var(--ff-ink);  /* label colour */
-    --ff-tile: 100px;           /* tile width/height before rotation */
-    --ff-icon: 60px;            /* artwork size inside the tile */
-    --ff-gap: 28px;             /* gap between cards */
-    --ff-cols: 3;               /* cards per row */
-    --ff-ease: cubic-bezier(.22, .7, .2, 1);
-
-    display: grid;
-    grid-template-columns: repeat(var(--ff-cols), minmax(0, 1fr));
-    gap: var(--ff-gap);
-
-    /* It is a <ul>, so clear the browser's list styling */
-    margin: 0;
-    padding: 0;
-    list-style: none;
+--ff-ink: #0E1330;--ff-brand: #283895;--ff-label: var(--ff-ink); --ff-tile: 100px; --ff-icon: 60px; --ff-gap: 28px; --ff-cols: 3; --ff-ease: cubic-bezier(.22, .7, .2, 1);display: grid;grid-template-columns: repeat(var(--ff-cols), minmax(0, 1fr));gap: var(--ff-gap);margin: 0;padding: 0;list-style: none;
 }
-.ev-factory__features .ev-factory__feature {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 34px;
-    padding-top: 14px;
-}
-.ev-factory__features .ev-factory__icon {
-    display: grid;
-    place-items: center;
-    width: var(--ff-tile);
-    height: var(--ff-tile);
-    border-radius: 12px;
-    background: var(--ff-ink);
-    transform: rotate(45deg);
-    transition: background-color .3s ease, transform .3s var(--ff-ease);
-}
-/* Cancels the tile rotation so the artwork is not on its side */
-.ev-factory__features .ev-factory__icon-in {
-    display: grid;
-    place-items: center;
-    transform: rotate(-45deg);
-}
-.ev-factory__features .ev-factory__icon img {
-    display: block;
-    width: var(--ff-icon);
-    height: var(--ff-icon);
-    object-fit: contain;
-    /* The source files are dark line art, so flip them white on the tile */
-    filter: brightness(0) invert(1);
-}
-.ev-factory__features .ev-factory__feature:hover .ev-factory__icon {
-    background: var(--ff-brand);
-    transform: rotate(45deg) translateY(-3px);
-}
-.ev-factory__features .ev-factory__label {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.45;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-align: center;
-    color: var(--ff-label);
-}
-
-/* With no artwork yet, the tile shows the first letter instead of a gap */
-.ev-factory__features .ev-factory__initial {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-}
-
-/* ---------- Responsive ---------- */
+.ev-factory__features .ev-factory__feature {display: flex;flex-direction: column;align-items: center;gap: 34px;padding-top: 14px;}
+.ev-factory__features .ev-factory__icon {display: grid;place-items: center;width: var(--ff-tile);height: var(--ff-tile);border-radius: 12px;background: var(--ff-ink);transform: rotate(45deg);transition: background-color .3s ease, transform .3s var(--ff-ease);}
+.ev-factory__features .ev-factory__icon-in {display: grid;place-items: center;transform: rotate(-45deg);}
+.ev-factory__features .ev-factory__icon img {display: block;width: var(--ff-icon);height: var(--ff-icon);object-fit: contain;filter: brightness(0) invert(1);}
+.ev-factory__features .ev-factory__feature:hover .ev-factory__icon {background: var(--ff-brand);transform: rotate(45deg) translateY(-3px);}
+.ev-factory__features .ev-factory__label {font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;font-size: 13px;font-weight: 600;line-height: 1.45;letter-spacing: .1em;text-transform: uppercase;text-align: center;color: var(--ff-label);}
+.ev-factory__features .ev-factory__initial {font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;font-size: 34px;font-weight: 700;line-height: 1;color: #fff;}
 @media (max-width: 575.98px) {
-    .ev-factory__features { --ff-cols: 1; --ff-gap: 42px; }
+    .ev-factory__features .ev-factory__icon img {width: 50px;height: 50px;}
+    ul.ev-factory__features.is-in {grid-template-columns: repeat(1, 1fr);}
+    .ev-factory__features {--ff-cols: 1;--ff-gap: 30px;}
 }
-
 @media (prefers-reduced-motion: reduce) {
     .ev-factory__features .ev-factory__icon { transition: none; }
 }
