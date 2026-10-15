@@ -21,16 +21,10 @@ class BookingEnquiryConfirmation extends Notification
 
     public function toMail(object $notifiable): MailMessage
     {
-        $d = $this->details;
-
         return (new MailMessage)
-            ->subject('Vehicle Booking Enquiry Received - Everest Caravans')
-            ->greeting('Dear ' . $d['name'] . ',')
-            ->line('Thank you for your interest in Everest Caravans.')
-            ->line('We have successfully received your booking enquiry for:')
-            ->line($d['vehicle_name'])
-            ->line('Our team will review your enquiry and contact you as soon as possible.')
-            ->line('If you have any additional questions, please feel free to contact us.')
-            ->salutation('Best regards, Everest Caravans Team');
+        ->subject('Vehicle Booking Enquiry Received - Everest Caravans')
+        ->view('emails.booking-enquiry-confirmation', [
+            'details' => $this->details,
+        ]);
     }
 }
