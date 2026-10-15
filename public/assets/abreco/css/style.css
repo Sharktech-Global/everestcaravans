@@ -5079,8 +5079,9 @@ p {
   border-radius: 10px;
     background: #FFF;
     box-shadow: 7px 7px 17px 0px rgba(141, 141, 141, 0.13);
-    padding: 12px 10px 4px 10px;
+    padding: 5px;
     overflow: hidden;
+    height: 100%;
 }
 
 .fea-inner .img{
@@ -5102,19 +5103,19 @@ p {
 }
 
 .fea-inner .inner-details{
-  padding: 15px 0;
+  padding: 25px 10px;
 }
 
 .fea-inner .inner-details h3,
 .fea-inner .inner-details h3 a{
-  font-size: 22px;
+  font-size: 20px;
     font-weight: 500;
     color: #000;
     line-height: 34px;
 }
 
 .fea-inner .inner-details p{
-  color: #000;
+  color: #686868;
     font-size: 15px;
     font-weight: 400;
     line-height: 28px;
@@ -5128,23 +5129,23 @@ p {
 
 .fea-inner .inner-details .inner-btn a{
     border-radius: 2px;
-    padding: 12px 20px;
-    width: 48%;
+    padding: 0px;
+    width: auto;
     text-align: center;
     font-size: 15px;
     font-weight: 600;
     transition: all .3s ease;
+    margin-top: 10px;
 }
 
 .fea-inner .inner-details .inner-btn a.first-btn{
   color: #283895;
-  border: 1px solid #283895;
+  /* border: 1px solid #283895; */
   background: #FFF;
 }
 
 .fea-inner .inner-details .inner-btn a.first-btn:hover{
-  background-color: #283895;
-  color: #fff;
+  color: #283895;
 }
 
 .fea-inner .inner-details .inner-btn a.sec-btn{
