@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content">
-    <h2 class="content-heading">Features</h2>
+    <h2 class="content-heading">Blogs</h2>
     <nav class="breadcrumb bg-white push">
         <a class="breadcrumb-item" href="{{ route('admin.home') }}">Dashboard</a>
         <span class="breadcrumb-item active">Blogs</span>

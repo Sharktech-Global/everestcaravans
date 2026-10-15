@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="content">
-        <h2 class="content-heading">News & Events List</h2>
+        <h2 class="content-heading">GO RV Reviews</h2>
         <nav class="breadcrumb bg-white push">
             <a class="breadcrumb-item" href="{{ route('admin.home') }}">Dashboard</a>
-            <a class="breadcrumb-item" href="{{ route('admin.news-events-list.index') }}">News & Events List</a>
+            <a class="breadcrumb-item" href="{{ route('admin.news-events-list.index') }}">GO RV Reviews</a>
             <span class="breadcrumb-item active">{{$list->title}}</span>
         </nav>
         <div class="block">

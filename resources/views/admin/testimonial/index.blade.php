@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="content">
-        <h2 class="content-heading">Testimonial</h2>
+        <h2 class="content-heading">Google Reviews</h2>
         <nav class="bg-white breadcrumb push">
             <a class="breadcrumb-item" href="{{ route('admin.home') }}">Dashboard</a>
-            <span class="breadcrumb-item active">Testimonial</span>
+            <span class="breadcrumb-item active">Google Reviews</span>
         </nav>
         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Add Testimonial</h3>
+                <h3 class="block-title">Add Google Reviews</h3>
             </div>
             <div class="block-content">
                 @if (session('error'))
@@ -134,7 +134,7 @@
         </div>
         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">View Testimonials</h3>
+                <h3 class="block-title">View Google Reviews</h3>
             </div>
             <div class="block-content">
                 <div class="table-responsive">

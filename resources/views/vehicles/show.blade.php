@@ -647,9 +647,6 @@
                                                 </iframe>
                                             </div>
                                         @endif
-                                        <!-- <span class="everest-review-brand">
-                                            EVEREST
-                                        </span> -->
                                     </div>
                                     <!-- Customer Details -->
                                     <div class="everest-review-author">
