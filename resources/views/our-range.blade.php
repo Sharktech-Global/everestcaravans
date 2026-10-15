@@ -239,12 +239,12 @@
         <!-- Vehicles Grid -->
         <div class="row justify-content-center">
 
-@php
-    $allVehicles = \App\Vehicle::where('status', 1)
-        ->with('vehicle_type')
-        ->orderBy('order', 'ASC')
-        ->get();
-@endphp
+            @php
+                $allVehicles = \App\Vehicle::where('status', 1)
+                    ->with('vehicle_type')
+                    ->orderBy('order', 'ASC')
+                    ->get();
+            @endphp
             @forelse ($allVehicles as $vehicle_data)
 
                 <div class="col-lg-3 col-md-6 mb-4">
