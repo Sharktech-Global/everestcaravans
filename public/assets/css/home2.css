@@ -2068,20 +2068,42 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
    --rv-i is the element position among its siblings, set by the script.
    ========================================================== */
 .rv-js [data-rv] {
+    --rv-ease: cubic-bezier(.22, .68, .18, 1);   /* soft overshoot-free settle */
     opacity: 0;
-    transform: translateY(24px);
     transition:
-        opacity .8s cubic-bezier(.22, .7, .2, 1),
-        transform .8s cubic-bezier(.22, .7, .2, 1);
-    transition-delay: calc(var(--rv-i, 0) * 90ms);
+        opacity .85s var(--rv-ease),
+        transform .85s var(--rv-ease),
+        clip-path .9s var(--rv-ease);
+    transition-delay: calc(var(--rv-i, 0) * 80ms);
+    will-change: transform, opacity;
 }
+
+/* ---------- Motion variants, picked per element by reveal.js ---------- */
+.rv-js [data-rv="up"]    { transform: translateY(26px); }
+.rv-js [data-rv="rise"]  { transform: translateY(42px) scale(.985); }
+.rv-js [data-rv="left"]  { transform: translateX(-40px); }
+.rv-js [data-rv="right"] { transform: translateX(40px); }
+.rv-js [data-rv="pop"]   { transform: translateY(16px) scale(.92); }
+/* Settles down from slightly oversized — good for photos */
+.rv-js [data-rv="zoom"]  { transform: scale(1.06); }
+/* Wipes upward instead of moving. Do not put this on a lazy-loaded <img>:
+   a clip-path that hides the element also stops the browser fetching it. */
+.rv-js [data-rv="mask"]  { clip-path: inset(0 0 100% 0); transform: scale(1.04); }
+
+/* One landing state for every variant */
 .rv-js [data-rv].is-in {
     opacity: 1;
     transform: none;
+    clip-path: inset(0 0 0 0);
 }
+/* Nothing left to composite once it has arrived */
+.rv-js [data-rv].is-in { will-change: auto; }
 
-/* The photo column comes in from the side rather than from below */
-.rv-js .ws-about__media[data-rv] { transform: translateX(-32px); }
+/* Cards and logos land a touch quicker than the copy around them */
+.rv-js [data-rv="pop"] {
+    transition-duration: .62s;
+    transition-delay: calc(var(--rv-i, 0) * 60ms);
+}
 
 /* ==========================================================
    MOBILE TITLE SIZE — one size for every section heading.

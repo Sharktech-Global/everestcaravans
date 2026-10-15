@@ -8635,6 +8635,14 @@ section#Features.abreco-features-area {
 }
 
 @media(max-width: 600px){
+  .videoo h2 {
+font-size:28px;
+  }
+  .youtube-video-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
   .popgallery .card {
     border-radius: 8px;
   }

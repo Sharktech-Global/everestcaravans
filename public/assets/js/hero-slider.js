@@ -33,9 +33,12 @@
                 // image. The motion itself is what gets dropped below — the change
                 // is instant and the pause between slides is longer.
                 autoplay: total > 1,
-                autoplayTimeout: reduceMotion ? 9000 : 6000,
+                // ---- SLIDER SPEED — change these two ----
+                // autoplayTimeout = how long each slide is held, in ms
+                // smartSpeed      = how long the crossfade itself takes, in ms
+                autoplayTimeout: reduceMotion ? 4000 : 3000,
                 autoplayHoverPause: true,
-                smartSpeed: reduceMotion ? 0 : 900,
+                smartSpeed: reduceMotion ? 0 : 600,
                 autoHeight: mqMobile.matches,
                 animateOut: reduceMotion ? false : 'vb-fade-out',
                 mouseDrag: total > 1,

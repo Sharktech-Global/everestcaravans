@@ -503,24 +503,24 @@
     // One entry per tab. Clicking a tab swaps the quote text and image.
     $wsServices = [
         [
-            'label' => 'Off-Road',
+            'label' => 'OFF-GRID',
             'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
             'title' => 'Engineered for off-road',
-            'text'  => 'Our vans are engineered for purpose. The Everest team hits the road often, so we know exactly what a van needs to handle the Gibb River, Oodnadatta and the Nullarbor.',
-            'image' => 'assets/images/services/off-road.png',
+            'text'  => 'Why stop where the power ends? With solar, lithium batteries and big water tanks on board, our vans let you camp for days in the places caravan parks can’t reach. No power point, no problem.',
+            'image' => 'assets/abreco/images/newonce/off-grid.webp',
         ],
         [
             'label' => 'Lux Decor',
             'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
             'title' => 'Customised from the inside out',
-            'text'  => 'Style your interior with whatever makes you feel right at home. Come into our showroom and select your one-of-a-kind interior.',
-            'image' => 'assets/images/services/lux-decor.png',
+            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 10-year structural warranty. We build them to last for decades of big laps, not just one.',
+            'image' => 'assets/abreco/images/newonce/lux.jpg',
         ],
         [
-            'label' => 'Quality',
+            'label' => 'Custom Build',
             'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
             'title' => 'Strict quality control',
-            'text'  => 'Every caravan goes through our strict quality control process and must pass our QC stage before it is delivered to you.',
+            'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels.',
             'image' => 'assets/images/services/quality.jpeg',
         ],
     ];

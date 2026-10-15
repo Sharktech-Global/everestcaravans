@@ -310,18 +310,23 @@
    ========================================================== */
 .rv-js .ev-journey__head > [data-rv],
 .rv-js .ev-journey__row[data-rv] {
+    --ej-ease: cubic-bezier(.22, .68, .18, 1);
     opacity: 0;
-    transform: translateY(24px);
     transition:
-        opacity .8s cubic-bezier(.22, .7, .2, 1),
-        transform .8s cubic-bezier(.22, .7, .2, 1);
-    transition-delay: calc(var(--rv-i, 0) * 90ms);
+        opacity .85s var(--ej-ease),
+        transform .85s var(--ej-ease);
+    transition-delay: calc(var(--rv-i, 0) * 80ms);
+    will-change: transform, opacity;
 }
+/* Matches the shared variants in home2.css so this section moves like the
+   rest of the page, while still standing on its own on other pages. */
+.rv-js .ev-journey__head > [data-rv] { transform: translateY(42px) scale(.985); }
+/* Award rows travel a little less, so a long list stays calm */
+.rv-js .ev-journey__row[data-rv]     { transform: translateY(20px); }
+
 .rv-js .ev-journey__head > [data-rv].is-in,
 .rv-js .ev-journey__row[data-rv].is-in {
     opacity: 1;
     transform: none;
+    will-change: auto;
 }
-
-/* Award rows travel a little less, so a long list stays calm */
-.rv-js .ev-journey__row[data-rv] { transform: translateY(16px); }
