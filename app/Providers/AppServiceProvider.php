@@ -23,17 +23,39 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // public function boot()
+    // {
+    //     config([
+    //         'auth.providers.admins.model' => \App\Admin::class,
+    //     ]);
+    //     View::composer('*', function ($view) {
+    //         $vehicleTypes = VehicleType::where('status', 1)
+    //             ->orderBy('name')
+    //             ->get(['name', 'slug']);
+
+    //         $view->with('footerVehicleTypes', $vehicleTypes);
+    //     });
+    // }
+
     public function boot()
     {
         config([
             'auth.providers.admins.model' => \App\Admin::class,
         ]);
-        View::composer('*', function ($view) {
-            $vehicleTypes = VehicleType::where('status', 1)
-                ->orderBy('name')
-                ->get(['name', 'slug']);
 
+        View::composer('*', function ($view) {
+
+            $vehicleTypes = VehicleType::where('status', 1)
+                ->orderBy('name', 'ASC')
+                ->get(['id', 'name', 'slug']);
+
+            // Existing footer categories
             $view->with('footerVehicleTypes', $vehicleTypes);
+
+            // Header mega menu categories
+            $view->with('headerVehicleCategories', $vehicleTypes);
+
         });
     }
+
 }

@@ -30,6 +30,182 @@
         .homepage .nav-menu>li>a {
             padding: 20px 13px !important;
         }
+
+
+/* =====================================
+   EVEREST RANGE MEGA MENU
+===================================== */
+
+.abreco-header-main-menu {
+    position: relative;
+    overflow: visible;
+}
+
+.abreco-header-main-menu > ul {
+    overflow: visible;
+}
+
+.abreco-header-main-menu > ul > li.ev-range-menu {
+    position: static;
+}
+
+.ev-range-chevron {
+    font-size: 10px;
+    margin-left: 6px;
+    transition: transform .25s ease;
+}
+
+.ev-range-mobile-toggle {
+    display: none;
+}
+
+/* Dropdown */
+
+.abreco-header-main-menu .ev-range-megamenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-width: 600px;
+    background: #111b32;
+    border-top: 3px solid #3448a4;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    border-radius: 0 0 8px 8px;
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .25s ease,
+                transform .25s ease,
+                visibility .25s ease;
+}
+
+.abreco-header-main-menu .ev-range-menu:hover > .ev-range-megamenu,
+.abreco-header-main-menu .ev-range-menu:focus-within > .ev-range-megamenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Inner content */
+
+.ev-range-megamenu-inner {
+    padding: 30px;
+}
+
+.ev-range-megamenu-heading h3 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.ev-range-megamenu-heading p {
+    color: #b9c4d6;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Categories */
+
+.ev-range-megamenu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.abreco-header-main-menu .ev-range-megamenu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #202e49;
+    border: 1px solid #35435c;
+    border-radius: 6px;
+    padding: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.abreco-header-main-menu .ev-range-megamenu-item:hover {
+    background: #30469a;
+    border-color: #6478d9;
+    color: #fff;
+}
+
+.ev-range-megamenu-item i {
+    font-size: 12px;
+}
+
+/* Footer */
+
+.ev-range-megamenu-footer {
+    margin-top: 22px;
+    text-align: right;
+}
+
+.abreco-header-main-menu .ev-range-megamenu-footer a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width: 991px) {
+    .abreco-header-main-menu > ul > li.ev-range-menu {
+        position: relative;
+    }
+
+    .ev-range-chevron {
+        display: none;
+    }
+
+    .ev-range-mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .abreco-header-main-menu .ev-range-megamenu {
+        position: static;
+        display: none;
+        min-width: 0;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: 0;
+        transition: none;
+    }
+
+    .abreco-header-main-menu .ev-range-menu.is-open > .ev-range-megamenu {
+        display: block;
+    }
+
+    .ev-range-megamenu-inner {
+        padding: 20px 15px;
+    }
+
+    .ev-range-megamenu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ev-range-megamenu-heading h3 {
+        font-size: 19px;
+    }
+}
+
     </style>
     @yield('css_after')
     {{-- @notifyCss --}}
@@ -151,11 +327,64 @@
                                     <a href="{{ route('home') }}"
                                         @if ($routename == 'home') class="active" @endif>Home</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="{{ route('our-range') }}"
                                         @if ($routename == 'our-range') class="active" @endif>Our Range</a>
-                                </li>
+                                </li> -->
+
+
                                 
+                                <li class="ev-range-menu">
+                                    <a href="{{ route('our-range') }}"
+                                    class="{{ request()->routeIs('our-range', 'vehicle_type') ? 'active' : '' }}">
+                                        Our Range
+                                        <i class="fas fa-chevron-down ev-range-chevron"></i>
+                                    </a>
+
+                                    <button type="button"
+                                            class="ev-range-mobile-toggle"
+                                            aria-label="Toggle vehicle categories"
+                                            aria-expanded="false">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+
+                                    <div class="ev-range-megamenu">
+                                        <div class="ev-range-megamenu-inner">
+
+                                            <div class="ev-range-megamenu-heading">
+                                                <h3>Explore Our Range</h3>
+                                                <p>Discover the perfect caravan for your next adventure.</p>
+                                            </div>
+
+                                            <div class="ev-range-megamenu-grid">
+
+                                                @foreach ($headerVehicleCategories as $category)
+
+                                                    <a href="{{ route('vehicle_type', $category->slug) }}"
+                                                    class="ev-range-megamenu-item">
+
+                                                        <span>{{ $category->name }}</span>
+
+                                                        <i class="fas fa-arrow-right"></i>
+
+                                                    </a>
+
+                                                @endforeach
+
+                                            </div>
+
+                                            <div class="ev-range-megamenu-footer">
+                                                <a href="{{ route('our-range') }}">
+                                                    View All Caravans
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+
+                            
 
                                 <li>
                                     <a href="{{ route('factory-visit.show') }}"
@@ -756,7 +985,20 @@
 });
 
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.ev-range-menu').forEach(function (menu) {
+        const toggle = menu.querySelector('.ev-range-mobile-toggle');
 
+        if (!toggle) return;
+
+        toggle.addEventListener('click', function () {
+            const isOpen = menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    });
+});
+</script>
 
     @yield('js_after')
 </body>
