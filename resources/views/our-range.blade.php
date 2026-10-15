@@ -281,7 +281,7 @@
 
                             <p>
                                 {{ \Illuminate\Support\Str::limit(
-                                    strip_tags($vehicle_data->tagline),
+                                    strip_tags($vehicle_data->title),
                                     80
                                 ) }}
                             </p>
