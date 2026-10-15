@@ -330,10 +330,10 @@
                                 <li>
                                     <a href="{{ route('admin.faq.index') }}">FAQs</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="{{ route('admin.about-motors.index') }}">Abreco
                                         Motors</a>
-                                </li>
+                                </li> -->
                                 <!-- <li>
                                     <a
                                         href="{{ route('admin.about-group-leaders.index') }}">Leadership</a>
@@ -354,7 +354,12 @@
                             href="{{ route('admin.testimonials.index') }}"><i
                                 class="fa fa-quote-left"></i><span class="sidebar-mini-hide">Google Reviews</span></a>
                     </li>
-                        <li>
+                    <li>
+                        <a class="{{ request()->is('admin/news-events-list*') ? 'active' : '' }}"
+                            href="{{ route('admin.news-events-list.index') }}"><i
+                                class="fa fa-quote-left"></i><span class="sidebar-mini-hide">GO RV Reviews</span></a>
+                    </li>
+                        <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">GO RV Reviews</span></a>
                             <ul>
@@ -365,7 +370,7 @@
                                     <a href="{{ route('admin.news-events-list.index') }}">View List</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">Policies</span></a>
