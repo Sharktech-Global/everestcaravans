@@ -344,6 +344,16 @@
                                 </li> -->
                             </ul>
                         </li>
+                    <li>
+                        <a class="{{ request()->is('admin/blogs*') ? 'active' : '' }}"
+                            href="{{ route('admin.blogs.index') }}"><i class="fa fa-gift"></i><span
+                                class="sidebar-mini-hide">Blogs</span></a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('admin/testimonials*') ? 'active' : '' }}"
+                            href="{{ route('admin.testimonials.index') }}"><i
+                                class="fa fa-quote-left"></i><span class="sidebar-mini-hide">Google Reviews</span></a>
+                    </li>
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fas fa-home"></i><span
                                     class="sidebar-mini-hide">GO RV Reviews</span></a>
@@ -671,11 +681,6 @@
                                 href="{{ route('admin.exchanges.index') }}"><i class="fa fa-exchange"></i><span
                                     class="sidebar-mini-hide">Exchanges</span></a>
                         </li> -->
-                    <li>
-                        <a class="{{ request()->is('admin/testimonials*') ? 'active' : '' }}"
-                            href="{{ route('admin.testimonials.index') }}"><i
-                                class="fa fa-quote-left"></i><span class="sidebar-mini-hide">Testimonial</span></a>
-                    </li>
                     <!-- <li>
                             <a class="{{ request()->is('admin/offer_details*') ? 'active' : '' }}"
                                 href="{{ route('admin.offer_details.index') }}"><i class="fa fa-gift"></i><span
@@ -687,11 +692,6 @@
                                 href="{{ route('admin.form_export.index') }}"><i class="fa fa-gift"></i><span
                                     class="sidebar-mini-hide">Form Submissions</span></a>
                         </li> -->
-                    <li>
-                        <a class="{{ request()->is('admin/blogs*') ? 'active' : '' }}"
-                            href="{{ route('admin.blogs.index') }}"><i class="fa fa-gift"></i><span
-                                class="sidebar-mini-hide">Blogs</span></a>
-                    </li>
                     <!-- <li>
                         <a class="{{ request()->is('admin/gallery*') ? 'active' : '' }}"
                             href="{{ route('admin.gallery.create') }}"><i class="fa fa-gift"></i><span
