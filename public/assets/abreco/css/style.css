@@ -7217,18 +7217,20 @@ background-color: #0b0d22 !important;
 }
 
 .new-btn-style{
-  border: none;
-  background: #EBC3DC;
-  border-radius: 10px;
-  backdrop-filter: blur(2px);
-  color: #000;
-  font-size: 20px;
-  font-weight: 400;
-  height: 60px;
-  position: relative;
-  transition: all .3s;
-  overflow: hidden;
-  z-index: 1;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    color: #898989;
+    font-size: 20px;
+    font-weight: 400;
+    height: auto;
+    position: relative;
+    transition: all .3s;
+    overflow: hidden;
+    z-index: 1;
+    padding: 10px 20px !important;
+    border: 1px solid #898989;
 }
 
 .form-group .new-btn-style{
@@ -7240,7 +7242,7 @@ background-color: #0b0d22 !important;
   margin-right: 20px;
 }
 
-.new-btn-style::after{
+/* .new-btn-style::after{
   position: absolute;
   content: "";
   bottom: 0;
@@ -7260,15 +7262,16 @@ background-color: #0b0d22 !important;
   background: #9D166C;
   left: 0;
   top: 0;
-}
+} */
 
 .new-btn-style:hover{
-  color: #fff;
+  color: #000;
+  border-color: #000;
 }
 
-.new-btn-style:hover svg.color{
+/* .new-btn-style:hover svg.color{
   display: none;
-}
+} */
 
 .new-btn-style:hover img.white{
   display: inline-block !important;
