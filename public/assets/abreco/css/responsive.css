@@ -3314,34 +3314,65 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 .abreco-sticky.sticky .abreco-header-main-menu ul > li > a.active::before { background-color: #283895; }
 
 /* ==========================================================
-   NAVBAR CALL TO ACTION — "Submit Now" as a button.
+   NAVBAR CALL TO ACTION — the shared pill, sized for the bar.
+
+   Same shape and behaviour as public/css/buttons.css (brand fill, label
+   then an arrow in a round chip, gold chip on hover) but shorter, since
+   a 56px button would not fit the header.
 
    The bar is transparent over the hero and turns white once .sticky
-   lands, and the sticky rule just above repaints every nav link dark.
-   A solid navy pill reads on both, so the second selector carries the
-   same colours into the sticky state rather than letting that rule win.
+   lands, and the sticky rule above repaints every nav link dark — so
+   each rule is repeated with the .sticky prefix to outrank it rather
+   than reaching for !important.
    ========================================================== */
 .abreco-header-main-menu ul > li.ev-navcta { margin-left: 18px; }
 .abreco-header-main-menu ul > li.ev-navcta > a,
 .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
     display: inline-flex;
     align-items: center;
-    padding: 11px 26px;
-    border-radius: 8px;
+    gap: 10px;
+    height: 46px;
+    padding: 0 6px 0 22px;              /* tight on the right, the chip fills it */
+    border-radius: 999px;
     background: #283895;
     color: #fff;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1;
     white-space: nowrap;
-    transition: background-color .25s ease, transform .25s ease;
+    box-shadow: 0 10px 22px -12px rgba(40, 56, 149, .75);
+    transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.abreco-header-main-menu ul > li.ev-navcta > a svg,
+.abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a svg {
+    box-sizing: content-box;
+    flex: none;
+    width: 14px;
+    height: 14px;
+    padding: 10px;                      /* 14 + 20 = a 34px chip */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: background-color .25s ease, transform .25s cubic-bezier(.22, .7, .2, 1);
 }
 .abreco-header-main-menu ul > li.ev-navcta > a:hover,
 .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a:hover {
-    background: #1D2A72;
+    background: #0E1330;
     color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 16px 28px -16px rgba(14, 19, 48, .8);
 }
+.abreco-header-main-menu ul > li.ev-navcta > a:hover svg,
+.abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a:hover svg {
+    background: #D9AE55;
+    stroke: #0E1330;
+    transform: translateX(3px);
+}
+.abreco-header-main-menu ul > li.ev-navcta > a:active { transform: translateY(0); }
 .abreco-header-main-menu ul > li.ev-navcta > a:focus-visible {
     outline: 2px solid #8C9BF0;
     outline-offset: 3px;
@@ -3352,16 +3383,27 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 @media (max-width: 1440px) {
     .abreco-header-main-menu ul > li.ev-navcta > a,
     .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
-        padding: 10px 20px;
-        font-size: 15px;
+        height: 42px;
+        padding-left: 18px;
+        font-size: 14px;
+        gap: 8px;
+    }
+    .abreco-header-main-menu ul > li.ev-navcta > a svg,
+    .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a svg {
+        width: 13px; height: 13px; padding: 8px;
     }
 }
 @media (max-width: 1199.98px) {
     .abreco-header-main-menu ul > li.ev-navcta { margin-left: 10px; }
     .abreco-header-main-menu ul > li.ev-navcta > a,
     .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a {
-        padding: 9px 16px;
-        font-size: 14px;
+        height: 38px;
+        padding-left: 15px;
+        font-size: 13px;
+    }
+    .abreco-header-main-menu ul > li.ev-navcta > a svg,
+    .abreco-sticky.sticky .abreco-header-main-menu ul > li.ev-navcta > a svg {
+        width: 12px; height: 12px; padding: 7px;
     }
 }
 

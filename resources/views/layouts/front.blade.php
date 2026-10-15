@@ -210,6 +210,13 @@
 
     </style>
     @yield('css_after')
+
+    {{-- Shared primary button. Loaded last so it settles the per-section
+         button rules in the page stylesheets above without !important. --}}
+    @php $evBtnCss = 'css/buttons.css'; @endphp
+    @if (file_exists(public_path($evBtnCss)))
+        <link rel="stylesheet" href="{{ asset($evBtnCss) }}?v={{ filemtime(public_path($evBtnCss)) }}">
+    @endif
     {{-- @notifyCss --}}
 
     <!-- Google Tag Manager -->
@@ -410,7 +417,9 @@
                                 </li>
                                 {{-- Last item, styled as a button rather than a nav link --}}
                                 <li class="ev-navcta">
-                                    <a href="{{ route('contact') }}">Contact Us</a>
+                                    <a href="{{ route('contact') }}">Contact Us
+                                        <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+                                    </a>
                                 </li>
                             </ul>
                         </div>

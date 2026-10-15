@@ -190,27 +190,27 @@
 
         // One entry per tab. Clicking a tab swaps the quote text and image.
         $wsServices = [
-            [
-                'label' => 'Off-Road',
-                'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
-                'title' => 'Engineered for off-road',
-                'text'  => 'Our vans are engineered for purpose. The Everest team hits the road often, so we know exactly what a van needs to handle the Gibb River, Oodnadatta and the Nullarbor.',
-                'image' => 'assets/images/services/off-road.png',
-            ],
-            [
-                'label' => 'Lux Decor',
-                'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
-                'title' => 'Customised from the inside out',
-                'text'  => 'Style your interior with whatever makes you feel right at home. Come into our showroom and select your one-of-a-kind interior.',
-                'image' => 'assets/images/services/lux-decor.png',
-            ],
-            [
-                'label' => 'Quality',
-                'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
-                'title' => 'Strict quality control',
-                'text'  => 'Every caravan goes through our strict quality control process and must pass our QC stage before it is delivered to you.',
-                'image' => 'assets/images/services/quality.jpeg',
-            ],
+             [
+            'label' => 'OFF-GRID',
+            'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
+            'title' => 'Engineered for off-road',
+            'text'  => 'Why stop where the power ends? With solar, lithium batteries and big water tanks on board, our vans let you camp for days in the places caravan parks can’t reach. No power point, no problem.',
+            'image' => 'assets/abreco/images/newonce/off-grid.webp',
+        ],
+        [
+            'label' => 'Lux Decor',
+            'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
+            'title' => 'Customised from the inside out',
+            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 10-year structural warranty. We build them to last for decades of big laps, not just one.',
+            'image' => 'assets/abreco/images/newonce/lux.jpg',
+        ],
+        [
+            'label' => 'Custom Build',
+            'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+            'title' => 'Strict quality control',
+            'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels.',
+            'image' => 'assets/images/services/quality.jpeg',
+        ],
         ];
         // =====================================================
 
@@ -248,7 +248,7 @@
                 <p class="ws-about__text">{{ $wsAbout['text'] }}</p>
 
                 <div class="ws-about__cta">
-                    <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }}</a>
+                    <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }} <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
                 </div>
 
                 {{-- Service tabs + slider --}}

@@ -341,35 +341,34 @@
     .ev-blog .ev-blog__card:hover .ev-blog__thumb img { transform: none; }
 }
 
-/* ==========================================================
-   CARD MARK — brand badge in the photo's top-right corner.
 
-   A white disc so a dark logo reads over any photo. It is decorative,
-   and pointer-events:none lets taps fall through to the card's
-   stretched link underneath rather than dying on the badge.
+/* ==========================================================
+   POST TITLE — blog detail page.
+
+   The title used to sit under the photo as a centred pull-quote. It
+   leads the article now, so it is set as a proper heading in the site's
+   display face, left-aligned with the body copy beneath it.
    ========================================================== */
-.ev-blog .ev-blog__mark {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    padding: 9px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 6px 18px rgba(14, 19, 48, .22);
-    pointer-events: none;
+.ev-post__title {
+    margin: 0 0 6px;
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -.015em;
+    color: #0E1330;
+    text-transform: none;
 }
-.ev-blog .ev-blog__mark img {
+/* Gold rule under it, the same accent the section eyebrows use */
+.ev-post__title::after {
+    content: "";
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 64px;
+    height: 3px;
+    margin-top: 20px;
+    background: #D9AE55;
 }
 
 @media (max-width: 575.98px) {
-    .ev-blog .ev-blog__mark { top: 12px; right: 12px; width: 48px; height: 48px; padding: 8px; }
+    .ev-post__title::after { margin-top: 16px; }
 }

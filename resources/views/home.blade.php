@@ -38,7 +38,7 @@
                             <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
 
                             @if ($data->vehicle)
-                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Book a walkthrough</a>
+                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Book a walkthrough <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
                             @endif
                         </div>
 
@@ -211,7 +211,7 @@
             </ul>
 
             <div class="ev-about__actions">
-                <a class="ev-about__btn" href="{{ route('our-range') }}">View Our Vans</a>
+                <a class="ev-about__btn" href="{{ route('our-range') }}">View Our Vans <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
                 <a class="ev-about__link" href="{{ url('/contact') }}">Contact Us</a>
             </div>
         </div>
@@ -560,7 +560,7 @@
             <p class="ws-about__text">{{ $wsAbout['text'] }}</p>
 
             <div class="ws-about__cta">
-                <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }}</a>
+                <a class="ws-about__btn" href="{{ $wsAbout['button']['url'] }}">{{ $wsAbout['button']['label'] }} <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
             </div>
 
             {{-- Service tabs + slider --}}

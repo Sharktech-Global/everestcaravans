@@ -1,0 +1,213 @@
+/* ==========================================================
+   Everest Caravans — shared primary button.
+
+   One pill for every call to action, taken from .ev-story__btn on the
+   About page: brand fill, label on the left, arrow in a round chip on
+   the right that turns gold and nudges forward on hover.
+
+   Loaded from layouts/front.blade.php AFTER @yield('css_after'), so it
+   settles the per-section button rules in home2.css, about2.css and the
+   rest without needing !important.
+
+   Buttons that opt in — add a selector here and give the markup an
+   inline <svg> for the chip:
+   ========================================================== */
+
+.vb-hero .vb-btn,
+.ev-about .ev-about__btn,
+.ev-decor .ev-decor__btn,
+.ws-about .ws-about__btn,
+.ev-tribe .ev-tribe__btn,
+.ev-ctaband .ev-ctaband__btn,
+.ev-experts .ev-experts__btn,
+.ev-story .ev-story__btn {
+    --eb-ink: #0E1330;
+    --eb-brand: #283895;
+    --eb-gold: #D9AE55;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: auto;
+    height: 56px;
+    padding: 0 8px 0 28px;              /* tight on the right, the chip fills it */
+    border: 0;
+    border-radius: 999px;
+    background: var(--eb-brand);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    line-height: 1;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 12px 26px -14px rgba(40, 56, 149, .75);
+    transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+/* The arrow chip */
+.vb-hero .vb-btn svg,
+.ev-about .ev-about__btn svg,
+.ev-decor .ev-decor__btn svg,
+.ws-about .ws-about__btn svg,
+.ev-tribe .ev-tribe__btn svg,
+.ev-ctaband .ev-ctaband__btn svg,
+.ev-experts .ev-experts__btn svg,
+.ev-story .ev-story__btn svg {
+    box-sizing: content-box;            /* sections set border-box, which
+                                           would eat the padding below */
+    flex: none;
+    width: 18px;
+    height: 18px;
+    padding: 11px;                      /* 18 + 22 = a 40px chip */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: background-color .25s ease, transform .25s cubic-bezier(.22, .7, .2, 1);
+}
+
+/* Some sections wrap the label in a span; keep it from stretching */
+.ev-decor .ev-decor__btn span,
+.ev-ctaband .ev-ctaband__btn span { flex: none; }
+
+.vb-hero .vb-btn:hover,
+.vb-hero .vb-btn:focus,
+.vb-hero .vb-btn:visited,
+.ev-about .ev-about__btn:hover,
+.ev-about .ev-about__btn:focus,
+.ev-about .ev-about__btn:visited,
+.ev-decor .ev-decor__btn:hover,
+.ev-decor .ev-decor__btn:focus,
+.ev-decor .ev-decor__btn:visited,
+.ws-about .ws-about__btn:hover,
+.ws-about .ws-about__btn:focus,
+.ws-about .ws-about__btn:visited,
+.ev-tribe .ev-tribe__btn:hover,
+.ev-tribe .ev-tribe__btn:focus,
+.ev-tribe .ev-tribe__btn:visited,
+.ev-ctaband .ev-ctaband__btn:hover,
+.ev-ctaband .ev-ctaband__btn:focus,
+.ev-ctaband .ev-ctaband__btn:visited,
+.ev-experts .ev-experts__btn:hover,
+.ev-experts .ev-experts__btn:focus,
+.ev-experts .ev-experts__btn:visited,
+.ev-story .ev-story__btn:hover,
+.ev-story .ev-story__btn:focus,
+.ev-story .ev-story__btn:visited { color: #fff; text-decoration: none; }
+
+.vb-hero .vb-btn:hover,
+.ev-about .ev-about__btn:hover,
+.ev-decor .ev-decor__btn:hover,
+.ws-about .ws-about__btn:hover,
+.ev-tribe .ev-tribe__btn:hover,
+.ev-ctaband .ev-ctaband__btn:hover,
+.ev-experts .ev-experts__btn:hover,
+.ev-story .ev-story__btn:hover {
+    background: var(--eb-ink);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px -16px rgba(14, 19, 48, .8);
+}
+
+.vb-hero .vb-btn:hover svg,
+.ev-about .ev-about__btn:hover svg,
+.ev-decor .ev-decor__btn:hover svg,
+.ws-about .ws-about__btn:hover svg,
+.ev-tribe .ev-tribe__btn:hover svg,
+.ev-ctaband .ev-ctaband__btn:hover svg,
+.ev-experts .ev-experts__btn:hover svg,
+.ev-story .ev-story__btn:hover svg {
+    background: var(--eb-gold);
+    stroke: var(--eb-ink);
+    transform: translateX(3px);
+}
+
+.vb-hero .vb-btn:active,
+.ev-about .ev-about__btn:active,
+.ev-decor .ev-decor__btn:active,
+.ws-about .ws-about__btn:active,
+.ev-tribe .ev-tribe__btn:active,
+.ev-ctaband .ev-ctaband__btn:active,
+.ev-experts .ev-experts__btn:active,
+.ev-story .ev-story__btn:active { transform: translateY(0); }
+
+.vb-hero .vb-btn:focus-visible,
+.ev-about .ev-about__btn:focus-visible,
+.ev-decor .ev-decor__btn:focus-visible,
+.ws-about .ws-about__btn:focus-visible,
+.ev-tribe .ev-tribe__btn:focus-visible,
+.ev-ctaband .ev-ctaband__btn:focus-visible,
+.ev-experts .ev-experts__btn:focus-visible,
+.ev-story .ev-story__btn:focus-visible { outline: 2px solid var(--eb-brand); outline-offset: 3px; }
+
+/* ==========================================================
+   CTA band variant — reversed out.
+
+   Both halves of this band are dark (ink #0E1330 on one, brand #283895
+   on the other), so the button flips: white plate, dark blue letters.
+
+   Hover goes to gold rather than to the ink the other buttons use —
+   ink would sink into the near-black half and all but disappear, while
+   gold holds its own against both.
+   ========================================================== */
+.ev-ctaband .ev-ctaband__btn {
+    background: #fff;
+    color: var(--eb-brand);
+    box-shadow: 0 12px 26px -14px rgba(0, 0, 0, .55);
+}
+.ev-ctaband .ev-ctaband__btn svg {
+    background: rgba(40, 56, 149, .10);
+    stroke: var(--eb-brand);
+}
+.ev-ctaband .ev-ctaband__btn:hover,
+.ev-ctaband .ev-ctaband__btn:focus,
+.ev-ctaband .ev-ctaband__btn:visited { color: var(--eb-ink); }
+.ev-ctaband .ev-ctaband__btn:hover {
+    background: var(--eb-gold);
+    box-shadow: 0 18px 32px -16px rgba(0, 0, 0, .6);
+}
+.ev-ctaband .ev-ctaband__btn:hover svg {
+    background: rgba(14, 19, 48, .16);
+    stroke: var(--eb-ink);
+}
+/* White ring, since the brand outline would vanish on these panels */
+.ev-ctaband .ev-ctaband__btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+@media (max-width: 575.98px) {
+    .vb-hero .vb-btn,
+    .ev-about .ev-about__btn,
+    .ev-decor .ev-decor__btn,
+    .ws-about .ws-about__btn,
+    .ev-tribe .ev-tribe__btn,
+    .ev-ctaband .ev-ctaband__btn,
+    .ev-experts .ev-experts__btn,
+    .ev-story .ev-story__btn {
+        height: 50px;
+        padding-left: 22px;
+        font-size: 14px;
+        gap: 10px;
+    }
+    .vb-hero .vb-btn svg,
+    .ev-about .ev-about__btn svg,
+    .ev-decor .ev-decor__btn svg,
+    .ws-about .ws-about__btn svg,
+    .ev-tribe .ev-tribe__btn svg,
+    .ev-ctaband .ev-ctaband__btn svg,
+    .ev-experts .ev-experts__btn svg,
+    .ev-story .ev-story__btn svg { width: 16px; height: 16px; padding: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vb-hero .vb-btn,
+    .ev-about .ev-about__btn,
+    .ev-decor .ev-decor__btn,
+    .ws-about .ws-about__btn,
+    .ev-tribe .ev-tribe__btn,
+    .ev-ctaband .ev-ctaband__btn,
+    .ev-experts .ev-experts__btn,
+    .ev-story .ev-story__btn,
+    .ev-story .ev-story__btn svg { transition: none; transform: none; }
+}

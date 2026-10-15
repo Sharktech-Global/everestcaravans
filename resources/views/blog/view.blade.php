@@ -11,7 +11,13 @@
         'breadcrumbs' => [['label' => 'Blogs']],
     ])
 
-    <!--====== abreco BLOG PART START ======--> 
+    <!--====== abreco BLOG PART START ======-->
+    {{-- Shares the blog listing's stylesheet; .ev-post rules live at its end --}}
+    @php $blCss = 'css/blog.css'; @endphp
+    @if (file_exists(public_path($blCss)))
+        <link rel="stylesheet" href="{{ asset($blCss) }}?v={{ filemtime(public_path($blCss)) }}">
+    @endif
+
     @if($blog)
         <section class="abreco-blog-area pt-90 pb-95">
             <div class="container">
@@ -27,6 +33,9 @@
                             <h3 class="abreco-title">The Introduction</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur vero obcaecati at molestias iure vitae eligendi quia nobis voluptatem vel est fuga quidem voluptas reiciendis, animi blanditiis eius maiores modi amet dolor voluptates hic sed. Officia aliquid, fugiat, adipisci ut expedita aperiam ab at ducimus suscipit deserunt ipsa dolorum magnam.</p>
                         </div> -->
+                        {{-- Title leads the article, above the photo --}}
+                        <h1 class="ev-post__title">{{ @$blog->title }}</h1>
+
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <div class="abreco-blog-item mt-30">
@@ -35,12 +44,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         <div class="row">
                             <div class="col-12 pt-50 pb-50 news-blokquote">
-                                <blockquote class="text-center">
-                                    <q>{{@$blog->title}}</q>
-                                </blockquote>
                                 <p class="pt-60 blog-paragraph">{!!$blog->details!!}</p>
                             </div>
                         </div>

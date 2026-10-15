@@ -1786,7 +1786,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     stroke-linecap: round;
     stroke-linejoin: round;
 }
-.ev-ctaband .ev-ctaband__btn:hover { background: var(--et-gold); color: var(--et-ink); transform: translateY(-1px); }
+.ev-ctaband .ev-ctaband__btn:hover { background: white; color: var(--et-ink); transform: translateY(-1px); }
 .ev-ctaband .ev-ctaband__btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 /* ---------- Responsive ---------- */
