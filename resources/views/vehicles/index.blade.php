@@ -322,12 +322,11 @@
 @endsection
 @section('js_after')
 <script>
-    $(document).ready(function () {
-        // Handler for .ready() called.
-        $('html, body').animate({
-            scrollTop: $('#content-scroll').offset().top
-        },10);
-    });
+    // $(document).ready(function () {
+    //     $('html, body').animate({
+    //         scrollTop: $('#content-scroll').offset().top
+    //     },10);
+    // });
 
     $('#vehicle_type').on('change', function() {
                 var selectedType = $(this).val();

@@ -519,15 +519,13 @@
 
                 <nav class="ev-ftr__col ev-ftr__col--range" aria-label="Our range">
                     <h4 class="ev-ftr__title">Our Range</h4>
-                    
-
-                            <ul class="ev-ftr__list">
-                                @foreach ($footerVehicleTypes as $type)
-                                    <li>
-                                        <span><a href="/our-range">{{ $type->name }}</a></span>
-                                    </li>
-                                @endforeach
-                            </ul>
+                    <ul class="ev-ftr__list">
+                        @foreach ($footerVehicleTypes as $type)
+                            <li>
+                                <span><a href="{{ route('vehicle_type', $type->slug) }}">{{ $type->name }}</a></span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </nav>
 
                 <nav class="ev-ftr__col" aria-label="Company">
