@@ -452,7 +452,9 @@
 
         {{-- Photo: right side, blended into the navy with a gradient --}}
         @if ($exImg)
-            <img class="ev-experts__img" src="{{ $exImg }}" alt="" loading="lazy" decoding="async">
+            {{-- Eager: it sits on a dark panel, so a late load showed the panel
+                     bare for a moment before the photo arrived. --}}
+                <img class="ev-experts__img" src="{{ $exImg }}" alt="" decoding="async">
         @endif
         <span class="ev-experts__blend" aria-hidden="true"></span>
 
@@ -617,17 +619,17 @@
     // 'url' is optional — leave it null for a logo that isn't a link.
     $epPartners = [
         ['name' => 'Burst',                 'logo' => 'assets/images/partners/burst.png',            'url' => null],
-        ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.jpg',      'url' => null],
-        ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.jpg',     'url' => null],
-        ['name' => 'Road Runner Chassis',   'logo' => 'assets/images/partners/road-runner.jpg',      'url' => null],
-        ['name' => 'Swift Appliance Group', 'logo' => 'assets/images/partners/swift.jpg',            'url' => null],
-        ['name' => 'MPC Mags and Tyres',    'logo' => 'assets/images/partners/mpc.jpg',              'url' => null],
-        ['name' => 'Coast to Coast',        'logo' => 'assets/images/partners/coast-to-coast.jpg',   'url' => null],
-        ['name' => 'NCE',                   'logo' => 'assets/images/partners/nce.jpg',              'url' => null],
-        ['name' => 'Aussie Traveller',      'logo' => 'assets/images/partners/aussie-traveller.jpg', 'url' => null],
-        ['name' => 'Camec',                 'logo' => 'assets/images/partners/camec.jpg',            'url' => null],
-        ['name' => 'Thetford',              'logo' => 'assets/images/partners/thetford.jpg',         'url' => null],
-        ['name' => 'Adelaide Bank',         'logo' => 'assets/images/partners/adelaide-bank.webp',   'url' => null],
+        ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.png',      'url' => null],
+        ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.png',     'url' => null],
+        ['name' => 'Road Runner Chassis',   'logo' => 'assets/images/partners/road-runner.png',      'url' => null],
+        ['name' => 'Swift Appliance Group', 'logo' => 'assets/images/partners/swift.png',            'url' => null],
+        ['name' => 'MPC Mags and Tyres',    'logo' => 'assets/images/partners/mpc.png',              'url' => null],
+        ['name' => 'Coast to Coast',        'logo' => 'assets/images/partners/coast-to-coast.png',   'url' => null],
+        ['name' => 'NCE',                   'logo' => 'assets/images/partners/nce.png',              'url' => null],
+        ['name' => 'Aussie Traveller',      'logo' => 'assets/images/partners/aussie-traveller.png', 'url' => null],
+        ['name' => 'Camec',                 'logo' => 'assets/images/partners/camec.png',            'url' => null],
+        ['name' => 'Thetford',              'logo' => 'assets/images/partners/thetford.png',         'url' => null],
+        ['name' => 'Adelaide Bank',         'logo' => 'assets/images/partners/adelaide-bank.png',   'url' => null],
     ];
     // =============================================
 @endphp
@@ -653,7 +655,11 @@
                     <{{ $epTag }} class="ev-partners__cell"
                         @if ($p['url']) href="{{ $p['url'] }}" target="_blank" rel="noopener" aria-label="{{ $p['name'] }} (opens in a new tab)" @endif>
                         @if ($epLogo)
-                            <img src="{{ $epLogo }}" alt="{{ $p['name'] }}" loading="lazy" decoding="async">
+                            {{-- Loaded eagerly: the logos are small, and the
+                                 scroll reveal on .ev-partners__item meant a
+                                 lazy one could still be fetching as its tile
+                                 animated in. --}}
+                            <img src="{{ $epLogo }}" alt="{{ $p['name'] }}" decoding="async">
                         @else
                             {{-- No image yet: show the name so the grid never has an empty or broken cell --}}
                             <span class="ev-partners__name">{{ $p['name'] }}</span>

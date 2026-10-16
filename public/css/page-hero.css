@@ -104,7 +104,7 @@
 }
 .ev-pagehero .ev-pagehero__title {
     font-family: var(--ph-display);
-    font-size: clamp(36px, 6.5vw, 100px);
+    font-size: clamp(36px, 5vw, 80px);
     font-weight: 700;
     line-height: .9;
     letter-spacing: var(--ev-title-tracking, .015em);

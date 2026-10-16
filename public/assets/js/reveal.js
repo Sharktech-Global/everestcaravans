@@ -39,9 +39,8 @@
         ['.ws-about__media',           'left'],
         ['.ws-about__content > *',     'up'],
 
-        // Partners
-        ['.ev-partners__head > *',     'rise'],
-        ['.ev-partners__item',         'pop'],
+        // Partners: deliberately not listed — the section shows as-is, with
+        // no entry animation on the heading or the logo tiles.
 
         // Tribe: reviews, then the factory block under it
         ['.ev-tribe__head > *',        'rise'],

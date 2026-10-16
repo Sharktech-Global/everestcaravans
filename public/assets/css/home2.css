@@ -137,7 +137,7 @@
 
 /* ---------- Description ---------- */
 .vb-desc {
-    max-width: 80ch;      /* it spans the full wrap now, so cap the measure */
+    max-width: 100ch;      /* it spans the full wrap now, so cap the measure */
     margin-top: 1.25rem;
     margin-bottom: 6px;
     font-family: var(--vb-body);
@@ -147,7 +147,6 @@
 }
 .vb-desc p { margin: 0 0 .6em; color: #fff; }
 .vb-desc p:last-child { margin-bottom: 0; }
-
 
 /* ---------- Crossfade ---------- */
 .vb-hero .animated { animation-duration: .9s; animation-fill-mode: both; }
@@ -207,7 +206,6 @@
 @media (prefers-reduced-motion: reduce) {
     .vb-hero .animated { animation: none; }
 }
-
 
 
 /* ==========================================================
@@ -310,7 +308,6 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .ev-about__badge strong { font-size: 50px; font-weight: 700; letter-spacing: -.03em; }
 .ev-about__badge span   { margin-top: 6px; font-size: 18px; font-weight: 500; color: var(--ev-text); }
 
-
 /* ---------- Copy ---------- */
 .ev-about__content { position: relative; z-index: 1;  }
 
@@ -346,7 +343,6 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     color: var(--ev-ink);
     text-wrap: balance;
 }
-
 
 .ev-about__lead {
     margin: 0 0 25px;
@@ -1453,11 +1449,11 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
        into the off-white section instead of leaving pale rectangles.
        The section has isolation: isolate, so the blend stays contained. */
     mix-blend-mode: multiply;
-    filter: grayscale(1);        /* the source files are colour; mute them here */
-    transition:
+       transition:
         opacity .35s var(--ep-ease),
         filter .35s var(--ep-ease),
-        transform .45s var(--ep-ease);
+        transform .45s var(--ep-ease);       /* the source files are colour; mute them here */
+ 
 }
 .ev-partners .ev-partners__name {
     font-size: 16px;
@@ -1490,7 +1486,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 }
 .ev-partners--dark .ev-partners__cell img {
     filter: grayscale(1) invert(1);
-    mix-blend-mode: screen;
+    mix-blend-mode:screen;
     opacity: .62;
 }
 /* Un-inverting on hover would bring each logo's white background back with
@@ -2088,8 +2084,11 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .rv-js [data-rv="left"]  { transform: translateX(-40px); }
 .rv-js [data-rv="right"] { transform: translateX(40px); }
 .rv-js [data-rv="pop"]   { transform: translateY(16px) scale(.92); }
-/* Settles down from slightly oversized — good for photos */
-.rv-js [data-rv="zoom"]  { transform: scale(1.06); }
+/* Settles down from slightly oversized — good for photos.
+   No fade: these sit on a dark panel, so starting at opacity 0 showed the
+   panel first and the photo appeared to flash in over it. Transform only
+   means the picture is there the whole time and simply settles. */
+.rv-js [data-rv="zoom"]  { opacity: 1; transform: scale(1.06); }
 /* Wipes upward instead of moving. Do not put this on a lazy-loaded <img>:
    a clip-path that hides the element also stops the browser fetching it. */
 .rv-js [data-rv="mask"]  { clip-path: inset(0 0 100% 0); transform: scale(1.04); }
@@ -2238,10 +2237,9 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
    single-class rule and stretched the badge to the column width. */
 .vb-hero .vb-main .vb-warranty {
     display: block;
-    aspect-ratio: 205 / 57;      /* the file has a viewBox but no width/height */
     width: auto;
     max-width: 100%;
-    height: 54px;
+    height: 80px;
     margin: 0 0 18px;
 }
 
@@ -2278,3 +2276,4 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     line-height: 1.16;
     text-wrap: balance;        /* keeps a stray last word off its own line */
 }
+
