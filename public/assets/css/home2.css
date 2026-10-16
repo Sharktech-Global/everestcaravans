@@ -68,7 +68,9 @@
 
 .vb-wrap {
    display: grid;
-    grid-template-columns: minmax(0, 1fr) 390px;
+    /* Single column: the badge, eyebrow, title, copy and button all stack
+       inside .vb-main. The old second column held the badge and copy. */
+    grid-template-columns: minmax(0, 1fr);
     align-items: end;
     gap: 3rem;
     width: 100%;
@@ -106,11 +108,11 @@
     margin: 0;
     max-width: 16.5em;
     font-family: var(--vb-display);
-    font-size: clamp(2.4rem, 4vw, 80px);    
+    font-size: clamp(2.4rem, 5vw, 90px);    
     font-weight: 800 !important;
     line-height: 1.28;
     letter-spacing: -.01em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: var(--vb-white);
 }
 .vb-title span { color: var(--vb-accent-text); }
@@ -135,7 +137,9 @@
 
 /* ---------- Description ---------- */
 .vb-desc {
-    margin-bottom: 6px;   /* last line sits on the title baseline */
+    max-width: 80ch;      /* it spans the full wrap now, so cap the measure */
+    margin-top: 1.25rem;
+    margin-bottom: 6px;
     font-family: var(--vb-body);
     font-size: 17px;
     line-height: 1.97;
@@ -2225,17 +2229,14 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 /* ==========================================================
    HERO WARRANTY BADGE — sits above the description.
 
-   .vb-aside holds the badge and the copy together so .vb-wrap stays a
-   two-item grid on desktop; a third child would have dropped onto a new
-   row. The artwork is gold and white on transparency, so it needs no
-   plate over the photo.
+   Sits at the top of .vb-main, above the eyebrow. The artwork is gold
+   and white on transparency, so it needs no plate over the photo.
    ========================================================== */
-.vb-aside { display: block; }
 
 /* Three classes deep on purpose: Owl ships
    `.owl-carousel .owl-item img { width: 100% }`, which outranks a
    single-class rule and stretched the badge to the column width. */
-.vb-hero .vb-aside .vb-warranty {
+.vb-hero .vb-main .vb-warranty {
     display: block;
     aspect-ratio: 205 / 57;      /* the file has a viewBox but no width/height */
     width: auto;
@@ -2245,13 +2246,13 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 }
 
 @media (max-width: 767.98px) {
-    .vb-hero .vb-aside .vb-warranty { height: 44px; margin-bottom: 14px; }
+    .vb-hero .vb-main .vb-warranty { height: 44px; margin-bottom: 14px; }
     .ev-tribe .ev-tribe__title {
         max-width: 100%;
     }
 }
 @media (max-width: 479.98px) {
-    .vb-hero .vb-aside .vb-warranty { height: 38px; }
+    .vb-hero .vb-main .vb-warranty { height: 38px; }
 }
 
 /* ==========================================================

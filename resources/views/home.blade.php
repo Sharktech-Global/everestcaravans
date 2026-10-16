@@ -30,21 +30,8 @@
      src="{{ asset('storage/' . ($data->mobile_image ?: $data->image)) }}"
      alt="{{ $data->title }}">
 
+                        {{-- One column: badge, eyebrow, title, copy, button --}}
                         <div class="vb-main">
-                            @if ($data->vehicle)
-                                <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
-                            @endif
-
-                            <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
-
-                            @if ($data->vehicle)
-                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Book a walkthrough <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
-                            @endif
-                        </div>
-
-                        {{-- Badge + copy share the right-hand column, so the
-                             wrap stays a two-item grid on desktop --}}
-                        <div class="vb-aside">
                             @php $vbWarranty = 'assets/abreco/images/newonce/warranty.svg'; @endphp
                             @if (file_exists(public_path($vbWarranty)))
                                 <img class="vb-warranty" src="{{ asset($vbWarranty) }}"
@@ -52,10 +39,20 @@
                                      width="205" height="57" loading="lazy" decoding="async">
                             @endif
 
+                            @if ($data->vehicle)
+                                <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
+                            @endif
+
+                            <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
+
                             @if ($data->description)
                                 <div class="vb-desc">
                                     {!! strip_tags($data->description, '<p><br><strong><em><b><i>') !!}
                                 </div>
+                            @endif
+
+                            @if ($data->vehicle)
+                                <a class="vb-btn" href="{{ route('vehicles.show', $data->vehicle->slug) }}#enquiry">Book a walkthrough <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></a>
                             @endif
                         </div>
 
