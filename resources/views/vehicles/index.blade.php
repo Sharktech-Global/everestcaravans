@@ -145,26 +145,48 @@
 @endsection
 @section('content')
 
-    @php
-        $pageTitle = ($Vtype->name ?? 'Vehicle Details')
-            . (!empty($vehicle_application_name)
-                ? ' - ' . $vehicle_application_name->name
-                : '');
+    
 
-        $bannerImage = !empty($Vtype->image)
-            ? 'storage/' . ltrim($Vtype->image, '/')
-            : 'assets/images/page-hero/default.jpg';
-    @endphp
+@php
+    $pageTitle = ($Vtype->name ?? 'Vehicle Details')
+        . (!empty($vehicle_application_name)
+            ? ' - ' . $vehicle_application_name->name
+            : '');
 
-    @include('partials.page-hero', [
-        'title'       => $pageTitle,
-        'subtitle'    => '',
-        'image'       => $bannerImage,
-        'breadcrumbs' => [
-            ['label' => 'Our Range', 'url' => route('our-range')],
-            ['label' => $pageTitle],
-        ],
-    ])
+    // Default banner
+    $bannerImage = 'assets/images/page-hero/default.jpg';
+
+    // Find the first active vehicle in this category
+    $categoryVehicle = \App\Vehicle::where('vehicle_type_id', $Vtype->id)
+        ->where('status', 1)
+        ->whereNotNull('banner_image')
+        ->where('banner_image', '!=', '')
+        ->orderBy('order', 'ASC')
+        ->first();
+
+    // Retrieve the actual vehicle banner
+    if ($categoryVehicle && $categoryVehicle->banner_image) {
+
+        $imagePath = ltrim($categoryVehicle->banner_image, '/');
+
+        if (is_file(public_path($imagePath))) {
+            $bannerImage = $imagePath;
+        } elseif (is_file(public_path('storage/' . $imagePath))) {
+            $bannerImage = 'storage/' . $imagePath;
+        }
+    }
+@endphp
+
+@include('partials.page-hero', [
+    'title'       => $pageTitle,
+    'subtitle'    => '',
+    'image'       => $bannerImage,
+    'breadcrumbs' => [
+        ['label' => 'Our Range', 'url' => route('our-range')],
+        ['label' => $pageTitle],
+    ],
+])
+
 
     <!--====== contact Breadcrumb Part ======-->
     <!-- <section class="abreco-inner-banner position-relative" style="background-image: url('{{ asset('storage/' . @$Vtype->image) }}');">
