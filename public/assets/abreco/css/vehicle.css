@@ -305,8 +305,12 @@ p {
   background-color: var(--color-2);
   border: 0;
   border-radius: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: var(--white);
+}
+.vehicle-data .container .details-tab-wrapper .item.booking.active .item-content .data form .row .col textarea.form-control {
+  height: auto !important;
+      padding-top: 15px;
 }
 .vehicle-data .container .details-tab-wrapper .item.booking.active .item-content .data form .row .col .form-control::-moz-placeholder {
   color: var(--white);
@@ -1289,7 +1293,7 @@ p {
   margin: 0 auto;
 }
 #final-enquiry .form-control {
-    display: block;
+display: block;
     width: 100%;
     height: 60px;
     margin-bottom: 25px;
@@ -1297,15 +1301,16 @@ p {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #ffffff;
+    background-color: #1e285f;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #1e285f;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 } 
 #final-enquiry textarea.form-control {
   height: 150px;
+      padding-top: 15px;
 }
 /* Was a plain black block for every button in these two sections. The
    enquiry submit now carries .ev-contact-submit--light from
@@ -1319,6 +1324,9 @@ p {
   font-weight: 500;
   padding: 15px 40px;
   text-transform: uppercase;
+}
+#final-enquiry .form-control::placeholder {
+  color: #fff;
 }
 
 
