@@ -227,7 +227,6 @@ p {
 }
 .vehicle-data .container .details-tab-wrapper .item.active .item-content .data h4 {
   font-size: 40px;
-  font-style: italic;
   font-weight: 600;
   margin-bottom: 20px;
   color: var(--black);
@@ -269,7 +268,6 @@ p {
 }
 .vehicle-data .container .details-tab-wrapper .item.active .item-content .image h4 {
   font-size: 32px;
-  font-style: italic;
   font-weight: 600;
   margin-bottom: 20px;
   color: #fff;

@@ -43,7 +43,7 @@
                                 <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
                             @endif
 
-                            <{{ $tag }} class="vb-title">{!! $title !!}@if ($data->sub_title) <span>{{ $data->sub_title }}</span>@endif</{{ $tag }}>
+                            <h2 class="vb-title">{!! $title !!}@if ($data->sub_title) <br><span>{{ $data->sub_title }}</span>@endif</h2>
 
                             @if ($data->description)
                                 <div class="vb-desc">
