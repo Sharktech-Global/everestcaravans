@@ -64,7 +64,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Saira', sans-serif;
+  /* Headline face for the whole site, set on :root in layouts/front.blade.php */
+  font-family: var(--ev-display, 'Saira', sans-serif);
   font-weight: 700;
   color: #0e1133;
   margin: 0px;
@@ -7549,7 +7550,7 @@ line-height: 30px;
     font-weight: 700;
     font-style: italic;
     line-height: 49px;
-    font-family: Saira;
+    font-family: var(--ev-display, Saira);
 }
 
 .custom-offset-right{

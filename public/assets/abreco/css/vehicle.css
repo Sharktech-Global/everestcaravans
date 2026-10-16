@@ -17,7 +17,7 @@
   --container-width-lg: 90%;
   --container-width-md: 95%;
   --container-width-sm: 98%;
-  --saira: 'Saira', sans-serif;
+  --saira: var(--ev-display, 'Saira', sans-serif);   /* headline face, set on :root */
   --dm-sans: 'DM Sans', sans-serif;
   --color-1: #283895;
   --color-2: #1E285F;
@@ -546,8 +546,8 @@ p {
     max-width: 80%;
   }
   .vehicle-data .container .details-tab-wrapper .tabs ul li a {
-    padding: 25px 20px;
-    font-size: 20px;
+    padding: 20px 20px;
+    font-size: 17px;
   }
   .vehicle-data .container .details-tab-wrapper .item {
     margin-bottom: 2px;

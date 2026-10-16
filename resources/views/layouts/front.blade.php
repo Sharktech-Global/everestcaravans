@@ -16,7 +16,9 @@
          Loaded here, not per page, because the navbar uses it on every route. --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    {{-- DM Sans is the headline face; Space Grotesk stays as the
+         fallback and still serves anything the display stack does not cover. --}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
     {{-- ?v=mtime so an edit is never served from the browser cache --}}
     <link rel="stylesheet" href="{{ asset('assets/abreco/css/style.css') }}?v={{ filemtime(public_path('assets/abreco/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/abreco/css/responsive.css') }}?v={{ filemtime(public_path('assets/abreco/css/responsive.css')) }}">
@@ -25,6 +27,15 @@
     <style>
         :root {
             --main-bg-new-color: {{ @$settings->website_color ? @$settings->website_color : '#f15336' }};
+
+            /* Headline face. Every stylesheet points its display font at this,
+               so swapping it here changes every heading on the site. */
+            --ev-display: "DM Sans", "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+
+            /* Tracking for headings. The old values were negative, tuned for
+               Space Grotesk; DM Sans reads better with a little air. */
+            --ev-title-tracking: .015em;
+            --ev-title-weight: 600;
         }
 
         .homepage .nav-menu>li>a {

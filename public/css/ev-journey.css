@@ -17,7 +17,7 @@
     --ej-gold-light: #F1D58C;
     --ej-gold-grad: linear-gradient(180deg, #F8E3A3 0%, #E2B95E 45%, #B8862F 70%, #E9C977 100%);
     --ej-line: rgba(217, 174, 85, .2);
-    --ej-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ej-display: var(--ev-display);
     --ej-cond: "Poppins", system-ui, sans-serif;
     --ej-max: 1120px;
     --ej-medal: 64px;
@@ -297,7 +297,7 @@
    ========================================================== */
 .ev-journey .ev-journey__title,
 .ev-journey .ev-journey__row {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
 }
 
 /* ==========================================================

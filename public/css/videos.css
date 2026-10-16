@@ -55,6 +55,7 @@
     object-fit: contain;
 }
 .ev-videos .ev-videos__heading {
+    font-family: var(--ev-display, var(--vd-font));   /* headline face */
     font-size: clamp(32px, 3.4vw, 48px);
     font-weight: 500;
     line-height: 1.08;
@@ -260,6 +261,7 @@
 }
 .ev-videos .ev-videos__label span::after { content: ""; width: 18px; height: 1px; background: #C9CDDD; }
 .ev-videos .ev-videos__title {
+    font-family: var(--ev-display, var(--vd-font));   /* headline face */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

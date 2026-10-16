@@ -12,7 +12,7 @@
     --fq-side: 40px;
     /* Site typography: Space Grotesk for headings, Poppins for body.
        Both load earlier in the page, so this section requests no font. */
-    --fq-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --fq-display: var(--ev-display);
     --fq-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
 
     display: block;

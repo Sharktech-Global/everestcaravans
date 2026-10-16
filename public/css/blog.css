@@ -25,7 +25,7 @@
     /* Site typography: Space Grotesk for headings, Poppins for body.
        Space Grotesk loads in the layout head; Poppins comes from the
        page hero partial at the top of this page. */
-    --bl-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --bl-display: var(--ev-display);
     --bl-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
 
     display: block;
@@ -351,7 +351,7 @@
    ========================================================== */
 .ev-post__title {
     margin: 0 0 6px;
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     font-size: clamp(26px, 3vw, 40px);
     font-weight: 700;
     line-height: 1.18;

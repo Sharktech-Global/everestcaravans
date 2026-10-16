@@ -7,7 +7,7 @@
     --ph-gold-light: #F1D58C;
     --ph-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     /* Headline face, matching the home page sections. Loaded in the layout head. */
-    --ph-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ph-display: var(--ev-display);
     --ph-top-space: 110px;          /* height of your navbar if it sits on top of this banner; use 0 if not */
     --ph-height: clamp(480px, 66vh, 680px);
     --ph-max: 1300px;
@@ -107,7 +107,7 @@
     font-size: clamp(36px, 6.5vw, 100px);
     font-weight: 700;
     line-height: .9;
-    letter-spacing: -.05em;
+    letter-spacing: var(--ev-title-tracking, .015em);
     color: #fff;
 }
 .ev-pagehero .ev-pagehero__sub {

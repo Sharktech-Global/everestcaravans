@@ -11,7 +11,7 @@
     --ea-bg: #0E1330;
     /* Site typography: Space Grotesk for headings, Poppins for body.
        Both load earlier in the page, so this section requests no font. */
-    --ea-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ea-display: var(--ev-display);
     --ea-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     --ea-radius: 10px;
 

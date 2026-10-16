@@ -6,8 +6,8 @@
 .ev-factory__features .ev-factory__icon-in {display: grid;place-items: center;transform: rotate(-45deg);}
 .ev-factory__features .ev-factory__icon img {display: block;width: var(--ff-icon);height: var(--ff-icon);object-fit: contain;filter: brightness(0) invert(1);}
 .ev-factory__features .ev-factory__feature:hover .ev-factory__icon {background: var(--ff-brand);transform: rotate(45deg) translateY(-3px);}
-.ev-factory__features .ev-factory__label {font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;font-size: 13px;font-weight: 600;line-height: 1.45;letter-spacing: .1em;text-transform: uppercase;text-align: center;color: var(--ff-label);}
-.ev-factory__features .ev-factory__initial {font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;font-size: 34px;font-weight: 700;line-height: 1;color: #fff;}
+.ev-factory__features .ev-factory__label {font-family: var(--ev-display);font-size: 13px;font-weight: 600;line-height: 1.45;letter-spacing: .1em;text-transform: uppercase;text-align: center;color: var(--ff-label);}
+.ev-factory__features .ev-factory__initial {font-family: var(--ev-display);font-size: 34px;font-weight: 700;line-height: 1;color: #fff;}
 @media (max-width: 575.98px) {
     .ev-factory__features .ev-factory__icon img {width: 50px;height: 50px;}
     ul.ev-factory__features.is-in {grid-template-columns: repeat(1, 1fr);}

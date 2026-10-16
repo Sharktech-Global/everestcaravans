@@ -11,7 +11,7 @@
     --vb-desc: rgba(255, 255, 255, .72);
 
     /* Type */
-    --vb-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --vb-display: var(--ev-display);
     --vb-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
 
     /* Layout */
@@ -107,7 +107,7 @@
     max-width: 16.5em;
     font-family: var(--vb-display);
     font-size: clamp(2.4rem, 4vw, 80px);    
-    font-weight: 700;
+    font-weight: 800 !important;
     line-height: 1.28;
     letter-spacing: -.01em;
     text-transform: uppercase;
@@ -891,7 +891,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     --ws-ink: #0E1330;
     --ws-text: #555A6E;
     --ws-rule: #C9CDE0;
-    --ws-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ws-display: var(--ev-display);
     --ws-body: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     --ws-max: 1600px;
     --ws-side: 60px;
@@ -932,7 +932,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
         "media content";
     grid-template-rows: auto 1fr;
     align-items: start;
-    gap: 33px;
+    gap: 25px;
     width: 100%;
     max-width: var(--ws-max);
     margin: 0 auto;
@@ -1761,7 +1761,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 }
 .ev-ctaband .ev-ctaband__body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 .ev-ctaband h3 {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     font-size: clamp(19px, 1.7vw, 24px);
     font-weight: 500;
     line-height: 1.2;
@@ -1819,7 +1819,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     --ex-brand: #283895;
     --ex-gold: #D9AE55;
     --ex-gold-light: #F1D58C;
-    --ex-font: "Space Grotesk", "Segoe UI", Roboto, Arial, sans-serif;
+    --ex-font: var(--ev-display);
     --ex-max: 1440px;
     --ex-side: 60px;
     --ex-ease: cubic-bezier(.22, .7, .2, 1);
@@ -2039,7 +2039,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
    ========================================================== */
 .ev-about .ev-about__features li,
 .ev-decor .ev-decor__label {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
 }
 
 /* ==========================================================
@@ -2055,7 +2055,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .ev-partners .ev-partners__title,
 .ev-tribe .ev-tribe__title,
 .ev-experts .ev-experts__title {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
 }
 
 /* ==========================================================
@@ -2252,4 +2252,28 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 }
 @media (max-width: 479.98px) {
     .vb-hero .vb-aside .vb-warranty { height: 38px; }
+}
+
+/* ==========================================================
+   TITLE STYLE — one treatment for every section heading.
+
+   Each section had set its own tracking, all of it negative (-.005em to
+   -.035em) and tuned for Space Grotesk, with weights drifting between
+   500, 600 and 700. DM Sans wants a little air instead, so the headings
+   now share one positive tracking and one weight, both set on :root in
+   the layout so they can be tuned in a single place.
+
+   Last in the file so it settles the per-section rules above.
+   ========================================================== */
+.vb-hero .vb-title,
+.ev-about .ev-about__title,
+.ev-decor .ev-decor__title,
+.ws-about .ws-about__title,
+.ev-partners .ev-partners__title,
+.ev-tribe .ev-tribe__title,
+.ev-experts .ev-experts__title {
+    letter-spacing: var(--ev-title-tracking, .015em);
+    font-weight: var(--ev-title-weight, 600);
+    line-height: 1.16;
+    text-wrap: balance;        /* keeps a stray last word off its own line */
 }

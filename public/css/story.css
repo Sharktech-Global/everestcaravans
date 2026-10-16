@@ -10,7 +10,7 @@
     --es-tint: #EEF0FB;
     --es-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
     /* Headline face, matching the home page sections. Loaded in the layout head. */
-    --es-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --es-display: var(--ev-display);
     --es-max: 1340px;
     --es-side: 40px;
     --es-radius: 5px;

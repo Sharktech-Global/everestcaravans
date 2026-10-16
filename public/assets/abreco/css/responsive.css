@@ -2850,7 +2850,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 .ev-ftr__cta { text-align: right; }
 .ev-ftr__cta-title {
     margin-bottom: 14px;
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     font-size: clamp(22px, 2vw, 30px);
     font-weight: 700;
     line-height: 1.2;
@@ -2893,7 +2893,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     border-radius: 8px;
     background: #283895;
     color: #fff;
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     font-size: 15px;
     font-weight: 600;
     letter-spacing: .02em;
@@ -2949,7 +2949,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     color: rgba(255, 255, 255, .72);
 }
 .offcanvas_menu_wrapper .toll-free-btn-banner-sidemenu .toll-number {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     font-size: 21px;
     font-weight: 700;
     font-style: normal;
@@ -3023,7 +3023,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 }
 .ev-ftr__list { display: grid; gap: 13px; }
 .ev-ftr__list li {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
     line-height: 1.5;
     overflow-wrap: break-word;
 }
@@ -3432,7 +3432,7 @@ li.ev-navcta a {
 .abreco-header-area .abreco-header-main-menu ul > li .sub-menu li a,
 .abreco-header-area .abreco-header-main-menu ul li .pages-mega-menu ul li a,
 .offcanvas_menu .offcanvas_main_menu li a {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
 }
 
 /* ==========================================================
@@ -3448,7 +3448,7 @@ li.ev-navcta a {
    `.bread-inner h1` rule on specificity, not just on file order.
    ========================================================== */
 .abreco-inner-banner .bread-inner h1 {
-    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-family: var(--ev-display);
 }
 
 /* ==========================================================

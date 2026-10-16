@@ -16,7 +16,7 @@
     /* Site typography: Space Grotesk for headings, Poppins for body.
        Space Grotesk loads in the layout head; Poppins comes from the page
        hero partial at the top of this page. */
-    --ct-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ct-display: var(--ev-display);
     --ct-font: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
 
     display: block;
@@ -353,7 +353,7 @@
 }
 
 .ev-contact-submit:hover {
-    background: #104bcb;
+    background: #0b1937;
 }
 
 /* ==========================================================
@@ -372,7 +372,7 @@
     --cf-line: #E3E5EE;
     --cf-radius: 4px;
     --cf-gap: 28px;
-    --cf-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --cf-display: var(--ev-display);
 
     position: relative;
     padding: 100px 0;
