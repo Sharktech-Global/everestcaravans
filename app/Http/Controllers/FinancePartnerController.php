@@ -11,14 +11,14 @@ class FinancePartnerController extends Controller
 
     public function show()
     {
-        $this->seo()->setTitle('Finance Partners | Everest Caravans');
-        $this->seo()->setDescription('Explore our finance partner options.');
+        // $this->seo()->setTitle('Finance Partners | Everest Caravans');
+        // $this->seo()->setDescription('Explore our finance partner options.');
 
-        SEOMeta::setKeywords([
-            'Everest Caravans',
-            'caravans',
-            'finance partners'
-        ]);
+        // SEOMeta::setKeywords([
+        //     'Everest Caravans',
+        //     'caravans',
+        //     'finance partners'
+        // ]);
 
         return view('finance-partner');
     }

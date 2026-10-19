@@ -6,7 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
-    {!! SEO::generate() !!}
+    <!-- {!! SEO::generate() !!} -->
+
+@php
+    // Get the current URL path, excluding query parameters.
+    $seoPath = trim(request()->path(), '/');
+
+    // Use "home" for the homepage.
+    $seoKey = ($seoPath === '' || $seoPath === '/')
+        ? 'home'
+        : $seoPath;
+
+    // Find an exact match in the SEO dashboard.
+    $dashboardSeo = \App\Seo::where('route_name', $seoKey)->first();
+
+    // Dashboard values take priority over controller SEO.
+    if ($dashboardSeo) {
+
+        if (filled($dashboardSeo->seo_title)) {
+            \Artesaos\SEOTools\Facades\SEOMeta::setTitle(
+                $dashboardSeo->seo_title
+            );
+
+            \Artesaos\SEOTools\Facades\OpenGraph::setTitle(
+                $dashboardSeo->seo_title
+            );
+
+            \Artesaos\SEOTools\Facades\TwitterCard::setTitle(
+                $dashboardSeo->seo_title
+            );
+        }
+
+        if (filled($dashboardSeo->seo_description)) {
+            \Artesaos\SEOTools\Facades\SEOMeta::setDescription(
+                $dashboardSeo->seo_description
+            );
+
+            \Artesaos\SEOTools\Facades\OpenGraph::setDescription(
+                $dashboardSeo->seo_description
+            );
+
+            \Artesaos\SEOTools\Facades\TwitterCard::setDescription(
+                $dashboardSeo->seo_description
+            );
+        }
+
+        if (filled($dashboardSeo->seo_keywords)) {
+            \Artesaos\SEOTools\Facades\SEOMeta::setKeywords(
+                array_map('trim', explode(',', $dashboardSeo->seo_keywords))
+            );
+        }
+    }
+@endphp
+
+{!! SEO::generate() !!}
+
     <meta name="facebook-domain-verification" content="nu43u1tt4iojwnbxkfnkanqpppdosg" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta name="google-site-verification" content="26ZAl---uyCbz7e15k5NfHqrSJEurompyhZxt64R4Og" /> --}}
