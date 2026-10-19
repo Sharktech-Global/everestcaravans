@@ -92,18 +92,38 @@ class BlogController extends Controller
         $detail->date_display = $validated['date'];
         $detail->status = $validated['status'];
         $detail->details = $validated['details'];
-        $detail->seo_title = $validated['seo_title'];
-        $detail->seo_description = $validated['seo_description'];
-        $detail->seo_keywords = $validated['seo_keywords'];
+        $detail->seo_title = $validated['seo_title'] ?? null;
+        $detail->seo_description = $validated['seo_description'] ?? null;
+        $detail->seo_keywords = $validated['seo_keywords'] ?? null;
+        
         if ($request->hasFile('feature_image')) {
-            Storage::disk('public')->delete($detail->feature_image);
+
+            // Upload the new image first
             $path = $request->file('feature_image')->storeAs(
                 'upload/blogs/feature_image',
-                $request->feature_image->getClientOriginalName(),
+                $request->file('feature_image')->getClientOriginalName(),
                 'public'
             );
+
+            if ($path === false) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'Failed to upload the featured image.');
+            }
+
+            // Delete the previous image only if it exists
+            // and is different from the new image path
+            if (
+                !empty($detail->feature_image) &&
+                $detail->feature_image !== $path &&
+                Storage::disk('public')->exists($detail->feature_image)
+            ) {
+                Storage::disk('public')->delete($detail->feature_image);
+            }
+
             $detail->feature_image = $path;
         }
+
         $res = $detail->save();
         if ($res) {
             activity('admin')->performedOn($detail)->causedBy($user)->withProperties(['data' => $request])->log('Added Image to vehicle feature #' . $detail->title . '.');
