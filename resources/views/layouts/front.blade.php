@@ -483,7 +483,7 @@
                         <span class="ev-ftr__divider" aria-hidden="true"></span>
                         {{-- Wide strip rather than a square badge, so it is sized by height --}}
                         <img class="ev-ftr__badge ev-ftr__badge--wide"
-                             src="{{ asset('assets/abreco/images/newonce/warranty.svg') }}"
+                             src="{{ asset('assets/abreco/images/newonce/warranty.webp') }}"
                              alt="Structural warranty" width="205" height="57" loading="lazy" decoding="async">
                     </div>
 

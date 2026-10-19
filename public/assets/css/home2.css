@@ -2277,3 +2277,39 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     text-wrap: balance;        /* keeps a stray last word off its own line */
 }
 
+
+/* ==========================================================
+   PARTNERS GRID — centre whatever is left on the last row.
+
+   13 logos into 4, 3 or 2 columns leaves one on its own, and a grid
+   parks it at the left edge. Flex with justify-content: center keeps the
+   full rows looking identical to the grid while centring a short last
+   row, and it keeps working whatever the logo count becomes.
+
+   The basis reproduces the old track width: the row minus its gaps,
+   divided by the column count.
+   ========================================================== */
+.ev-partners .ev-partners__grid {
+    --ep-cols: 4;
+    --ep-col-gap: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: var(--ep-col-gap);
+}
+.ev-partners .ev-partners__grid > .ev-partners__item {
+    flex: 0 0 calc(
+        (100% - (var(--ep-cols) - 1) * var(--ep-col-gap)) / var(--ep-cols)
+    );
+    max-width: calc(
+        (100% - (var(--ep-cols) - 1) * var(--ep-col-gap)) / var(--ep-cols)
+    );
+}
+
+@media (max-width: 991.98px) {
+    .ev-partners .ev-partners__grid { --ep-cols: 3; --ep-col-gap: 28px; }
+}
+@media (max-width: 575.98px) {
+    .ev-partners .ev-partners__grid { --ep-cols: 2; --ep-col-gap: 16px; }
+}

@@ -34,7 +34,7 @@
 
             // Warranty badges shown beside the form
             'badges'  => [
-                ['image' => 'assets/abreco/images/newonce/warranty1-01.png', 'alt' => '10 year structural warranty'],
+                ['image' => 'assets/abreco/images/newonce/warranty1-01.png', 'alt' => '5 year structural warranty'],
                 ['image' => 'assets/abreco/images/newonce/warranty2-01.png', 'alt' => '1 year general warranty'],
             ],
             'note'    => 'Every Everest caravan is covered from the day you collect it.',

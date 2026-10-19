@@ -32,10 +32,10 @@
 
                         {{-- One column: badge, eyebrow, title, copy, button --}}
                         <div class="vb-main">
-                            @php $vbWarranty = 'assets/abreco/images/newonce/warranty.svg'; @endphp
+                            @php $vbWarranty = 'assets/abreco/images/newonce/warranty.webp'; @endphp
                             @if (file_exists(public_path($vbWarranty)))
                                 <img class="vb-warranty" src="{{ asset($vbWarranty) }}"
-                                     alt="10 year structural warranty"
+                                     alt="5 year structural warranty"
                                      width="205" height="57" loading="lazy" decoding="async">
                             @endif
 
@@ -512,7 +512,7 @@
             'label' => 'Lux Decor',
             'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
             'title' => 'Customised from the inside out',
-            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 10-year structural warranty. We build them to last for decades of big laps, not just one.',
+            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 5-year structural warranty. We build them to last for decades of big laps, not just one.',
             'image' => 'assets/abreco/images/newonce/lux.jpg',
         ],
         [
@@ -618,6 +618,7 @@
     // Logos are already black & white. PNG/SVG with a transparent background works best.
     // 'url' is optional — leave it null for a logo that isn't a link.
     $epPartners = [
+        ['name' => 'Samaria',               'logo' => 'assets/images/partners/samaria.webp',         'url' => null],
         ['name' => 'Burst',                 'logo' => 'assets/images/partners/burst.png',            'url' => null],
         ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.png',      'url' => null],
         ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.png',     'url' => null],
@@ -695,7 +696,7 @@
     $etFeatures = [
         ['label' => 'Australian Made',             'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
         ['label' => 'Built to Last',               'icon' => 'assets/abreco/images/logo/caravan.svg'],
-        ['label' => '10 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.svg'],
+        ['label' => '5 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.svg'],
     ];
 
     // Drop the PDF at public/assets/brochure/everest-range.pdf and the button

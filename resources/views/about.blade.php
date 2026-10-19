@@ -201,7 +201,7 @@
             'label' => 'Lux Decor',
             'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
             'title' => 'Customised from the inside out',
-            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 10-year structural warranty. We build them to last for decades of big laps, not just one.',
+            'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 5-year structural warranty. We build them to last for decades of big laps, not just one.',
             'image' => 'assets/abreco/images/newonce/lux.jpg',
         ],
         [
@@ -405,7 +405,7 @@
             ['q' => 'Can I visit your factory?',
              'a' => 'Of course. Our display and manufacturing facility is at 51 Glenbarry Road, Campbellfield VIC 3061, only 20 minutes from Melbourne Airport.'],
             ['q' => 'What warranty do you offer?',
-             'a' => 'Every Everest caravan comes with a 10 year structural warranty.'],
+             'a' => 'Every Everest caravan comes with a 5 year structural warranty.'],
             ['q' => 'Do you provide after-sales service?',
              'a' => 'Yes. We are the manufacturer and the dealer, so you deal with us from the point of sale through delivery, handover and after-care, for the life of your caravan.'],
             ['q' => 'Do your caravans meet Australian regulations?',
