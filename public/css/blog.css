@@ -372,3 +372,30 @@
 @media (max-width: 575.98px) {
     .ev-post__title::after { margin-top: 16px; }
 }
+
+/* ==========================================================
+   LINE HEIGHT — 1.6 for the reading text on both blog pages.
+
+   The listing excerpt was already 1.6 but the lead paragraph sat at
+   1.5, and the article body on a post was 1.5 — tight for long copy.
+   This covers the body and whatever tags the stored HTML brings with
+   it (paragraphs, lists, quotes), on the listing and the post alike.
+
+   Headings keep their own tighter leading; 1.6 on a 38px title would
+   leave 61px between lines.
+   ========================================================== */
+.ev-blog .ev-blog__lead,
+.ev-blog .ev-blog__excerpt {
+    line-height: 1.6;
+}
+
+/* Post body — the stored HTML is dropped inside .blog-paragraph */
+.blog-paragraph,
+.blog-paragraph p,
+.blog-paragraph li,
+.blog-paragraph blockquote,
+.news-blokquote,
+.news-blokquote p,
+.news-blokquote li {
+    line-height: 1.6;
+}
