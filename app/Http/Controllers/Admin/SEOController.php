@@ -13,9 +13,9 @@ class SEOController extends Controller
 {
     public function index()
     {
-
-        $seo = Seo::paginate(10);
+        $seo = Seo::orderBy('created_at', 'desc')->get();
         $gtm = Gtm::first();
+
         return view('admin.seo.index', compact('seo', 'gtm'));
     }
 
