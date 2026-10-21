@@ -42,6 +42,14 @@
                 <p class="ev-blog__lead">{{ $bl['lead'] }}</p>
             </header>
 
+            {{-- Soro embed. The widget writes itself into #soro-blog, so the
+                 div must stay empty and keep that exact id. `defer` lets the
+                 rest of the page finish first, then runs the script. --}}
+            <section class="ev-blog__embed" aria-label="Blog highlights">
+                <div id="soro-blog"></div>
+                <script src="https://app.trysoro.com/api/embed/4f54f051-2d43-4b05-9ea7-08200d461dfb" defer></script>
+            </section>
+
             <div class="ev-blog__grid">
                 @forelse ($blPosts as $post)
                     @php

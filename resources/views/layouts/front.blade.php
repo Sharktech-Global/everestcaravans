@@ -569,7 +569,7 @@
                             We offer <em>custom</em> caravan builds tailored to your needs,
                             preferences, and travel lifestyle.
                         </dd>
-
+                    </dl>
                 </div>
 
                 <nav class="ev-ftr__col ev-ftr__col--range" aria-label="Our range">
@@ -600,12 +600,6 @@
 
             {{-- Contact strip --}}
             <div class="ev-ftr__strip">
-                @if (@$settings->address)
-                    <div class="ev-ftr__strip-item">
-                        <span class="ev-ftr__label">Address</span>
-                        <span class="ev-ftr__strip-value">{{ @$settings->address }}</span>
-                    </div>
-                @endif
                 @if (@$settings->mobile)
                 <div class="ev-ftr__strip-item">
                     <span class="ev-ftr__label">Phone</span>

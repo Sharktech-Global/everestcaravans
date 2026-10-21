@@ -399,3 +399,25 @@
 .news-blokquote li {
     line-height: 1.6;
 }
+
+/* ==========================================================
+   EMBED — third-party widget between the heading and the card
+   grid. The widget owns everything inside #soro-blog, so this
+   only reserves the space around it and stops a wide embed
+   from pushing the page sideways.
+   ========================================================== */
+.ev-blog .ev-blog__embed {
+    margin-bottom: 56px;
+}
+.ev-blog .ev-blog__embed #soro-blog {
+    max-width: 100%;
+    overflow-x: auto;        /* a fixed-width widget scrolls itself, not the page */
+}
+/* Nothing has rendered yet while the deferred script loads; an empty
+   div would otherwise leave 56px of unexplained gap. */
+.ev-blog .ev-blog__embed:not(:has(#soro-blog > *)) {
+    margin-bottom: 0;
+}
+@media (max-width: 991.98px) {
+    .ev-blog .ev-blog__embed { margin-bottom: 44px; }
+}
