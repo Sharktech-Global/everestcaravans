@@ -978,7 +978,7 @@
     <script src="{{ asset('assets/abreco/js/lib/bootstrap-bundle.js') }}"></script>
     <script src="{{ asset('assets/abreco/js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('assets/abreco/js/lib/plugins.min.js') }}"></script>
-    <script src="{{ asset('assets/abreco/js/main.js') }}"></script>
+    <script src="{{ asset('assets/abreco/js/main.js') }}?v={{ filemtime(public_path('assets/abreco/js/main.js')) }}"></script>
 
     <script>
         var rightImageUrl = "{{ asset('assets/abreco/images/shapes/right.svg') }}";
