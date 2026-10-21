@@ -1,5 +1,5 @@
 {{--
-    GoRV — independent reviews of Everest vans.
+    GoRV — independent reviews of Everest caravans.
     Reusable on every page:
 
         @include('partials.ev-videos-gorv')

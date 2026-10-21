@@ -2991,9 +2991,7 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 
 /* Label / value rows under the blurb */
 .ev-ftr__meta {
-    display: grid;
-    grid-template-columns: 94px minmax(0, 1fr);
-    gap: 18px 20px;
+    
     align-items: baseline;
 }
 .ev-ftr__meta dt {
@@ -3004,6 +3002,35 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     color: var(--ef-dim);
 }
 .ev-ftr__meta dd { color: var(--ef-white); font-weight: 500; }
+
+/* Custom-build question and answer. Both sit in plain white rather than the
+   dim small-caps the dt above defaults to, so they read as a sentence pair
+   instead of a label/value row — hence the two-class selectors, which beat
+   `.ev-ftr__meta dt` without !important. */
+.ev-ftr__meta .ev-ftr__q {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    text-transform: none;
+    color: #fff;
+}
+.ev-ftr__meta .ev-ftr__a {
+    max-width: 46ch;
+    margin: 0 0 22px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #fff;
+}
+/* "custom" — the one word carrying the emphasis */
+.ev-ftr__meta .ev-ftr__a em {
+    font-style: italic;
+    font-weight: 500;
+    color: #fff;
+}
+
 .ev-ftr__status { display: flex; align-items: center; gap: 9px; color: #5FD08A !important; }
 .ev-ftr__status span {
     width: 8px; height: 8px;
@@ -3098,6 +3125,10 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     .ev-ftr__cta { text-align: left; }
     .ev-ftr__grid { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 44px; }
     .ev-ftr__intro { grid-column: auto; }
+    /* Our Range is a 15-item list; stacked on a phone it pushed everything
+       below it off the first few screens. The same vans are one tap away
+       from the Our Range nav item, so the column is dropped here. */
+    .ev-ftr__grid > .ev-ftr__col--range { display: none; }
     /* Stacked: separate the blocks with a rule underneath instead.
        The :not(:last-child) that draws the column rules is two classes
        deep, so plain `.ev-ftr__grid > *` loses to it and the vertical

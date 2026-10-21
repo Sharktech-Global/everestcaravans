@@ -328,7 +328,7 @@
     $evDecor = [
         'eyebrow' => 'Lux Decor',
         'title'   => 'Customised inside and out, styled to feel like home.',
-        'text'    => 'Everest vans are customisable from the inside out. We love giving our owners the chance to style their interior with whatever makes them feel right at home.',
+        'text'    => 'Everest caravans are customisable from the inside out. We love giving our owners the chance to style their interior with whatever makes them feel right at home.',
         'button'  => ['label' => 'Visit Our Showroom', 'url' => route('factory-visit.show')],
 
         // YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID  (null = no play button)

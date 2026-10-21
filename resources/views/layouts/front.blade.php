@@ -564,13 +564,12 @@
                     </p>
 
                     <dl class="ev-ftr__meta">
-                        @if (@$settings->address)
-                            <dt>Address</dt>
-                            <dd>{{ @$settings->address }}</dd>
-                        @endif
-                        <dt>Status</dt>
-                        <dd class="ev-ftr__status"><span aria-hidden="true"></span>Taking custom builds</dd>
-                    </dl>
+                        <dt class="ev-ftr__q">Looking for something unique?</dt>
+                        <dd class="ev-ftr__a">
+                            We offer <em>custom</em> caravan builds tailored to your needs,
+                            preferences, and travel lifestyle.
+                        </dd>
+
                 </div>
 
                 <nav class="ev-ftr__col ev-ftr__col--range" aria-label="Our range">
