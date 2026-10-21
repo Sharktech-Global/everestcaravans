@@ -974,10 +974,10 @@
 
 
     <!--====== jquery js ======-->
-    <script src="{{ asset('assets/abreco/js/vendor/jquery-1.12.4.min.js') }}"></script>
-    <script src="{{ asset('assets/abreco/js/vendor/bootstrap-bundle.js') }}"></script>
-    <script src="{{ asset('assets/abreco/js/vendor/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/abreco/js/vendor/plugins.min.js') }}"></script>
+    <script src="{{ asset('assets/abreco/js/lib/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('assets/abreco/js/lib/bootstrap-bundle.js') }}"></script>
+    <script src="{{ asset('assets/abreco/js/lib/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/abreco/js/lib/plugins.min.js') }}"></script>
     <script src="{{ asset('assets/abreco/js/main.js') }}"></script>
 
     <script>

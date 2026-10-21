@@ -1088,4 +1088,11 @@
         );
 
     </script>
+
+    {{-- Opens the Customer Reviews tab named in the URL hash, e.g.
+         /vehicle/summitt-22-8f#everest-revieww --}}
+    @php $evTabsJs = 'js/review-tabs.js'; @endphp
+    @if (file_exists(public_path($evTabsJs)))
+        <script src="{{ asset($evTabsJs) }}?v={{ filemtime(public_path($evTabsJs)) }}"></script>
+    @endif
 @endsection
