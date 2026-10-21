@@ -32,13 +32,13 @@ class AboutController extends Controller
         $faqs = Faq::where('status', 1)->get();
         // dd($counters);
         $page= Seo::where('route_name','about-us')->first();
-        $this->seo()->setTitle(@$page->seo_title);
-        $this->seo()->setDescription(@$page->seo_description);
-        SEOMeta::setKeywords([@$page->seo_keywords]);
-        $this->seo()->opengraph()->setTitle(@$page->seo_title);
-        $this->seo()->opengraph()->setDescription(@$page->seo_description);
-        $this->seo()->twitter()->setTitle(@$page->seo_title);
-        $this->seo()->twitter()->setDescription(@$page->seo_description);
+        // $this->seo()->setTitle(@$page->seo_title);
+        // $this->seo()->setDescription(@$page->seo_description);
+        // SEOMeta::setKeywords([@$page->seo_keywords]);
+        // $this->seo()->opengraph()->setTitle(@$page->seo_title);
+        // $this->seo()->opengraph()->setDescription(@$page->seo_description);
+        // $this->seo()->twitter()->setTitle(@$page->seo_title);
+        // $this->seo()->twitter()->setDescription(@$page->seo_description);
         // dd($groups);
         return view('about',['motors' => $motors,'pages' => $pages,'leaders' => $leaders,'group' => $group,'counters' => $counters,'ceo' => $ceo,'blogs' => $blogs,'locations' => $locations,'faqs' => $faqs]);
     }
