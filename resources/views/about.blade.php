@@ -12,7 +12,7 @@
     <!--====== About Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'About Us',
-        'subtitle'    => 'Family owned and Australian built. Every Everest caravan leaves our yard ready for the roads most vans never see',
+        'subtitle'    => 'Family owned and Australian built. Every Everest caravan leaves our yard ready for the roads most vans never see..',
         'image'       => 'assets/abreco/images/newonce/about-main.jpg',
         'breadcrumbs' => [['label' => 'About Us']],
     ])

@@ -3,7 +3,7 @@
     <!--====== contact Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'Contact Us',
-        'subtitle'    => 'Have a question or ready to start your adventure? Our friendly team is here to help you find the perfect caravan for your journey',
+        'subtitle'    => 'Have a question or ready to start your adventure? Our friendly team is here to help you find the perfect caravan for your journey,,',
         'image'       => 'assets/abreco/images/newonce/contactheader.jpg',
         'breadcrumbs' => [['label' => 'Contact Us']],
     ])
