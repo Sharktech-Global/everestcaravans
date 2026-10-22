@@ -5,7 +5,7 @@
     <!--====== About Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'Finance Partner',
-        'subtitle'    => 'Your next adventure is closer than you think. Explore flexible finance options and take the first step towards owning your dream caravan..',
+        'subtitle'    => 'Your next adventure is closer than you think. Explore flexible finance options and take the first step towards owning your dream caravan.',
         'image'       => 'assets/abreco/images/newonce/video-banner.jpg',
         'breadcrumbs' => [['label' => 'Finance Partner']],
     ])
