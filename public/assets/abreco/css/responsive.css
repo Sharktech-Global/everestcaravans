@@ -2991,8 +2991,11 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
 
 /* Label / value rows under the blurb */
 .ev-ftr__meta {
-    
-    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 32px;
 }
 .ev-ftr__meta dt {
     font-size: 11px;
@@ -3008,21 +3011,23 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
    instead of a label/value row — hence the two-class selectors, which beat
    `.ev-ftr__meta dt` without !important. */
 .ev-ftr__meta .ev-ftr__q {
-    margin: 0 0 6px;
+    display: block;
+    width: 100%;
+    margin: 0;
+    color: #fff;
     font-size: 18px;
-    font-weight: 600;
-    letter-spacing: normal;
+    font-weight: 700;
     line-height: 1.5;
     text-transform: none;
-    color: #fff;
+    letter-spacing: normal;
 }
 .ev-ftr__meta .ev-ftr__a {
-    max-width: 46ch;
-    margin: 0 0 22px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.75;
+    display: block;
+    width: 100%;
+    margin: 0;
     color: #fff;
+    font-size: 15px;
+    line-height: 1.7;
 }
 /* "custom" — the one word carrying the emphasis */
 .ev-ftr__meta .ev-ftr__a em {
