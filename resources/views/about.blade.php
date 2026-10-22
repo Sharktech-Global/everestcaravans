@@ -456,4 +456,4 @@
 
 @section('js_after')
     <script></script>
-@endsection
+@endsection 
