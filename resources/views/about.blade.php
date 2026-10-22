@@ -12,7 +12,7 @@
     <!--====== About Breadcrumb Part ======-->
     @include('partials.page-hero', [
         'title'       => 'About Us',
-        'subtitle'    => 'Family owned and Australian built. Every Everest caravan leaves our yard ready for the roads most vans never see. . .',
+        'subtitle'    => 'Family owned and Australian built. Every Everest caravan leaves our yard ready for the roads most vans never see.',
         'image'       => 'assets/abreco/images/newonce/about-main.jpg',
         'breadcrumbs' => [['label' => 'About Us']],
     ])
@@ -208,7 +208,7 @@
             'label' => 'Custom Build',
             'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
             'title' => 'Strict quality control',
-            'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels.',
+            'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels',
             'image' => 'assets/images/services/quality.jpeg',
         ],
         ];
