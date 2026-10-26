@@ -55,7 +55,7 @@
             
                 ['label' => 'Address',  'value' => '51 Glenbarry Road, Campbellfield VIC 3061', 'url' => '#', 'icon' => 'location'],
                 ['label' => 'Call us',  'value' => '(03) 9357 9440', 'url' => 'tel:0393579440', 'icon' => 'phone'],
-                ['label' => 'Email us', 'value' => 'divin.netventure@gmail.com', 'url' => 'mailto:divin.netventure@gmail.com', 'icon' => 'mail'],
+                ['label' => 'Email us', 'value' => 'info@everestcaravans.com.au', 'url' => 'mailto:info@everestcaravans.com.au', 'icon' => 'mail'],
             ],
         ];
         // =====================================================

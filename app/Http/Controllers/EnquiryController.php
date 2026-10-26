@@ -80,7 +80,7 @@ class EnquiryController extends Controller
         $location = Location::where('id', $request->location_id)->firstorFail();
 
         if ($res) {
-            $admin = Admin::where('email','divin.netventure@gmail.com')->first();
+            $admin = Admin::where('email','info@everestcaravans.com.au')->first();
             // $admin = Admin::first();
             $details['vehicle'] = $vehicle->name;
             $details['name'] = $request->name;
