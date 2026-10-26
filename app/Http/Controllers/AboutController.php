@@ -60,13 +60,13 @@ class AboutController extends Controller
     {
         $page = AboutPage::first();
 
-        $this->seo()->setTitle('Abreco');
-        $this->seo()->setDescription('Abreco');
-        SEOMeta::setKeywords(['Abreco']);
-        $this->seo()->opengraph()->setTitle('Abreco');
-        $this->seo()->opengraph()->setDescription('Abreco');
-        $this->seo()->twitter()->setTitle('Abreco');
-        $this->seo()->twitter()->setDescription('Abreco');
+        $this->seo()->setTitle('Everest Caravans');
+        $this->seo()->setDescription('Everest Caravans');
+        SEOMeta::setKeywords(['Everest Caravans']);
+        $this->seo()->opengraph()->setTitle('Everest Caravans');
+        $this->seo()->opengraph()->setDescription('Everest Caravans');
+        $this->seo()->twitter()->setTitle('Everest Caravans');
+        $this->seo()->twitter()->setDescription('Everest Caravans');
 
         return view('life_at_popular',['page' => $page]);
     }

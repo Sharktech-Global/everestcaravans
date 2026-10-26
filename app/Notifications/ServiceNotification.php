@@ -48,8 +48,8 @@ class ServiceNotification extends Notification
             'details' => $details,
         ])
         // ->bcc(['nvsite@gmail.com'])
-        // ->subject('Abreco Motors :: New Service Request.');
-        ->subject('Abreco Motors :: New ' . $details['servename'] . ' Request.');
+        // ->subject('Everest Caravans :: New Service Request.');
+        ->subject('Everest Caravans :: New ' . $details['servename'] . ' Request.');
     }
     /**
      * Get the array representation of the notification.

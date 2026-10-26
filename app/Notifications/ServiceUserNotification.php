@@ -48,7 +48,7 @@ class ServiceUserNotification extends Notification
                 'details' => $details,
             ])
             // ->bcc(['nvsite@gmail.com'])
-            ->subject('Abreco Motors :: ThankYou!.');
+            ->subject('Everest Caravans :: ThankYou!.');
     }
 
     /**

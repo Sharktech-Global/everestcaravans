@@ -32,7 +32,7 @@ class ContactMail extends Mailable
     {
         $admin = $this->admin;
         $data = $this->data;
-        return $this->subject('Abreco Motors SUZUKI : New Enquiry')
+        return $this->subject('Everest Caravans : New Enquiry')
             ->view('emails.enquiry',compact('admin','data'));
     }
 }

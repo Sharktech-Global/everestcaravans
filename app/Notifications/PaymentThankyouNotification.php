@@ -46,7 +46,7 @@ class PaymentThankyouNotification extends Notification
         ->view('emails.success', [
             'details' => $details,
         ])
-        ->subject('Abreco Motors | Thank You' );
+        ->subject('Everest Caravans | Thank You' );
     }
 
     /**

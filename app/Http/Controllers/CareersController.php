@@ -82,7 +82,7 @@ class CareersController extends Controller
         $res = $enquiry->save();
 
         if ($res) {
-            $admin = Admin::where('email','vimal@abrecomotors.com')->first();
+            $admin = Admin::where('email','info@everestcaravans.com.au')->first();
             $careersname=Career::where('id',$request->career_type)->first();
             $details['position']=$careersname->title;
             $details['cv']=$enquiry->cv;

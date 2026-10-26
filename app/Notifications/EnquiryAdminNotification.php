@@ -48,7 +48,7 @@ class EnquiryAdminNotification extends Notification
             'details' => $details,
         ])
         // ->bcc(['nvsite@gmail.com'])
-        ->subject('Abreco Motors :: New Vehicle Enquiry');
+        ->subject('Everest Caravans :: New Vehicle Enquiry');
     }
 
     /**

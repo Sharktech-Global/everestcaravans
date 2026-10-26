@@ -60,7 +60,7 @@ class BookingTestController extends Controller
         $location = Location::where('id', $request->location_id)->firstorFail();
 
         if ($res) {
-            $admin = Admin::where('email','agm.cvpass@abrecomotors.com')->first();
+            $admin = Admin::where('email','info@everestcaravans.com.au')->first();
             // $admin = Admin::first();
             $details['name'] = $request->name;
             $details['email'] = $request->email;

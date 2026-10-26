@@ -47,7 +47,7 @@ class PaymentNotification extends Notification
             'details' => $details,
         ])
             // ->bcc(['developer@netventure.in','sakthi@netventure.in'])
-        ->subject('Abreco Motors | New Booking | ' . $details['name']  );
+        ->subject('Everest Caravans | New Booking | ' . $details['name']  );
     }
 
     /**

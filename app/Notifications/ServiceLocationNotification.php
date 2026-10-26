@@ -46,7 +46,7 @@ class ServiceLocationNotification extends Notification
             'details' => $details,
         ])
         // ->bcc(['nvsite@gmail.com'])
-        ->subject('Abreco Motors :: New ' . $details['servename'] . '  Request.');
+        ->subject('Everest Caravans :: New ' . $details['servename'] . '  Request.');
     }
 
     /**
