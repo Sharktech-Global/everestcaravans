@@ -60,7 +60,7 @@ public function store(Request $request)
         'phone' => 'required|string|max:30',
         'suburb' => 'nullable|string|max:255',
         'state' => 'nullable|in:ACT,NSW,NT,QLD,SA,TAS,VIC,WA',
-        'vehicle_name' => 'nullable|string|max:255',
+        'vehicle_name' => 'required|string|max:255',
         'message' => 'nullable|string',
         'g-recaptcha-response' => 'required|captcha',
     ]);

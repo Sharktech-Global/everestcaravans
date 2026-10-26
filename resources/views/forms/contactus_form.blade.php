@@ -92,10 +92,11 @@
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="contact-vehicle">
-                        Preferred Caravan Type
+                    <label for="vehicle_name">
+                        Preferred Caravan Type <span class="text-danger">*</span>
                     </label>
-                    <select name="vehicle_name" id="vehicle_name" class="form-control">
+
+                    <select name="vehicle_name" id="vehicle_name" class="form-control" required>
                         <option value="">Select Your Caravan Type</option>
 
                         @foreach ($caravanTypes as $type)
