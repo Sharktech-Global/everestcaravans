@@ -1,171 +1,203 @@
-<!doctype html>
-<html lang="en" class="no-focus">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{{ config('app.name') }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="description" content="{{ config('app.name') }}">
-    <meta name="author" content="Saran Sivaprasad">
-    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Login | Everest Caravans</title>
 
-    <!-- Open Graph Meta -->
-    <meta property="og:title" content="{{ config('app.name') }}">
-    <meta property="og:site_name" content="{{ config('app.name') }}">
-    <meta property="og:description" content="{{ config('app.name') }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
-    <link rel="stylesheet" id="css-main" href="{{ mix('css/theme.css') }}">
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f5f8;
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+            padding: 20px;
+        }
 
-    <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('css/themes/flat.css') }}"> -->
-    <!-- END Stylesheets -->
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 38px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-heading h1 {
+            margin: 0 0 10px;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .login-heading p {
+            margin: 0;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+        }
+
+        .remember-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 22px;
+            font-size: 14px;
+        }
+
+        .remember-row input {
+            margin: 0;
+        }
+
+        .login-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #1f2937;
+            color: #ffffff;
+            border: 0;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #374151;
+        }
+
+        .forgot-link {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .error-message {
+            margin-top: 7px;
+            color: #dc2626;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 26px 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Page Container -->
+    <div class="login-card">
 
-    <div id="page-container" class="main-content-boxed">
+        <div class="login-heading">
+            <h1>Everest Caravans</h1>
+            <p>Admin Login</p>
+        </div>
 
-        <!-- Main Container -->
-        <main id="main-container">
+        <form method="POST" action="{{ route('admin.login') }}">
+            @csrf
 
-            <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('{{ asset('assets/images/landing.jpg') }}');">
-                <div class="row mx-0 bg-black-op">
-                    <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
-                        <div class="p-30 invisible" data-toggle="appear">
-                            <p class="font-size-h3 font-w600 text-white">
-                                {{ config('app.name') }}
-                            </p>
-                            <p class="font-italic text-white-op">
-                                Copyright &copy; <span class="js-year-copy">{{ date('Y') }}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible"
-                        data-toggle="appear" data-class="animated fadeInRight" style="background-color: rgba(243, 243, 243, 0.5) !important">
-                        <div class="content content-full">
-                            <!-- Header -->
-                            <div class="px-30 py-10">
-                                <a class="link-effect font-w700" href="{{ route('admin.login') }}">
-                                    <span class="font-size-xl text-primary-dark">{{ config('app.name') }}</span>
-                                </a>
-                                <h1 class="h3 font-w700 mt-30 mb-10">Welcome {{ ucfirst(config('multiauth.prefix')) }}
-                                </h1>
-                                {{-- <h2 class="h5 font-w400 mb-0">{{ __('Admin Login') }}</h2> --}}
-                            </div>
-                            <!-- END Header -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
 
-                            <!-- Sign In Form -->
-                            <form id="login-form" class="js-validation-signin px-30" action="{{ route('admin.login') }}"
-                                method="post">
-                                @csrf
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <div class="form-material floating">
-                                            <input type="email"
-                                                class="form-control @if ($errors->has('email')) is-invalid  @endif"
-                                                id="email" name="email" value="{{ old('email') }}" autofocus>
-                                            <label style="color:black !important" for="email">{{ __('E-Mail Address') }}</label>
-                                            <div class="invalid-feedback">{{ $errors->first('email') }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <div class="form-material floating">
-                                            <input type="password"
-                                                class="form-control @if ($errors->has('password') || $errors->has('g-recaptcha-response')) is-invalid  @endif"
-                                                id="password" name="password">
-                                            <label style="color:black !important" for="password">{{ __('Password') }}</label>
-                                            <div class="invalid-feedback">{{ $errors->first('password') }}</div>
-                                            <div class="invalid-feedback">{{ $errors->first('g-recaptcha-response') }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="remember"
-                                                name="remember" {{ @old( 'remember') ? 'checked' : '' }}>
-                                            <label style="color:black !important" class="custom-control-label"
-                                                for="remember">{{ __('Remember Me') }}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <!-- {!! NoCaptcha::renderJs() !!}
-                                   
-                                    {!! NoCaptcha::display(['data-theme' => 'light', 'required' => 'required']) !!} -->
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    value="{{ old('email') }}"
+                    autocomplete="username"
+                    required
+                    autofocus
+                >
 
-                                    <button type="submit" class="btn btn-sm btn-hero btn-alt-primary"><i class="si si-login mr-10"></i>Log In</button>
-                                    <div class="mt-30">
-                                        <a class="link-effect text-muted mr-10 mb-5 d-inline-block"
-                                            href="{{ route('admin.password.request') }}">
-                                            <i class="fa fa-warning mr-5"></i>
-                                            <span style="color:black !important"> {{ __('Forgot Your Password?') }}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- END Sign In Form -->
-                        </div>
-                    </div>
-                </div>
+                @error('email')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
             </div>
-            <!-- END Page Content -->
 
-        </main>
-        <!-- END Main Container -->
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    autocomplete="current-password"
+                    required
+                >
+
+                @error('password')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <label class="remember-row">
+                <input
+                    type="checkbox"
+                    name="remember"
+                    {{ old('remember') ? 'checked' : '' }}
+                >
+                Remember Me
+            </label>
+
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+            <a
+                href="{{ route('admin.password.request') }}"
+                class="forgot-link"
+            >
+                Forgot Your Password?
+            </a>
+        </form>
+
     </div>
-    <!-- END Page Container -->
-
-
-    <script src="{{ mix('js/theme.app.js') }}"></script>
-    <script>
-        $('.js-validation-signin').validate({
-                errorClass: 'invalid-feedback animated fadeInDown',
-                errorElement: 'div',
-                errorPlacement: (error, e) => {
-                    $(e).parents('.form-group > div').append(error);
-                },
-                highlight: e => {
-                    $(e).closest('.form-group').removeClass('is-invalid').addClass('is-invalid');
-                },
-                success: e => {
-                    $(e).closest('.form-group').removeClass('is-invalid');
-                    $(e).remove();
-                },
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 8
-                    }
-                },
-                messages: {
-                    email: {
-                        required: 'Please enter an email address',
-                        email: 'Please provide a valid email address'
-                    },
-                    password: {
-                        required: 'Please provide a password',
-                        minlength: 'Your password must be at least 8 characters long'
-                    }
-                }
-            });
-    </script>
 
 </body>
-
 </html>

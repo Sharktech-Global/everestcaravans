@@ -60,8 +60,8 @@
                     </li>
                     <li><a href="#">Find us</a>
                         <ul class="dropdown">
-                            <li><a href="{{route('network.show')}}">Network</a></li>
-                            <li><a href="{{route('location_map.show')}}">Location Map</a></li>
+                            {{-- <!-- <li><a href="{{ route('network.show') }}">Network</a></li>
+                            <li><a href="{{route('location_map.show')}}">Location Map</a></li> --> --}}
                         </ul>
                     </li>
                     <li> <a href="#">New Cars</a>

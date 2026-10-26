@@ -9,6 +9,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use Notifiable;
-    protected $table = "admins";
-    protected $guard_name = 'admin'; 
+
+    protected $table = 'admins';
+
+    protected $guard_name = 'admin';
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPassword($token));
+    }
 }
