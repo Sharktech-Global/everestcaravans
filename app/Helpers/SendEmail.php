@@ -59,7 +59,7 @@ class SendEmail
         foreach (json_decode($booking->vehicle_details) as $key => $value) {
             $data[ucfirst($key)] = $value;
         }
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])->send(new EnquiryMail('New Booking from ' . $booking->first_name . ' ' . $booking->last_name, $data));
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])->send(new EnquiryMail('New Booking from ' . $booking->first_name . ' ' . $booking->last_name, $data));
         Mail::to($data['Email'])->send(new SuccessMail('Your booking has been submitted successfully.<br> Thank you for choosing Axlr8.', $data));
         return true;
     }
@@ -80,7 +80,7 @@ class SendEmail
         $data['Phone'] = $enquiry->phone;
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = $enquiry->vehicle_id;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new EnquiryTestDrive($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -101,7 +101,7 @@ class SendEmail
         $data['Phone'] = $enquiry->phone;
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = $enquiry->vehicle->name;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new EnquiryBuyNewCar($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -152,7 +152,7 @@ class SendEmail
         $data['Regno'] = $enquiry->reg_number;
         $data['ServiceDate'] = $enquiry->service_date;
         $data['ServiceName'] = $enquiry->service_name;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new EnquiryServiceCar($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -203,7 +203,7 @@ class SendEmail
         $data['Location'] = $talkceo->location->name;
         $data['Subject'] = $talkceo->subject;
         $data['Message'] = $talkceo->message;
-        Mail::to(['info@everestcaravans.com.au'])
+        Mail::to(['divin.netventure@gmail.com'])
             // ->bcc($email["bcc"] ?: ['nvsite@gmail.com'])
             ->send(new QuickEnquiry($subject, $data));
         Mail::to($talkceo['email'])->send(new SuccessMailEnquery('Your request to talk to CEO has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
@@ -225,7 +225,7 @@ class SendEmail
         $data['Phone'] = $enquiry->phone;
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = implode(',',json_decode($enquiry->model));
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new OfferEnquiry($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -247,7 +247,7 @@ class SendEmail
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = $enquiry->model;
         $data['Year'] = $enquiry->year;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new ExchangeEnquiry($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -269,7 +269,7 @@ class SendEmail
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = $enquiry->model;
         $data['Year'] = $enquiry->year;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new UsedcarEnquiry($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -277,7 +277,7 @@ class SendEmail
     public static function career($subject, $data)
     {
         $email["to"] = ($data['to_emails']) ? explode(',', $data['to_emails']) : null;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new CareerEnquiry($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
@@ -298,7 +298,7 @@ class SendEmail
         $data['Phone'] = $enquiry->phone;
         $data['Location'] = $enquiry->location->name;
         $data['Model'] = $enquiry->vehicle->name;
-        Mail::to($email["to"] ?: ['info@everestcaravans.com.au'])
+        Mail::to($email["to"] ?: ['divin.netventure@gmail.com'])
             ->send(new Subscription($subject, $data));
         //Mail::to($enquiry['email'])->send(new SuccessMailEnquery('Your enquiry has been submitted successfully.<br> Thank you reaching out to us, we will get back to you shortly.'));
         return true;
