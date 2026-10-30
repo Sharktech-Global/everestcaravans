@@ -613,6 +613,13 @@
                     </div>
                 @endif
 
+                {{-- Second inbox, beside the general address. Hardcoded rather
+                     than read from $settings, which holds only the one email. --}}
+                <div class="ev-ftr__strip-item">
+                    <span class="ev-ftr__label">Email</span>
+                    <a class="ev-ftr__strip-value" href="mailto:sales@everestcaravans.com.au">sales@everestcaravans.com.au</a>
+                </div>
+
                 <ul class="ev-ftr__strip-links">
                     <li><a href="{{ route('privacy.show') }}"></a></li>
                     <li><a href="{{ route('terms.show') }}"></a></li>
