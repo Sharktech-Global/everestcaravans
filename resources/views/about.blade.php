@@ -179,7 +179,7 @@
         // ================= EDIT CONTENT HERE =================
         $wsAbout = [
             'eyebrow' => 'Who We Are',
-            'title'   => 'Premium Custom Caravans, Built to the Highest Standard',
+            'title'   => 'Premium Custom Caravans, Built to the Highest Standard.',
             'text'    => 'Everest Caravans is a family owned business with over 15 years experience in the caravan industry. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations.',
             // Home sends this to /about; we are already on /about, so it points at contact instead
             'button'  => ['label' => 'Talk to Us', 'url' => url('/contact')],
