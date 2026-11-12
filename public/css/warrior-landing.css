@@ -1,0 +1,1448 @@
+/* ==========================================================
+   Everest Caravans — Warrior landing page.
+
+   Standalone: this page does not load the theme CSS, so everything
+   it needs is here. The tokens below are lifted from home2.css and
+   buttons.css so the campaign reads as the same brand as the site.
+
+   Prefix: .wl-*  (warrior landing)
+   ========================================================== */
+
+:root {
+    --wl-ink: #0E1330;          /* headings */
+    --wl-brand: #283895;        /* buttons, icons, accents */
+    --wl-brand-dark: #1D2A72;
+    --wl-gold: #D9AE55;
+    --wl-tint: #EEF0FB;         /* icon chips, section wash */
+    --wl-tint-2: #DDE1F7;       /* rules, frames */
+    --wl-text: #4A4F63;
+    --wl-dark: #131315;         /* dark bands */
+    --wl-white: #FFFFFF;
+
+    --wl-display: "DM Sans", "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --wl-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --wl-max: 1240px;
+    --wl-side: 24px;
+    --wl-pad: clamp(72px, 9vw, 112px);   /* vertical rhythm for every section */
+    --wl-head: 76px;                      /* sticky header height */
+    --wl-ease: cubic-bezier(.22, .7, .2, 1);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    /* Anchors must clear the sticky header */
+    scroll-padding-top: calc(var(--wl-head) + 16px);
+}
+
+body.wl-page {
+    margin: 0;
+    background: var(--wl-white);
+    color: var(--wl-text);
+    font-family: var(--wl-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wl-page img { max-width: 100%; height: auto; display: block; }
+/* Plain links take their surrounding colour. Buttons must not: this rule
+   outranks .wl-btn on specificity, so excluding them keeps their own
+   colour from being overridden by whatever section they sit in. */
+.wl-page a:not(.wl-btn) { color: inherit; }
+
+.wl-visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Visible focus for keyboard users, on every interactive thing */
+.wl-page a:focus-visible,
+.wl-page button:focus-visible,
+.wl-page input:focus-visible,
+.wl-page select:focus-visible,
+.wl-page summary:focus-visible {
+    outline: 3px solid var(--wl-gold);
+    outline-offset: 3px;
+}
+
+/* ==========================================================
+   SHARED PIECES
+   ========================================================== */
+/* Eyebrow: a 28px rule, then uppercase brand-blue caps. This is the exact
+   pattern the home page sections use, so the campaign reads as one family. */
+.wl-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 18px;
+    padding: 0;
+    border: 0;
+    font-family: var(--wl-body);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--wl-brand);
+}
+.wl-eyebrow::before {
+    content: "";
+    flex: none;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+}
+.wl-eyebrow--light { color: #fff; }
+
+.wl-section-title {
+    margin: 0 0 18px;
+    font-family: var(--wl-display);
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -.02em;
+    color: var(--wl-ink);
+    text-wrap: balance;
+}
+
+.wl-section-text {
+    margin: 0 0 16px;
+    font-size: 15.5px;
+    line-height: 1.8;
+}
+.wl-section-text:last-child { margin-bottom: 0; }
+
+.wl-section-head {
+    max-width: 760px;
+    margin: 0 auto clamp(40px, 5vw, 60px);
+    text-align: center;
+}
+
+/* ---------- Button: brand pill with an arrow chip ---------- */
+.wl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    height: 56px;
+    padding: 0 8px 0 28px;        /* tight on the right, the chip fills it */
+    border: 0;
+    border-radius: 999px;
+    background: var(--wl-brand);
+    font-family: var(--wl-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    line-height: 1;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 12px 26px -14px rgba(40, 56, 149, .75);
+    transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.wl-btn svg {
+    box-sizing: content-box;
+    flex: none;
+    width: 18px; height: 18px;
+    padding: 11px;                /* 18 + 22 = a 40px chip */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: background-color .25s ease, transform .25s var(--wl-ease);
+}
+.wl-btn:hover,
+.wl-btn:focus {
+    background: var(--wl-brand-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px -16px rgba(40, 56, 149, .95);
+}
+.wl-btn:hover svg,
+.wl-btn:focus svg {
+    background: var(--wl-gold);
+    transform: translateX(3px);
+}
+/* Pressed: settle back down so the click feels physical */
+.wl-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 18px -12px rgba(40, 56, 149, .8);
+}
+
+/* Ghost: the second action over a photograph. Reads as a peer of the
+   primary button, not a disabled one, so the border carries it. */
+.wl-btn--ghost {
+    background: rgba(255, 255, 255, .08);
+    border: 1.5px solid rgba(255, 255, 255, .65);
+    backdrop-filter: blur(6px);
+    box-shadow: none;
+}
+.wl-btn--ghost svg { background: rgba(255, 255, 255, .2); }
+.wl-btn--ghost:hover,
+.wl-btn--ghost:focus {
+    background: #fff;
+    border-color: #fff;
+    color: var(--wl-ink);
+    box-shadow: 0 18px 32px -18px rgba(0, 0, 0, .7);
+}
+.wl-btn--ghost:hover svg,
+.wl-btn--ghost:focus svg { background: rgba(14, 19, 48, .12); }
+
+/* Gold: calls to action sitting on a brand or dark band. A tight shadow
+   rather than a glow — the colour alone is loud enough on dark. */
+.wl-btn--gold {
+    background: var(--wl-gold);
+    color: var(--wl-ink);
+    box-shadow: 0 10px 22px -14px rgba(0, 0, 0, .85);
+}
+.wl-btn--gold svg {
+    background: rgba(14, 19, 48, .12);
+    stroke-width: 2.2;
+}
+.wl-btn--gold:hover,
+.wl-btn--gold:focus {
+    background: #E8C274;
+    color: var(--wl-ink);
+    box-shadow: 0 18px 30px -16px rgba(0, 0, 0, .9);
+}
+.wl-btn--gold:hover svg,
+.wl-btn--gold:focus svg { background: var(--wl-ink); stroke: var(--wl-gold); }
+.wl-btn--gold:active { box-shadow: 0 7px 14px -10px rgba(0, 0, 0, .8); }
+
+/* Small: the header. Same proportions, scaled down. */
+.wl-btn--sm {
+    height: 46px;
+    padding: 0 6px 0 22px;
+    gap: 11px;
+    font-size: 14px;
+}
+.wl-btn--sm svg { width: 15px; height: 15px; padding: 9.5px; }
+
+/* Block: fills its column. The label and arrow stay together in the
+   middle — pushed to opposite edges they stop reading as one control. */
+.wl-btn--block {
+    width: 100%;
+    height: 60px;
+    justify-content: center;
+    padding: 0 8px;
+    font-size: 15.5px;
+}
+
+/* ==========================================================
+   HEADER — logo and one call to action
+   ========================================================== */
+.wl-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--wl-head);
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--wl-tint-2);
+}
+.wl-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-header__logo img {
+    width: auto;
+    height: 46px;
+    object-fit: contain;
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.wl-hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(560px, 86vh, 820px);
+    padding: clamp(90px, 14vw, 150px) 0 clamp(56px, 7vw, 80px);
+    background-color: var(--wl-dark);
+    background-image: var(--wl-hero-img);
+    background-size: cover;
+    background-position: center;
+    isolation: isolate;
+}
+/* Brand-blue wash. The hero photograph is a bright interior, so this is
+   weighted heavily on the left where the copy sits and at the foot where
+   the section meets the white below it. Two layers: a vertical fade for
+   the page join, a horizontal one to carry the text. */
+.wl-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(180deg,
+            rgba(10, 14, 36, .62) 0%,
+            rgba(10, 14, 36, .34) 26%,
+            rgba(12, 17, 44, .58) 68%,
+            rgba(14, 19, 48, .95) 100%),
+        linear-gradient(100deg,
+            rgba(10, 14, 36, .92) 0%,
+            rgba(14, 19, 48, .70) 38%,
+            rgba(20, 28, 70, .32) 72%,
+            rgba(40, 56, 149, .22) 100%);
+}
+.wl-hero__inner {
+    width: 100%;
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+    color: #fff;
+}
+/* Same dash-and-caps treatment as the section eyebrows, in white —
+   exactly how the home page hero carries it over a photograph. */
+.wl-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 20px;
+    font-family: var(--wl-body);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #fff;
+}
+.wl-hero__eyebrow::before {
+    content: "";
+    flex: none;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+}
+.wl-hero__title {
+    margin: 0 0 20px;
+    max-width: 16ch;
+    font-family: var(--wl-display);
+    font-size: clamp(36px, 6.4vw, 66px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -.03em;
+    color: #fff;
+    text-wrap: balance;
+}
+.wl-hero__lead {
+    max-width: 58ch;
+    margin: 0 0 14px;
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .84);
+}
+.wl-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 30px 0 26px;
+}
+.wl-hero__meta {
+    margin: 0;
+    font-size: 13.5px;
+    letter-spacing: .04em;
+    color: rgba(255, 255, 255, .62);
+}
+
+/* ==========================================================
+   INTRO
+   ========================================================== */
+.wl-intro { padding: var(--wl-pad) 0; }
+.wl-intro__inner {
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+
+/* Title and copy sit side by side. The title column is wider so the
+   heading can break where it wants to, not where the grid forces it. */
+.wl-intro__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(28px, 4.5vw, 64px);
+}
+.wl-intro__title {
+    margin: 0;
+    font-family: var(--wl-display);
+    font-size: clamp(27px, 3.4vw, 37px);
+    font-weight: 600;
+    line-height: 1.16;
+    letter-spacing: -.02em;
+    color: var(--wl-ink);
+    text-wrap: balance;
+}
+/* A rule down the inside edge ties the two columns together */
+.wl-intro__copy {
+    padding-left: clamp(0px, 2.4vw, 34px);
+    border-left: 1px solid var(--wl-tint-2);
+}
+.wl-intro__copy p {
+    margin: 0 0 16px;
+    font-size: 15.5px;
+    line-height: 1.85;
+}
+.wl-intro__copy p:last-child { margin-bottom: 0; }
+
+/* ---------- What both builds share ---------- */
+.wl-intro__shared {
+    margin-top: clamp(40px, 5vw, 64px);
+    padding: clamp(22px, 2.6vw, 30px) clamp(22px, 3vw, 36px);
+    border: 1px solid var(--wl-tint-2);
+    border-radius: 18px;
+    background: var(--wl-tint);
+}
+.wl-intro__shared-label {
+    margin: 0 0 18px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--wl-brand);
+}
+.wl-intro__specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wl-intro__specs li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--wl-ink);
+}
+.wl-intro__specs-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--wl-brand);
+}
+.wl-intro__specs-icon svg {
+    width: 20px; height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================
+   MODEL BLOCKS
+   ========================================================== */
+.wl-model { padding: var(--wl-pad) 0; }
+.wl-model--alt { background: var(--wl-tint); }
+
+/* Two rows: the introduction across the full width, then the photograph
+   and the specification list side by side beneath it. */
+.wl-model__inner {
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+
+.wl-model__head {
+    max-width: 68ch;
+    margin-bottom: clamp(36px, 4.5vw, 56px);
+}
+.wl-model__lead {
+    margin: 0;
+    font-size: clamp(16px, 1.6vw, 17.5px);
+    line-height: 1.8;
+    color: var(--wl-text);
+}
+
+/* Both blocks face the same way — photograph left, specifications right —
+   so the eye lands in the same place twice instead of zig-zagging. */
+.wl-model__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;          /* photo takes the column's full height */
+    gap: clamp(32px, 5vw, 64px);
+}
+
+/* ---------- Photo treatment ----------
+   Offset tinted panel behind the image, a dot grid peeking from the far
+   corner and a badge overlapping the near one — lifted from the About
+   section on the home page so the two pages share a visual language. */
+.wl-model__frame {
+    position: relative;
+    isolation: isolate;
+}
+.wl-model__frame::before {
+    content: "";
+    position: absolute;
+    inset: 20px -20px -20px 20px;
+    z-index: -1;
+    border-radius: 22px;
+    background: linear-gradient(145deg, var(--wl-tint-2), var(--wl-tint));
+}
+.wl-model--alt .wl-model__frame::before {
+    background: linear-gradient(145deg, #fff, #E7EAF8);
+}
+
+.wl-model__frame::after {
+    content: "";
+    position: absolute;
+    left: -34px;
+    bottom: -34px;
+    z-index: -2;
+    width: 140px;
+    height: 140px;
+    background-image: radial-gradient(var(--wl-brand) 1.4px, transparent 1.6px);
+    background-size: 14px 14px;
+    opacity: .25;
+    pointer-events: none;
+}
+
+/* The photo matches the height of the specification column beside it
+   rather than keeping a fixed ratio, so the two halves line up top and
+   bottom. A minimum stops a short spec list collapsing the image. */
+.wl-model__frame {
+    height: 100%;
+    min-height: 340px;
+}
+.wl-model__frame img,
+.wl-model__placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, .12) 0 1px 3px, rgba(14, 19, 48, .3) 0 24px 48px -32px;
+}
+
+/* Length badge, overlapping the corner of the photo */
+.wl-model__badge {
+    position: absolute;
+    top: 26px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 104px;
+    height: 104px;
+    border-radius: 0 36px 10px 0;
+    background: rgba(255, 255, 255, .93);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 40px -12px rgba(14, 19, 48, .28);
+    color: var(--wl-ink);
+    line-height: .95;
+}
+.wl-model__badge strong {
+    font-family: var(--wl-display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -.03em;
+}
+.wl-model__badge span {
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--wl-brand);
+}
+.wl-model__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border: 1px dashed var(--wl-tint-2);
+    background: var(--wl-tint);
+    color: #8A90A6;
+    text-align: center;
+    font-size: 14px;
+    padding: 24px;
+    box-shadow: none;
+}
+.wl-model--alt .wl-model__placeholder { background: #fff; }
+.wl-model__placeholder svg {
+    width: 56px; height: 56px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.wl-model__title {
+    margin: 0 0 16px;
+    font-family: var(--wl-display);
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -.02em;
+    color: var(--wl-ink);
+}
+.wl-model__text {
+    margin: 0 0 20px;
+    font-size: 15.5px;
+    line-height: 1.8;
+}
+.wl-model__subhead {
+    margin: 0 0 14px;          /* first thing in its column now */
+    font-family: var(--wl-display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--wl-ink);
+}
+
+/* ---------- Specification list ---------- */
+.wl-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px 20px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+}
+/* Each spec is its own card, so the list scans as a spec sheet rather
+   than a paragraph of bullets. */
+.wl-specs__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border: 1px solid var(--wl-tint-2);
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--wl-ink);
+    transition: border-color .25s ease, transform .25s var(--wl-ease),
+                box-shadow .25s ease;
+}
+.wl-specs__item:hover {
+    border-color: var(--wl-brand);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px -20px rgba(14, 19, 48, .6);
+}
+.wl-specs__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--wl-tint);
+    color: var(--wl-brand);
+}
+.wl-model--alt .wl-specs__icon { background: var(--wl-tint); }
+.wl-specs__icon svg {
+    width: 19px; height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================
+   COMPARISON — dark band
+   ========================================================== */
+.wl-compare {
+    padding: var(--wl-pad) 0;
+    background: var(--wl-ink);
+    color: rgba(255, 255, 255, .78);
+}
+.wl-compare__inner {
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-compare .wl-section-title { color: #fff; }
+.wl-compare .wl-section-text { color: rgba(255, 255, 255, .72); }
+
+.wl-table-wrap {
+    overflow-x: auto;               /* the table scrolls itself, not the page */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+.wl-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: rgba(255, 255, 255, .03);
+}
+.wl-table thead th {
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, .07);
+    font-family: var(--wl-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-align: left;
+    color: #fff;
+}
+.wl-table tbody th,
+.wl-table tbody td {
+    padding: 16px 22px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    text-align: left;
+    vertical-align: top;
+}
+.wl-table tbody th {
+    font-weight: 500;
+    color: rgba(255, 255, 255, .62);
+    white-space: nowrap;
+}
+.wl-table tbody td { color: #fff; }
+/* The column being compared against reads as the "more" build */
+.wl-table tbody td:last-child { color: var(--wl-gold); }
+
+.wl-compare__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 36px;
+}
+.wl-compare__q {
+    margin: 0 0 4px;
+    font-family: var(--wl-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+.wl-compare__a {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 15px;
+    color: rgba(255, 255, 255, .72);
+}
+
+/* ==========================================================
+   GALLERY
+   ========================================================== */
+.wl-gallery { padding: var(--wl-pad) 0; }
+.wl-gallery__inner {
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.wl-gallery__item {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--wl-tint);
+}
+.wl-gallery__item img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    transition: transform .5s var(--wl-ease);
+}
+.wl-gallery__item:hover img { transform: scale(1.04); }
+.wl-gallery__item--empty {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 2;
+    border: 1px dashed var(--wl-tint-2);
+    color: #A9AEC2;
+}
+.wl-gallery__item--empty svg {
+    width: 46px; height: 46px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.wl-gallery__cta { margin-top: 40px; text-align: center; }
+
+/* ==========================================================
+   WHY EVEREST — brand band
+   ========================================================== */
+.wl-why {
+    padding: var(--wl-pad) 0;
+    background: var(--wl-brand);
+    color: rgba(255, 255, 255, .82);
+}
+.wl-why__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(36px, 5vw, 72px);
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-why .wl-section-title { color: #fff; }
+.wl-why .wl-section-text { color: rgba(255, 255, 255, .8); }
+
+.wl-why__points {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wl-why__points li {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .09);
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+.wl-why__value {
+    flex: none;
+    min-width: 72px;
+    font-family: var(--wl-display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--wl-gold);
+}
+.wl-why__label {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, .9);
+}
+
+/* ==========================================================
+   ENQUIRY FORM
+   ========================================================== */
+.wl-form {
+    padding: var(--wl-pad) 0;
+    background: var(--wl-tint);
+}
+.wl-form__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: start;
+    gap: clamp(32px, 5vw, 64px);
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-form__intro { position: sticky; top: calc(var(--wl-head) + 28px); }
+
+.wl-form__assure {
+    margin: 26px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+.wl-form__assure li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14.5px;
+    color: var(--wl-ink);
+}
+.wl-form__assure svg {
+    flex: none;
+    width: 18px; height: 18px;
+    padding: 5px;
+    border-radius: 50%;
+    background: var(--wl-brand);
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.wl-form__card {
+    padding: clamp(24px, 3.5vw, 40px);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 40px 80px -50px rgba(14, 19, 48, .55);
+}
+
+.wl-field { margin-bottom: 18px; }
+.wl-field-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0 18px;
+}
+.wl-field label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--wl-ink);
+}
+.wl-field label span { color: var(--wl-brand); }
+
+.wl-field input,
+.wl-field select {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--wl-tint-2);
+    border-radius: 10px;
+    background: #fff;
+    font-family: var(--wl-body);
+    font-size: 15px;
+    color: var(--wl-ink);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.wl-field select {
+    appearance: none;
+    padding-right: 42px;
+    /* Chevron drawn in the field rather than loading an icon font */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E1330' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 17px;
+    cursor: pointer;
+}
+.wl-field input::placeholder { color: #A2A7B8; }
+.wl-field input:focus,
+.wl-field select:focus {
+    border-color: var(--wl-brand);
+    box-shadow: 0 0 0 3px rgba(40, 56, 149, .12);
+    outline: none;
+}
+.wl-field--captcha { margin: 22px 0 20px; }
+/* Keep the reCAPTCHA widget inside the card on small screens */
+.wl-field--captcha > div { max-width: 100%; overflow: hidden; }
+
+.wl-alert {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+.wl-alert strong { display: block; margin-bottom: 2px; }
+.wl-alert ul { margin: 6px 0 0; padding-left: 18px; }
+.wl-alert--ok {
+    background: #E9F6EE;
+    border: 1px solid #BFE3CD;
+    color: #1C6B3C;
+}
+.wl-alert--bad {
+    background: #FDECEC;
+    border: 1px solid #F3C3C3;
+    color: #A32222;
+}
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+.wl-faq { padding: var(--wl-pad) 0; }
+.wl-faq__inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-faq__list {
+    border-top: 1px solid var(--wl-tint-2);
+}
+.wl-faq__item { border-bottom: 1px solid var(--wl-tint-2); }
+.wl-faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    font-family: var(--wl-display);
+    font-size: clamp(16px, 2vw, 18.5px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--wl-ink);
+    cursor: pointer;
+    list-style: none;
+}
+.wl-faq__item summary::-webkit-details-marker { display: none; }
+
+/* Plus that becomes a minus when the panel opens */
+.wl-faq__mark {
+    position: relative;
+    flex: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--wl-tint);
+    transition: background-color .25s ease;
+}
+.wl-faq__mark::before,
+.wl-faq__mark::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 13px; height: 2px;
+    background: var(--wl-brand);
+    transform: translate(-50%, -50%);
+    transition: transform .25s var(--wl-ease), opacity .25s ease;
+}
+.wl-faq__mark::after { transform: translate(-50%, -50%) rotate(90deg); }
+.wl-faq__item[open] .wl-faq__mark { background: var(--wl-brand); }
+.wl-faq__item[open] .wl-faq__mark::before,
+.wl-faq__item[open] .wl-faq__mark::after { background: #fff; }
+.wl-faq__item[open] .wl-faq__mark::after { opacity: 0; transform: translate(-50%, -50%) rotate(0); }
+
+.wl-faq__answer {
+    padding: 0 48px 24px 0;
+    font-size: 15.5px;
+    line-height: 1.8;
+}
+.wl-faq__answer p { margin: 0; }
+
+/* ==========================================================
+   CLOSING CTA
+   ========================================================== */
+.wl-final {
+    padding: var(--wl-pad) 0;
+    background: var(--wl-ink);
+    text-align: center;
+}
+.wl-final__inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--wl-side);
+}
+.wl-final__title {
+    margin: 0 0 16px;
+    font-family: var(--wl-display);
+    font-size: clamp(28px, 4.2vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    color: #fff;
+    text-wrap: balance;
+}
+.wl-final__text {
+    margin: 0 0 30px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, .76);
+}
+
+/* ==========================================================
+   FOOTER — this page only
+   ========================================================== */
+.wl-footer {
+    background: #0A0E24;
+    color: rgba(255, 255, 255, .7);
+    font-size: 15px;
+}
+.wl-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, .95fr);
+    gap: clamp(32px, 5vw, 64px);
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: clamp(48px, 6vw, 72px) var(--wl-side);
+}
+/* Two classes, so this outranks the blanket `.wl-page img { height: auto }`
+   in the base layer — otherwise the mark renders at its natural size. */
+.wl-footer .wl-footer__logo {
+    width: auto;
+    height: 52px;
+    max-width: 220px;
+    object-fit: contain;
+    object-position: left center;
+    margin-bottom: 20px;
+}
+.wl-footer__about {
+    margin: 0;
+    max-width: 44ch;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .64);
+}
+.wl-footer__social {
+    display: flex;
+    gap: 12px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.wl-footer__social a {
+    display: grid;
+    place-items: center;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .8);
+    transition: background-color .25s ease, color .25s ease;
+}
+.wl-footer__social a:hover { background: var(--wl-gold); color: var(--wl-ink); }
+.wl-footer__social svg { width: 17px; height: 17px; fill: currentColor; }
+
+.wl-footer__title {
+    margin: 0 0 18px;
+    font-family: var(--wl-display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fff;
+}
+.wl-footer__list {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wl-footer__list li { display: grid; gap: 3px; }
+.wl-footer__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .42);
+}
+.wl-footer__list a,
+.wl-footer__list span:not(.wl-footer__label) {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, .86);
+    text-decoration: none;
+    overflow-wrap: anywhere;      /* long addresses must not widen the column */
+}
+.wl-footer__list a:hover { color: var(--wl-gold); }
+
+.wl-footer__cta-title {
+    margin: 0 0 8px;
+    font-family: var(--wl-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: #fff;
+}
+.wl-footer__cta-text {
+    margin: 0 0 22px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .64);
+}
+
+.wl-footer__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    padding: 22px var(--wl-side);
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-size: 13px;
+    color: rgba(255, 255, 255, .52);
+}
+.wl-footer__bar p { margin: 0; }
+.wl-footer__bar a { color: rgba(255, 255, 255, .78); text-decoration: none; }
+.wl-footer__bar a:hover { color: var(--wl-gold); }
+.wl-footer__legal {
+    display: flex;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 991.98px) {
+    .wl-model__body,
+    .wl-why__inner,
+    .wl-form__inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    /* One column: there is no neighbour to match, so the photo goes back
+       to its own ratio instead of stretching to an arbitrary height. */
+    .wl-model__frame { height: auto; min-height: 0; }
+    .wl-model__frame img,
+    .wl-model__placeholder { height: auto; aspect-ratio: 4 / 3; }
+    .wl-form__intro { position: static; }
+
+    .wl-footer__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wl-footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 767.98px) {
+    :root { --wl-side: 18px; --wl-head: 66px; }
+
+    .wl-header__logo img { height: 38px; }
+    .wl-hero { min-height: 0; }
+    /* Full width, but the label and arrow still travel together */
+    .wl-hero__actions .wl-btn,
+    .wl-compare__foot .wl-btn,
+    .wl-gallery__cta .wl-btn,
+    .wl-final .wl-btn,
+    .wl-footer__cta .wl-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0 8px;
+    }
+    .wl-compare__foot { flex-direction: column; align-items: flex-start; }
+    .wl-footer__inner { grid-template-columns: minmax(0, 1fr); }
+    .wl-footer__bar { justify-content: flex-start; }
+    .wl-faq__answer { padding-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .wl-page *, .wl-page *::before, .wl-page *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
+
+/* ==========================================================
+   WORDMARK — stands in for the logo until the settings record
+   carries one. The only marks packaged in the repo belong to the
+   previous brand, so text is safer than the wrong image.
+   ========================================================== */
+.wl-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    font-family: var(--wl-display);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1;
+    color: var(--wl-ink);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.wl-wordmark em {
+    font-style: normal;
+    font-weight: 500;
+    font-size: .62em;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--wl-brand);
+}
+.wl-wordmark--light { color: #fff; font-size: 26px; }
+.wl-wordmark--light em { color: var(--wl-gold); }
+
+@media (max-width: 767.98px) {
+    .wl-wordmark { font-size: 19px; gap: 5px; }
+}
+
+/* ==========================================================
+   BACKGROUND DECORATION
+   Topographic contours and dot grids, the two background motifs the
+   home page uses. Both sit behind the content and never catch a click.
+   ========================================================== */
+.wl-intro, .wl-compare, .wl-gallery, .wl-why, .wl-form, .wl-faq {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+.wl-deco {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+.wl-deco--topo {
+    width: 520px;
+    height: 520px;
+    background: url("../assets/images/about/topo.svg") center / contain no-repeat;
+    opacity: .05;
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+            mask-image: radial-gradient(closest-side, #000 35%, transparent);
+}
+/* On the dark compare band the contour needs to be lighter to register */
+.wl-compare .wl-deco--topo { opacity: .07; filter: invert(1); }
+.wl-deco--topo-a { top: -210px; right: -190px; }
+.wl-deco--topo-b { bottom: -250px; left: -210px; transform: rotate(160deg); }
+
+.wl-deco--dots {
+    width: 180px;
+    height: 130px;
+    background-image: radial-gradient(var(--wl-brand) 1.3px, transparent 1.5px);
+    background-size: 16px 16px;
+    opacity: .2;
+}
+.wl-deco--dots-left  { left: 4%;  top: 18%; }
+.wl-deco--dots-right { right: 5%; bottom: 12%; }
+/* Smaller and tucked under the stat cards — at full size it showed
+   through them, since the cards are translucent. */
+.wl-why .wl-deco--dots {
+    width: 120px;
+    height: 84px;
+    right: 2%;
+    bottom: 3%;
+    background-image: radial-gradient(#fff 1.3px, transparent 1.5px);
+    opacity: .16;
+}
+@media (max-width: 991.98px) {
+    .wl-why .wl-deco--dots { display: none; }
+}
+
+/* ==========================================================
+   GALLERY — the first frame leads at double size, the rest follow.
+   An even grid of six reads as a contact sheet; this reads as a story.
+   ========================================================== */
+@media (min-width: 768px) {
+    .wl-gallery__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
+    }
+    .wl-gallery__item--lead {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .wl-gallery__item--lead img,
+    .wl-gallery__item--lead.wl-gallery__item--empty { aspect-ratio: auto; height: 100%; }
+}
+.wl-gallery__item {
+    position: relative;
+    border: 1px solid var(--wl-tint-2);
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+.wl-gallery__item:hover {
+    border-color: var(--wl-brand);
+    box-shadow: 0 24px 44px -30px rgba(14, 19, 48, .65);
+}
+
+/* ==========================================================
+   COMPARISON TABLE — a little more life in the rows
+   ========================================================== */
+.wl-table tbody tr { transition: background-color .25s ease; }
+.wl-table tbody tr:hover { background: rgba(255, 255, 255, .055); }
+/* The 21.5 column is the one being upsold; mark it rather than relying
+   on colour alone, which would be lost on a greyscale print. */
+.wl-table thead th:last-child { color: var(--wl-gold); }
+.wl-table thead th:last-child::after {
+    content: " ▸";
+    letter-spacing: 0;
+}
+
+/* ==========================================================
+   WHY — the stat rows pick up the same card hover as the specs
+   ========================================================== */
+.wl-why__points li {
+    transition: background-color .25s ease, border-color .25s ease,
+                transform .25s var(--wl-ease);
+}
+.wl-why__points li:hover {
+    background: rgba(255, 255, 255, .14);
+    border-color: rgba(255, 255, 255, .3);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   HERO — a quiet cue that there is more below the fold
+   ========================================================== */
+.wl-hero__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 48px;
+    margin-left: -15px;
+    border: 1.5px solid rgba(255, 255, 255, .5);
+    border-radius: 999px;
+}
+.wl-hero__scroll::after {
+    content: "";
+    width: 4px;
+    height: 8px;
+    border-radius: 999px;
+    background: #fff;
+    animation: wl-scroll 1.8s var(--wl-ease) infinite;
+}
+@keyframes wl-scroll {
+    0%   { transform: translateY(-7px); opacity: 0; }
+    35%  { opacity: 1; }
+    100% { transform: translateY(8px);  opacity: 0; }
+}
+@media (max-width: 767.98px) { .wl-hero__scroll { display: none; } }
+
+/* Fading rule, used to close a section without a hard line */
+.wl-rule {
+    width: 100%;
+    height: 1px;
+    max-width: var(--wl-max);
+    margin: 0 auto;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--wl-tint-2) 20%,
+                var(--wl-tint-2) 80%, transparent);
+}
+
+/* Intro: one column on tablets down — the rule between the columns
+   becomes a rule above the copy instead. */
+@media (max-width: 991.98px) {
+    .wl-intro__top { grid-template-columns: minmax(0, 1fr); }
+    .wl-intro__copy {
+        padding-left: 0;
+        padding-top: 22px;
+        border-left: 0;
+        border-top: 1px solid var(--wl-tint-2);
+    }
+}
+
+/* The intro dot grid belongs in the side gutter, not behind the heading.
+   Below 1360px there is no gutter left to put it in, so it goes away. */
+.wl-intro .wl-deco--dots {
+    left: 0;
+    top: 16%;
+    width: 108px;
+    height: 150px;
+}
+@media (max-width: 1359.98px) {
+    .wl-intro .wl-deco--dots { display: none; }
+}
+
+/* ==========================================================
+   INTRO BAND — the middle row, running the full width of the
+   section between the copy and the shared specifications.
+   ========================================================== */
+.wl-intro__band {
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    overflow: hidden;
+    border: 1px solid var(--wl-tint-2);
+    border-radius: 20px;
+    background: var(--wl-tint);
+}
+.wl-intro__band img {
+    width: 100%;
+    aspect-ratio: 3 / 1;      /* the file's own ratio, so nothing is cropped */
+    object-fit: cover;
+}
+@media (max-width: 767.98px) {
+    /* 3:1 is a letterbox on a phone — crop the sides for some height */
+    .wl-intro__band img { aspect-ratio: 16 / 9; }
+}

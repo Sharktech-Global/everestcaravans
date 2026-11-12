@@ -193,7 +193,7 @@
              [
             'label' => 'OFF-GRID',
             'icon'  => '<path d="M2 20 8 10l4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/>',
-            'title' => 'Engineered for off-road',
+            'title' => 'Engineered for off-road' ,
             'text'  => 'Why stop where the power ends? With solar, lithium batteries and big water tanks on board, our vans let you camp for days in the places caravan parks can’t reach. No power point, no problem.',
             'image' => 'assets/abreco/images/newonce/off-grid.webp',
         ],
