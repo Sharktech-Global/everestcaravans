@@ -1072,6 +1072,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
     @yield('js_after')
+
+    @include("partials.chat-widget")
 </body>
 
 </html>

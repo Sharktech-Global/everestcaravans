@@ -330,9 +330,10 @@
         'cover'    => 'assets/images/decor/video-cover.jpg',       // landscape ~1400x780
         // Portrait slider — add or remove entries, the slideshow adapts
         'portraits' => [
+            'assets/images/about/about21.jpg',
+            'assets/images/about/about22.jpg',
+            'assets/images/about/about23.jpg',
             'assets/abreco/images/newonce/home21.jpg',
-            'assets/abreco/images/vehicles/build-van-17.jpeg',
-            'assets/abreco/images/vehicles/build-van-18.jpeg',
         ],
     ];
 
@@ -346,7 +347,7 @@
     $evCover    = file_exists(public_path($evDecor['cover']))    ? asset($evDecor['cover'])    : null;
     $evPortraits = collect($evDecor['portraits'])
         ->filter(fn ($i) => file_exists(public_path($i)))
-        ->map(fn ($i) => asset($i))
+        ->map(fn ($i) => asset($i) . "?v=" . filemtime(public_path($i)))
         ->values();
 @endphp
 
@@ -398,7 +399,7 @@
                 @foreach ($evPortraits as $src)
                     {{-- Only the first carries the alt text; the rest are decorative --}}
                     <img src="{{ $src }}"
-                         alt="{{ $loop->first ? 'An Everest caravan and tow vehicle parked at a painted silo' : '' }}"
+                         alt="{{ $loop->first ? 'The leather dinette inside a finished Everest caravan' : '' }}"
                          width="800" height="1000" loading="lazy" decoding="async">
                 @endforeach
             </div>
@@ -518,7 +519,7 @@
     ];
     // =====================================================
 
-    $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) : null;
+    $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) . "?v=" . filemtime(public_path($path)) : null;
     $wsPanelBg = $wsImg($wsAbout['bg']) ?? $wsImg($wsAbout['photo']);
 @endphp
 

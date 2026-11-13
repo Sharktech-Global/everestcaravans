@@ -46,7 +46,9 @@
 
             // Slider on the left. Add as many slides as you like. 'caption' is optional.
             'slides' => [
-                ['image' => 'assets/abreco/images/newonce/home-ban21.jpg',    'alt' => 'A family camped beside their Everest caravan in the outback',       'caption' => 'Built for the toughest tracks'],
+                ['image' => 'assets/images/about/about21.jpg',                 'alt' => 'The leather dinette and lounge inside a finished Everest caravan',  'caption' => 'Built for the toughest tracks'],
+                ['image' => 'assets/images/about/about22.jpg',                 'alt' => 'The galley and dinette of an Everest caravan, with gold tapware', 'caption' => 'Styled the way you want it'],
+                ['image' => 'assets/images/about/about23.jpg',                 'alt' => 'The kitchen of an Everest caravan, with oven, microwave and sink', 'caption' => 'A full kitchen on board'],
                 ['image' => 'assets/abreco/images/vehicles/build-van-17.jpeg', 'alt' => 'An Everest caravan shell being built on the factory floor',          'caption' => 'Made in Campbellfield, VIC'],
                 ['image' => 'assets/images/about/who-we1.jpg',                 'alt' => 'A finished Everest Alpine Quattro in the factory yard',              'caption' => 'Finished to your spec'],
                 ['image' => 'assets/images/about/who-we2.jpg',                 'alt' => 'The A-frame of a finished Everest van, with gas bottles and stone guard', 'caption' => 'Quality checked before delivery'],
@@ -68,11 +70,11 @@
         ];
 
         // Third column is a photo rather than text, filling the whole column
-        $esColImage    = 'assets/abreco/images/newonce/about121.jpg';
-        $esColImageAlt = 'A finished Everest Pinnacle caravan outside the factory, side door open';
+        $esColImage    = 'assets/images/about/about23.webp';
+        $esColImageAlt = 'A finished Everest Warrior caravan outside the factory, awning out and side door open';
         // =====================================================
 
-        $esImg = fn ($p) => ($p && file_exists(public_path($p))) ? asset($p) : null;
+        $esImg = fn ($p) => ($p && file_exists(public_path($p))) ? asset($p) . "?v=" . filemtime(public_path($p)) : null;
     @endphp
 
     <section class="ev-story" aria-labelledby="evStoryTitle">
@@ -214,7 +216,7 @@
         ];
         // =====================================================
 
-        $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) : null;
+        $wsImg = fn ($path) => ($path && file_exists(public_path($path))) ? asset($path) . "?v=" . filemtime(public_path($path)) : null;
         $wsPanelBg = $wsImg($wsAbout['bg']) ?? $wsImg($wsAbout['photo']);
     @endphp
 
