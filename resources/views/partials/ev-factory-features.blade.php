@@ -42,6 +42,7 @@
     $ffFeatures = $features ?? [
         ['label' => 'Australian Made',             'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
         ['label' => 'Built to Last',               'icon' => 'assets/abreco/images/logo/caravan.svg'],
+        ['label' => '3 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.svg'],
     ];
 
     // Missing keys are filled in, so a label-only row works
