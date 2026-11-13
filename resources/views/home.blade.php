@@ -689,7 +689,6 @@
     $etFeatures = [
         ['label' => 'Australian Made',             'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
         ['label' => 'Built to Last',               'icon' => 'assets/abreco/images/logo/caravan.svg'],
-        ['label' => '5 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.svg'],
     ];
 
     // Drop the PDF at public/assets/brochure/everest-range.pdf and the button

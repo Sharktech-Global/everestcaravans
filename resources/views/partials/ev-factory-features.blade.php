@@ -11,7 +11,7 @@
             ['label' => 'Australian Made', 'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
             ['label' => 'Built to Last',   'icon' => 'assets/abreco/images/logo/caravan.svg'],
         ],
-        'columns' => 3,                                                     // cards per row on desktop
+        'columns' => 3,                                                     // cards per row on desktop (default: card count, max 3)
         'class'   => 'mt-5',                                                // extra classes on the <ul>
         'style'   => '--ff-ink: #0E1330; --ff-brand: #283895;',             // see the CSS for every var
     ])
@@ -42,13 +42,13 @@
     $ffFeatures = $features ?? [
         ['label' => 'Australian Made',             'icon' => 'assets/abreco/images/logo/kangaroo.svg'],
         ['label' => 'Built to Last',               'icon' => 'assets/abreco/images/logo/caravan.svg'],
-        ['label' => '5 Year Structural Warranty', 'icon' => 'assets/abreco/images/logo/warranty.webp'],
     ];
 
     // Missing keys are filled in, so a label-only row works
     $ffFeatures = collect($ffFeatures)->map(fn ($f) => $f + ['label' => '', 'icon' => null]);
 
-    $ffStyle = trim('--ff-cols: ' . (int) ($columns ?? 3) . '; ' . ($style ?? ''));
+    // Default to one row of all the cards, capped at 3 per row
+    $ffStyle = trim('--ff-cols: ' . (int) ($columns ?? max(1, min(3, $ffFeatures->count()))) . '; ' . ($style ?? ''));
 @endphp
 
 <ul class="{{ trim('ev-factory__features ' . ($class ?? '')) }}" style="{{ $ffStyle }}">
