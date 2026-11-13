@@ -30,15 +30,8 @@
      src="{{ asset('storage/' . ($data->mobile_image ?: $data->image)) }}"
      alt="{{ $data->title }}">
 
-                        {{-- One column: badge, eyebrow, title, copy, button --}}
+                        {{-- One column: eyebrow, title, copy, button --}}
                         <div class="vb-main">
-                            @php $vbWarranty = 'assets/abreco/images/newonce/warranty.webp'; @endphp
-                            @if (file_exists(public_path($vbWarranty)))
-                                <img class="vb-warranty" src="{{ asset($vbWarranty) }}"
-                                     alt="5 year structural warranty"
-                                     width="205" height="57" loading="lazy" decoding="async">
-                            @endif
-
                             @if ($data->vehicle)
                                 <p class="vb-eyebrow">{{ $data->vehicle->name }}</p>
                             @endif

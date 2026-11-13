@@ -2816,13 +2816,6 @@
 .ev-ftr__logo img { width: 230px; height: auto; }
 .ev-ftr__divider { width: 1px; height: 54px; background: var(--ef-rule); }
 .ev-ftr__badge { width: 110px; height: auto; }
-/* warranty.svg is a wide strip (205x57) rather than a near-square badge,
-   so a 76px width would shrink it to ~21px tall. Size it by height instead,
-   to sit level with the certificate beside it. */
-/* Written two classes deep on purpose: the phone breakpoint narrows
-   .ev-ftr__badge to a fixed 62px, and at equal specificity that later rule
-   would win and crush this 205x57 strip into a square. */
-.ev-ftr__badge.ev-ftr__badge--wide { width: auto; height: 60px; }
 
 /* ==========================================================
    Inline link inside body copy.
@@ -3158,7 +3151,6 @@ a.ev-inline-link:focus-visible { outline: 2px solid #8C9BF0; outline-offset: 2px
     .ev-ftr__marks { gap: 18px; }
     .ev-ftr__logo img { width: 160px; }
     .ev-ftr__badge { width: 62px; }
-    .ev-ftr__badge.ev-ftr__badge--wide { height: 40px; }
     /* The marks run onto two lines at this width, which leaves a divider
        stranded at the start of a line. The gap alone separates them. */
     .ev-ftr__divider { display: none; }

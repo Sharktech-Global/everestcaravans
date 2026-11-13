@@ -2225,32 +2225,10 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     }
 }
 
-/* ==========================================================
-   HERO WARRANTY BADGE — sits above the description.
-
-   Sits at the top of .vb-main, above the eyebrow. The artwork is gold
-   and white on transparency, so it needs no plate over the photo.
-   ========================================================== */
-
-/* Three classes deep on purpose: Owl ships
-   `.owl-carousel .owl-item img { width: 100% }`, which outranks a
-   single-class rule and stretched the badge to the column width. */
-.vb-hero .vb-main .vb-warranty {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    height: 80px;
-    margin: 0 0 18px;
-}
-
 @media (max-width: 767.98px) {
-    .vb-hero .vb-main .vb-warranty { height: 44px; margin-bottom: 14px; }
     .ev-tribe .ev-tribe__title {
         max-width: 100%;
     }
-}
-@media (max-width: 479.98px) {
-    .vb-hero .vb-main .vb-warranty { height: 38px; }
 }
 
 /* ==========================================================
