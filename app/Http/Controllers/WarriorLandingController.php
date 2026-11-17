@@ -29,7 +29,7 @@ class WarriorLandingController extends Controller
 
             'postcode' => ['required', 'regex:/^[0-9]{4}$/'],
 
-            'preferred_model'    => ['required', Rule::in(['19.5', '21.5', 'both'])],
+            'preferred_model'    => ['required', Rule::in(['19.6', '21.6', 'both'])],
             'purchase_timeframe' => ['required', Rule::in([
                 'Within 3 months', '3 to 6 months', '6 to 12 months', 'Just researching',
             ])],

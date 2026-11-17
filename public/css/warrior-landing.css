@@ -293,16 +293,7 @@ body.wl-page {
     inset: 0;
     z-index: -1;
     background:
-        linear-gradient(180deg,
-            rgba(10, 14, 36, .62) 0%,
-            rgba(10, 14, 36, .34) 26%,
-            rgba(12, 17, 44, .58) 68%,
-            rgba(14, 19, 48, .95) 100%),
-        linear-gradient(100deg,
-            rgba(10, 14, 36, .92) 0%,
-            rgba(14, 19, 48, .70) 38%,
-            rgba(20, 28, 70, .32) 72%,
-            rgba(40, 56, 149, .22) 100%);
+       linear-gradient(180deg, rgba(10, 14, 36, .62) 0%, rgba(10, 14, 36, .34) 26%, rgb(12 17 44 / 18%) 68%, rgb(14 19 48 / 17%) 100%), linear-gradient(100deg, rgb(10 14 36 / 0%) 0%, rgb(14 19 48 / 0%) 38%, rgba(20, 28, 70, .32) 72%, rgba(40, 56, 149, .22) 100%);
 }
 .wl-hero__inner {
     width: 100%;
@@ -764,10 +755,16 @@ body.wl-page {
     overflow: hidden;
     border-radius: 16px;
     background: var(--wl-tint);
+    /* The tile carries the shape so the photo fills it edge to edge,
+       whatever height the grid row ends up being. */
+    position: relative;
+    aspect-ratio: 3 / 2;
 }
 .wl-gallery__item img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 3 / 2;
+    height: 100%;
     object-fit: cover;
     transition: transform .5s var(--wl-ease);
 }
@@ -790,13 +787,37 @@ body.wl-page {
 .wl-gallery__cta { margin-top: 40px; text-align: center; }
 
 /* ==========================================================
-   WHY EVEREST — brand band
+   WHY EVEREST — deep band
+
+   The darkest band on the page. It falls between the light gallery
+   and the tinted form, so it carries the page's one real moment of
+   contrast. A near-black navy base, a brand-blue glow off the top
+   left and a faint gold wash bottom right, so the band reads as lit
+   rather than as the flat slab of brand colour it used to be.
    ========================================================== */
 .wl-why {
     padding: var(--wl-pad) 0;
-    background: var(--wl-brand);
-    color: rgba(255, 255, 255, .82);
+    background:
+        radial-gradient(860px 420px at 10% -12%, rgba(40, 56, 149, .62), transparent 68%),
+        radial-gradient(620px 420px at 102% 110%, rgba(217, 174, 85, .13), transparent 62%),
+        linear-gradient(180deg, #070A18 0%, #0B0F25 52%, #070A18 100%);
+    color: rgba(255, 255, 255, .70);
 }
+
+/* Hairline edges. The band meets a light section on both sides, and
+   an explicit edge stops it reading as a hole punched in the page. */
+.wl-why::before,
+.wl-why::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .16), transparent);
+}
+.wl-why::before { top: 0; }
+.wl-why::after  { bottom: 0; }
+
 .wl-why__inner {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -806,38 +827,76 @@ body.wl-page {
     margin: 0 auto;
     padding: 0 var(--wl-side);
 }
-.wl-why .wl-section-title { color: #fff; }
-.wl-why .wl-section-text { color: rgba(255, 255, 255, .8); }
+
+/* Gold eyebrow rather than white: the one warm note up top, so the
+   heading block and the stat figures belong to each other. */
+.wl-why .wl-eyebrow--light { color: var(--wl-gold); }
+.wl-why .wl-section-title  { color: #fff; }
+.wl-why .wl-section-text   { color: rgba(255, 255, 255, .70); }
 
 .wl-why__points {
     display: grid;
-    gap: 16px;
+    gap: 14px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
+
+/* Glass rows: a lit top edge, a shadow dropped into the dark, and a
+   gold rail down the left. Background colour and image are kept apart
+   so the hover can cross-fade the colour — background-image does not
+   animate. */
 .wl-why__points li {
+    position: relative;
     display: flex;
-    align-items: baseline;
-    gap: 18px;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, .09);
-    border: 1px solid rgba(255, 255, 255, .14);
+    align-items: center;
+    gap: 20px;
+    padding: 22px 26px 22px 30px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, .035);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 62%);
+    border: 1px solid rgba(255, 255, 255, .10);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .09),
+        0 22px 44px -30px rgba(0, 0, 0, .95);
+    overflow: hidden;
 }
+.wl-why__points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: linear-gradient(180deg, var(--wl-gold), rgba(217, 174, 85, .22));
+}
+
 .wl-why__value {
     flex: none;
-    min-width: 72px;
+    min-width: 88px;
     font-family: var(--wl-display);
-    font-size: 30px;
+    font-size: clamp(30px, 3vw, 36px);
     font-weight: 700;
+    line-height: 1;
     letter-spacing: -.02em;
     color: var(--wl-gold);
 }
+/* Gradient figures, but only where the text clip is supported — without
+   the guard a browser that lacks it paints the number transparent. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .wl-why__value {
+        background-image: linear-gradient(170deg, #F6E1AC 8%, var(--wl-gold) 72%);
+        -webkit-background-clip: text;
+                background-clip: text;
+        color: transparent;
+    }
+}
+
 .wl-why__label {
     font-size: 14.5px;
     line-height: 1.55;
-    color: rgba(255, 255, 255, .9);
+    color: rgba(255, 255, 255, .80);
 }
 
 /* ==========================================================
@@ -849,14 +908,31 @@ body.wl-page {
 }
 .wl-form__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    align-items: start;
-    gap: clamp(32px, 5vw, 64px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(22px, 3vw, 44px);
     max-width: var(--wl-max);
     margin: 0 auto;
     padding: 0 var(--wl-side);
 }
 .wl-form__intro { position: sticky; top: calc(var(--wl-head) + 28px); }
+/* The left column holds the copy, the assurances and a photo, and stays
+   put while the form on the right scrolls past it. The image is capped so
+   the whole sticky block still fits the viewport — if it grew taller than
+   the screen the browser could not hold it in place for the full scroll. */
+.wl-form__media {
+    margin: 22px 0 26px;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid var(--wl-tint-2);
+    background: var(--wl-tint);
+}
+.wl-form__media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: clamp(170px, 26vh, 300px);
+    object-fit: cover;
+}
 
 .wl-form__assure {
     margin: 26px 0 0;
@@ -886,10 +962,23 @@ body.wl-page {
 }
 
 .wl-form__card {
-    padding: clamp(24px, 3.5vw, 40px);
+    
     border-radius: 20px;
-    background: #fff;
+    
     box-shadow: 0 40px 80px -50px rgba(14, 19, 48, .55);
+}
+
+/* GoHighLevel inline form embed. The loader script resizes the iframe to the
+   form's real height; min-height keeps the card from collapsing before then. */
+.wl-form__embed {
+    display: block;
+    width: 100%;
+    /* No tall floor here: the loader sets the real height on the iframe and a
+       min-height larger than the form would show as blank card below it. */
+    min-height: 320px;
+    border: 0;
+    border-radius: 12px;
+    background: #fff;
 }
 
 .wl-field { margin-bottom: 18px; }
@@ -1296,14 +1385,15 @@ body.wl-page {
 .wl-deco--dots-left  { left: 4%;  top: 18%; }
 .wl-deco--dots-right { right: 5%; bottom: 12%; }
 /* Smaller and tucked under the stat cards — at full size it showed
-   through them, since the cards are translucent. */
+   through them, since the cards are translucent. Gold on the deep
+   band, where white dots now read as dust. */
 .wl-why .wl-deco--dots {
     width: 120px;
     height: 84px;
     right: 2%;
     bottom: 3%;
-    background-image: radial-gradient(#fff 1.3px, transparent 1.5px);
-    opacity: .16;
+    background-image: radial-gradient(rgba(217, 174, 85, .95) 1.3px, transparent 1.5px);
+    opacity: .26;
 }
 @media (max-width: 991.98px) {
     .wl-why .wl-deco--dots { display: none; }
@@ -1322,6 +1412,7 @@ body.wl-page {
         grid-column: span 2;
         grid-row: span 2;
     }
+    .wl-gallery__item--lead,
     .wl-gallery__item--lead img,
     .wl-gallery__item--lead.wl-gallery__item--empty { aspect-ratio: auto; height: 100%; }
 }
@@ -1353,12 +1444,15 @@ body.wl-page {
    ========================================================== */
 .wl-why__points li {
     transition: background-color .25s ease, border-color .25s ease,
-                transform .25s var(--wl-ease);
+                box-shadow .25s ease, transform .25s var(--wl-ease);
 }
 .wl-why__points li:hover {
-    background: rgba(255, 255, 255, .14);
-    border-color: rgba(255, 255, 255, .3);
-    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, .085);
+    border-color: rgba(217, 174, 85, .38);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .14),
+        0 28px 52px -28px rgba(0, 0, 0, 1);
+    transform: translateY(-3px);
 }
 
 /* ==========================================================

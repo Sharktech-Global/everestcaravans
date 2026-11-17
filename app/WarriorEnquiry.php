@@ -26,8 +26,8 @@ class WarriorEnquiry extends Model
     public function modelLabel(): string
     {
         return [
-            '19.5' => 'Warrior 19.5 ft',
-            '21.5' => 'Warrior 21.5 ft',
+            '19.6' => 'Warrior 19.6 ft',
+            '21.6' => 'Warrior 21.6 ft',
             'both' => 'Both models',
         ][$this->preferred_model] ?? $this->preferred_model;
     }

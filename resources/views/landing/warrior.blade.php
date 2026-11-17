@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
-@section('title', 'New Everest Warrior Caravans | 19.5 ft & 21.5 ft | Everest Caravans')
-@section('meta_description', 'Two newly built Everest Warrior caravans, 19.5 ft and 21.5 ft. Compare specifications, view genuine photographs and request pricing from the Campbellfield factory.')
+@section('title', 'New Everest Warrior Caravans | 19.6 ft & 21.6 ft | Everest Caravans')
+@section('meta_description', 'Two newly built Everest Warrior caravans, 19.6 ft and 21.6 ft. Compare specifications, view genuine photographs and request pricing from the Campbellfield factory.')
 
 @section('content')
 
@@ -23,12 +23,41 @@
         return ($fallback && file_exists(public_path($fallback))) ? asset($fallback) : null;
     };
 
-    $wlHero   = $wlPic('hero', 'assets/abreco/images/newonce/home-ban21.jpg');
+    // Landing hero banner. Drop a new file here to change it; if it is missing we
+    // fall back to assets/abreco/images/warrior/hero.webp via $wlPic().
+    $wlHeroSrc = 'assets/images/about/gestart-banner.webp';
+    $wlHero   = file_exists(public_path($wlHeroSrc))
+        ? asset($wlHeroSrc) . "?v=" . filemtime(public_path($wlHeroSrc))
+        : $wlPic('hero', 'assets/abreco/images/newonce/home-ban21.jpg');
     $wlIntro  = $wlPic('intro');
-    $wl195    = $wlPic('warrior-19-5');
-    $wl215    = $wlPic('warrior-21-5');
-    $wlGallery = collect(range(1, 6))
-        ->map(fn ($n) => ['src' => $wlPic("gallery-{$n}"), 'n' => $n]);
+    $wl195Src = 'assets/images/about/19.5ft.webp';
+    $wl195    = file_exists(public_path($wl195Src))
+        ? asset($wl195Src) . "?v=" . filemtime(public_path($wl195Src))
+        : $wlPic('warrior-19-5');
+    $wl215Src = 'assets/images/about/21.5Back.jpg';
+    $wl215    = file_exists(public_path($wl215Src))
+        ? asset($wl215Src) . "?v=" . filemtime(public_path($wl215Src))
+        : $wlPic('warrior-21-5');
+    // Gallery — every photograph in assets/images/about (topo.svg excluded).
+    // The first entry leads the grid at double size.
+    $wlGalleryShots = [
+        ['assets/images/about/19.5ft.webp',         'The Everest Warrior 19.6 ft, front three-quarter view'],
+        ['assets/images/about/21.5Back.jpg',        'The rear of the Everest Warrior 21.6 ft, with spare wheel and rear bar'],
+        ['assets/images/about/about23.webp',        'An Everest Warrior side-on, awning out and side door open'],
+        ['assets/images/about/19.5Connected2.webp',  'An Everest Warrior 19.6 ft hitched to a Land Rover Defender outside the Campbellfield factory'],
+        ['assets/images/about/who-we2.jpg',         'The A-frame head-on, with bike rack, gas bottles behind a stone guard and Everest mud flaps'],
+        ['assets/images/about/about21.jpg',         'The leather dinette and lounge inside an Everest caravan'],
+        ['assets/images/about/about22.jpg',         'The galley and dinette, with gold tapware and a timber benchtop'],
+        ['assets/images/about/about23.jpg',         'The kitchen, with oven, microwave and gold mixer tap'],
+    ];
+    $wlGallery = collect($wlGalleryShots)
+        ->filter(fn ($s) => file_exists(public_path($s[0])))
+        ->values()
+        ->map(fn ($s, $i) => [
+            'src' => asset(implode('/', array_map('rawurlencode', explode('/', $s[0])))) . '?v=' . filemtime(public_path($s[0])),
+            'alt' => $s[1],
+            'n'   => $i + 1,
+        ]);
     // =====================================================
 
     $wl195Specs = [
@@ -82,8 +111,8 @@
         </p>
         <p class="wl-hero__lead">
             Whether you're planning your next Australian road trip or comparing caravans
-            before making a purchase, take a closer look at the Warrior 19.5 ft and
-            Warrior 21.5 ft.
+            before making a purchase, take a closer look at the Warrior 19.6 ft and
+            Warrior 21.6 ft.
         </p>
 
         <div class="wl-hero__actions">
@@ -162,7 +191,7 @@
 </section>
 
 {{-- ==========================================================
-     MODEL — WARRIOR 19.5 FT
+     MODEL — WARRIOR 19.6 FT
      ========================================================== --}}
 <section class="wl-model" id="warrior-195">
     <div class="wl-model__inner">
@@ -170,9 +199,9 @@
         {{-- Row 1: the introduction runs the full width, so the title is not
              squeezed into a column beside the photograph. --}}
         <header class="wl-model__head">
-            <p class="wl-eyebrow">Everest Warrior 19.5 ft</p>
+            <p class="wl-eyebrow">Everest Warrior 19.6 ft</p>
             <h2 class="wl-model__title">Your Next Chapter Starts Here.</h2>
-            <p class="wl-model__lead">Explore the newly built Everest Warrior 19.5 ft, featuring an L-Lounge configuration and a range of listed touring equipment.</p>
+            <p class="wl-model__lead">Explore the newly built Everest Warrior 19.6 ft, featuring an L-Lounge configuration and a range of listed touring equipment.</p>
         </header>
 
         {{-- Row 2: photograph on one side, specifications on the other --}}
@@ -181,14 +210,14 @@
             <div class="wl-model__media">
                 <div class="wl-model__frame">
                     @if ($wl195)
-                        <img src="{{ $wl195 }}" alt="The Everest Warrior 19.5 ft caravan" loading="lazy" decoding="async">
+                        <img src="{{ $wl195 }}" alt="The Everest Warrior 19.6 ft caravan" loading="lazy" decoding="async">
                     @else
-                        <div class="wl-model__placeholder" role="img" aria-label="Warrior 19.5 ft photography coming soon">
+                        <div class="wl-model__placeholder" role="img" aria-label="Warrior 19.6 ft photography coming soon">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16V7a1 1 0 0 1 1-1h12l4 5v5"/><path d="M3 16h18"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/></svg>
-                            <span>Warrior 19.5 ft photography coming soon</span>
+                            <span>Warrior 19.6 ft photography coming soon</span>
                         </div>
                     @endif
-                    <span class="wl-model__badge" aria-hidden="true"><strong>19.5</strong><span>ft</span></span>
+                    <span class="wl-model__badge" aria-hidden="true"><strong>19.6</strong><span>ft</span></span>
                 </div>
             </div>
 
@@ -208,7 +237,7 @@
                 <p class="wl-model__text">Explore the actual caravan photographs and contact Everest for complete specifications, current pricing and available viewing arrangements.</p>
 
                 <a class="wl-btn" href="#enquire">
-                    Request Warrior 19.5 ft Pricing
+                    Request Warrior 19.6 ft Pricing
                     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
                 </a>
             </div>
@@ -219,7 +248,7 @@
 </section>
 
 {{-- ==========================================================
-     MODEL — WARRIOR 21.5 FT (media on the right)
+     MODEL — WARRIOR 21.6 FT (media on the right)
      ========================================================== --}}
 <section class="wl-model wl-model--alt" id="warrior-215">
     <div class="wl-model__inner">
@@ -227,9 +256,9 @@
         {{-- Row 1: the introduction runs the full width, so the title is not
              squeezed into a column beside the photograph. --}}
         <header class="wl-model__head">
-            <p class="wl-eyebrow">Everest Warrior 21.5 ft</p>
+            <p class="wl-eyebrow">Everest Warrior 21.6 ft</p>
             <h2 class="wl-model__title">Make the Journey Yours.</h2>
-            <p class="wl-model__lead">Discover the Warrior 21.5 ft, specified with the Warrior with Bunk package, L-Lounge configuration and a different electrical and equipment setup.</p>
+            <p class="wl-model__lead">Discover the Warrior 21.6 ft, specified with the Warrior with Bunk package, L-Lounge configuration and a different electrical and equipment setup.</p>
         </header>
 
         {{-- Row 2: photograph on one side, specifications on the other --}}
@@ -238,14 +267,14 @@
             <div class="wl-model__media">
                 <div class="wl-model__frame">
                     @if ($wl215)
-                        <img src="{{ $wl215 }}" alt="The Everest Warrior 21.5 ft caravan" loading="lazy" decoding="async">
+                        <img src="{{ $wl215 }}" alt="The Everest Warrior 21.6 ft caravan" loading="lazy" decoding="async">
                     @else
-                        <div class="wl-model__placeholder" role="img" aria-label="Warrior 21.5 ft photography coming soon">
+                        <div class="wl-model__placeholder" role="img" aria-label="Warrior 21.6 ft photography coming soon">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16V7a1 1 0 0 1 1-1h12l4 5v5"/><path d="M3 16h18"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/></svg>
-                            <span>Warrior 21.5 ft photography coming soon</span>
+                            <span>Warrior 21.6 ft photography coming soon</span>
                         </div>
                     @endif
-                    <span class="wl-model__badge" aria-hidden="true"><strong>21.5</strong><span>ft</span></span>
+                    <span class="wl-model__badge" aria-hidden="true"><strong>21.6</strong><span>ft</span></span>
                 </div>
             </div>
 
@@ -265,7 +294,7 @@
                 <p class="wl-model__text">Request the full build specifications and discuss whether this caravan suits your travel requirements.</p>
 
                 <a class="wl-btn" href="#enquire">
-                    Request Warrior 21.5 ft Pricing
+                    Request Warrior 21.6 ft Pricing
                     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
                 </a>
             </div>
@@ -283,7 +312,7 @@
     <div class="wl-compare__inner">
 
         <header class="wl-section-head">
-            <p class="wl-eyebrow wl-eyebrow--light">Warrior 19.5 ft vs Warrior 21.5 ft</p>
+            <p class="wl-eyebrow wl-eyebrow--light">Warrior 19.6 ft vs Warrior 21.6 ft</p>
             <h2 class="wl-section-title">Compare the Builds. Find Your Warrior.</h2>
             <p class="wl-section-text">
                 Both Everest Warrior models offer different configurations, giving buyers
@@ -294,13 +323,13 @@
         <div class="wl-table-wrap">
             <table class="wl-table">
                 <caption class="wl-visually-hidden">
-                    Specification comparison between the Warrior 19.5 ft and the Warrior 21.5 ft
+                    Specification comparison between the Warrior 19.6 ft and the Warrior 21.6 ft
                 </caption>
                 <thead>
                     <tr>
                         <th scope="col">Feature</th>
-                        <th scope="col">Warrior 19.5 ft</th>
-                        <th scope="col">Warrior 21.5 ft</th>
+                        <th scope="col">Warrior 19.6 ft</th>
+                        <th scope="col">Warrior 21.6 ft</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -377,7 +406,7 @@
                 <figure class="wl-gallery__item{{ $shot['n'] === 1 ? ' wl-gallery__item--lead' : '' }}{{ $shot['src'] ? '' : ' wl-gallery__item--empty' }}">
                     @if ($shot['src'])
                         <img src="{{ $shot['src'] }}"
-                             alt="Everest Warrior caravan, photograph {{ $shot['n'] }}"
+                             alt="{{ $shot['alt'] ?? 'Everest Warrior caravan' }}"
                              loading="lazy" decoding="async">
                     @else
                         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>
@@ -447,7 +476,15 @@
         <div class="wl-form__intro">
             <p class="wl-eyebrow">Request pricing &amp; specifications</p>
             <h2 class="wl-section-title">Let's Find Your Everest Warrior.</h2>
-            <p class="wl-section-text">Interested in the Warrior 19.5 ft or 21.5 ft?</p>
+            @php $wlFormImg = 'assets/images/about/form-landing.webp'; @endphp
+            @if (file_exists(public_path($wlFormImg)))
+                <figure class="wl-form__media">
+                    <img src="{{ asset(implode('/', array_map('rawurlencode', explode('/', $wlFormImg)))) }}?v={{ filemtime(public_path($wlFormImg)) }}"
+                         alt="An Everest Warrior caravan parked outside the Campbellfield factory, hitched and ready to tow"
+                         loading="lazy" decoding="async">
+                </figure>
+            @endif
+            <p class="wl-section-text">Interested in the Warrior 19.6 ft or 21.6 ft?</p>
             <p class="wl-section-text">
                 Share your details and our sales team can contact you to discuss pricing,
                 specifications and next steps.
@@ -471,97 +508,37 @@
 
         <div class="wl-form__card">
 
-            @if (session('warrior_success'))
-                <div class="wl-alert wl-alert--ok" role="status">
-                    <strong>Thanks &mdash; we have your enquiry.</strong>
-                    A member of the Everest sales team will be in touch to discuss pricing
-                    and specifications.
-                </div>
-            @endif
+            {{--
+                GoHighLevel / LeadConnector enquiry form.
 
-            @if ($errors->any())
-                <div class="wl-alert wl-alert--bad" role="alert">
-                    <strong>Please check the form.</strong>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                Supplied as a STICKY_SIDEBAR embed and converted to INLINE so it sits
+                inside this card rather than floating over the page. form_embed.js
+                (loaded in js_after, below) reads these data- attributes and resizes
+                the iframe to the form's real height, so data-height is only a start.
 
-            <form action="{{ route('warrior-landing.store') }}" method="POST" novalidate>
-                @csrf
-
-                <div class="wl-field">
-                    <label for="wl-name">Full name <span aria-hidden="true">*</span></label>
-                    <input type="text" id="wl-name" name="name" value="{{ old('name') }}"
-                           placeholder="Your full name" autocomplete="name" required>
-                </div>
-
-                <div class="wl-field-row">
-                    <div class="wl-field">
-                        <label for="wl-phone">Australian phone number <span aria-hidden="true">*</span></label>
-                        <input type="tel" id="wl-phone" name="phone" value="{{ old('phone') }}"
-                               placeholder="0412 345 678" autocomplete="tel" required>
-                    </div>
-                    <div class="wl-field">
-                        <label for="wl-email">Email address <span aria-hidden="true">*</span></label>
-                        <input type="email" id="wl-email" name="email" value="{{ old('email') }}"
-                               placeholder="you@example.com" autocomplete="email" required>
-                    </div>
-                </div>
-
-                <div class="wl-field-row">
-                    <div class="wl-field">
-                        <label for="wl-postcode">Postcode <span aria-hidden="true">*</span></label>
-                        <input type="text" id="wl-postcode" name="postcode" value="{{ old('postcode') }}"
-                               placeholder="3061" inputmode="numeric" maxlength="4"
-                               autocomplete="postal-code" required>
-                    </div>
-                    <div class="wl-field">
-                        <label for="wl-model">Preferred model <span aria-hidden="true">*</span></label>
-                        <select id="wl-model" name="preferred_model" required>
-                            <option value="">Select a model</option>
-                            @foreach (['19.5' => 'Warrior 19.5 ft', '21.5' => 'Warrior 21.5 ft', 'both' => 'Both models'] as $val => $label)
-                                <option value="{{ $val }}" @selected(old('preferred_model') === $val)>{{ $label }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="wl-field-row">
-                    <div class="wl-field">
-                        <label for="wl-timeframe">Purchase timeframe <span aria-hidden="true">*</span></label>
-                        <select id="wl-timeframe" name="purchase_timeframe" required>
-                            <option value="">Select a timeframe</option>
-                            @foreach (['Within 3 months', '3 to 6 months', '6 to 12 months', 'Just researching'] as $opt)
-                                <option value="{{ $opt }}" @selected(old('purchase_timeframe') === $opt)>{{ $opt }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="wl-field">
-                        <label for="wl-type">Enquiry type <span aria-hidden="true">*</span></label>
-                        <select id="wl-type" name="enquiry_type" required>
-                            <option value="">Select an enquiry type</option>
-                            @foreach (['Pricing', 'Specifications', 'Factory inspection'] as $opt)
-                                <option value="{{ $opt }}" @selected(old('enquiry_type') === $opt)>{{ $opt }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="wl-field wl-field--captcha">
-                    {!! NoCaptcha::renderJs() !!}
-                    {!! NoCaptcha::display(['data-theme' => 'light']) !!}
-                </div>
-
-                <button type="submit" class="wl-btn wl-btn--block">
-                    Get Pricing &amp; Details
-                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
-                </button>
-            </form>
-
+                Submissions go to GoHighLevel, NOT to the warrior_enquiries table and
+                NOT to the team notification email. The native Laravel form that used
+                to sit here is still in git history if it is ever needed back.
+            --}}
+            <iframe
+                src="https://ghllinks.sharktech.com.au/widget/form/0tlEDQAlbrshPFlheXAU"
+                id="inline-0tlEDQAlbrshPFlheXAU"
+                class="wl-form__embed"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Landing Page Form1"
+                data-height="805"
+                data-layout-iframe-id="inline-0tlEDQAlbrshPFlheXAU"
+                data-form-id="0tlEDQAlbrshPFlheXAU"
+                data-cookie-consent="true"
+                data-cookie-consent-provider="auto"
+                title="Landing Page Form1"
+                scrolling="no"></iframe>
         </div>
 
     </div>
@@ -581,8 +558,8 @@
         @php
             $wlFaqs = [
                 [
-                    'q' => "What's the difference between the Warrior 19.5 ft and 21.5 ft?",
-                    'a' => 'The two builds have different package and equipment configurations. The 19.5 ft model lists 630W solar panels and 300Ah lithium battery capacity. The 21.5 ft model lists 840W solar panels, 400Ah lithium battery capacity and the Warrior with Bunk package.',
+                    'q' => "What's the difference between the Warrior 19.6 ft and 21.6 ft?",
+                    'a' => 'The two builds have different package and equipment configurations. The 19.6 ft model lists 630W solar panels and 300Ah lithium battery capacity. The 21.6 ft model lists 840W solar panels, 400Ah lithium battery capacity and the Warrior with Bunk package.',
                 ],
                 [
                     'q' => 'How much do the new Everest Warrior caravans cost?',
@@ -645,4 +622,9 @@
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
 </script>
 
+@endsection
+
+@section('js_after')
+    {{-- LeadConnector loader: resizes the inline form iframe to its real height. --}}
+    <script src="https://ghllinks.sharktech.com.au/js/form_embed.js"></script>
 @endsection

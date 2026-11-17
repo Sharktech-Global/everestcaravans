@@ -276,3 +276,9 @@ Route::post('/book-a-factory-visit', 'FactoryVisitController@store')
     '/vehicles/{slug}/booking-enquiry',
     [\App\Http\Controllers\BookingEnquiryController::class, 'store']
 )->name('vehicles.booking-enquiry');
+
+// Warrior landing page
+Route::get("/warrior", "WarriorLandingController@show")
+    ->name("warrior-landing.show");
+Route::post("/warrior", "WarriorLandingController@store")
+    ->name("warrior-landing.store");
