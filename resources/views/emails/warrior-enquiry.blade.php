@@ -20,20 +20,24 @@
                         <td style="padding:30px 25px;">
                             <p style="font-size:14px;line-height:24px;">Hello Everest Caravans Team,</p>
                             <p style="font-size:14px;line-height:24px;margin-bottom:25px;">
-                                A buyer has requested pricing or specifications from the Warrior landing page.
+                                A new Warrior caravan enquiry has been submitted.
+                                Please review the customer's preferences and contact details below.
                             </p>
                             @php
                                 $fields = [
                                     'Full Name' => $details['name'] ?? null,
                                     'Email' => $details['email'] ?? null,
-                                    'Phone' => $details['phone'] ?? null,
-                                    'Postcode' => $details['postcode'] ?? null,
-                                    'Preferred Model' => $details['preferred_model'] ?? null,
-                                    'Purchase Timeframe' => $details['purchase_timeframe'] ?? null,
-                                    'Enquiry Type' => $details['enquiry_type'] ?? null,
+                                    'Phone Number' => $details['phone'] ?? null,
+                                    'WhatsApp Number' => $details['whatsapp_number'] ?? null,
+                                    'Post Code' => $details['postcode'] ?? null,
+                                    'Which Caravan Interests You?' => $details['preferred_model'] ?? null,
+                                    'What Would You Like To Do Next?' => $details['next_action'] ?? ($details['enquiry_type'] ?? null),
+                                    'When Are You Considering Purchasing?' => $details['purchase_timeframe'] ?? null,
+                                    'Where Are You Based?' => $details['location'] ?? null,
                                     'Submitted From' => $details['source_url'] ?? null,
                                 ];
                             @endphp
+
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
                                 style="border-collapse:collapse;font-size:14px;">
                                 @foreach($fields as $label => $value)

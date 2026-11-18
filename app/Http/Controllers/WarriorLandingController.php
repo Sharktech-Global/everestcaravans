@@ -20,31 +20,94 @@ class WarriorLandingController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'  => 'required|string|min:3|max:255',
+            'preferred_model' => [
+                'required',
+                Rule::in([
+                    '19.5',
+                    '21.5',
+                    'custom',
+                    'compare_both',
+                ]),
+            ],
+
+            'next_action' => [
+                'required',
+                Rule::in([
+                    'Request pricing and specifications',
+                    'Arrange a factory inspection',
+                    'Speak with the sales team',
+                ]),
+            ],
+
+            'purchase_timeframe' => [
+                'required',
+                Rule::in([
+                    'As soon as possible',
+                    'Within 3 months',
+                    'Within 3–6 months',
+                    '6+ months / still researching',
+                ]),
+            ],
+
+            'location' => [
+                'required',
+                Rule::in([
+                    'Victoria',
+                    'NSW / ACT',
+                    'Other Australian state or territory',
+                ]),
+            ],
+
+            'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|max:255',
 
-            // Australian numbers, written any of the usual ways:
-            // 0412 345 678, (03) 9357 9440, +61 412 345 678
-            'phone' => ['required', 'string', 'max:30', 'regex:/^(\+?61[\s-]?|0)[2-57-8]([\s-]?\d){8}$/'],
+            'postcode' => [
+                'required',
+                'regex:/^[0-9]{4}$/',
+            ],
 
-            'postcode' => ['required', 'regex:/^[0-9]{4}$/'],
+            'phone' => [
+                'required',
+                'string',
+                'max:30',
+                function ($attribute, $value, $fail) {
+                    $number = preg_replace('/[\s()-]/', '', $value);
 
-            'preferred_model'    => ['required', Rule::in(['19.6', '21.6', 'both'])],
-            'purchase_timeframe' => ['required', Rule::in([
-                'Within 3 months', '3 to 6 months', '6 to 12 months', 'Just researching',
-            ])],
-            'enquiry_type' => ['required', Rule::in([
-                'Pricing', 'Specifications', 'Factory inspection',
-            ])],
+                    if (!preg_match('/^(?:\+61|61|0)[2-478]\d{8}$/', $number)) {
+                        $fail('Please enter a valid Australian phone number.');
+                    }
+                },
+            ],
+
+            'whatsapp_number' => [
+                'nullable',
+                'string',
+                'max:30',
+                function ($attribute, $value, $fail) {
+                    if (empty($value)) {
+                        return;
+                    }
+
+                    $number = preg_replace('/[\s()-]/', '', $value);
+
+                    if (!preg_match('/^(?:\+61|61|0)[2-478]\d{8}$/', $number)) {
+                        $fail('Please enter a valid Australian WhatsApp number.');
+                    }
+                },
+            ],
 
             'g-recaptcha-response' => 'required|captcha',
         ], [
-            'phone.regex'    => 'Please enter a valid Australian phone number.',
-            'postcode.regex' => 'Please enter a 4-digit Australian postcode.',
+            'preferred_model.required' => 'Please select a caravan.',
+            'next_action.required' => 'Please select what you would like to do next.',
+            'purchase_timeframe.required' => 'Please select your purchasing timeframe.',
+            'location.required' => 'Please select where you are based.',
+            'postcode.regex' => 'Please enter a valid 4-digit Australian postcode.',
+            'phone.regex' => 'Please enter a valid Australian phone number.',
+            'whatsapp_number.regex' => 'Please enter a valid Australian WhatsApp number.',
         ]);
 
         if ($validator->fails()) {
-            // Send them back to the form itself, not the top of a long page
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -55,17 +118,23 @@ class WarriorLandingController extends Controller
         $data = $validator->validated();
 
         $enquiry = WarriorEnquiry::create([
-            'name'               => $data['name'],
-            'email'              => $data['email'],
-            'phone'              => $data['phone'],
-            'postcode'           => $data['postcode'],
-            'preferred_model'    => $data['preferred_model'],
+            'preferred_model' => $data['preferred_model'],
+            'next_action' => $data['next_action'],
             'purchase_timeframe' => $data['purchase_timeframe'],
-            'enquiry_type'       => $data['enquiry_type'],
-            'source_url'         => $request->fullUrl(),
+            'location' => $data['location'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'postcode' => $data['postcode'],
+            'phone' => $data['phone'],
+            'whatsapp_number' => $data['whatsapp_number'] ?? null,
+
+            // Retain the existing column for compatibility.
+            'enquiry_type' => $data['next_action'],
+
+            'source_url' => $request->fullUrl(),
         ]);
 
-        Log::info('Warrior landing enquiry saved', [
+        Log::info('Warrior enquiry saved', [
             'warrior_enquiry_id' => $enquiry->id,
         ]);
 
@@ -73,12 +142,14 @@ class WarriorLandingController extends Controller
         $details['preferred_model'] = $enquiry->modelLabel();
 
         try {
-            Notification::route('mail', config('mail.everest_contact_to'))
-                ->notify(new WarriorEnquiryNotification($details));
+            $adminEmail = config('mail.everest_contact_to');
 
+            if (!empty($adminEmail)) {
+                Notification::route('mail', $adminEmail)
+                    ->notify(new WarriorEnquiryNotification($details));
+            }
         } catch (\Throwable $e) {
-            // A failed email must not lose the lead — it is already saved
-            Log::error('Warrior landing notification failed', [
+            Log::error('Warrior enquiry email failed', [
                 'warrior_enquiry_id' => $enquiry->id,
                 'error' => $e->getMessage(),
             ]);

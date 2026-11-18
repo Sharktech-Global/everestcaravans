@@ -617,6 +617,17 @@ Route::group(['middleware' => 'auth:admin', 'namespace' => '\App\Http\Controller
     Route::post('image_category/update/{id}',  'Admin\ImageCategoryController@update')->name('image_category.update');
     Route::delete('image_category/destroy/{id}',  'Admin\ImageCategoryController@destroy')->name('image_category.destroy');
 
+    // WARRIOR LANDING PAGE
+    Route::get(
+        'warrior-enquiries',
+        'Admin\WarriorEnquiryController@index'
+    )->name('admin.warrior-enquiries.index');
+
+    Route::get(
+        'warrior-enquiries/{id}',
+        'Admin\WarriorEnquiryController@show'
+    )->name('admin.warrior-enquiries.show');
+
     
     // Finance
     Route::get('finance',  'Admin\FinanceController@index')->name('finance.index');

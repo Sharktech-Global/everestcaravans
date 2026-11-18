@@ -53,6 +53,99 @@
     @if ($lpGtm && filled($lpGtm->head))
         {!! $lpGtm->head !!}
     @endif
+
+
+
+
+
+    <style>
+
+.warrior-enquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.warrior-enquiry-form h3 {
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.warrior-enquiry-form h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 12px 0 0;
+}
+
+.warrior-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.warrior-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.warrior-form-group input,
+.warrior-form-group select {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 15px;
+    border: 1px solid #d5d9df;
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.warrior-form-group input:focus,
+.warrior-form-group select:focus {
+    outline: none;
+    border-color: #a71c24;
+    box-shadow: 0 0 0 3px rgba(167, 28, 36, 0.1);
+}
+
+.warrior-form-note {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.warrior-error {
+    color: #c62828;
+    font-size: 12px;
+}
+
+.warrior-submit-btn {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #a71c24;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.warrior-submit-btn:hover {
+    background: #80151b;
+}
+
+@media (max-width: 767px) {
+    .warrior-enquiry-form h3 {
+        font-size: 23px;
+    }
+}
+</style>
 </head>
 
 <body class="wl-page">
