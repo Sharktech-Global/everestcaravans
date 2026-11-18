@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="bread-inner bread-inner-contact">
                         <div class="baner-bg-head2">
-                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
+                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.webp') }}" alt="">
 
                         </div>
                         <h1>Join Our Growing Team - We Are Hiring!</h1>
@@ -38,7 +38,7 @@
                                     <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white" alt="">
+                                <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white" alt="">
                                 Join Us</a>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                                                 <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C"
                                                     stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
-                                            <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white"
+                                            <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white"
                                                 alt="">
                                             Submit Form
                                         </button>

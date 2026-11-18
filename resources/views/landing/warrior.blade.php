@@ -34,7 +34,7 @@
     $wl195    = file_exists(public_path($wl195Src))
         ? asset($wl195Src) . "?v=" . filemtime(public_path($wl195Src))
         : $wlPic('warrior-19-5');
-    $wl215Src = 'assets/images/about/21.5Back.jpg';
+    $wl215Src = 'assets/images/about/21.5Back.webp';
     $wl215    = file_exists(public_path($wl215Src))
         ? asset($wl215Src) . "?v=" . filemtime(public_path($wl215Src))
         : $wlPic('warrior-21-5');
@@ -42,13 +42,13 @@
     // The first entry leads the grid at double size.
     $wlGalleryShots = [
         ['assets/images/about/19.5ft.webp',         'The Everest Warrior 19.6 ft, front three-quarter view'],
-        ['assets/images/about/21.5Back.jpg',        'The rear of the Everest Warrior 21.6 ft, with spare wheel and rear bar'],
+        ['assets/images/about/21.5Back.webp',        'The rear of the Everest Warrior 21.6 ft, with spare wheel and rear bar'],
         ['assets/images/about/about23.webp',        'An Everest Warrior side-on, awning out and side door open'],
         ['assets/images/about/19.5Connected2.webp',  'An Everest Warrior 19.6 ft hitched to a Land Rover Defender outside the Campbellfield factory'],
-        ['assets/images/about/who-we2.jpg',         'The A-frame head-on, with bike rack, gas bottles behind a stone guard and Everest mud flaps'],
-        ['assets/images/about/about21.jpg',         'The leather dinette and lounge inside an Everest caravan'],
-        ['assets/images/about/about22.jpg',         'The galley and dinette, with gold tapware and a timber benchtop'],
-        ['assets/images/about/about23.jpg',         'The kitchen, with oven, microwave and gold mixer tap'],
+        ['assets/images/about/who-we2.webp',         'The A-frame head-on, with bike rack, gas bottles behind a stone guard and Everest mud flaps'],
+        ['assets/images/about/about21.webp',         'The leather dinette and lounge inside an Everest caravan'],
+        ['assets/images/about/about22.webp',         'The galley and dinette, with gold tapware and a timber benchtop'],
+        ['assets/images/about/about23-kitchen.webp',         'The kitchen, with oven, microwave and gold mixer tap'],
     ];
     $wlGallery = collect($wlGalleryShots)
         ->filter(fn ($s) => file_exists(public_path($s[0])))

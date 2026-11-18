@@ -103,7 +103,7 @@
                         <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
-                    <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white" alt="">
+                    <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white" alt="">
                     Submit Form
                 </button>
             </div>
@@ -142,7 +142,7 @@
                             <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white" alt="">
+                        <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white" alt="">
                         Submit Form
                     </button>
                 </div>

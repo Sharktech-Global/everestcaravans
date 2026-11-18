@@ -297,7 +297,7 @@
                         <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#3A49A8"
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg> -->
-                    <!-- <img src="{{ asset('assets/abreco/images/shapes/right-white.png') }}"
+                    <!-- <img src="{{ asset('assets/abreco/images/shapes/right-white.webp') }}"
                         class="d-none white" alt="">  -->
                         Go Back</a>                    
                 </div>
@@ -311,7 +311,7 @@
                                 <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14" viewBox="0 0 21 14" fill="none">
                                     <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg> 
-                                <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white" alt="">
+                                <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white" alt="">
                                 Load More</a>
                         </div>
                     </div>

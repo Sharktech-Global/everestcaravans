@@ -13,7 +13,7 @@
         ],
         'title'    => 'Top 5 Vans in Australia',                        // main heading line
         'subtitle' => 'Our Journey for the Past 4 Years',               // top line; built from the years when omitted
-        'image'    => 'assets/images/slider/ev-journey.jpg',             // background photo
+        'image'    => 'assets/images/slider/ev-journey.webp',             // background photo
         'sort'     => true,                                             // newest first, ranked awards before trophies
     ])
 
@@ -67,9 +67,9 @@
     // Background photo (sits under a dark-blue gradient). Falls back to the
     // old banner if the uploaded file is ever removed, so the section can
     // never end up with a broken url() in its inline style.
-    $evBgPath = $image ?? 'assets/images/slider/ev-journey.jpg';
+    $evBgPath = $image ?? 'assets/images/slider/ev-journey.webp';
     if (!is_file(public_path($evBgPath))) {
-        $evBgPath = 'assets/images/slider/ev-journey.jpg';
+        $evBgPath = 'assets/images/slider/ev-journey.webp';
     }
     $evJourneyBg = asset(implode('/', array_map('rawurlencode', explode('/', $evBgPath))));
 

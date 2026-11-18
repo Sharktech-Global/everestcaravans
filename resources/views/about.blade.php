@@ -50,7 +50,7 @@
                 ['image' => 'assets/images/about/about22.jpg',                 'alt' => 'The galley and dinette of an Everest caravan, with gold tapware', 'caption' => 'Styled the way you want it'],
                 ['image' => 'assets/images/about/about23.jpg',                 'alt' => 'The kitchen of an Everest caravan, with oven, microwave and sink', 'caption' => 'A full kitchen on board'],
                 ['image' => 'assets/abreco/images/vehicles/build-van-17.jpeg', 'alt' => 'An Everest caravan shell being built on the factory floor',          'caption' => 'Made in Campbellfield, VIC'],
-                ['image' => 'assets/images/about/who-we1.jpg',                 'alt' => 'A finished Everest Alpine Quattro in the factory yard',              'caption' => 'Finished to your spec'],
+                ['image' => 'assets/images/about/who-we1.webp',                 'alt' => 'A finished Everest Alpine Quattro in the factory yard',              'caption' => 'Finished to your spec'],
                 ['image' => 'assets/images/about/who-we2.jpg',                 'alt' => 'The A-frame of a finished Everest van, with gas bottles and stone guard', 'caption' => 'Quality checked before delivery'],
             ],
             'autoplay' => 5000,   // ms per slide; 0 = no autoplay
@@ -186,7 +186,7 @@
             // Home sends this to /about; we are already on /about, so it points at contact instead
             'button'  => ['label' => 'Talk to Us', 'url' => url('/contact')],
             'bg'      => null,                                  // stats panel background; null = reuse the main photo
-            'photo'   => 'assets/images/about/who-we1.jpg',        // large photo, top left
+            'photo'   => 'assets/images/about/who-we1.webp',        // large photo, top left
             'photo2'  => 'assets/images/about/who-we2.jpg',        // smaller photo, overlapping bottom right
         ];
 
@@ -204,14 +204,14 @@
             'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
             'title' => 'Customised from the inside out',
             'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 5-year structural warranty. We build them to last for decades of big laps, not just one.',
-            'image' => 'assets/abreco/images/newonce/lux.jpg',
+            'image' => 'assets/abreco/images/newonce/lux.webp',
         ],
         [
             'label' => 'Custom Build',
             'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
             'title' => 'Strict quality control',
             'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels',
-            'image' => 'assets/images/services/quality.jpeg',
+            'image' => 'assets/images/services/quality.webp',
         ],
         ];
         // =====================================================

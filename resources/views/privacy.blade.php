@@ -7,7 +7,7 @@
                 <div class="col-12">
                     <div class="bread-inner">
                         <div class="baner-bg-head2">
-                        <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
+                        <img src="{{ asset('assets/abreco/images/shapes/banner-head.webp') }}" alt="">
                             
                         </div>
                         <h1>{{ @$page->title }}</h1>

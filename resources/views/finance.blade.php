@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="bread-inner bread-inner-services">
                         <div class="baner-bg-head2">
-                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}" alt="">
+                            <img src="{{ asset('assets/abreco/images/shapes/banner-head.webp') }}" alt="">
                         </div>
                         <h1>Financing Options Available</h1>
                         <div class="service-bread-btn">

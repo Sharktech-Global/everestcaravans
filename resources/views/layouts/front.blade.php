@@ -534,7 +534,7 @@
                             <img src="{{ asset('storage/' . (@$settings->logo_secondary ?: @$settings->logo)) }}" alt="Everest Caravans">
                         </a>
                         <span class="ev-ftr__divider" aria-hidden="true"></span>
-                        <img class="ev-ftr__badge" src="{{ asset('assets/abreco/images/certificate.png') }}"
+                        <img class="ev-ftr__badge" src="{{ asset('assets/abreco/images/certificate.webp') }}"
                              alt="Australian Made" width="178" height="142" loading="lazy" decoding="async">
                     </div>
 
@@ -654,7 +654,7 @@
                         <div class="copyright-text order-1-991">
                             {{-- Creator mark. The social links live in the strip above,
                                  so this bar carries the mark instead. --}}
-                            @php $evCreator = 'assets/abreco/images/newonce/creater-logo.png'; @endphp
+                            @php $evCreator = 'assets/abreco/images/newonce/creater-logo.webp'; @endphp
                             @if (file_exists(public_path($evCreator)))
                                 <div class="ev-ftr__creator">
                                     <img src="{{ asset($evCreator) }}" alt="Everest Caravans"
@@ -931,7 +931,7 @@
                                 <svg class="color" xmlns="http://www.w3.org/2000/svg" width="21" height="14" viewBox="0 0 21 14" fill="none">
                                     <path d="M1 7L20 7M20 7L13.6852 1M20 7L13.6852 13" stroke="#9D166C" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <img src="{{asset('assets/abreco/images/shapes/right-white.png')}}" class="d-none white" alt="">
+                                <img src="{{asset('assets/abreco/images/shapes/right-white.webp')}}" class="d-none white" alt="">
                                 Submit Form
                             </button>
                         </div>

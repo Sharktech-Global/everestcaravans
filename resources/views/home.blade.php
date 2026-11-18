@@ -73,7 +73,7 @@
                                     <div class="col-md-7">
                                         <div class="banner-inner">
                                             <div class="baner-bg-head">
-                                                <img src="{{ asset('assets/abreco/images/shapes/banner-head.png') }}"
+                                                <img src="{{ asset('assets/abreco/images/shapes/banner-head.webp') }}"
                                                     alt="">
                                             </div>
                                             <h1 class="">{{ @$data->title }}<br><span>{{ @$data->sub_title }}</span>
@@ -166,7 +166,7 @@
         {{-- Photo + years badge --}}
         <div class="ev-about__media">
             <div class="ev-about__frame">
-                <img src="{{ asset('assets/abreco/images/newonce/home-top.jpg') }}"
+                <img src="{{ asset('assets/abreco/images/newonce/home-top.webp') }}"
                      alt="An Everest Avalanche caravan and tow vehicle parked beside a Comet windmill"
                      width="670" height="840" loading="lazy" decoding="async">
                 <div class="ev-about__badge">
@@ -327,13 +327,13 @@
         // YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID  (null = no play button)
         'video'   => null,
 
-        'cover'    => 'assets/images/decor/video-cover.jpg',       // landscape ~1400x780
+        'cover'    => 'assets/images/decor/video-cover.webp',       // landscape ~1400x780
         // Portrait slider — add or remove entries, the slideshow adapts
         'portraits' => [
-            'assets/images/about/about21.jpg',
-            'assets/images/about/about22.jpg',
-            'assets/images/about/about23.jpg',
-            'assets/abreco/images/newonce/home21.jpg',
+            'assets/images/about/about21.webp',
+            'assets/images/about/about22.webp',
+            'assets/images/about/about23-kitchen.webp',
+            'assets/abreco/images/newonce/home21.webp',
         ],
     ];
 
@@ -435,7 +435,7 @@
         'text'    => 'Planning your next off-road adventure? Our team builds these vans and tours in them, so we can help you choose the layout, features and finish that suit the way you travel.',
         'primary'   => ['label' => 'Get in Touch',         'url' => url('/contact')],
         'secondary' => ['label' => 'Book a factory visit', 'url' => route('factory-visit.show')],   // null to hide
-        'image'   => 'assets/abreco/images/newonce/breakerimg1.jpg',   // landscape, subject on the right
+        'image'   => 'assets/abreco/images/newonce/breakerimg1.webp',   // landscape, subject on the right
     ];
     // =====================================================
     $exImg = file_exists(public_path($ex['image'])) ? asset($ex['image']) : null;
@@ -489,8 +489,8 @@
         'text'    => 'Everest Caravans is a family owned business with over 15 years experience in the caravan industry. We use the highest quality materials, and our manufacturing process ensures every van is built to the highest standard and meets regulations.',
         'button'  => ['label' => 'About Everest', 'url' => route('about')],
         'bg'      => null,                                  // stats panel background; null = reuse the main photo
-        'photo'   => 'assets/images/about/who-we1.jpg',        // large photo, top left
-        'photo2'  => 'assets/images/about/who-we2.jpg',        // smaller photo, overlapping bottom right
+        'photo'   => 'assets/images/about/who-we1.webp',        // large photo, top left
+        'photo2'  => 'assets/images/about/who-we2.webp',        // smaller photo, overlapping bottom right
     ];
 
     // One entry per tab. Clicking a tab swaps the quote text and image.
@@ -507,14 +507,14 @@
             'icon'  => '<path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v-5a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5z"/><path d="M5 18v2M19 18v2"/>',
             'title' => 'Customised from the inside out',
             'text'  => 'Every Everest is built on a hot-dipped galvanised chassis and wrapped in checker-plate armour. It’s why we back our vans with a 5-year structural warranty. We build them to last for decades of big laps, not just one.',
-            'image' => 'assets/abreco/images/newonce/lux.jpg',
+            'image' => 'assets/abreco/images/newonce/lux.webp',
         ],
         [
             'label' => 'Custom Build',
             'icon'  => '<path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
             'title' => 'Strict quality control',
             'text'  => 'No two adventures are the same, so no two Everests need to be. Choose your layout, finishes and features, and we’ll build a van around the way your family actually travels.',
-            'image' => 'assets/images/services/quality.jpeg',
+            'image' => 'assets/images/services/quality.webp',
         ],
     ];
     // =====================================================
@@ -613,18 +613,18 @@
     // 'url' is optional — leave it null for a logo that isn't a link.
     $epPartners = [
         ['name' => 'Samaria',               'logo' => 'assets/images/partners/samaria.webp',         'url' => null],
-        ['name' => 'Burst',                 'logo' => 'assets/images/partners/burst.png',            'url' => null],
-        ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.png',      'url' => null],
-        ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.png',     'url' => null],
-        ['name' => 'Road Runner Chassis',   'logo' => 'assets/images/partners/road-runner.png',      'url' => null],
-        ['name' => 'Swift Appliance Group', 'logo' => 'assets/images/partners/swift.png',            'url' => null],
-        ['name' => 'MPC Mags and Tyres',    'logo' => 'assets/images/partners/mpc.png',              'url' => null],
-        ['name' => 'Coast to Coast',        'logo' => 'assets/images/partners/coast-to-coast.png',   'url' => null],
-        ['name' => 'NCE',                   'logo' => 'assets/images/partners/nce.png',              'url' => null],
-        ['name' => 'Aussie Traveller',      'logo' => 'assets/images/partners/aussie-traveller.png', 'url' => null],
-        ['name' => 'Camec',                 'logo' => 'assets/images/partners/camec.png',            'url' => null],
-        ['name' => 'Thetford',              'logo' => 'assets/images/partners/thetford.png',         'url' => null],
-        ['name' => 'Adelaide Bank',         'logo' => 'assets/images/partners/adelaide-bank.png',   'url' => null],
+        ['name' => 'Burst',                 'logo' => 'assets/images/partners/burst.webp',            'url' => null],
+        ['name' => 'Vinyl Media',           'logo' => 'assets/images/partners/vinyl-media.webp',      'url' => null],
+        ['name' => 'Plenty River Plumbing', 'logo' => 'assets/images/partners/plenty-river.webp',     'url' => null],
+        ['name' => 'Road Runner Chassis',   'logo' => 'assets/images/partners/road-runner.webp',      'url' => null],
+        ['name' => 'Swift Appliance Group', 'logo' => 'assets/images/partners/swift.webp',            'url' => null],
+        ['name' => 'MPC Mags and Tyres',    'logo' => 'assets/images/partners/mpc.webp',              'url' => null],
+        ['name' => 'Coast to Coast',        'logo' => 'assets/images/partners/coast-to-coast.webp',   'url' => null],
+        ['name' => 'NCE',                   'logo' => 'assets/images/partners/nce.webp',              'url' => null],
+        ['name' => 'Aussie Traveller',      'logo' => 'assets/images/partners/aussie-traveller.webp', 'url' => null],
+        ['name' => 'Camec',                 'logo' => 'assets/images/partners/camec.webp',            'url' => null],
+        ['name' => 'Thetford',              'logo' => 'assets/images/partners/thetford.webp',         'url' => null],
+        ['name' => 'Adelaide Bank',         'logo' => 'assets/images/partners/adelaide-bank.webp',   'url' => null],
     ];
     // =============================================
 @endphp
@@ -675,9 +675,9 @@
     // One image per card. Drop the files in public/assets/images/reviews/ —
     // until then each card falls back to the platform name so it is never empty.
     $etReviews = [
-        ['name' => 'Google', 'target' => '_self',   'image' => 'assets/abreco/images/about-page/google-review.png',    'url' => '/google-reviews', 'accent' => '#4285F4'],
-        ['name' => 'Facebook', 'target' => '_blank', 'image' => 'assets/abreco/images/about-page/facebook-reviews.png', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
-        ['name' => 'Go RV', 'target' => '_self',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.png',    'url' => '/go-rv-review', 'accent' => '#13A9AE'],
+        ['name' => 'Google', 'target' => '_self',   'image' => 'assets/abreco/images/about-page/google-review.webp',    'url' => '/google-reviews', 'accent' => '#4285F4'],
+        ['name' => 'Facebook', 'target' => '_blank', 'image' => 'assets/abreco/images/about-page/facebook-reviews.webp', 'url' => 'https://www.facebook.com/everestcaravan/reviews', 'accent' => '#1877F2'],
+        ['name' => 'Go RV', 'target' => '_self',    'image' => 'assets/abreco/images/about-page/go-rv-riviews.webp',    'url' => '/go-rv-review', 'accent' => '#13A9AE'],
     ];
 
     $etFactory = [

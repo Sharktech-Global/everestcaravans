@@ -1538,8 +1538,8 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
     --et-max: 1180px;
     --et-ease: cubic-bezier(.22, .7, .2, 1);
     --et-topo: url("../images/about/topo.svg");   /* relative to /assets/css/ */
-    --et-photo: url("../images/awards/awardsection.jpg");
-    --et-photo-2: url("../abreco/images/about-page/home-last-sec-but.png");
+    --et-photo: url("../images/awards/awardsection.webp");
+    --et-photo-2: url("../abreco/images/about-page/home-last-sec-but.webp");
 
     display: block;
     margin: 0;
