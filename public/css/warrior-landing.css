@@ -908,7 +908,7 @@ body.wl-page {
 }
 .wl-form__inner {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
     gap: clamp(22px, 3vw, 44px);
     max-width: var(--wl-max);
     margin: 0 auto;
