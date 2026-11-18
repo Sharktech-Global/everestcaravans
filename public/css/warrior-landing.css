@@ -914,7 +914,15 @@ body.wl-page {
     margin: 0 auto;
     padding: 0 var(--wl-side);
 }
-.wl-form__intro { position: sticky; top: calc(var(--wl-head) + 28px); }
+.wl-form__intro {
+    /* align-self is what makes the sticky work. As a grid item this column
+       would stretch to the height of the taller form beside it, and a box
+       that already spans the whole row has nowhere to travel, so sticky
+       would do nothing. Sized to its own content, it gets real range. */
+    align-self: start;
+    position: sticky;
+    top: calc(var(--wl-head) + 28px);
+}
 /* The left column holds the copy, the assurances and a photo, and stays
    put while the form on the right scrolls past it. The image is capped so
    the whole sticky block still fits the viewport — if it grew taller than
