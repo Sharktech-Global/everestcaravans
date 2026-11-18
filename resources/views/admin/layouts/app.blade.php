@@ -833,6 +833,15 @@
                             <span>Booking Enquiries</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a class="{{ request()->is('admin/warrior-enquiries*') ? 'active' : '' }}"
+                        href="{{ route('admin.warrior-enquiries.index') }}">
+                            <i class="fa fa-wpforms"></i>
+                            <span class="sidebar-mini-hide">Warrior Enquiries</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a class="{{ request()->is('admin/contact-enquiries*') ? 'active' : '' }}"
                             href="{{ route('admin.home-enquiries.contact') }}"><i

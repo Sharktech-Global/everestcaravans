@@ -539,6 +539,200 @@
                 data-cookie-consent-provider="auto"
                 title="Landing Page Form1"
                 scrolling="no"></iframe>
+
+            
+            <!-- @if (session('warrior_success'))
+                <div class="alert alert-success">
+                    Thank you! Your enquiry has been submitted successfully.
+                    Our sales team will contact you shortly.
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    Please correct the highlighted fields below.
+                </div>
+            @endif
+
+            <form action="{{ route('warrior-landing.store') }}" method="POST" class="warrior-enquiry-form">
+                @csrf
+
+                <h3>Let's Find Your Perfect Everest Warrior.</h3>
+
+                <div class="warrior-form-group">
+                    <label for="preferred_model">
+                        Which caravan interests you? *
+                    </label>
+
+                    <select name="preferred_model" id="preferred_model" required>
+                        <option value="">Please select</option>
+                        @foreach ([
+                            '19.5' => 'Warrior 19.5 ft',
+                            '21.5' => 'Warrior 21.5 ft',
+                            'custom' => 'Custom',
+                            'compare_both' => "I'd like to compare both"
+                        ] as $value => $label)
+                            <option value="{{ $value }}"
+                                {{ old('preferred_model') == $value ? 'selected' : '' }}>
+                                {{ $label }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('preferred_model')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="next_action">
+                        What would you like to do next? *
+                    </label>
+
+                    <select name="next_action" id="next_action" required>
+                        <option value="">Please select</option>
+                        @foreach ([
+                            'Request pricing and specifications',
+                            'Arrange a factory inspection',
+                            'Speak with the sales team'
+                        ] as $option)
+                            <option value="{{ $option }}"
+                                {{ old('next_action') == $option ? 'selected' : '' }}>
+                                {{ $option }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('next_action')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="purchase_timeframe">
+                        When are you considering purchasing? *
+                    </label>
+
+                    <select name="purchase_timeframe" id="purchase_timeframe" required>
+                        <option value="">Please select</option>
+                        @foreach ([
+                            'As soon as possible',
+                            'Within 3 months',
+                            'Within 3–6 months',
+                            '6+ months / still researching'
+                        ] as $option)
+                            <option value="{{ $option }}"
+                                {{ old('purchase_timeframe') == $option ? 'selected' : '' }}>
+                                {{ $option }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('purchase_timeframe')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="location">
+                        Where are you based? *
+                    </label>
+
+                    <select name="location" id="location" required>
+                        <option value="">Please select</option>
+                        @foreach ([
+                            'Victoria',
+                            'NSW / ACT',
+                            'Other Australian state or territory'
+                        ] as $option)
+                            <option value="{{ $option }}"
+                                {{ old('location') == $option ? 'selected' : '' }}>
+                                {{ $option }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('location')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <h4>Contact information</h4>
+
+                <div class="warrior-form-group">
+                    <label for="name">Full name *</label>
+                    <input type="text" name="name" id="name"
+                        value="{{ old('name') }}"
+                        placeholder="Enter your full name"
+                        maxlength="255" required>
+                    @error('name')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" name="email" id="email"
+                        value="{{ old('email') }}"
+                        placeholder="Enter your email address"
+                        maxlength="255" required>
+                    @error('email')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="postcode">Post code *</label>
+                    <input type="text" name="postcode" id="postcode"
+                        value="{{ old('postcode') }}"
+                        placeholder="Enter your postcode"
+                        inputmode="numeric"
+                        pattern="[0-9]{4}"
+                        maxlength="4" required>
+                    @error('postcode')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="phone">Phone number *</label>
+                    <input type="tel" name="phone" id="phone"
+                        value="{{ old('phone') }}"
+                        placeholder="Enter your phone number"
+                        maxlength="30" required>
+                    @error('phone')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="warrior-form-group">
+                    <label for="whatsapp_number">
+                        WhatsApp number (Optional)
+                    </label>
+                    <input type="tel" name="whatsapp_number"
+                        id="whatsapp_number"
+                        value="{{ old('whatsapp_number') }}"
+                        placeholder="Enter your WhatsApp number"
+                        maxlength="30">
+                    @error('whatsapp_number')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <p class="warrior-form-note">
+                    Everest Caravans may contact you to follow up
+                    on your enquiry.
+                </p>
+
+                <div class="warrior-form-group">
+                    {!! app('captcha')->display() !!}
+
+                    @error('g-recaptcha-response')
+                        <small class="warrior-error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <button type="submit" class="warrior-submit-btn">
+                    Submit Enquiry
+                </button>
+            </form>
+            {!! app('captcha')->renderJs() !!} -->
         </div>
 
     </div>
