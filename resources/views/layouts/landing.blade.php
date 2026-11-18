@@ -268,7 +268,17 @@
 
     @yield('js_after')
 
-    @include("partials.chat-widget")
+    {{--
+        No chat widget on the landing pages.
+
+        The campaign already has the GoHighLevel enquiry form in the page, so a
+        second LeadConnector entry point only competes with it. The widget also
+        injected Roboto into the document through the deprecated css?family= API
+        (three requests) plus two jsdelivr woff2 files, none of which set
+        font-display - they showed up in the Lighthouse font-display audit.
+
+        The rest of the site still loads it from layouts/front.blade.php.
+    --}}
 </body>
 
 </html>

@@ -46,9 +46,9 @@
         ['assets/images/about/about23.webp',        'An Everest Warrior side-on, awning out and side door open'],
         ['assets/images/about/19.5Connected2.webp',  'An Everest Warrior 19.6 ft hitched to a Land Rover Defender outside the Campbellfield factory'],
         ['assets/images/about/who-we2.webp',         'The A-frame head-on, with bike rack, gas bottles behind a stone guard and Everest mud flaps'],
-        ['assets/images/about/about21.webp',         'The leather dinette and lounge inside an Everest caravan'],
-        ['assets/images/about/about22.webp',         'The galley and dinette, with gold tapware and a timber benchtop'],
-        ['assets/images/about/about23-kitchen.webp',         'The kitchen, with oven, microwave and gold mixer tap'],
+        ['assets/images/about/about21-tile.webp',         'The leather dinette and lounge inside an Everest caravan'],
+        ['assets/images/about/about22-tile.webp',         'The galley and dinette, with gold tapware and a timber benchtop'],
+        ['assets/images/about/about23-kitchen-tile.webp',         'The kitchen, with oven, microwave and gold mixer tap'],
     ];
     $wlGallery = collect($wlGalleryShots)
         ->filter(fn ($s) => file_exists(public_path($s[0])))
@@ -165,27 +165,6 @@
                      loading="lazy" decoding="async">
             </figure>
         @endif
-
-        {{-- What the two builds have in common. Stated here so the model
-             sections below can concentrate on what separates them. --}}
-        <div class="wl-intro__shared">
-            <p class="wl-intro__shared-label">Shared across both builds</p>
-            <ul class="wl-intro__specs">
-                @foreach ([
-                    ['icon' => 'lounge',  'text' => 'L-Lounge configuration'],
-                    ['icon' => 'fridge',  'text' => '188L Dometic refrigerator'],
-                    ['icon' => 'weight',  'text' => '3500kg ATM'],
-                    ['icon' => 'chassis', 'text' => '6-inch chassis'],
-                ] as $shared)
-                    <li>
-                        <span class="wl-intro__specs-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">{!! $wlIcons[$shared['icon']] !!}</svg>
-                        </span>
-                        <span>{{ $shared['text'] }}</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
 
     </div>
 </section>
