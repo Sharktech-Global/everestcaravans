@@ -919,7 +919,6 @@ body.wl-page {
        would stretch to the height of the taller form beside it, and a box
        that already spans the whole row has nowhere to travel, so sticky
        would do nothing. Sized to its own content, it gets real range. */
-    align-self: start;
     position: sticky;
     top: calc(var(--wl-head) + 28px);
 }
