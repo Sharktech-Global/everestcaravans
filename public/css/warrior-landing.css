@@ -1249,7 +1249,16 @@ body.wl-page {
     :root { --wl-side: 18px; --wl-head: 66px; }
 
     .wl-header__logo img { height: 38px; }
-    .wl-hero { min-height: 0; }
+    /* Narrow hero file on phones. --wl-hero-img-sm is set alongside
+       --wl-hero-img on the section's style attribute, and falls back to the
+       full-size one when no small variant exists on disk, so the hero never
+       goes blank. This breakpoint MUST match the media= on the preload link
+       in warrior.blade.php: if they disagree, a viewport in the gap
+       preloads one file and then paints the other. */
+    .wl-hero {
+        min-height: 0;
+        background-image: var(--wl-hero-img-sm, var(--wl-hero-img));
+    }
     /* Full width, but the label and arrow still travel together */
     .wl-hero__actions .wl-btn,
     .wl-compare__foot .wl-btn,

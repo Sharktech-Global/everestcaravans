@@ -44,16 +44,41 @@
     $wlHero   = file_exists(public_path($wlHeroSrc))
         ? asset($wlHeroSrc) . "?v=" . filemtime(public_path($wlHeroSrc))
         : $wlPic('hero', 'assets/abreco/images/newonce/home-ban21.jpg');
+
+    // Narrow variant for phones. The full file is 2048px wide; a 412px
+    // viewport at dpr 1.75 needs about 721px, so the big one spends roughly
+    // three times the pixels it can show. That is the "Load Time" phase of
+    // the LCP breakdown — 1574ms of the 5.1s, for bytes no phone displays.
+    //
+    //   gestart-banner.webp       2048x1222   119 KB
+    //   gestart-banner-1024.webp  1024x611     33 KB
+    //
+    // Regenerate after replacing the hero (quality 72 is well inside what
+    // survives the dark wash over this section):
+    //   python -c "from PIL import Image; i=Image.open('SRC').convert('RGB');     //     i.resize((1024, round(i.height*1024/i.width))).save('OUT','WEBP',quality=72,method=6)"
+    $wlHeroSmSrc = 'assets/images/about/gestart-banner-1024.webp';
+    $wlHeroSm = file_exists(public_path($wlHeroSmSrc))
+        ? asset($wlHeroSmSrc) . "?v=" . filemtime(public_path($wlHeroSmSrc))
+        : null;
 @endphp
 
 @section('head_preload')
-    @if ($wlHero)
-        {{-- as=image makes it a real image request rather than a generic
-             fetch, so the one the CSS asks for later is served from cache
-             instead of being requested a second time. fetchpriority=high
-             pulls it ahead of the stylesheet and font requests queued
-             alongside it — without it the browser guesses Low for a
-             preload it cannot match to a visible element yet. --}}
+    {{-- as=image makes these real image requests rather than generic
+         fetches, so the one the CSS asks for later is served from cache
+         instead of being requested a second time. fetchpriority=high pulls
+         it ahead of the stylesheet and font requests queued alongside it —
+         without it the browser guesses Low for a preload it cannot yet
+         match to a visible element.
+
+         media= is what keeps this to ONE download: the browser evaluates it
+         before fetching, so a phone takes only the 33KB file and a desktop
+         only the 119KB one. The breakpoints must stay identical to the ones
+         in warrior-landing.css, or a viewport could preload one file and
+         then paint the other — two downloads instead of none saved. --}}
+    @if ($wlHero && $wlHeroSm)
+        <link rel="preload" as="image" href="{{ $wlHeroSm }}" fetchpriority="high" media="(max-width: 767.98px)">
+        <link rel="preload" as="image" href="{{ $wlHero }}"   fetchpriority="high" media="(min-width: 768px)">
+    @elseif ($wlHero)
         <link rel="preload" as="image" href="{{ $wlHero }}" fetchpriority="high">
     @endif
 @endsection
@@ -131,7 +156,7 @@
 {{-- ==========================================================
      HERO
      ========================================================== --}}
-<section class="wl-hero"@if ($wlHero) style="--wl-hero-img:url('{{ $wlHero }}')"@endif>
+<section class="wl-hero"@if ($wlHero) style="--wl-hero-img:url('{{ $wlHero }}'){{ $wlHeroSm ? ";--wl-hero-img-sm:url('" . $wlHeroSm . "')" : '' }}"@endif>
     <div class="wl-hero__inner">
         <p class="wl-hero__eyebrow">Introducing the new Warrior builds</p>
 
