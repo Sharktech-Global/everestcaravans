@@ -28,14 +28,22 @@
     // first. Until a file exists the cards show a placeholder.
     $wlDir = 'assets/abreco/images/warrior/';
 
+    // Every URL carries ?v=<filemtime>. That is what makes a long immutable
+    // Cache-Control header safe to put on these files (see
+    // docs/nginx-performance.conf): the filename changes whenever the file
+    // does, so a replaced photograph is simply a new URL rather than
+    // something a returning visitor keeps seeing the old version of for a
+    // year. Without the version, do NOT let the server mark these immutable.
     $wlPic = function ($name, $fallback = null) use ($wlDir) {
         foreach (['webp', 'jpg', 'jpeg', 'png'] as $ext) {
             $path = $wlDir . $name . '.' . $ext;
             if (file_exists(public_path($path))) {
-                return asset($path);
+                return asset($path) . '?v=' . filemtime(public_path($path));
             }
         }
-        return ($fallback && file_exists(public_path($fallback))) ? asset($fallback) : null;
+        return ($fallback && file_exists(public_path($fallback)))
+            ? asset($fallback) . '?v=' . filemtime(public_path($fallback))
+            : null;
     };
 
     // Landing hero banner. Drop a new file here to change it; if it is missing we

@@ -51,14 +51,59 @@
         <link rel="icon" href="{{ $lpFavicon }}" type="image/x-icon">
     @endif
 
+    {{-- Google Fonts, loaded WITHOUT blocking render.
+
+         As a plain stylesheet this blocked the first paint for 857ms:
+         the browser had to resolve fonts.googleapis.com, fetch the CSS
+         and parse it before it could even ask fonts.gstatic.com for a
+         glyph — and nothing on the page could paint meanwhile.
+
+         rel=preload + onload flips it to a stylesheet once it has
+         arrived, so it is fetched early but never holds up paint. The
+         URL already carries display=swap, so text draws immediately in
+         the fallback face and swaps when the webfont lands.
+
+         Space Grotesk was dropped from the request: it appears in
+         warrior-landing.css only as a fallback behind DM Sans
+         (--wl-display), so with DM Sans loaded it can never render.
+         Four weights were being requested for nothing. The main site
+         layout uses it for real and is untouched. --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    @php
+        $lpFonts = 'https://fonts.googleapis.com/css2'
+            . '?family=DM+Sans:wght@400;500;600;700'
+            . '&family=Poppins:wght@400;500;600;700'
+            . '&display=swap';
+    @endphp
+    <link rel="preload" as="style" href="{{ $lpFonts }}"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ $lpFonts }}"></noscript>
 
+    {{-- The page stylesheet is INLINED, not linked.
+
+         As a <link> it was the single most expensive thing on the page:
+         Lighthouse measured it blocking render for 875ms, because the
+         server sends static files uncompressed — 43KB on the wire for
+         something that gzips to 11KB. The hero image cannot start
+         downloading until this is parsed, so it sat in front of LCP too.
+
+         The HTML document IS gzipped (nginx compresses the dynamic
+         response, just not static files), so moving the CSS inside the
+         document gets it compressed for free AND removes the request
+         altogether. Same bytes the server would have sent with gzip
+         enabled, without needing the server touched.
+
+         If gzip is later enabled on static files
+         (docs/nginx-performance.conf), going back to a <link> is
+         reasonable — it caches across pages, which this does not. With
+         only two campaign pages that trade is worth taking today.
+
+         NOTE: url() inside this stylesheet must be absolute. Inlined
+         here, a ../relative path would resolve against the document. --}}
     @php $lpCss = 'css/warrior-landing.css'; @endphp
     @if (file_exists(public_path($lpCss)))
-        <link rel="stylesheet" href="{{ asset($lpCss) }}?v={{ filemtime(public_path($lpCss)) }}">
+        <style>{!! file_get_contents(public_path($lpCss)) !!}</style>
     @else
         <!-- EVEREST: public/{{ $lpCss }} not found -->
     @endif

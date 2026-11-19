@@ -1249,6 +1249,31 @@ body.wl-page {
     :root { --wl-side: 18px; --wl-head: 66px; }
 
     .wl-header__logo img { height: 38px; }
+
+    /* ---- Mobile: drop the expensive compositing in the first screen ----
+       backdrop-filter forces the browser to re-sample and blur whatever
+       sits behind the element on every frame. On the sticky header that
+       is the whole page as it scrolls past, which is the single most
+       expensive thing in the first screen on a phone GPU.
+
+       Both backgrounds are nearly opaque already (.92 on the header), so
+       losing the blur is close to invisible — the ghost button is nudged
+       from .08 to .16 to make up the little it did contribute. The scroll
+       cue below is display:none on mobile anyway, so its infinite
+       animation never runs here. */
+    .wl-header { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .wl-btn--ghost {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, .16);
+    }
+
+    /* Nothing in the first screen needs a transition on a touch device:
+       there is no hover, so these only ever cost compositing work. */
+    .wl-hero .wl-btn,
+    .wl-header .wl-btn { transition: none; }
+    .wl-hero .wl-btn svg,
+    .wl-header .wl-btn svg { transition: none; }
     /* Narrow hero file on phones. --wl-hero-img-sm is set alongside
        --wl-hero-img on the section's style attribute, and falls back to the
        full-size one when no small variant exists on disk, so the hero never
@@ -1334,7 +1359,13 @@ body.wl-page {
 .wl-deco--topo {
     width: 520px;
     height: 520px;
-    background: url("../assets/images/about/topo.svg") center / contain no-repeat;
+    background: url("/assets/images/about/topo.svg?v=1791365083") center / contain no-repeat;
+    /* Absolute, not ../relative: this stylesheet is inlined into the page
+       <head> by layouts/landing.blade.php, where a relative URL would
+       resolve against the document instead of against this file.
+       ?v= is hand-maintained: this URL lives in CSS, where no PHP runs to
+       stamp it. Bump it if topo.svg is ever replaced, otherwise the
+       immutable cache header will keep serving the old one. */
     opacity: .05;
     -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
             mask-image: radial-gradient(closest-side, #000 35%, transparent);
