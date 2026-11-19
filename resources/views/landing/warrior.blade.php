@@ -3,8 +3,23 @@
 @section('title', 'New Everest Warrior Caravans | 19.6 ft & 21.6 ft | Everest Caravans')
 @section('meta_description', 'Two newly built Everest Warrior caravans, 19.6 ft and 21.6 ft. Compare specifications, view genuine photographs and request pricing from the Campbellfield factory.')
 
-@section('content')
+{{-- ==========================================================
+     The hero photograph is resolved up here, ABOVE @section('content'),
+     and not down in the content block with the rest of the pictures.
 
+     It is the LCP element, and it loads as a CSS background through
+     --wl-hero-img on the section's style attribute. The preload scanner
+     only reads markup, so a background image is invisible to it: the
+     browser cannot even know the file exists until it has downloaded
+     warrior-landing.css, built the CSSOM and matched the rule. That
+     delay is the whole of the "Request is discoverable in initial
+     document" failure in Lighthouse.
+
+     Blade renders the child template before the layout, so anything
+     assigned at this level is in scope inside @section('head_after')
+     below, which the layout prints in <head>. That is what lets the
+     preload go out in the first bytes of the document.
+     ========================================================== --}}
 @php
     // ===================== EDIT HERE =====================
     // Drop the real photographs into public/assets/abreco/images/warrior/
@@ -29,6 +44,23 @@
     $wlHero   = file_exists(public_path($wlHeroSrc))
         ? asset($wlHeroSrc) . "?v=" . filemtime(public_path($wlHeroSrc))
         : $wlPic('hero', 'assets/abreco/images/newonce/home-ban21.jpg');
+@endphp
+
+@section('head_preload')
+    @if ($wlHero)
+        {{-- as=image makes it a real image request rather than a generic
+             fetch, so the one the CSS asks for later is served from cache
+             instead of being requested a second time. fetchpriority=high
+             pulls it ahead of the stylesheet and font requests queued
+             alongside it — without it the browser guesses Low for a
+             preload it cannot match to a visible element yet. --}}
+        <link rel="preload" as="image" href="{{ $wlHero }}" fetchpriority="high">
+    @endif
+@endsection
+
+@section('content')
+
+@php
     $wlIntro  = $wlPic('intro');
     $wl195Src = 'assets/images/about/19.5ft.webp';
     $wl195    = file_exists(public_path($wl195Src))
@@ -498,6 +530,21 @@
                 Submissions go to GoHighLevel, NOT to the warrior_enquiries table and
                 NOT to the team notification email. The native Laravel form that used
                 to sit here is still in git history if it is ever needed back.
+
+                DO NOT add loading="lazy" to this iframe. It looks like free
+                performance — the embed pulls roughly 680KB of script from
+                stcdn.leadconnectorhq.com and sits well below the fold — but it
+                breaks the form. Measured on 2026-11-19: with lazy the frame
+                renders 0 form controls and stays stuck at its 320px start
+                height; without it, 11 controls and the full 1175px. form_embed.js
+                does its resize handshake against the frame at page load, and a
+                frame that has not loaded yet never answers it.
+
+                It is not worth the risk anyway. The embed runs in a child frame,
+                off this document's main thread, so it barely touches the score:
+                total blocking time on this page is 80ms, and blocking the embed
+                outright in Lighthouse moved the score DOWN (77 -> 73, i.e. noise).
+                The page's points are lost on FCP/LCP, not on this.
             --}}
             <iframe
                 src="https://ghllinks.sharktech.com.au/widget/form/0tlEDQAlbrshPFlheXAU"
@@ -720,7 +767,7 @@
 {{-- ==========================================================
      FAQ
      ========================================================== --}}
-<section class="wl-faq">
+<section class="wl-faq" id="faq">
     <div class="wl-faq__inner">
 
         <header class="wl-section-head">

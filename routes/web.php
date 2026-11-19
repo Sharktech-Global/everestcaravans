@@ -282,3 +282,6 @@ Route::get("/warrior", "WarriorLandingController@show")
     ->name("warrior-landing.show");
 Route::post("/warrior", "WarriorLandingController@store")
     ->name("warrior-landing.store");
+// Enquiry confirmation. Set this as the redirect URL on the GoHighLevel form.
+Route::get("/warrior/thank-you", "WarriorLandingController@thankYou")
+    ->name("warrior-landing.thank-you");

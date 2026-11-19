@@ -27,7 +27,25 @@
             : null;
 
         $lpFavicon = @$lpSettings->favicon ? asset('storage/' . $lpSettings->favicon) : null;
+
+        // Where the header and footer calls to action point. Pages with the
+        // enquiry form in them leave this alone and scroll to it; pages
+        // without one (the thank-you page) pass their own target from the
+        // controller.
+        $lpCta = $lpCtaHref ?? '#enquire';
     @endphp
+
+    {{-- Deliberately the first request the document makes.
+
+         This is for the LCP image preload and nothing else. Below this
+         point sit two render-blocking stylesheets and the font requests;
+         a preload placed after them is queued behind them, and on a slow
+         connection that is most of the LCP. fetchpriority alone does not
+         fix it, because priority sorts requests the browser has already
+         found — it has to find this one first.
+
+         Ordinary <head> additions go in head_after, further down. --}}
+    @yield('head_preload')
 
     @if ($lpFavicon)
         <link rel="icon" href="{{ $lpFavicon }}" type="image/x-icon">
@@ -47,12 +65,24 @@
 
     @yield('css_after')
 
+    {{-- Page-level <head> additions, e.g. the robots tag on the thank-you page. --}}
+    @yield('head_after')
+
     {{-- The site-wide GTM container, so campaign traffic lands in the same
          property as the rest of the site. --}}
     @php $lpGtm = \App\Gtm::first(); @endphp
     @if ($lpGtm && filled($lpGtm->head))
         {!! $lpGtm->head !!}
     @endif
+
+    {{-- Campaign container, landing pages only. This layout is not used by
+         the rest of the site, so it does not fire anywhere else. --}}
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TH9WR84S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    </script>
 
 
 
@@ -168,7 +198,7 @@
                 @endif
             </a>
 
-            <a class="wl-btn wl-btn--sm" href="#enquire">
+            <a class="wl-btn wl-btn--sm" href="{{ $lpCta }}">
                 Enquire Now
                 <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
             </a>
@@ -247,7 +277,7 @@
                 <p class="wl-footer__cta-text">
                     Request pricing, full specifications or a factory inspection.
                 </p>
-                <a class="wl-btn wl-btn--gold" href="#enquire">
+                <a class="wl-btn wl-btn--gold" href="{{ $lpCta }}">
                     Request Pricing
                     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
                 </a>

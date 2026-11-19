@@ -17,6 +17,24 @@ class WarriorLandingController extends Controller
         return view('landing.warrior');
     }
 
+    /**
+     * The confirmation page.
+     *
+     * The live enquiry form on /warrior is a GoHighLevel embed, so set this
+     * URL as the form's "On submit -> Redirect to URL" in GoHighLevel and
+     * visitors land here. The native Laravel form in store() redirects here
+     * too, so both paths end on the same page.
+     */
+    public function thankYou()
+    {
+        return view('landing.warrior-thank-you', [
+            // The shared landing layout points its header and footer calls to
+            // action at #enquire, which does not exist on this page. Send them
+            // back to the form instead.
+            'lpCtaHref' => route('warrior-landing.show') . '#enquire',
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -156,8 +174,7 @@ class WarriorLandingController extends Controller
         }
 
         return redirect()
-            ->route('warrior-landing.show')
-            ->with('warrior_success', true)
-            ->withFragment('enquire');
+            ->route('warrior-landing.thank-you')
+            ->with('warrior_success', true);
     }
 }
