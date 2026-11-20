@@ -113,13 +113,6 @@
     {{-- Page-level <head> additions, e.g. the robots tag on the thank-you page. --}}
     @yield('head_after')
 
-    {{-- The site-wide GTM container, so campaign traffic lands in the same
-         property as the rest of the site. --}}
-    @php $lpGtm = \App\Gtm::first(); @endphp
-    @if ($lpGtm && filled($lpGtm->head))
-        {!! $lpGtm->head !!}
-    @endif
-
     {{-- Campaign container, landing pages only. This layout is not used by
          the rest of the site, so it does not fire anywhere else. --}}
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TH9WR84S"></script>
@@ -239,10 +232,6 @@
 </head>
 
 <body class="wl-page">
-
-    @if ($lpGtm && filled($lpGtm->body))
-        {!! $lpGtm->body !!}
-    @endif
 
     {{-- ============================================================
          HEADER — logo and one call to action, nothing else. A campaign
