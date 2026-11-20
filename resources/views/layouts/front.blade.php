@@ -292,6 +292,25 @@
     @if ($gtm && filled($gtm->head))
         {!! $gtm->head !!}
     @endif
+
+    {{-- Google Ads (gtag.js), site-wide.
+
+         Unlike layouts/landing.blade.php, nothing above declares a gtag()
+         stub here — the container injected by $gtm->head brings its own
+         IIFE and does not expose one globally — so this block ships the
+         full snippet and stands on its own.
+
+         Both lines below are safe to run even if another tag has already
+         run them: the dataLayer guard keeps any existing queue, and the
+         function declaration is identical to Google's. --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18583917415"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18583917415');
+    </script>
 </head>
 <!-- Header End -->
 @php

@@ -129,6 +129,21 @@
         gtag('js', new Date());
     </script>
 
+    {{-- Google Ads (gtag.js), landing pages only.
+
+         This layout is used by /warrior and /warrior/thank-you and by
+         nothing else, so the tag is on both and on no other page.
+
+         The dataLayer guard and the gtag() stub above do the same job as
+         the ones Google ships with this snippet, so they are not repeated:
+         re-running them would be harmless but pointless. The stub is
+         declared synchronously above, before this loader runs, so
+         gtag('config', ...) is safe here even though the script is async. --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18583917415"></script>
+    <script>
+        gtag('config', 'AW-18583917415');
+    </script>
+
 
 
 
